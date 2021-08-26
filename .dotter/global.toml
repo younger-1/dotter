@@ -1,0 +1,11 @@
+[helpers]
+
+[default]
+depends = []
+
+[default.files]
+"conda.yml" = "~/.condarc"
+"git.toml" = "~/.gitconfig"
+
+[default.variables]
+
