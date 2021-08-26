@@ -2,6 +2,7 @@
     helper = manager-core
 [user]
     name = younger
+    # email = younger321@foxmail.com
     email = 45989017+younger-1@users.noreply.github.com
     signingkey = AB04775E81D89564
 [core]
