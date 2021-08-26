@@ -6,6 +6,7 @@
 gitconfig = "~/.gitconfig"
 "conda.yml" = "~/.condarc"
 npmrc = "~/.npmrc"
+gemrc = "~/.gemrc"
 spacemacs = "~/.spacemacs"
 SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}
 "cargo.toml" = "~/.cargo/config.toml"
