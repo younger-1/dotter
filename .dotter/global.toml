@@ -9,9 +9,12 @@ gitconfig = "~/.gitconfig"
 
 # windows diff
 pip = "~/.config/pip/pip.conf"
-"lsd.yml" = "~/AppData/Roaming/lsd/config.yaml"
-"bottom.toml" = "~/AppData/Roaming/bottom/bottom.toml"
-"bat.cfg" = "~/AppData/Roaming/bat/config"
+"lsd.yml" = "~/.config/lsd/config.yaml"
+"bottom.toml" = "~/.config/bottom/bottom.toml"
+"bat.cfg" = "~/.config/bat/config"
+alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
+so = { target = "~/.config/so", type = "symbolic" }
+"s.cfg" = "~/.config/s/config"
 
 
 [vim.files]

@@ -1,0 +1,11 @@
+---
+api_key: 8o9g7WcfwnwbB*Qp4VsGsw((
+limit: 20
+lucky: true
+sites:
+  - stackoverflow
+  - serverfault
+  - unix
+search_engine: duckduckgo
+# search_engine: stackexchange
+
