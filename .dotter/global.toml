@@ -6,6 +6,8 @@ depends = []
 [default.files]
 "conda.yml" = "~/.condarc"
 "git.toml" = "~/.gitconfig"
+"vim.vim" = "~/.vimrc"
+"gvim.vim" = "~/.gvimrc"
 
 [default.variables]
 
