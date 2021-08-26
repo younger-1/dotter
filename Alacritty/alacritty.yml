@@ -12,6 +12,11 @@ import:
   - ~/.config/alacritty/{{colorscheme}}.yml
   - ~/AppData/Roaming/alacritty/{{colorscheme}}.yml
 
+# {{env_var "home"}}
+# {{env_var "java_home"}}
+# {{env_var "FZF_DEFAULT_COMMAND"}}
+# {{env_var "AppData"}}
+
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
