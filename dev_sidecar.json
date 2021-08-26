@@ -1,0 +1,24 @@
+{
+  plugin: {
+    git: {
+      enabled: true,
+    },
+    node: {
+      setting: {
+        yarnRegistry: null,
+      },
+    },
+    overwall: {
+      enabled: true,
+    },
+  },
+  server: {
+    intercepts: {
+      'raw.githubusercontent.com': {
+        '.*': {
+          proxy: 'raw.fastgit.org',
+        },
+      },
+    },
+  },
+}

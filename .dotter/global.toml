@@ -6,14 +6,20 @@
 gitconfig = "~/.gitconfig"
 "conda.yml" = "~/.condarc"
 npmrc = "~/.npmrc"
+spacemacs = "~/.spacemacs"
+SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}
+"cargo.toml" = "~/.cargo/config.toml"
+"starship.toml" = "~/.config/starship.toml"
+"fuck.py" = "~/.config/thefuck/settings.py"
+"leetcode.json" = "~/.lc/plugins.json"
 
 # windows diff
 pip = "~/.config/pip/pip.conf"
 "lsd.yml" = "~/.config/lsd/config.yaml"
 "bottom.toml" = "~/.config/bottom/bottom.toml"
 "bat.cfg" = "~/.config/bat/config"
-alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
-so = { target = "~/.config/so", type = "symbolic" }
+Alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
+So = { target = "~/.config/so", type = "symbolic" }
 "s.cfg" = "~/.config/s/config"
 
 [default.variables]
@@ -35,4 +41,8 @@ depends = [ "default" ]
 
 [win.files]
 wslconfig = "~/.wslconfig"
+"tabnine.toml" = "~/AppData/Roaming/TabNine/TabNine.toml"
+"typora.json" = "~/AppData/Roaming/Typora/conf/conf.user.json"
+"baidu_pcs.json" = "~/AppData/Roaming/BaiduPCS-Go/pcs_config.json"
+"dev_sidecar.json" = "~/.dev-sidecar/config.json5"
 
