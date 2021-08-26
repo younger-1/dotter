@@ -100,19 +100,19 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function NextWord
 
 
 # [Sourced file]
-. $PSScriptRoot/cfg/completion-gh.ps1
-. $PSScriptRoot/cfg/completion-rustup.ps1
-. $PSScriptRoot/cfg/completion-procs.ps1
-. $PSScriptRoot/cfg/completion-rg.ps1
-. $PSScriptRoot/cfg/completion-starship.ps1
-. $PSScriptRoot/cfg/completion-yq.ps1
+. $PSScriptRoot/completion-gh.ps1
+. $PSScriptRoot/completion-rustup.ps1
+. $PSScriptRoot/completion-procs.ps1
+. $PSScriptRoot/completion-rg.ps1
+. $PSScriptRoot/completion-starship.ps1
+. $PSScriptRoot/completion-yq.ps1
 
 # https://www.tutorialspoint.com/explain-powershell-profile
 # . $HOME/Documents/PowerShell/my-alias.ps1
-. $PSScriptRoot/cfg/my-alias.ps1
-. $PSScriptRoot/cfg/my-func.ps1
-. $PSScriptRoot/cfg/my-tool.ps1
-. $PSScriptRoot/cfg/my-wsl.ps1
+. $PSScriptRoot/my-alias.ps1
+. $PSScriptRoot/my-func.ps1
+. $PSScriptRoot/my-tool.ps1
+. $PSScriptRoot/my-wsl.ps1
 
 
 # pshazz

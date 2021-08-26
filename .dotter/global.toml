@@ -50,8 +50,8 @@ wslconfig = "~/.wslconfig"
 "baidu_pcs.json" = "~/AppData/Roaming/BaiduPCS-Go/pcs_config.json"
 "dev_sidecar.json" = "~/.dev-sidecar/config.json5"
 "autohotkeyU64.ahk" = "~/.config/AutoHotkeyU64.ahk"
-PowerShell = { target = "~/Documents/PowerShell/cfg", type = "symbolic" }
-"pwsh.ps1" = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
-"powershell.ps1" = "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
+PowerShell = { target = "~/Documents/PowerShell", type = "symbolic" }
+"PowerShell/pwsh.ps1" = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+"PowerShell/powershell.ps1" = "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
 WindowsTerminal = { target = "~/AppData/Local/Microsoft/Windows Terminal", type = "symbolic" }
 
