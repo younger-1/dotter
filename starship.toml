@@ -81,7 +81,7 @@ error_symbol = "[✗](bold red) "
 
 [memory_usage]
 disabled = false
-# threshold = 80
+threshold = 80
 symbol = " "
 style = "bold dimmed green"
 

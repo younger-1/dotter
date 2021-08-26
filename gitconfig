@@ -107,8 +107,8 @@
     sslVerify = false
     postBuffer = 524288000
 
-# [url "https://github.com.cnpmjs.org/"]  
-# [url "https://hub.fastgit.org/"]        
+# [url "https://github.com.cnpmjs.org/"]
+# [url "https://hub.fastgit.org/"]
 #    insteadOf = https://github.com/
 # [url "https://github.com/"]
 # 	insteadOf = git@github.com:

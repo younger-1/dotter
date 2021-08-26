@@ -1,5 +1,5 @@
 [helpers]
-hex2rgb = "dotter_settings/helpers/hex2rgb.rhai"
+# hex2rgb = ".dotter/helpers/hex2rgb.rhai"
 
 [default]
 
