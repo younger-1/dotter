@@ -9,8 +9,8 @@
 # All imports must either be absolute paths starting with `/`, or paths relative
 # to the user's home directory starting with `~/`.
 import:
-  - ~/.config/alacritty/dracula.yml
-  - ~/AppData/Roaming/alacritty/dracula.yml
+  - ~/.config/alacritty/{{colorscheme}}.yml
+  - ~/AppData/Roaming/alacritty/{{colorscheme}}.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -113,12 +113,11 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    # family: FuraMono NF
-{{#if (eq dotter.os "windows")}}
-    family: SauceCodePro NF
-{{else}}
-    family: SauceCodePro Nerd Font
-{{/if}}
+    # family: FuraMono {{nerd_font}}
+    # family: JetBrainsMono {{nerd_font}}
+    # family: Hack {{nerd_font}}
+    # family: SauceCodePro {{nerd_font}}
+    family: {{font}} {{nerd_font}}
     # The `style` can be specified to pick a specific face.
     # style: Semibold
 
@@ -128,7 +127,6 @@ font:
     #
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: SauceCodePro NF
 
   # Italic font face
   # italic:
@@ -136,7 +134,6 @@ font:
     #
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: SauceCodePro NF
 
   # Bold italic font face
   # bold_italic:
@@ -144,10 +141,9 @@ font:
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    # family: SauceCodePro NF
 
   # Point size
-  size: 12.0
+  size: {{font_size}}
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -340,7 +336,9 @@ bell:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 1
+{{#if (eq os "windows")}}
+background_opacity: 0.5
+{{/if}}
 
 #selection:
   # This string contains all characters that are used as separators for
@@ -404,7 +402,7 @@ cursor:
 #   - (Windows) powershell
 {{#if (eq dotter.os "windows")}}
 shell:
-  program: powershell
+  program: pwsh
   args:
     # - -NoProfile
     - -NoLogo

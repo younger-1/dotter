@@ -1,5 +1,10 @@
 # Windows OS-specific configuration
 
+[default.variables]
+os = "windows"
+nerd_font = "NF"
+colorscheme = "nord"
+
 [default.files]
 pip = "~/AppData/Roaming/pip/pip.ini"
 "lsd.yml" = "~/AppData/Roaming/lsd/config.yaml"

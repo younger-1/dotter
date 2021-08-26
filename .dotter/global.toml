@@ -6,6 +6,14 @@
 username = "Xavier Younger"
 locale   = "zh-cn"
 os = "linux"
+font = "Hack"
+font_size = 12
+nerd_font = "Nerd Font"
+colorscheme = "dracula"
+primary_color = "#CCCCCC"
+background_color = "#333333"
+screen_size = "1920x1080"
+terminal = "xfce4-terminal"
 
 [default.files]
 gitconfig = "~/.gitconfig"
@@ -28,6 +36,7 @@ pip = "~/.config/pip/pip.conf"
 "bottom.toml" = "~/.config/bottom/bottom.toml"
 "bat.cfg" = "~/.config/bat/config"
 Alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
+"Alacritty/alacritty.yml" = { target = "~/.config/alacritty/alacritty.yml", type = "template" }
 So = { target = "~/.config/so", type = "symbolic" }
 "s.cfg" = "~/.config/s/config"
 
