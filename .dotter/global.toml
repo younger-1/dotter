@@ -12,6 +12,8 @@ SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}
 "starship.toml" = "~/.config/starship.toml"
 "fuck.py" = "~/.config/thefuck/settings.py"
 "leetcode.json" = "~/.lc/plugins.json"
+AppSettings = { target = "~/AppSettings", type = "symbolic" }
+Icons = { target = "~/Icons", type = "symbolic" }
 
 # windows diff
 pip = "~/.config/pip/pip.conf"
@@ -45,4 +47,3 @@ wslconfig = "~/.wslconfig"
 "typora.json" = "~/AppData/Roaming/Typora/conf/conf.user.json"
 "baidu_pcs.json" = "~/AppData/Roaming/BaiduPCS-Go/pcs_config.json"
 "dev_sidecar.json" = "~/.dev-sidecar/config.json5"
-Icons = { target = "~/.config/oh-my-icon", type = "symbolic" }

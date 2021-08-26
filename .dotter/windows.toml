@@ -5,8 +5,8 @@ pip = "~/AppData/Roaming/pip/pip.ini"
 "lsd.yml" = "~/AppData/Roaming/lsd/config.yaml"
 "bottom.toml" = "~/AppData/Roaming/bottom/bottom.toml"
 "bat.cfg" = "~/AppData/Roaming/bat/config"
-alacritty = { target = "~/AppData/Roaming/alacritty", type = "symbolic" }
-so = { target = "~/AppData/Roaming/Sam Tay/so/config", type = "symbolic" }
+Alacritty = { target = "~/AppData/Roaming/alacritty", type = "symbolic" }
+So = { target = "~/AppData/Roaming/Sam Tay/so/config", type = "symbolic" }
 "s.cfg" = "~/AppData/Roaming/s/config"
 
 # [vim.files]
