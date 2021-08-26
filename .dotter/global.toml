@@ -5,9 +5,12 @@ depends = []
 
 [default.files]
 "conda.yml" = "~/.condarc"
-"git.toml" = "~/.gitconfig"
-"vim.vim" = "~/.vimrc"
-"gvim.vim" = "~/.gvimrc"
+gitconfig = "~/.gitconfig"
+
+[vim.files]
+vimrc = { target = "~/.vimrc", type = "symbolic" }
+gvimrc = { target = "~/.gvimrc", type = "symbolic" }
+
 
 [default.variables]
 

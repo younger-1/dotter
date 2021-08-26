@@ -1,4 +1,8 @@
-[default.files]
-"vim.vim" = "~/_vimrc"
-"gvim.vim" = "~/_gvimrc"
+# [vim.files]
+# vimrc.target = "~/_vimrc"
+# gvimrc.target = "~/_gvimrc"
+ 
+[vim.files]
+vimrc = { target = "~/_vimrc", type = "symbolic" }
+gvimrc = { target = "~/_gvimrc", type = "symbolic" }
 
