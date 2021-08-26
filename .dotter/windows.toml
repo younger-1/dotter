@@ -1,3 +1,5 @@
+# Windows OS-specific configuration
+
 [default.files]
 pip = "~/AppData/Roaming/pip/pip.ini"
 "lsd.yml" = "~/AppData/Roaming/lsd/config.yaml"
@@ -13,4 +15,5 @@ so = { target = "~/AppData/Roaming/Sam Tay/so/config", type = "symbolic" }
 [vim.files]
 vimrc = { target = "~/_vimrc", type = "symbolic" }
 gvimrc = { target = "~/_gvimrc", type = "symbolic" }
+
 

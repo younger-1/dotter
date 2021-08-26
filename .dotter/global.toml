@@ -1,11 +1,11 @@
 [helpers]
 
 [default]
-depends = []
 
 [default.files]
 gitconfig = "~/.gitconfig"
 "conda.yml" = "~/.condarc"
+npmrc = "~/.npmrc"
 
 # windows diff
 pip = "~/.config/pip/pip.conf"
@@ -16,11 +16,23 @@ alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
 so = { target = "~/.config/so", type = "symbolic" }
 "s.cfg" = "~/.config/s/config"
 
+[default.variables]
+username = "Xavier Younger"
+# locale   = "zh-cn"
+
+
+[vim]
+
+depends = [ "default" ]
 
 [vim.files]
 vimrc = { target = "~/.vimrc", type = "symbolic" }
 gvimrc = { target = "~/.gvimrc", type = "symbolic" }
 
 
-[default.variables]
+[win]
+depends = [ "default" ]
+
+[win.files]
+wslconfig = "~/.wslconfig"
 
