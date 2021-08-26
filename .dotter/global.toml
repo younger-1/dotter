@@ -22,6 +22,7 @@ gitconfig = "~/.gitconfig"
 npmrc = "~/.npmrc"
 gemrc = "~/.gemrc"
 spacemacs = "~/.spacemacs"
+Doom = { target = "~/.doom.d", type = "symbolic"}
 SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}
 "cargo.toml" = "~/.cargo/config.toml"
 "starship.toml" = "~/.config/starship.toml"
@@ -66,3 +67,16 @@ PowerShell = { target = "~/Documents/PowerShell", type = "symbolic" }
 "PowerShell/powershell.ps1" = "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
 WindowsTerminal = { target = "~/AppData/Local/Microsoft/Windows Terminal", type = "symbolic" }
 
+[linux]
+depends = [ "default" ]
+
+[linux.files]
+"tmux.conf.local.sh" = "~/.tmux.conf.local"
+
+[shell]
+depends = ["linux"]
+
+[shell.files]
+profile = "~/.profile"
+zshenv = "~/.zshenv"
+zshrc = "~/.zshrc"

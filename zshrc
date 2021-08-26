@@ -1,0 +1,338 @@
+# ssh
+# eval `keychain --eval --agents ssh id_rsa`
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1500
+SAVEHIST=3000
+setopt appendhistory autocd completealiases extendedglob nomatch notify
+bindkey -e
+# End of lines configured by zsh-newuser-install
+
+# To use both the ignorespace and ignoredups feature
+HISTCONTROL=ignoreboth
+
+typeset -g -A key
+key[Home]="${terminfo[khome]}"
+key[End]="${terminfo[kend]}"
+key[Insert]="${terminfo[kich1]}"
+key[Backspace]="${terminfo[kbs]}"
+key[Delete]="${terminfo[kdch1]}"
+key[Up]="${terminfo[kcuu1]}"
+key[Down]="${terminfo[kcud1]}"
+key[Left]="${terminfo[kcub1]}"
+key[Right]="${terminfo[kcuf1]}"
+key[PageUp]="${terminfo[kpp]}"
+key[PageDown]="${terminfo[knp]}"
+key[Shift-Tab]="${terminfo[kcbt]}"
+key[Control-Left]="${terminfo[kLFT5]}"
+key[Control-Right]="${terminfo[kRIT5]}"
+# setup key accordingly
+[[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"       beginning-of-line
+[[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"        end-of-line
+[[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"     overwrite-mode
+[[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}"  backward-delete-char
+[[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"     delete-char
+[[ -n "${key[Up]}"        ]] && bindkey -- "${key[Up]}"         up-line-or-history
+[[ -n "${key[Down]}"      ]] && bindkey -- "${key[Down]}"       down-line-or-history
+[[ -n "${key[Left]}"      ]] && bindkey -- "${key[Left]}"       backward-char
+[[ -n "${key[Right]}"     ]] && bindkey -- "${key[Right]}"      forward-char
+[[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
+[[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
+[[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
+[[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
+[[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
+
+
+# To use different colors for different file extensions
+# https://www.topbug.net/blog/2016/11/28/a-better-ls-command/#better-color
+eval "$(dircolors)"
+
+# Case insensitive path-completion
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+
+
+# setopt promptsubst
+setopt PROMPT_SUBST
+# Enable colors
+autoload -Uz colors && colors 
+# autoload -Uz vcs_info && vcs_info
+# Time
+# RPS1='%(?..%{$fg_bold[red]%}[%? $(kill -l $?)]%{${reset_color}%} )%T'
+
+# Discard duplicates from both $PATH and $path
+typeset -U PATH path
+
+# For a full list of active aliases, run `alias`.
+alias zshnew="autoload -Uz zsh-newuser-install && zsh-newuser-install -f"
+alias wan='w3mman'
+alias untar='tar -xzvf'
+# Color output
+# https://wiki.archlinux.org/index.php/Color_output_in_console
+#
+# Prints all 256 colors across the screen:
+# (x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)
+alias diff='diff --color=auto'
+alias grep='grep --color=auto'
+alias ip='ip -color=auto'
+# alias ls='ls --color=auto'
+alias ls='exa'
+alias l='exa -l'
+alias la='exa -a'
+alias ll='exa -la'
+alias lt='exa --tree'
+alias b='bat'
+alias ba='bat -A'
+alias bd='bat -d'
+alias md='mkdir'
+alias dir='dirs -v'
+alias nvi='nvim'
+alias vi='vim'
+
+what() {
+    bat $(whence $1)
+}
+
+ra() {
+    ranger --choosedir=$HOME/.rangerdir $*
+    LASTDIR=`cat $HOME/.rangerdir`
+    cd "$LASTDIR"
+}
+
+# Remembering recent directories
+# autoload -Uz add-zsh-hook
+# DIRSTACKFILE="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/dirs"
+# if [[ -f "$DIRSTACKFILE" ]] && (( ${#dirstack} == 0 )); then
+# 	dirstack=("${(@f)"$(< "$DIRSTACKFILE")"}")
+# 	[[ -d "${dirstack[1]}" ]] && cd -- "${dirstack[1]}"
+# fi
+# chpwd_dirstack() {
+# 	print -l -- "$PWD" "${(u)dirstack[@]}" > "$DIRSTACKFILE"
+# }
+# add-zsh-hook -Uz chpwd chpwd_dirstack
+
+DIRSTACKSIZE='20'
+setopt AUTO_PUSHD PUSHD_SILENT PUSHD_TO_HOME
+## Remove duplicate entries
+setopt PUSHD_IGNORE_DUPS
+## This reverts the +/- operators.
+setopt PUSHD_MINUS
+
+# To improve run-help's functionality, so that it works on shell builtins and other shell features
+autoload -Uz run-help
+(( ${+aliases[run-help]} )) && unalias run-help
+alias help=run-help
+# Assistant functions have to be enabled separately:
+autoload -Uz run-help-git run-help-ip run-help-openssl run-help-p4 run-help-sudo run-help-svk run-help-svn
+
+# z.lua
+eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced)"    # ZSH 初始化
+# export _ZL_MATCH_MODE=1
+export _ZL_HYPHEN=1
+export _ZL_ECHO=1
+alias zz='z -i'      # cd with interactive selection
+alias zf='z -I'      # use fzf to select in multiple matches
+alias zc='z -c'      # restrict matches to subdirs of $PWD
+alias zb='z -b'      # quickly cd to the parent directory
+alias zh='z -I -t .'
+
+# lazygit
+# https://github.com/jesseduffield/lazygit#changing-directory-on-exit
+lg() {
+    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
+    lazygit "$@"
+    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
+            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+    fi
+}
+
+# rga
+# https://github.com/phiresky/ripgrep-all
+# Use rga interactively via fzf
+rga-fzf() {
+	RG_PREFIX="rga --files-with-matches"
+	local file
+	file="$(
+		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+				--phony -q "$1" \
+				--bind "change:reload:$RG_PREFIX {q}" \
+				--preview-window="70%:wrap"
+	)" &&
+	echo "opening $file" &&
+	xdg-open "$file"
+}
+
+# navi
+eval "$(navi widget zsh)"
+
+# volta
+# eval "$(volta completions zsh)"
+
+# fzf-tab
+# https://github.com/Aloxaf/fzf-tab#usage
+# disable sort when completing `git checkout`
+zstyle ':completion:*:git-checkout:*' sort false
+# set descriptions format to enable group support
+zstyle ':completion:*:descriptions' format '[%d]'
+# set list-colors to enable filename colorizing
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+# preview directory's content with exa when completing cd
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+# switch group using `,` and `.`
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+###
+### Added by Zinit's installer
+if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
+    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
+    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
+        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+fi
+
+source "$HOME/.zinit/bin/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zinit-zsh/z-a-rust \
+    zinit-zsh/z-a-as-monitor \
+    zinit-zsh/z-a-patch-dl \
+    zinit-zsh/z-a-bin-gem-node
+
+### End of Zinit's installer chunk
+###
+
+
+# zsh-autosuggestions
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#7b8c7c'
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+# bindkey '\eM' autosuggest-execute
+
+# zinit snippet OMZ::lib/git.zsh
+# zinit snippet OMZ::plugins/git/git.plugin.zsh
+# zinit snippet PZT::modules/helper/init.zsh
+# [Awesome] git config --global url."https://hub.fastgit.org/".insteadOf "https://github.com/"
+# zinit snippet 'https://raw.fastgit.org/ohmyzsh/ohmyzsh/master/lib/git.zsh'
+# zinit snippet 'https://raw.fastgit.org/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh'
+# zinit snippet 'https://raw.fastgit.org/sorin-ionescu/prezto/master/modules/helper/init.zsh'
+zinit snippet 'https://gitee.com/kiss-younger/ohmyzsh/raw/master/lib/git.zsh'
+zinit snippet 'https://gitee.com/kiss-younger/ohmyzsh/raw/master/plugins/git/git.plugin.zsh'
+zinit snippet 'https://gitee.com/kiss-younger/prezto/raw/master/modules/helper/init.zsh'
+
+zinit ice wait depth=1 lucid nocd
+zinit load zdharma/history-search-multi-word
+
+zinit ice wait depth=1 lucid nocd
+zinit load zsh-users/zsh-history-substring-search
+bindkey "\ep" history-substring-search-up
+bindkey "\en" history-substring-search-down
+
+#####################################[ Prompt ]#####################################
+
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
+
+# zinit ice depth=1
+# zinit light agkozak/agkozak-zsh-prompt
+
+# zinit ice depth=1 compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
+# zinit light sindresorhus/pure
+
+# MYPROMPT=4
+
+# # Load when MYPROMPT == 1
+# zinit ice depth=1 load'![[ $MYPROMPT = 1 ]]' unload'![[ $MYPROMPT != 1 ]]' lucid
+# zinit load halfo/lambda-mod-zsh-theme
+
+# # Load when MYPROMPT == 2
+# zinit ice depth=1 load'![[ $MYPROMPT = 2 ]]' unload'![[ $MYPROMPT != 2 ]]' \
+#     pick"/dev/null" multisrc"{async,pure}.zsh" \
+#     atload'!prompt_pure_precmd' lucid nocd
+# zinit load sindresorhus/pure
+
+# # Load when MYPROMPT == 3
+# zinit ice depth=1 load'![[ $MYPROMPT = 3 ]]' unload'![[ $MYPROMPT != 3 ]]' \
+#           atload'!geometry::prompt' lucid nocd
+# zinit load geometry-zsh/geometry
+
+# # Load when MYPROMPT == 4
+# zinit ice depth=1 load'![[ $MYPROMPT = 4 ]]' unload'![[ $MYPROMPT != 4 ]]' \
+#             atload'!source ~/.p10k.zsh; _p9k_precmd'
+# zinit load romkatv/powerlevel10k
+
+# # Load when MYPROMPT == 5
+# zinit ice depth=1 load'![[ $MYPROMPT = 5 ]]' unload'![[ $MYPROMPT != 5 ]]' \
+#     atload'!prompt_zinc_setup; prompt_zinc_precmd' lucid nocd
+# zinit load robobenklein/zinc
+
+# # Load when MYPROMPT == 6
+# zinit ice depth=1 load'![[ $MYPROMPT = 6 ]]' unload'![[ $MYPROMPT != 6 ]]' \
+#     atload'!spaceship_exec_time_precmd_hook; spaceship_exec_vcs_info_precmd_hook' lucid nocd
+# zinit load denysdovhan/spaceship-prompt
+
+
+
+# forgit
+zinit ice wait lucid
+zinit load wfxr/forgit
+
+# diff-so-fancy
+zinit ice wait"2" lucid as"program" pick"bin/git-dsf"
+zinit load zdharma/zsh-diff-so-fancy
+
+# zsh-startify, a vim-startify like plugin
+zinit ice wait"0b" lucid atload"zsh-startify"
+zinit load zdharma/zsh-startify
+
+# declare-zsh
+zinit ice wait"2" lucid
+zinit load zdharma/declare-zsh
+
+# zsh-vi
+# https://github.com/jeffreytse/zsh-vi-mode
+# ZVM_VI_SURROUND_BINDKEY=s-prefix
+# zinit ice wait"1" depth=1 lucid
+# zinit load jeffreytse/zsh-vi-mode
+
+# Note: fzf-tab needs to be loaded after compinit, but before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
+# Note: syntax-highlighting plugins (fast-syntax-highlighting, zsh-syntax-highlighting), should be loaded after plugins that are issuing compdefs
+zinit wait depth=1 lucid light-mode for \
+    atinit"zicompinit; zicdreplay" \
+        Aloxaf/fzf-tab \
+        zsh-users/zsh-syntax-highlighting \
+    atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions \
+    blockf atpull'zinit creinstall -q .' \
+        zsh-users/zsh-completions
+# zinit ice blockf atpull'zinit creinstall -q .'
+# zinit light zsh-users/zsh-completions
+# autoload compinit
+# compinit
+# zinit light zdharma/fast-syntax-highlighting
+# zinit light zsh-users/zsh-autosuggestions
+
+# Or :paru -Qi zsh-syntax-highlighting zsh-autosuggestions zsh-completions
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+# source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+source ~/.config/broot/launcher/bash/br
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# vim: shiftwidth=2
