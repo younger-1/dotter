@@ -1,0 +1,11 @@
+[global]
+editor = nvim
+index-url = https://mirrors.aliyun.com/pypi/simple
+
+[install]
+trusted-host = 
+    mirrors.aliyun.com
+    pypi.python.org
+    pypi.org
+    files.pythonhosted.org
+

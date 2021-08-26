@@ -1,7 +1,12 @@
+[default.files]
+pip = "~/AppData/Roaming/pip/pip.ini"
+"lsd.yml" = "~/AppData/Roaming/lsd/config.yaml"
+"bottom.toml" = "~/AppData/Roaming/bottom/bottom.toml"
+"bat.cfg" = "~/AppData/Roaming/bat/config"
+
 # [vim.files]
 # vimrc.target = "~/_vimrc"
 # gvimrc.target = "~/_gvimrc"
- 
 [vim.files]
 vimrc = { target = "~/_vimrc", type = "symbolic" }
 gvimrc = { target = "~/_gvimrc", type = "symbolic" }

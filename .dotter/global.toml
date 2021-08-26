@@ -4,8 +4,15 @@
 depends = []
 
 [default.files]
-"conda.yml" = "~/.condarc"
 gitconfig = "~/.gitconfig"
+"conda.yml" = "~/.condarc"
+
+# windows diff
+pip = "~/.config/pip/pip.conf"
+"lsd.yml" = "~/AppData/Roaming/lsd/config.yaml"
+"bottom.toml" = "~/AppData/Roaming/bottom/bottom.toml"
+"bat.cfg" = "~/AppData/Roaming/bat/config"
+
 
 [vim.files]
 vimrc = { target = "~/.vimrc", type = "symbolic" }
