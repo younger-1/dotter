@@ -45,4 +45,4 @@ wslconfig = "~/.wslconfig"
 "typora.json" = "~/AppData/Roaming/Typora/conf/conf.user.json"
 "baidu_pcs.json" = "~/AppData/Roaming/BaiduPCS-Go/pcs_config.json"
 "dev_sidecar.json" = "~/.dev-sidecar/config.json5"
-
+Icons = { target = "~/.config/oh-my-icon", type = "symbolic" }
