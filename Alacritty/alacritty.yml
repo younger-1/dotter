@@ -114,7 +114,11 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     # family: FuraMono NF
+{{#if (eq dotter.os "windows")}}
     family: SauceCodePro NF
+{{else}}
+    family: SauceCodePro Nerd Font
+{{/if}}
     # The `style` can be specified to pick a specific face.
     # style: Semibold
 
@@ -125,7 +129,6 @@ font:
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     # family: SauceCodePro NF
-    # The `style` can be specified to pick a specific face.
 
   # Italic font face
   # italic:
@@ -134,17 +137,14 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     # family: SauceCodePro NF
-    # The `style` can be specified to pick a specific face.
 
   # Bold italic font face
-  bold_italic:
+  # bold_italic:
     # Font family
     #
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
-    family: SauceCodePro NF
-    # The `style` can be specified to pick a specific face.
-    style: Bold Italic
+    # family: SauceCodePro NF
 
   # Point size
   size: 12.0
@@ -402,11 +402,13 @@ cursor:
 #   - (macOS) /bin/bash --login
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
-# shell:
-#   program: pwsh.exe
-#   args:
-#     # - -NoProfile
-#     - -NoLogo
+{{#if (eq dotter.os "windows")}}
+shell:
+  program: powershell
+  args:
+    # - -NoProfile
+    - -NoLogo
+{{/if}}
 
 # Startup directory
 #

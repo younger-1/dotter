@@ -6,6 +6,7 @@ pip = "~/AppData/Roaming/pip/pip.ini"
 "bottom.toml" = "~/AppData/Roaming/bottom/bottom.toml"
 "bat.cfg" = "~/AppData/Roaming/bat/config"
 Alacritty = { target = "~/AppData/Roaming/alacritty", type = "symbolic" }
+"Alacritty/alacritty.yml" = { target = "~/AppData/Roaming/alacritty/alacritty.yml", type = "template" }
 So = { target = "~/AppData/Roaming/Sam Tay/so/config", type = "symbolic" }
 "s.cfg" = "~/AppData/Roaming/s/config"
 

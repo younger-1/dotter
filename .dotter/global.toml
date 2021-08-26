@@ -2,6 +2,11 @@
 
 [default]
 
+[default.variables]
+username = "Xavier Younger"
+locale   = "zh-cn"
+os = "linux"
+
 [default.files]
 gitconfig = "~/.gitconfig"
 "conda.yml" = "~/.condarc"
@@ -25,10 +30,6 @@ pip = "~/.config/pip/pip.conf"
 Alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
 So = { target = "~/.config/so", type = "symbolic" }
 "s.cfg" = "~/.config/s/config"
-
-[default.variables]
-username = "Xavier Younger"
-# locale   = "zh-cn"
 
 
 [vim]
