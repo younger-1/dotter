@@ -55,9 +55,9 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # https://wiki.archlinux.org/index.php/Environment_variables
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+    export EDITOR='vim'
 else
-  export EDITOR='nvim'
+    export EDITOR='nvim'
 fi
 # export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'gedit'; else echo 'nano'; fi)"
 
@@ -99,4 +99,4 @@ export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
 export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
 
-# vim: shiftwidth=2
+# vim: shiftwidth=4

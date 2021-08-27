@@ -1,3 +1,8 @@
+#!/bin/zsh
+# -*- mode: sh -*-
+# zsh configuration
+# (c) 2011-2017 Alexander Lockshyn
+
 # ssh
 # eval `keychain --eval --agents ssh id_rsa`
 
@@ -5,16 +10,22 @@
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+    source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1500
-SAVEHIST=3000
-setopt appendhistory autocd completealiases extendedglob nomatch notify
-bindkey -e
-# End of lines configured by zsh-newuser-install
+bindkey -e # emacs keymap
+HISTFILE=$ZDOTDIR/.histfile
+HISTSIZE=50000
+SAVEHIST=$HISTSIZE
+setopt hist_ignore_all_dups # remove older duplicate entries from history
+setopt hist_reduce_blanks # remove superfluous blanks from history items
+setopt inc_append_history # save history entries as soon as they are entered
+setopt share_history # share history between different instances of the shell
+setopt append_history auto_cd complete_aliases extended_glob no_match notify 
+setopt correct_all # autocorrect commands
+setopt auto_list # automatically list choices on ambiguous completion
+setopt auto_menu # automatically use menu completion
+setopt always_to_end # move cursor to end if word had one match
 
 # To use both the ignorespace and ignoredups feature
 HISTCONTROL=ignoreboth
@@ -57,7 +68,9 @@ eval "$(dircolors)"
 
 # Case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
-
+zstyle ':completion:*' menu select # select completions with arrow keys
+zstyle ':completion:*' group-name '' # group results by category
+zstyle ':completion:::::' completer _expand _complete _ignored _approximate # enable approximate matches for completion
 
 # setopt promptsubst
 setopt PROMPT_SUBST
@@ -96,11 +109,18 @@ alias dir='dirs -v'
 alias nvi='nvim'
 alias vi='vim'
 
-what() {
+# File search functions
+function f() { find . -iname "*$1*" ${@:2} }
+function r() { grep "$1" ${@:2} -R . }
+
+# Create a folder and move into it in one command
+function mdcd() { mkdir -p "$@" && cd "$_"; }
+
+function what() {
     bat $(whence $1)
 }
 
-ra() {
+function ra() {
     ranger --choosedir=$HOME/.rangerdir $*
     LASTDIR=`cat $HOME/.rangerdir`
     cd "$LASTDIR"
@@ -113,7 +133,7 @@ ra() {
 # 	dirstack=("${(@f)"$(< "$DIRSTACKFILE")"}")
 # 	[[ -d "${dirstack[1]}" ]] && cd -- "${dirstack[1]}"
 # fi
-# chpwd_dirstack() {
+# function chpwd_dirstack() {
 # 	print -l -- "$PWD" "${(u)dirstack[@]}" > "$DIRSTACKFILE"
 # }
 # add-zsh-hook -Uz chpwd chpwd_dirstack
@@ -134,58 +154,55 @@ autoload -Uz run-help-git run-help-ip run-help-openssl run-help-p4 run-help-sudo
 
 # z.lua
 if [[ -f /usr/share/z.lua/z.lua ]]; then
-  eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced)"    # ZSH 初始化
-  # export _ZL_MATCH_MODE=1
-  export _ZL_HYPHEN=1
-  export _ZL_ECHO=1
-  alias zi='z -i'      # cd with interactive selection
-  alias zz='z -I'      # use fzf to select in multiple matches
-  alias zc='z -c'      # restrict matches to subdirs of $PWD
-  alias zb='z -b'      # quickly cd to the parent directory
-  alias zh='z -I -t .'
+    eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced)"    # ZSH 初始化
+    # export _ZL_MATCH_MODE=1
+    export _ZL_HYPHEN=1
+    export _ZL_ECHO=1
+    alias zi='z -i'      # cd with interactive selection
+    alias zz='z -I'      # use fzf to select in multiple matches
+    alias zc='z -c'      # restrict matches to subdirs of $PWD
+    alias zb='z -b'      # quickly cd to the parent directory
+    alias zh='z -I -t .'
 elif [[ -x "$(command -v zoxide)" ]]; then
-  export _ZO_ECHO=1
-  eval "$(zoxide init zsh)"
-  zz() {
+    export _ZO_ECHO=1
+    eval "$(zoxide init zsh)"
+    function zz() {
      __zoxide_zi "$@"
-  }
+    }
 fi
 
 # lazygit
 # https://github.com/jesseduffield/lazygit#changing-directory-on-exit
-lg() {
+function lg() {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
     lazygit "$@"
     if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-            cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-            rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
+	cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
+	rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
     fi
 }
 
 # rga
 # https://github.com/phiresky/ripgrep-all
 # Use rga interactively via fzf
-rga-fzf() {
-	RG_PREFIX="rga --files-with-matches"
-	local file
-	file="$(
-		FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-			fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-				--phony -q "$1" \
-				--bind "change:reload:$RG_PREFIX {q}" \
-				--preview-window="70%:wrap"
-	)" &&
-	echo "opening $file" &&
-	xdg-open "$file"
+function rga-fzf() {
+    RG_PREFIX="rga --files-with-matches"
+    local file
+    file="$(
+	FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
+	    fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
+	    --phony -q "$1" \
+	    --bind "change:reload:$RG_PREFIX {q}" \
+	    --preview-window="70%:wrap"
+    )" &&
+    echo "opening $file" &&
+    xdg-open "$file"
 }
 
 # navi
-if [[ -x navi ]]; then
+if [[ -x "$(command -v navi)" ]]; then
   eval "$(navi widget zsh)"
 fi
-
-# volta
-# eval "$(volta completions zsh)"
 
 # fzf-tab
 # https://github.com/Aloxaf/fzf-tab#usage
@@ -341,10 +358,10 @@ zinit wait depth=1 lucid light-mode for \
 # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 if [[ -f ~/.config/broot/launcher/bash/br ]]; then
-  source ~/.config/broot/launcher/bash/br
+    source ~/.config/broot/launcher/bash/br
 if
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# vim: shiftwidth=2
+# vim: shiftwidth=4

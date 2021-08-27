@@ -76,5 +76,6 @@ depends = ["linux"]
 
 [shell.files]
 profile = "~/.profile"
-zshenv = "~/.zshenv"
-zshrc = "~/.zshrc"
+zsh = "~/zsh"
+"zsh/zshenv" = "~/zsh/.zshenv"
+"zsh/zshrc" = "~/zsh/.zshrc"
