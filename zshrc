@@ -133,15 +133,23 @@ alias help=run-help
 autoload -Uz run-help-git run-help-ip run-help-openssl run-help-p4 run-help-sudo run-help-svk run-help-svn
 
 # z.lua
-eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced)"    # ZSH 初始化
-# export _ZL_MATCH_MODE=1
-export _ZL_HYPHEN=1
-export _ZL_ECHO=1
-alias zz='z -i'      # cd with interactive selection
-alias zf='z -I'      # use fzf to select in multiple matches
-alias zc='z -c'      # restrict matches to subdirs of $PWD
-alias zb='z -b'      # quickly cd to the parent directory
-alias zh='z -I -t .'
+if [[ -f /usr/share/z.lua/z.lua ]]; then
+  eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced)"    # ZSH 初始化
+  # export _ZL_MATCH_MODE=1
+  export _ZL_HYPHEN=1
+  export _ZL_ECHO=1
+  alias zi='z -i'      # cd with interactive selection
+  alias zz='z -I'      # use fzf to select in multiple matches
+  alias zc='z -c'      # restrict matches to subdirs of $PWD
+  alias zb='z -b'      # quickly cd to the parent directory
+  alias zh='z -I -t .'
+elif [[ -x "$(command -v zoxide)" ]]; then
+  export _ZO_ECHO=1
+  eval "$(zoxide init zsh)"
+  zz() {
+     __zoxide_zi "$@"
+  }
+fi
 
 # lazygit
 # https://github.com/jesseduffield/lazygit#changing-directory-on-exit
@@ -172,7 +180,9 @@ rga-fzf() {
 }
 
 # navi
-eval "$(navi widget zsh)"
+if [[ -x navi ]]; then
+  eval "$(navi widget zsh)"
+fi
 
 # volta
 # eval "$(volta completions zsh)"
@@ -330,7 +340,9 @@ zinit wait depth=1 lucid light-mode for \
 # source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source ~/.config/broot/launcher/bash/br
+if [[ -f ~/.config/broot/launcher/bash/br ]]; then
+  source ~/.config/broot/launcher/bash/br
+if
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -147,8 +147,8 @@ $env:_ZL_HYPHEN = 1
 # $env:_ZL_DATA = "$HOME/.zlua"
 # iex (& { (lua $env:scoop\apps\z.lua\current\z.lua --init powershell) -join "`n" } )
 # iex (& { (lua $env:scoop\apps\z.lua\current\z.lua --init powershell echo once) -join "`n" })
-# function zz { z -i $args }
-# function zf { z -I $args }
+# function zi { z -i $args }
+# function zz { z -I $args }
 # function zc { z -c $args }
 # function zb { z -b $args }
 # function zh { z -I -t . }
