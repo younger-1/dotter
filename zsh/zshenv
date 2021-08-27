@@ -19,4 +19,5 @@ if [[ "$OSTYPE" == darwin* ]]; then
 fi
 
 # $FPATH string variable is tied to the $fpath array variable
+# fpath=(/some/extra/directory $fpath)
 fpath+=~/zsh/func
