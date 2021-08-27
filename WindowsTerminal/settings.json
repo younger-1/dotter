@@ -110,7 +110,7 @@
                 // "commandline": "%SCOOP%/apps/pwsh/current/pwsh.exe", // or use new shim
                 "source": "Windows.Terminal.PowershellCore",
                 "colorScheme": "ayu",
-                "backgroundImage": "%HOME%/.config/oh-my-icon/v-logo.png",
+                "backgroundImage": "%HOME%/Beauty/Icons/v-logo.png",
                 "fontFace": "JetBrainsMono NF",
                 // "fontFace": "Cascadia Code PL",
                 // "cursorColor": "#8FF7B1",
@@ -121,7 +121,7 @@
                 "name": "Windows PowerShell",
                 "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
                 "colorScheme": "Tango Dark",
-                "backgroundImage": "%HOME%/.config/oh-my-icon/github.png",
+                "backgroundImage": "%HOME%/Beauty/Icons/github.png",
                 "fontFace": "JetBrainsMono NF",
                 "acrylicOpacity": 0.8
             },
@@ -129,7 +129,7 @@
                 "name": "Cmd.exe",
                 "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "colorScheme": "ayu",
-                "backgroundImage": "%HOME%/.config/oh-my-icon/rust.png",
+                "backgroundImage": "%HOME%/Beauty/Icons/rust.png",
                 "backgroundImageOpacity": 0.3
             },
             {
@@ -137,8 +137,8 @@
                 "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
                 "source": "Windows.Terminal.Wsl",
                 "colorScheme": "nord",
-                "icon": "%HOME%/.config/oh-my-icon/arch.png",
-                "backgroundImage": "%HOME%/.config/oh-my-icon/arch-linux1.png",
+                "icon": "%HOME%/Beauty/Icons/linux/arch.png",
+                "backgroundImage": "%HOME%/Beauty/Icons/linux/arch-linux1.png",
                 "startingDirectory": "//wsl$/Arch/home/young",
                 "acrylicOpacity": 0.8
             },
@@ -147,7 +147,7 @@
                 "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
                 "source": "Windows.Terminal.Wsl",
                 "colorScheme": "MaterialOcean",
-                "icon": "%HOME%/.config/oh-my-icon/ubt.ico",
+                "icon": "%HOME%/Beauty/Icons/linux/ubt.ico",
                 "startingDirectory": "//wsl$/Arch/home/young",
                 "backgroundImageAlignment": "center",
                 "backgroundImageStretchMode": "uniformToFill",
@@ -169,7 +169,7 @@
                 "name": "Conda",
                 "commandline": "cmd.exe /K \"conda activate base\"",
                 // "commandline": "cmd.exe /K %USERPROFILE%/AppData/Local/Continuum/Anaconda3/Scripts/activate.bat %USERPROFILE%/AppData/Local/Continuum/Anaconda3",
-                "icon": "%HOME%/.config/oh-my-icon/anaconda-navigator.ico",
+                "icon": "%HOME%/Beauty/Icons/python/anaconda-navigator.ico",
                 "startingDirectory": "%HOME%",
                 "tabTitle": "Conda",
                 "acrylicOpacity": 0.8
@@ -179,7 +179,7 @@
                 "name": "Conda PowerShell",
                 // "commandline": "powershell.exe -ExecutionPolicy ByPass -NoExit -Command \"& 'C:\\Users\\younger\\AppData\\Local\\Continuum\\anaconda3\\shell\\condabin\\conda-hook.ps1' ; conda activate 'C:\\Users\\younger\\AppData\\Local\\Continuum\\anaconda3' \"",
                 "commandline": "powershell.exe -NoExit -Command \"conda activate base\"",
-                "icon": "%HOME%/.config/oh-my-icon/anaconda-navigator.ico",
+                "icon": "%HOME%/Beauty/Icons/python/anaconda-navigator.ico",
                 "startingDirectory": "%HOME%",
                 "acrylicOpacity": 0.8
             },
@@ -187,7 +187,7 @@
                 "name": "IPython",
                 "commandline": "cmd.exe /K \"conda activate base && ipython.exe\"",
                 // "commandline": "cmd.exe /K %USERPROFILE%/AppData/Local/Continuum/Anaconda3/Scripts/activate.bat %USERPROFILE%/AppData/Local/Continuum/Anaconda3",
-                "icon": "%HOME%/.config/oh-my-icon/jupyter/jupyter.ico",
+                "icon": "%HOME%/Beauty/Icons/python/jupyter/jupyter.ico",
                 "startingDirectory": "%HOME%",
                 "tabTitle": "Conda",
                 "acrylicOpacity": 0.8

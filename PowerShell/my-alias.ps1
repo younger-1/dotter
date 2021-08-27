@@ -30,7 +30,7 @@ $shims = "$scoop\shims"
 $persist = "$scoop\persist"
 
 $config = "$HOME/.config"
-$icon = "$config/oh-my-icon"
+$icon = "$HOME/Beauty/Icons"
 $code = "$roamData/Code/User"
 $wt = "$localData/Microsoft/Windows Terminal/"
 $nvim = "$localData/nvim"

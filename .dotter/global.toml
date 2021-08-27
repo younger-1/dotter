@@ -29,8 +29,6 @@ SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}
 "fuck.py" = "~/.config/thefuck/settings.py"
 "leetcode.json" = "~/.lc/plugins.json"
 AppSettings = { target = "~/AppSettings", type = "symbolic" }
-Icons = { target = "~/Icons", type = "symbolic" }
-Wallpaper = { target = "~/Wallpaper", type = "symbolic" }
 
 # windows diff
 pip = "~/.config/pip/pip.conf"
