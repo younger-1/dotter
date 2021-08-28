@@ -39,6 +39,7 @@ Alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
 "Alacritty/alacritty.yml" = { target = "~/.config/alacritty/alacritty.yml", type = "template" }
 So = { target = "~/.config/so", type = "symbolic" }
 "s.cfg" = "~/.config/s/config"
+netrc = "~/.netrc"
 
 
 [vim]
