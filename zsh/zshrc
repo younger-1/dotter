@@ -30,6 +30,9 @@ setopt always_to_end # move cursor to end if word had one match
 # To use both the ignorespace and ignoredups feature
 HISTCONTROL=ignoreboth
 
+# https://stackoverflow.com/questions/58861448/zsh-delete-current-previous-argument-entirely
+WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
 typeset -g -A key
 key[Home]="${terminfo[khome]}"
 key[End]="${terminfo[kend]}"

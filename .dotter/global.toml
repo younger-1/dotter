@@ -70,6 +70,7 @@ depends = [ "default" ]
 
 [linux.files]
 "tmux.conf.local.sh" = "~/.tmux.conf.local"
+"paru.conf" = "~/.config/paru/paru.conf"
 
 [shell]
 depends = ["linux"]
