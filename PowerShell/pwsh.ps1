@@ -13,6 +13,12 @@
 # Launch without profile
 # pwsh -noprofile -c "\"C:\foo\bar\" -replace '\\', '/'"
 
+# $env:XDG_CONFIG_HOME = "$HOME\.config"
+# $env:XDG_DATA_HOME = "$HOME\.local\share"
+# 
+# $env:XDG_CONFIG_HOME="$env:LOCALAPPDATA"
+# $env:XDG_DATA_HOME="$env:APPDATA"
+ 
 # TODO
 # function or script for curl/wget/aria2 to use hub.fastgit.org
 
@@ -174,3 +180,4 @@ Invoke-Expression (&starship init powershell)
 # Invoke-Expression (oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh3)/themes/agnoster.omp.json")
 # Invoke-Expression (oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh3)/themes/Paradox.omp.json")
 # Invoke-Expression (oh-my-posh --init --shell pwsh --config "$(scoop prefix oh-my-posh3)/themes/marcduiker.omp.json")
+

@@ -1,7 +1,7 @@
 ﻿$myalias = $PSCommandPath
 
 # [Alias]
-#-------------------------------   Set Alias Begin    -------------------------------
+#--------------------------   Set Alias Begin    ---------------------
 Set-Alias open Invoke-Item
 Set-Alias lg lazygit
 Set-Alias smap Set-PSReadLineKeyHandler
@@ -9,17 +9,14 @@ Set-Alias gmap Get-PSReadLineKeyHandler
 Set-Alias ww which
 Set-Alias ss scoop 
 Set-Alias nvi nvim 
-#-------------------------------    Set Alias END     -------------------------------
+Set-Alias lvim "C:\Users\younger\.local\bin\lvim.ps1"
+#--------------------------    Set Alias END     ---------------------
 
 # [Directory]
 # $env:LOCALAPPDATA
 $localData = "$HOME\AppData\Local"
 # $env:APPDATA
 $roamData = "$HOME\AppData\Roaming"
-
-# $env:XDG_CONFIG_HOME="$env:LOCALAPPDATA"
-# $env:XDG_DATA_HOME="$env:APPDATA"
-# $env:XDG_CACHE_HOME="$env:TEMP"
 
 $scoop = $env:SCOOP
 # Note: $scoop is using backslash: C:\Users\younger\scoop
