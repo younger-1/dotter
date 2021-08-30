@@ -18,7 +18,7 @@
   ; pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Solarized (dark)'
 
 [pull]
-  rebase = false
+  rebase = true
 [fetch]
   prune = false
 [rebase]
@@ -38,22 +38,36 @@
   ls = log --graph --pretty=format:\"%C(yellow)%h %C(blue)%ad %C(red)%d %C(reset)%s %C(green)[%cn]\" --decorate --date=short
   hist = log --pretty=format:\"%C(yellow)%h %C(red)%d %C(reset)%s %C(green)[%an] %C(blue)%ad\" --topo-order --graph --date=short
   latest = for-each-ref --sort=-committerdate --format=\"%(committerdate:short): @%(committername) \t\t\t\t %(refname:short) \n\t    %(contents)\" --color=auto
+  s = status
+  ss = status -sb
   c = commit
+  ac = !git add --all && git commit
+  ca = commit -a --amend
+  caa = commit -a --amend -C HEAD
   co = checkout
   cp = cherry-pick
   sw = switch
-  s = status
-  ss = status -sb
   b = branch
+  br = branch --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) - %(contents:subject) %(color:green)(%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
   sb = show-branch
+  rs = restore --staged
   d = diff
   dd = diff --stat
   ds = diff --staged
   dt = difftool
+  ; dh -> diff hash
+  dh = "!d(){ git diff $1~ $1; }; d"
+  ; dn -> diff number
+  dn = "!d(){ git diff HEAD~$1 HEAD; }; d"
   count = rev-list --all --count
   ps = !which onefetch && onefetch
   lf = ls-files
   lt = ls-tree --full-tree -r --name-only HEAD
+  save = !git add -A && git commit -m 'chore: commit save point'
+  ignore = "!f(){ echo $1 >> .gitignore; }; f"
+  ; To see what new commits have been created
+  ; compare_new = "!f(){ git lg $1@{1}..$1@{0} \"$@\"; }; f"
+  new = "!f(){ git $1 @{1}..@{0}; }; f"
 
 [delta]
   ; syntax-theme = DarkNeon
