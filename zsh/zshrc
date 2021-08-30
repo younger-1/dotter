@@ -31,7 +31,7 @@ setopt always_to_end # move cursor to end if word had one match
 HISTCONTROL=ignoreboth
 
 # https://stackoverflow.com/questions/58861448/zsh-delete-current-previous-argument-entirely
-WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 
 typeset -g -A key
 key[Home]="${terminfo[khome]}"
