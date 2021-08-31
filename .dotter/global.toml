@@ -20,6 +20,7 @@ terminal = "xfce4-terminal"
 gitconfig = "~/.gitconfig"
 "conda.yml" = "~/.condarc"
 npmrc = "~/.npmrc"
+yarnrc = "~/.yarnrc"
 gemrc = "~/.gemrc"
 spacemacs = "~/.spacemacs"
 Doom = { target = "~/.doom.d", type = "symbolic"}

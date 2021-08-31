@@ -1,3 +1,5 @@
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
 # Proxy
 export ClientIP=$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -f 1 -d '/')
 export HostIP=$(cat /etc/resolv.conf | grep 'nameserver' | awk '{print $2}')
@@ -35,15 +37,11 @@ unsetproxy() {
 
 setproxy
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS='-R '
 
 # For man to display colors
+# export MANPATH="/usr/local/man:$MANPATH"
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
 export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
