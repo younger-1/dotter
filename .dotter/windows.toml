@@ -14,12 +14,9 @@ Alacritty = { target = "~/AppData/Roaming/alacritty", type = "symbolic" }
 "Alacritty/alacritty.yml" = { target = "~/AppData/Roaming/alacritty/alacritty.yml", type = "template" }
 So = { target = "~/AppData/Roaming/Sam Tay/so/config", type = "symbolic" }
 "s.cfg" = "~/AppData/Roaming/s/config"
+goenv = "~/AppData/Roaming/go/env"
 
-# [vim.files]
-# vimrc.target = "~/_vimrc"
-# gvimrc.target = "~/_gvimrc"
 [vim.files]
 vimrc = { target = "~/_vimrc", type = "symbolic" }
 gvimrc = { target = "~/_gvimrc", type = "symbolic" }
-
 

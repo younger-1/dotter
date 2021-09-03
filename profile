@@ -87,14 +87,15 @@ export PATH="$VOLTA_HOME/bin:$PATH"
 # julia
 export JULIA_PKG_SERVER=https://mirrors.tuna.tsinghua.edu.cn/julia
 
-# cargo
+# cargo & rust
 export PATH="$HOME/.cargo/bin:$PATH"
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
 
 # ruby
 export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
-# rust
-export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
-export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+# go
+export PATH="$HOME/go/bin:$PATH"
 
 # vim: shiftwidth=4
