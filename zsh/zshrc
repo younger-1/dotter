@@ -109,8 +109,8 @@ alias ba='bat -A'
 alias bd='bat -d'
 alias md='mkdir'
 alias dir='dirs -v'
-alias nvi='nvim'
-alias vi='vim'
+alias nvi='nvim --noplugin'
+alias vi='vim --noplugin'
 
 function touchs() { touch $1; chmod +x $1 }
 

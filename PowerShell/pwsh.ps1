@@ -107,6 +107,7 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function NextWord
 
 
 # [Sourced file]
+# Invoke-Expression -Command $(gh completion -s powershell | Out-String)
 . $PSScriptRoot/completion-gh.ps1
 . $PSScriptRoot/completion-rustup.ps1
 . $PSScriptRoot/completion-procs.ps1

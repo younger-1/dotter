@@ -8,9 +8,6 @@
 --type-add
 web:*.{html,css,js}*
 
-# Using glob patterns to include/exclude files or folders
---glob=!git/*
-
 # Set the colors.
 --colors=line:style:bold
 # --colors
@@ -22,4 +19,13 @@ web:*.{html,css,js}*
 
 # Because who cares about case!?
 --smart-case
+
+# search hidden files and directories (dot files)
+--hidden
+
+# don't respect ignore files (.gitignore, .ignore, ...) 
+--no-ignore
+
+# Using glob patterns to include/exclude files or folders
+--glob=!.git/*
 

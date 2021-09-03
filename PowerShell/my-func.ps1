@@ -185,6 +185,10 @@ function git {
     }
 }
 
+function nvi {
+    nvim --noplugin $args
+}
+
 
 # [proxy]
 $HostIP = "127.0.0.1"
