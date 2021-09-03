@@ -13,6 +13,7 @@
 # Launch without profile
 # pwsh -noprofile -c "\"C:\foo\bar\" -replace '\\', '/'"
 
+# xdg
 # $env:XDG_CONFIG_HOME = "$HOME\.config"
 # $env:XDG_DATA_HOME = "$HOME\.local\share"
 # 

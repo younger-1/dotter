@@ -42,4 +42,8 @@ $HOSTS = "$env:SystemRoot\system32\drivers\etc\hosts";
 $AHK = "$config/AutoHotkeyU64.ahk"
 
 # [env]
+# qv2ray
 $env:QV2RAY_CONFIG_PATH = "$config/qv2ray"
+# ripgrep
+$env:RIPGREP_CONFIG_PATH = "$config/rgrc"
+

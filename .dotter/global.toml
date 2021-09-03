@@ -23,6 +23,7 @@ gitconfig = "~/.gitconfig"
 npmrc = "~/.npmrc"
 yarnrc = "~/.yarnrc"
 gemrc = "~/.gemrc"
+rgrc = "~/.config/rgrc"
 spacemacs = "~/.spacemacs"
 Doom = { target = "~/.doom.d", type = "symbolic"}
 SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}

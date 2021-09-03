@@ -32,6 +32,7 @@
   diffFilter = delta --color-only
 
 [alias]
+  alia = !git config --list | grep ^alias\\. | cut -c 7- | grep -Ei --color \"$1\" "#"
   go = log --all --graph --decorate --oneline
   gg = log --all --graph --pretty='%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --color
