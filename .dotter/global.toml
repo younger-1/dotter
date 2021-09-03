@@ -19,7 +19,6 @@ terminal = "xfce4-terminal"
 [default.files]
 gitconfig = "~/.gitconfig"
 "conda.yml" = "~/.condarc"
-"gh.yml" = "~/.config/gh/config.yml"
 npmrc = "~/.npmrc"
 yarnrc = "~/.yarnrc"
 gemrc = "~/.gemrc"
@@ -44,6 +43,7 @@ Alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
 So = { target = "~/.config/so", type = "symbolic" }
 "s.cfg" = "~/.config/s/config"
 goenv = "~/.config/go/env"
+"gh.yml" = "~/.config/gh/config.yml"
 
 
 [vim]
