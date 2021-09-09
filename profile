@@ -1,4 +1,21 @@
-export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+[ "$READ_PROFILE" ] && return
+# . /etc/profile || true
+export READ_PROFILE=1
+
+# Set XDG dirs
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
+export XDG_RUNTIME_DIR=~/.xdg
+
+if [[ "$OSTYPE" == darwin* ]]; then
+  export XDG_DESKTOP_DIR=~/Desktop
+  export XDG_DOCUMENTS_DIR=~/Documents
+  export XDG_DOWNLOAD_DIR=~/Downloads
+  export XDG_MUSIC_DIR=~/Music
+  export XDG_PICTURES_DIR=~/Pictures
+  export XDG_VIDEOS_DIR=~/Videos
+fi
 
 # Proxy
 export ClientIP=$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -f 1 -d '/')
@@ -39,6 +56,8 @@ setproxy
 
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS='-R '
+# export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+# export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
 
 # For man to display colors
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -80,6 +99,9 @@ fi
 # for PulseAudio
 export PULSE_SERVER=tcp:localhost
 
+########################### PATH ##########################
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
 # volta
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
@@ -98,4 +120,4 @@ export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 # go
 export PATH="$HOME/go/bin:$PATH"
 
-# vim: shiftwidth=4
+# vim: shiftwidth=4 ft=sh
