@@ -72,6 +72,21 @@
   ; To see what new commits have been created
   ; compare_new = "!f(){ git lg $1@{1}..$1@{0} \"$@\"; }; f"
   new = "!f(){ git $1 @{1}..@{0}; }; f"
+  ; To temporarily mark a file as ignored
+  unwatch = update-index --assume-unchanged
+  ; To list all files that has been temporarily ignored - type:
+  unwatched = "!git ls-files -v | grep '^[[:lower:]]'"
+  ; To start tracking file again
+  watch = update-index --no-assume-unchanged
+  watchall = "!git unwatched | xargs -L 1 -I % sh -c 'git watch `echo % | cut -c 2-`'"
+  lgp = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+  lgg = log --graph --date-order --first-parent \
+     --pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%ad) %C(bold cyan)<%an>%Creset'
+  lgb = log --graph --date-order --branches --first-parent \
+     --pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%ad) %C(bold cyan)<%an>%Creset'
+  lga = log --graph --date-order --all \
+   --pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%ad) %C(bold cyan)<%an>%Creset'
+
 
 [delta]
   ; syntax-theme = DarkNeon
