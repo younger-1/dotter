@@ -38,3 +38,14 @@ function rar($name) {
         }
     } 
 }
+
+function wslip() {
+    # find ip of eth0
+    $ifconfig = (wsl -d arch -- ip -4 addr show eth0)
+    $ipPattern = "((\d+\.?){4})"
+    $ip = ([regex]"inet $ipPattern").Match($ifconfig).Groups[1].Value
+    if (-not $ip) {
+        exit
+    }
+    Write-Host $ip
+}
