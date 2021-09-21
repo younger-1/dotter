@@ -32,6 +32,7 @@ SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}
 "fuck.py" = "~/.config/thefuck/settings.py"
 "leetcode.json" = "~/.lc/plugins.json"
 AppSettings = { target = "~/AppSettings", type = "symbolic" }
+"s.cfg" = "~/.config/s/config"
 
 # windows diff
 pip = "~/.config/pip/pip.conf"
@@ -41,7 +42,6 @@ pip = "~/.config/pip/pip.conf"
 Alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
 "Alacritty/alacritty.yml" = { target = "~/.config/alacritty/alacritty.yml", type = "template" }
 So = { target = "~/.config/so", type = "symbolic" }
-"s.cfg" = "~/.config/s/config"
 goenv = "~/.config/go/env"
 "gh.yml" = "~/.config/gh/config.yml"
 

@@ -13,7 +13,6 @@ pip = "~/AppData/Roaming/pip/pip.ini"
 Alacritty = { target = "~/AppData/Roaming/alacritty", type = "symbolic" }
 "Alacritty/alacritty.yml" = { target = "~/AppData/Roaming/alacritty/alacritty.yml", type = "template" }
 So = { target = "~/AppData/Roaming/Sam Tay/so/config", type = "symbolic" }
-"s.cfg" = "~/AppData/Roaming/s/config"
 goenv = "~/AppData/Roaming/go/env"
 "gh.yml" = "~/AppData/Roaming/Github CLI/config.yml"
 
