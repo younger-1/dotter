@@ -120,4 +120,8 @@ export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 # go
 export PATH="$HOME/go/bin:$PATH"
 
+# lvim
+export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-$HOME/.local/share/lunarvim}"
+export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-$HOME/.config/lvim}"
+
 # vim: shiftwidth=4 ft=sh

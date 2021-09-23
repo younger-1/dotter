@@ -184,7 +184,7 @@ alias help=run-help
 autoload -Uz run-help-git run-help-ip run-help-openssl run-help-p4 run-help-sudo run-help-svk run-help-svn
 
 # z.lua
-if [[ -f /usr/share/z.lua/z.lua ]]; then
+if false && [[ -f /usr/share/z.lua/z.lua ]]; then
     eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced)"    # ZSH 初始化
     # export _ZL_MATCH_MODE=1
     export _ZL_HYPHEN=1
