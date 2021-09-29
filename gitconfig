@@ -28,7 +28,7 @@
 [submodule]
   recurse = true
 [commit]
-  ; gpgsign = true
+  ; gpgsign = true ; Stupid: <https://code-examples.net/en/q/9b0c2e>
   ; template = ~/.gitmessage
 [interactive]
   diffFilter = delta --color-only
@@ -150,6 +150,9 @@
 ; [url "https://github.com.cnpmjs.org/"]
 ; [url "https://hub.fastgit.org/"]
 ;   insteadOf = https://github.com/
+
 ; [url "https://github.com/"]
 ; 	insteadOf = git@github.com:
 
+; [url "ssh://git@github.com/"]
+;   insteadOf = https://github.com/

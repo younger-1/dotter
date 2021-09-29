@@ -69,6 +69,14 @@ export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
 export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
+# Terminal Test
+# [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors)
+# echo -e "\e[1mbold\e[0m"
+# echo -e "\e[3mitalic\e[0m"
+# echo -e "\e[4munderline\e[0m"
+# echo -e "\e[9mstrikethrough\e[0m"
+# echo -e "\e[31mHello World\e[0m"
+
 # https://wiki.archlinux.org/index.php/Environment_variables
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
