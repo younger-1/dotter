@@ -1,7 +1,7 @@
 ; https://github.com/mhinz/dotfiles/blob/master/.config/git/config
 
 [credential]
-  helper = manager-core
+  helper = gopass
 [user]
   name = Xavier Young
   email = 45989017+younger-1@users.noreply.github.com

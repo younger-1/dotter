@@ -33,6 +33,7 @@ SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}
 "leetcode.json" = "~/.lc/plugins.json"
 AppSettings = { target = "~/AppSettings", type = "symbolic" }
 "s.cfg" = "~/.config/s/config"
+"gpg.conf" = "~/.gnupg/gpg.conf"
 
 # windows diff
 pip = "~/.config/pip/pip.conf"
