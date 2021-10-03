@@ -54,6 +54,18 @@ unsetproxy() {
 
 setproxy
 
+# To use different colors for different file extensions
+# <https://www.topbug.net/blog/2016/11/28/a-better-ls-command/#better-color>
+# <https://github.com/sharkdp/vivid>
+if [[ -x "$(command -v vivid)" ]]; then
+    export LS_COLORS="$(vivid generate molokai)"
+    function setcolor() {
+        export LS_COLORS="$(vivid generate $1)"
+    }
+else
+    eval "$(dircolors)"
+fi
+
 export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
 export LESS='-R '
 # export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
@@ -106,6 +118,9 @@ fi
 
 # for PulseAudio
 export PULSE_SERVER=tcp:localhost
+
+# [rg](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file)
+export RIPGREP_CONFIG_PATH=$HOME/dotter/rgrc
 
 ########################### PATH ##########################
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
