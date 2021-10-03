@@ -116,6 +116,8 @@ function md() { mkdir -p "$@" && cd "$_"; }
 
 function touchx() { touch $1; chmod +x $1 }
 
+function fdls() { fd $@ -X exa -lhd }
+
 function today() {
   date +"%A, %B %-d, %Y"
 }

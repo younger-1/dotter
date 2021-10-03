@@ -46,6 +46,7 @@ So = { target = "~/.config/so", type = "symbolic" }
 goenv = "~/.config/go/env"
 "gh.yml" = "~/.config/gh/config.yml"
 vivid = { target = "~/.config/vivid", type = "symbolic" }
+fd = { target = "~/.config/fd", type = "symbolic" }
 
 
 [vim]

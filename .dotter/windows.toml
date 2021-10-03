@@ -16,6 +16,7 @@ So = { target = "~/AppData/Roaming/Sam Tay/so/config", type = "symbolic" }
 goenv = "~/AppData/Roaming/go/env"
 "gh.yml" = "~/AppData/Roaming/Github CLI/config.yml"
 vivid = { target = "~/AppData/Roaming/vivid", type = "symbolic" }
+fd = { target = "~/AppData/Roaming/fd", type = "symbolic" }
 
 [vim.files]
 vimrc = { target = "~/_vimrc", type = "symbolic" }
