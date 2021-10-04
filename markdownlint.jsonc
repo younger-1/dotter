@@ -1,0 +1,44 @@
+{
+  // [Default state for all rules](https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.jsonc)
+  "default": true,
+  // Not sure...
+  /* "header-increment": false, */
+  /* "no-empty-links": false, */
+  /* "blanks-around-lists": false, */
+  /* "no-bare-urls": false, */
+  /* "single-h1": false, */
+  // Fenced code blocks should have a language specified
+  /* "fenced-code-language": false, */
+  // Trailing punctuation in heading
+  /* "no-trailing-punctuation": false, */
+  "line-length": false,
+  "ul-style": {
+    // style ("consistent", "asterisk", "plus", "dash", "sublist")
+    "style": "consistent"
+  },
+  "ol-prefix": {
+    // style ("one", "ordered", "one_or_ordered", "zero")
+    "style": "one_or_ordered"
+  },
+  "no-hard-tabs": {
+    "code_blocks": false,
+    "spaces_per_tab": 4
+  },
+  "no-multiple-blanks": {
+    // Consecutive blank lines
+    "maximum": 3
+  },
+  "blanks-around-headers": {
+    "lines_above": 1,
+    "lines_below": 1
+  },
+  "no-blanks-blockquote": false,
+  "first-line-h1": false,
+  "first-header-h1": false,
+  "no-duplicate-header": {
+    "siblings_only": true
+  },
+  // Images should have alternate text (alt text)
+  "no-alt-text": false,
+  "no-inline-html": false
+}
