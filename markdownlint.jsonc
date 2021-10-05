@@ -2,13 +2,15 @@
   // [Default state for all rules](https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.jsonc)
   "default": true,
   // Not sure...
+  // Images should have alternate text (alt text)
+  "no-alt-text": false,
+  // Fenced code blocks should have a language specified
+  "fenced-code-language": false,
   /* "header-increment": false, */
   /* "no-empty-links": false, */
   /* "blanks-around-lists": false, */
   /* "no-bare-urls": false, */
   /* "single-h1": false, */
-  // Fenced code blocks should have a language specified
-  /* "fenced-code-language": false, */
   // Trailing punctuation in heading
   /* "no-trailing-punctuation": false, */
   "line-length": false,
@@ -38,7 +40,5 @@
   "no-duplicate-header": {
     "siblings_only": true
   },
-  // Images should have alternate text (alt text)
-  "no-alt-text": false,
   "no-inline-html": false
 }

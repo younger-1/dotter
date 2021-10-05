@@ -91,15 +91,19 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 # https://wiki.archlinux.org/index.php/Environment_variables
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
-else
+if [[ -x "$(command -v lvim)" ]]; then
+    export EDITOR='lvim'
+    export VISUAL='lvim'
+elif [[ -x "$(command -v nvim)" ]]; then
     export EDITOR='nvim'
+    export VISUAL='nvim'
+elif [[ -n $SSH_CONNECTION ]]; then
+    export EDITOR='vim'
+elif [[ -x "$(command -v vim)" ]]; then
+    export EDITOR='vim'
+    export VISUAL='vim'
 fi
 # export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'gedit'; else echo 'nano'; fi)"
-
-# VISUAL contains command to run the full-fledged editor
-export VISUAL='nvim'
 
 # BROWSER contains the path to the web browser
 if [ -n "$DISPLAY" ]; then

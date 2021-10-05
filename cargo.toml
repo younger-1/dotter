@@ -2,8 +2,8 @@
 name = "Younger"
 email = "younger321@foxmail.com"
 
-[build]
-rustc-wrapper = "sccache"
+# [build]
+# rustc-wrapper = "sccache"
 # target-dir = ".cargo/target"
 
 [source]
