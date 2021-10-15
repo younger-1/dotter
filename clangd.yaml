@@ -1,0 +1,12 @@
+# Index:
+#   Background: Skip
+
+CompileFlags:
+  Add: [-Wall]
+  # Add: [-xc++, -Wall]
+  # Remove: -W*
+
+Diagnostics:
+  ClangTidy:
+    Add: modernize*
+    Remove: modernize-use-trailing-return-type
