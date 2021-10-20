@@ -1,12 +1,20 @@
-# Index:
-#   Background: Skip
+Index:
+  # Background: Skip
+  Background: Build
+
+---
+If:
+  PathMatch: [.*\.cpp, .*\.cc]
 
 CompileFlags:
-  Add: [-Wall]
-  # Add: [-xc++, -Wall]
+  Add: [-std=c++17, -xc++, -Wall]
   # Remove: -W*
 
 Diagnostics:
   ClangTidy:
-    Add: modernize*
+    Add: [performance*, modernize*, readability*]
     Remove: modernize-use-trailing-return-type
+
+# Clangd might fail to find suitable compile flags for headers outside of your project directory (e.g. third party dependencies)
+# To work around this, you can instruct clangd to use your project’s compilation database for all files, not just files in the project directory.
+# CompilationDatabase: <path>
