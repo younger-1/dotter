@@ -24,8 +24,9 @@
 # function or script for curl/wget/aria2 to use hub.fastgit.org
 
 # [Encoding]
-# Set encoding
-$OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
+# Set encoding to UTF-8
+# $OutputEncoding = [console]::InputEncoding = [console]::OutputEncoding = New-Object System.Text.UTF8Encoding
+[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
 # $env:LESSCHARSET = 'utf-8'
 
 # [rust]

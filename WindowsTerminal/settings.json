@@ -1,31 +1,11 @@
 {
     // "$schema": "https://aka.ms/terminal-profiles-schema",
-    "$schema": "https://raw.fastgit.org/microsoft/terminal/release-1.7/doc/cascadia/profiles.schema.json",
+    "$schema": "https://raw.fastgit.org/microsoft/terminal/release-1.10/doc/cascadia/profiles.schema.json",
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "theme": "system",
-    // "initialCols": 120,
-    // "initialRows": 30,
     "startOnUserLogin": true,
-    // Add any keybinding overrides to this array.
     // To unbind a default keybinding, set the command to "unbound"
     "keybindings": [
-        // {
-        //     "keys": [
-        //         "alt+q"
-        //     ],
-        //     "command": {
-        //         //? specify which command profile by using the profile’s name "profile": "profile-name", guid "profile": "profile-guid", or index "index": profile-index. If none are specified, the default profile is used.
-        //         "index": 0,
-        //         "startingDirectory": "c:/Users/younger/Documents/0-test",
-        //         // "commandline": "foo.exe",
-        //         // "tabTitle": "bar",
-        //         "action": "splitPane",
-        //         // "splitMode": "duplicate",
-        //         // "split": "auto",
-        //         // "split": "horizontal",
-        //         "split": "vertical"
-        //     }
-        // },
         {
             "command": {
                 "action": "newTab",
@@ -35,22 +15,52 @@
                 "alt+shift+a"
             ]
         },
+        {
+            "command": {
+                "action": "splitPane",
+                "split": "vertical",
+                "profile": "Arch"
+            },
+            "keys": [
+                "alt+shift+v"
+            ]
+        },
+        {
+            "command": {
+                "action": "splitPane",
+                "split": "horizontal",
+                "profile": "Arch"
+            },
+            "keys": [
+                "alt+shift+x"
+            ]
+        },
         // [Application-level Keys]
         {
             "command": "commandPalette",
             "keys": "ctrl+;"
         },
         {
+            "command": "find",
+            "keys": "alt+shift+f"
+        },
+        {
+            "command": {
+                "action": "findMatch",
+                "direction": "next"
+            },
+            "keys": "alt+]"
+        },
+        {
+            "command": {
+                "action": "findMatch",
+                "direction": "prev"
+            },
+            "keys": "alt+["
+        },
+        {
             "command": "toggleAlwaysOnTop",
             "keys": "alt+shift+t"
-        },
-        // {
-        //     "command": "toggleFocusMode",
-        //     "keys": "alt+shift+f"
-        // },
-        {
-            "command": "toggleRetroEffect",
-            "keys": "alt+shift+r"
         },
         {
             "command": "openTabColorPicker",
@@ -61,8 +71,9 @@
             "keys": "alt+shift+s"
         },
         {
-            "command": "toggleReadOnlyMode",
-            "keys": "alt+shift+o"
+            // "command": "toggleRetroEffect",
+            "command": "openTabRenamer",
+            "keys": "alt+shift+r"
         },
         // [Tab Management]
         {
@@ -74,6 +85,24 @@
             "keys": "alt+shift+d"
         },
         {
+            "command": "closeOtherTabs",
+            "keys": "alt+shift+q"
+        },
+        {
+            "command": {
+                "action": "moveTab",
+                "direction": "forward"
+            },
+            "keys": "alt+shift+>"
+        },
+        {
+            "command": {
+                "action": "moveTab",
+                "direction": "backward"
+            },
+            "keys": "alt+shift+<"
+        },
+        {
             "command": "nextTab",
             "keys": "alt+shift+l"
         },
@@ -82,7 +111,72 @@
             "keys": "alt+shift+h"
         },
         // [Pane Management]
+        {
+            "command": "closePane",
+            "keys": "alt+shift+w"
+        },
+        {
+            "command": "toggleReadOnlyMode",
+            "keys": "alt+shift+o"
+        },
+        {
+            "command": {
+                "action": "splitPane",
+                "split": "horizontal",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+x"
+        },
+        {
+            "command": {
+                "action": "splitPane",
+                "split": "vertical",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+v"
+        },
+        {
+            "command": {
+                "action": "moveFocus",
+                "direction": "left"
+            },
+            "keys": "alt+h"
+        },
+        {
+            "command": {
+                "action": "moveFocus",
+                "direction": "right"
+            },
+            "keys": "alt+l"
+        },
+        // {
+        //     "command": {
+        //         "action": "moveFocus",
+        //         "direction": "down"
+        //     },
+        //     "keys": "alt+j"
+        // },
+        // {
+        //     "command": {
+        //         "action": "moveFocus",
+        //         "direction": "up"
+        //     },
+        //     "keys": "alt+k"
+        // },
+        {
+            "command": "togglePaneZoom",
+            "keys": "alt+shift+m"
+        },
+        // [Clipboard Integration]
         // [Scrollback]
+        {
+            "command": "scrollDown",
+            "keys": "alt+j"
+        },
+        {
+            "command": "scrollUp",
+            "keys": "alt+k"
+        },
         {
             "command": "scrollDownPage",
             "keys": "alt+shift+j"
@@ -91,11 +185,12 @@
             "command": "scrollUpPage",
             "keys": "alt+shift+k"
         }
+        // [Visual Adjustments]
     ],
     "profiles": {
         "defaults": {
             "colorScheme": "ayu",
-            "fontFace": "CaskaydiaCove NF",
+            "fontFace": "SauceCodePro NF",
             "bellStyle": "all",
             // "experimental.pixelShaderPath": "C:/Users/younger/Desktop/oops/Awesome/windows-terminal-shaders/hueshift.hlsl",
             "backgroundImageOpacity": 0.4,
@@ -111,11 +206,11 @@
                 "source": "Windows.Terminal.PowershellCore",
                 "colorScheme": "ayu",
                 "backgroundImage": "%HOME%/Beauty/Icons/v-logo.png",
-                "fontFace": "JetBrainsMono NF",
-                // "fontFace": "Cascadia Code PL",
+                // "fontFace": "CaskaydiaCove NF",
+                // "fontFace": "JetBrainsMono NF",
+                "fontFace": "DejaVuSansMono NF",
                 // "cursorColor": "#8FF7B1",
-                "acrylicOpacity": 0.8,
-                "bellStyle": "visual"
+                "acrylicOpacity": 0.8
             },
             {
                 "name": "Windows PowerShell",
@@ -136,25 +231,27 @@
                 "name": "Arch",
                 "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
                 "source": "Windows.Terminal.Wsl",
-                "colorScheme": "nord",
+                // "colorScheme": "nord",
+                // "colorScheme": "Solarized Light",
+                "colorScheme": "Tango Dark",
                 "icon": "%HOME%/Beauty/Icons/linux/arch.png",
                 "backgroundImage": "%HOME%/Beauty/Icons/linux/arch-linux1.png",
+                "cursorColor": "#6f847d",
                 "startingDirectory": "//wsl$/Arch/home/young",
                 "acrylicOpacity": 0.8
             },
             {
-                "name": "Ubuntu-18.04",
-                "guid": "{c6eaf9f4-32a7-5fdc-b5cf-066e8a4b1e40}",
+                "name": "Ubuntu-20.04",
                 "source": "Windows.Terminal.Wsl",
-                "colorScheme": "MaterialOcean",
+                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                "hidden": false,
                 "icon": "%HOME%/Beauty/Icons/linux/ubt.ico",
-                "startingDirectory": "//wsl$/Arch/home/young",
                 "backgroundImageAlignment": "center",
                 "backgroundImageStretchMode": "uniformToFill",
                 "cursorColor": "#B2A7F0",
                 "cursorHeight": 40,
                 "cursorShape": "vintage",
-                "fontFace": "Delugia Nerd Font",
+                "fontFace": "DejaVuSansMono NF",
                 "fontSize": 13,
                 "selectionBackground": "#B5F056",
                 "acrylicOpacity": 0.8
@@ -187,7 +284,7 @@
                 "name": "IPython",
                 "commandline": "cmd.exe /K \"conda activate base && ipython.exe\"",
                 // "commandline": "cmd.exe /K %USERPROFILE%/AppData/Local/Continuum/Anaconda3/Scripts/activate.bat %USERPROFILE%/AppData/Local/Continuum/Anaconda3",
-                "icon": "%HOME%/Beauty/Icons/python/jupyter/jupyter.ico",
+                "icon": "%HOME%/Beauty/Icons/python/jupyter.ico",
                 "startingDirectory": "%HOME%",
                 "tabTitle": "Conda",
                 "acrylicOpacity": 0.8
