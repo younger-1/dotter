@@ -170,9 +170,16 @@
 		}
 
 		{
+			invocation: nvim
+			shortcut: nv
+			external: "nvim +{line} {file}"
+			leave_broot: false
+		}
+
+		{
 			invocation: code
 			shortcut: co
-			external: "code -g{line} {file}"
+			external: "code.cmd -g {file}:{line}"
 			leave_broot: false
 		}
 
@@ -219,6 +226,12 @@
 			set_working_dir: true
 			leave_broot: false
 		}
+		{
+			invocation: cmd
+			external: "cmd"
+			set_working_dir: true
+			leave_broot: false
+		}
 
 		{
 			key: ctrl-k
@@ -257,8 +270,12 @@
 
 		{
 			key: alt-m
-      # apply_to: directory
-			# Or: (for dir only) execution: ":cd"
+            apply_to: directory
+            execution: ":cd"
+		}
+		{
+			key: alt-m
+            apply_to: file
 			internal: ":open_leave"
 		}
 
@@ -266,11 +283,6 @@
 			invocation: home
 			key: alt-h
 			internal: ":focus ~"
-		}
-		{
-			invocation: root
-			key: alt-/
-			internal: ":focus /"
 		}
 		{
 			invocation: config
@@ -297,9 +309,32 @@
 			invocation: go
 			internal: ":focus ~/go"
 		}
+        # linux
+		{
+			invocation: root
+			key: alt-/
+			internal: ":focus /"
+		}
 		{
 			invocation: doc
 			internal: ":focus /usr/share/doc"
+		}
+        # windows
+		{
+			invocation: win
+			internal: ":focus C:/windows/system32"
+		}
+		{
+			invocation: scoop
+			internal: ":focus ~/scoop/"
+		}
+		{
+			invocation: roam
+			internal: ":focus ~/AppData/Roaming/"
+		}
+		{
+			invocation: local
+			internal: ":focus ~/AppData/Local/"
 		}
 
 		{

@@ -73,10 +73,7 @@ function nvi {
 }
 
 # Change working dir in powershell to last dir in lf on exit.
-function lf($name, $argument) {
-    if ($name) {
-        cd $name; 
-    }
+function lf() {
     $tmp = [System.IO.Path]::GetTempFileName()
     lf.ps1 -last-dir-path="$tmp" $argument
     if (test-path -pathtype leaf "$tmp") {
@@ -87,6 +84,19 @@ function lf($name, $argument) {
                 cd "$dir"
             }
         }
+    }
+}
+
+function br() {
+    # $tmp = new-temporaryfile
+    $tmp = [System.IO.Path]::GetTempFileName()
+    # echo $tmp
+    # broot --outcmd "$cmd_file" "$@"
+    broot.ps1 --outcmd "$tmp" $args
+    if (test-path -pathtype leaf "$tmp") {
+        $cmd = Get-Content "$tmp"
+        try { iex $cmd } catch { "" }
+        remove-item -force "$tmp"
     }
 }
 
