@@ -94,9 +94,11 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 if [[ -x "$(command -v lvim)" ]]; then
     export EDITOR='lvim'
     export VISUAL='lvim'
+    export GIT_EDITOR='lvim'
 elif [[ -x "$(command -v nvim)" ]]; then
     export EDITOR='nvim'
     export VISUAL='nvim'
+    export GIT_EDITOR='nvim'
 elif [[ -n $SSH_CONNECTION ]]; then
     export EDITOR='vim'
 elif [[ -x "$(command -v vim)" ]]; then

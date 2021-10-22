@@ -12,7 +12,7 @@
   user = younger-1
 
 [core]
-  ; editor = lvim
+  editor = nvim
   ; autocrlf = true
   autocrlf = input
   quotepath = false
