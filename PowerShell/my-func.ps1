@@ -112,49 +112,6 @@ function colorConsole {
 # thefuck
 # iex "$(thefuck --alias)"
 
-function visualCode {
-    $installPath = &"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -version 16.0 -property installationpath
-    Import-Module (Join-Path $installPath "Common7\Tools\Microsoft.VisualStudio.DevShell.dll")
-    $null = Enter-VsDevShell -VsInstallPath $installPath -SkipAutomaticLocation
-    #Enter-VsDevShell -VsInstallPath $installPath -SkipAutomaticLocation
-    code -n .
-}
-
-function visual {
-    $installPath = &"C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -version 16.0 -property installationpath
-    Import-Module (Join-Path $installPath "Common7\Tools\Microsoft.VisualStudio.DevShell.dll")
-    Enter-VsDevShell -VsInstallPath $installPath -SkipAutomaticLocation
-}
-
-
-# SpaceVim
-function svi($path) { 
-    # Don't use following:
-    # $env:XDG_CONFIG_HOME = "$HOME/.cache"
-    # $env:XDG_CONFIG_HOME = "$HOME/.SpaceVim.d"
-    # Put nvim symlink under it:
-    $env:XDG_CONFIG_HOME = "$HOME/blogs"
-    nvim $path
-    $env:XDG_CONFIG_HOME = ""
-}
-
-function condaIt { powershell.exe -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\younger\AppData\Local\Continuum\anaconda3\shell\condabin\conda-hook.ps1' ; conda activate 'C:\Users\younger\AppData\Local\Continuum\anaconda3' " }
-function condaCmd { cmd.exe /K %LocalAppData%/Continuum/Anaconda3/Scripts/activate.bat %LocalAppData%/Continuum/Anaconda3 }
-
-function cai {
-    conda activate
-    ipython.exe
-    conda deactivate
-}
-
-function jsh {
-    $env:java_tool_options = '-Dfile.encoding=utf-8'
-    $env:JSHELLEDITOR = 'code'
-    jshell.exe $args
-    $env:java_tool_options = ''
-    $env:JSHELLEDITOR = ''
-}
-
 function Update-Packages {
     # update pip
     Write-Host "Step 1: 更新 pip" -ForegroundColor Magenta -BackgroundColor Cyan
@@ -171,24 +128,6 @@ function Update-Packages {
     tlmgr update --self
     tlmgr update --all
 }
-
-# Note: git is fun and git.exe/ps1 is the exectable
-# This can omit: $git_init = $false
-function git {
-    if ($global:git_init) {
-        git.exe $args
-    }
-    else {
-        Import-Module posh-git
-        $global:git_init = $true
-        git.exe $args
-    }
-}
-
-function nvi {
-    nvim --noplugin $args
-}
-
 
 # [proxy]
 $HostIP = "127.0.0.1"

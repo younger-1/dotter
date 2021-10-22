@@ -18,6 +18,7 @@ goenv = "~/AppData/Roaming/go/env"
 vivid = { target = "~/AppData/Roaming/vivid", type = "symbolic" }
 fd = { target = "~/AppData/Roaming/fd", type = "symbolic" }
 "clangd.yaml" = "~/AppData/Local/clangd/config.yaml"
+broot = { target = "~/AppData/Roaming/dystroy/broot/config", type = "symbolic" }
 
 [vim.files]
 vimrc = { target = "~/_vimrc", type = "symbolic" }

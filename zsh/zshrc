@@ -212,9 +212,25 @@ if [[ -x "$(command -v navi)" ]]; then
 fi
 
 # broot
-if [[ -f ~/.config/broot/launcher/bash/br ]]; then
-    source ~/.config/broot/launcher/bash/br
-fi
+# <https://dystroy.org/broot/conf_verbs/>
+# <https://dystroy.org/broot/tricks/>
+# <https://dystroy.org/blog/gg/>
+function br {                               
+    local cmd cmd_file code                 
+    cmd_file=$(mktemp)                      
+    if broot --outcmd "$cmd_file" "$@"; then
+        cmd=$(<"$cmd_file")                 
+        rm -f "$cmd_file"                   
+        eval "$cmd"                         
+    else                                    
+        code=$?                             
+        rm -f "$cmd_file"                   
+        return "$code"                      
+    fi 
+}
+alias bs="br --conf ~/.config/broot/select.toml"
+alias be="br --conf ~/.config/broot/edit.toml"
+
 
 # fzf-tab
 # https://github.com/Aloxaf/fzf-tab#usage
