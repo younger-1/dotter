@@ -125,7 +125,7 @@
                 "split": "horizontal",
                 "splitMode": "duplicate"
             },
-            "keys": "alt+shift+x"
+            "keys": "alt+shift+numpad_minus"
         },
         {
             "command": {
@@ -133,7 +133,7 @@
                 "split": "vertical",
                 "splitMode": "duplicate"
             },
-            "keys": "alt+shift+v"
+            "keys": "alt+shift+numpad_plus"
         },
         {
             "command": {
@@ -206,9 +206,10 @@
                 "source": "Windows.Terminal.PowershellCore",
                 "colorScheme": "ayu",
                 "backgroundImage": "%HOME%/Beauty/Icons/v-logo.png",
+                "fontFace": "Delugia Light",
                 // "fontFace": "CaskaydiaCove NF",
                 // "fontFace": "JetBrainsMono NF",
-                "fontFace": "DejaVuSansMono NF",
+                // "fontFace": "DejaVuSansMono NF",
                 // "cursorColor": "#8FF7B1",
                 "acrylicOpacity": 0.8
             },
@@ -236,6 +237,8 @@
                 "colorScheme": "Tango Dark",
                 "icon": "%HOME%/Beauty/Icons/linux/arch.png",
                 "backgroundImage": "%HOME%/Beauty/Icons/linux/arch-linux1.png",
+                // "fontFace": "Delugia",
+                // "fontFace": "Delugia Light",
                 "cursorColor": "#6f847d",
                 "startingDirectory": "//wsl$/Arch/home/young",
                 "acrylicOpacity": 0.8
