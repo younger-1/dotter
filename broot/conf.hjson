@@ -165,10 +165,16 @@
 			invocation: edit
       key: ctrl-e
 			shortcut: e
+            # For windows, $EDITOR works!
 			external: "$EDITOR +{line} {file}"
 			leave_broot: false
 		}
-
+		{
+			invocation: visual
+      key: ctrl-x
+			external: "$VISUAL {file}"
+			leave_broot: false
+		}
 		{
 			invocation: nvim
 			shortcut: nv

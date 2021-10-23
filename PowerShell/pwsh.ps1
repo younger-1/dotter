@@ -19,6 +19,10 @@
 # 
 # $env:XDG_CONFIG_HOME="$env:LOCALAPPDATA"
 # $env:XDG_DATA_HOME="$env:APPDATA"
+#
+$env:SHELL = "cmd"
+$env:EDITOR = "nvim"
+$env:VISUAL = "code.cmd"
  
 # TODO
 # function or script for curl/wget/aria2 to use hub.fastgit.org
