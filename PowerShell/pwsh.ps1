@@ -147,8 +147,8 @@ function printTheme {
     }
 }
 
-# volta: npm helper
-(& volta completions powershell) | Out-String | Invoke-Expression
+# volta
+# (& volta completions powershell) | Out-String | Invoke-Expression
 
 # z.lua
 # Different from Search-NavigationHistory

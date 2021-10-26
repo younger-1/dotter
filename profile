@@ -1,7 +1,3 @@
-[ "$READ_PROFILE" ] && return
-# . /etc/profile || true
-export READ_PROFILE=1
-
 # Set XDG dirs
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
@@ -132,8 +128,11 @@ export RIPGREP_CONFIG_PATH=$HOME/dotter/rgrc
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
 # volta
-export VOLTA_HOME="$HOME/.volta"
-export PATH="$VOLTA_HOME/bin:$PATH"
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
+
+# pnpm
+export PATH="$HOME/pnpm-bin:$PATH"
 
 # julia
 export JULIA_PKG_SERVER=https://mirrors.tuna.tsinghua.edu.cn/julia
