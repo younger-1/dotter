@@ -52,6 +52,10 @@ function ie {
     iex.bat --werl
 }
 
+# [nodejs]
+# (& volta completions powershell) | Out-String | Invoke-Expression
+# $env:PATH += ";${HOME}/pnpm-bin"
+
 # [Mappings]
 $PSReadLineOptions = @{
     # EditMode                      = "Vi"
@@ -150,9 +154,6 @@ function printTheme {
         Write-Host ""
     }
 }
-
-# volta
-# (& volta completions powershell) | Out-String | Invoke-Expression
 
 # z.lua
 # Different from Search-NavigationHistory
