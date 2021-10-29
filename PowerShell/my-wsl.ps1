@@ -13,8 +13,8 @@ function ra($name) {
     if ($name) {
         cd $name; 
     }
-    wsl.exe -d Arch ranger --choosedir=/home/young/.rangerdir
-    $dir = wsl.exe -d Arch cat /home/young/.rangerdir
+    wsl.exe -d Arch ranger --choosedir=/tmp/rangerdir
+    $dir = wsl.exe -d Arch cat /tmp/rangerdir
     $dir = wsl.exe -d Arch wslpath -m $dir
     cd $dir
 }

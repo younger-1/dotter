@@ -8,7 +8,7 @@ Set-Alias smap Set-PSReadLineKeyHandler
 Set-Alias gmap Get-PSReadLineKeyHandler
 Set-Alias ww which
 Set-Alias ss scoop 
-Set-Alias lvim "C:\Users\younger\.local\bin\lvim.ps1"
+Set-Alias lvim "$HOME\.local\bin\lvim.ps1"
 #--------------------------    Set Alias END     ---------------------
 
 # [Directory]
