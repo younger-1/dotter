@@ -1,1 +1,2 @@
 machine ix.io login younger password b20170ca12c8aba6c122f1d4f55fdb725cd0bc93dc3c0e4e765ffe55c9cee3c8
+machine api.github.com login <user> password <token>
