@@ -14,12 +14,22 @@
 # pwsh -noprofile -c "\"C:\foo\bar\" -replace '\\', '/'"
 
 # xdg
-# $env:XDG_CONFIG_HOME = "$HOME\.config"
 # $env:XDG_DATA_HOME = "$HOME\.local\share"
-# 
-# $env:XDG_CONFIG_HOME="$env:LOCALAPPDATA"
-# $env:XDG_DATA_HOME="$env:APPDATA"
+# $env:XDG_CONFIG_HOME = "$HOME\.config"
+# $env:XDG_CACHE_HOME = "$HOME\.cache"
 #
+# $env:XDG_DATA_HOME="$env:APPDATA"
+# $env:XDG_CONFIG_HOME="$env:LOCALAPPDATA"
+# $env:XDG_CACHE_HOME="$env:TEMP"
+ 
+# $env:LUNARVIM_RUNTIME_DIR = ($env:LUNARVIM_RUNTIME_DIR, "$env:XDG_DATA_HOME\lunarvim", 1 -ne $null)[0]
+# $env:LUNARVIM_CONFIG_DIR = ($env:LUNARVIM_CONFIG_DIR, "$env:XDG_CONFIG_HOME\lvim", 1 -ne $null)[0]    
+# $env:LUNARVIM_CACHE_DIR = ($env:LUNARVIM_CACHE_DIR, "$env:XDG_CACHE_HOME\lvim", 1 -ne $null)[0]
+#
+$env:LUNARVIM_RUNTIME_DIR = "$HOME\.local\share\lunarvim"
+$env:LUNARVIM_CONFIG_DIR = "$HOME\.config\lvim"
+$env:LUNARVIM_CACHE_DIR = "$HOME\.cache\lvim"
+ 
 $env:SHELL = "cmd"
 $env:EDITOR = "nvim"
 $env:VISUAL = "code.cmd"
