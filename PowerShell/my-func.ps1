@@ -129,6 +129,80 @@ function Update-Packages {
     tlmgr update --all
 }
 
+# <https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/setting-permanent-environment-variables>
+function Set-Env
+{
+  param
+  (
+    [Parameter(Mandatory=$true)]
+    [String]
+    $Name,
+
+    [Parameter(Mandatory=$true)]
+    [String]
+    $Value,
+
+    [EnvironmentVariableTarget]
+    $Target = "Process"
+  )
+  [System.Environment]::SetEnvironmentVariable($Name, $Value, $Target)
+}
+
+# <https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/taking-screenshot>
+function Capture-Screen
+{
+  param
+  (
+    [Int]
+    $time = 0
+  )
+
+  $uid = Get-Random
+  $Path = "$Env:temp\screenshot-$uid.bmp"
+  Write-Host $Path
+
+  Add-Type -AssemblyName System.Windows.Forms
+  $screen = [System.Windows.Forms.SystemInformation]::VirtualScreen
+
+  $width = $screen.Width
+  $height = $screen.Height
+  $left = $screen.Left
+  $top = $screen.Top
+
+  $bitmap = [System.Drawing.Bitmap]::new($width, $height)
+  $MyDrawing = [System.Drawing.Graphics]::FromImage($bitmap)
+
+  # Start-Job -ScriptBlock { Start-Sleep -Seconds $time } | Wait-Job
+  Start-Sleep -Seconds $time 
+  $MyDrawing.CopyFromScreen($left, $top, 0, 0, $bitmap.Size)
+
+  $bitmap.Save($Path)
+
+  Start-Process -FilePath $Path
+}
+
+# <https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/simple-built-in-password-generator>
+function Generate-Passward
+{
+  param
+  (
+    # total password length
+    [Int]
+    $Length = 10,
+
+    # number of non-alpha-chars
+    [Int]
+    $NonChar = 4
+  )
+
+  Add-Type -AssemblyName 'System.Web'
+  $password = [System.Web.Security.Membership]::GeneratePassword($Length, $NonChar)
+  "Your password: $password"
+}
+
+# <https://ephos.github.io/posts/2018-8-20-Timers>
+# <https://stackoverflow.com/questions/1741490/how-to-tell-powershell-to-wait-for-each-command-to-end-before-starting-the-next>
+
 # [proxy]
 $HostIP = "127.0.0.1"
 $HttpPort = 10809
