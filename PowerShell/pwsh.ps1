@@ -126,13 +126,23 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function NextWord
 
 
 # [Sourced file]
+
+# (& rustup completions powershell) | Out-String | Invoke-Expression
+. $PSScriptRoot/completion-rustup.ps1
+
 # Invoke-Expression -Command $(gh completion -s powershell | Out-String)
 . $PSScriptRoot/completion-gh.ps1
-. $PSScriptRoot/completion-rustup.ps1
+
+. $env:scoop\apps\ripgrep\current\complete\_rg.ps1
+
 . $PSScriptRoot/completion-procs.ps1
-. $PSScriptRoot/completion-rg.ps1
+
+# Invoke-Expression -Command $(starship completions powershell | Out-String)
 . $PSScriptRoot/completion-starship.ps1
+
+# Invoke-Expression -Command $(yq shell-completion powershell | Out-String)
 . $PSScriptRoot/completion-yq.ps1
+
 
 # https://www.tutorialspoint.com/explain-powershell-profile
 # . $HOME/Documents/PowerShell/my-alias.ps1

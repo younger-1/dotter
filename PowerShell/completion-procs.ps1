@@ -1,4 +1,3 @@
-# procs --completion powershell
 
 using namespace System.Management.Automation
 using namespace System.Management.Automation.Language
@@ -30,6 +29,7 @@ Register-ArgumentCompleter -Native -CommandName 'procs' -ScriptBlock {
             [CompletionResult]::new('--sortd', 'sortd', [CompletionResultType]::ParameterName, 'Sort column by descending')
             [CompletionResult]::new('-c', 'c', [CompletionResultType]::ParameterName, 'Color mode')
             [CompletionResult]::new('--color', 'color', [CompletionResultType]::ParameterName, 'Color mode')
+            [CompletionResult]::new('--theme', 'theme', [CompletionResultType]::ParameterName, 'Theme mode')
             [CompletionResult]::new('-p', 'p', [CompletionResultType]::ParameterName, 'Pager mode')
             [CompletionResult]::new('--pager', 'pager', [CompletionResultType]::ParameterName, 'Pager mode')
             [CompletionResult]::new('--interval', 'interval', [CompletionResultType]::ParameterName, 'Interval to calculate throughput')
@@ -44,6 +44,7 @@ Register-ArgumentCompleter -Native -CommandName 'procs' -ScriptBlock {
             [CompletionResult]::new('--nor', 'nor', [CompletionResultType]::ParameterName, 'NOR  logic for multi-keyword')
             [CompletionResult]::new('-l', 'l', [CompletionResultType]::ParameterName, 'Show list of kind')
             [CompletionResult]::new('--list', 'list', [CompletionResultType]::ParameterName, 'Show list of kind')
+            [CompletionResult]::new('--thread', 'thread', [CompletionResultType]::ParameterName, 'Show thread')
             [CompletionResult]::new('-t', 't', [CompletionResultType]::ParameterName, 'Tree view')
             [CompletionResult]::new('--tree', 'tree', [CompletionResultType]::ParameterName, 'Tree view')
             [CompletionResult]::new('-w', 'w', [CompletionResultType]::ParameterName, 'Watch mode with default interval (1s)')
