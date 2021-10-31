@@ -35,6 +35,9 @@
 
 [alias]
   a = add
+  aa = add --all
+  au = add --update
+  ap = add --patch
   alia = !git config --list | grep ^alias\\. | cut -c 7- | grep -Ei --color \"$1\" "#"
   go = log --all --graph --decorate --oneline
   gg = log --all --graph --pretty='%C(auto)%h%Creset -%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
@@ -42,12 +45,12 @@
   ls = log --graph --pretty=format:\"%C(yellow)%h %C(blue)%ad %C(red)%d %C(reset)%s %C(green)[%cn]\" --decorate --date=short
   hist = log --pretty=format:\"%C(yellow)%h %C(red)%d %C(reset)%s %C(green)[%an] %C(blue)%ad\" --topo-order --graph --date=short
   latest = for-each-ref --sort=-committerdate --format=\"%(committerdate:short): @%(committername) \t\t\t\t %(refname:short) \n\t    %(contents)\" --color=auto
-  s = status
-  ss = status -sb
-  c = commit
-  ac = !git add --all && git commit
-  ca = commit --amend -C HEAD
-  caa = commit -a --amend -C HEAD
+  s = status -sb
+  ss = status
+  c = commit -v
+  ac = !git add --update && git c
+  ca = c --amend
+  can = c --amend --no-edit
   co = checkout
   cp = cherry-pick
   sw = switch
@@ -64,7 +67,7 @@
   ; dn -> diff number
   dn = "!d(){ git diff HEAD~$1 HEAD; }; d"
   count = rev-list --all --count
-  ps = !which onefetch && onefetch
+  ps = !which onefetch &>/dev/null && onefetch
   lf = ls-files
   lt = ls-tree --full-tree -r --name-only HEAD
   save = !git add -A && git commit -m 'chore: commit save point'
@@ -86,6 +89,18 @@
      --pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%ad) %C(bold cyan)<%an>%Creset'
   lga = log --graph --date-order --all \
    --pretty=format:'%C(auto)%h%Creset %C(auto)%d%Creset %s %C(green)(%ad) %C(bold cyan)<%an>%Creset'
+  # Get origin url
+  # - git@github.foobar.com:user/repo.git
+  # - https://github.foobar.com:user/repo
+  #
+  # sed commands:
+  # 1. replace `:` between host and user
+  # 2. remove `git@` in the beginning if present
+  # 3. remove `.git` in the end if present
+  # 4. remove `:` in the protocol if it was affected by step 1
+  url = !git config remote.origin.url
+  repourl = "!f() { git config remote.origin.url | sed 's/:/\\//' | sed -re 's/^git@/https:\\/\\//g' | sed 's/\\.git$//' | sed 's/^https\\//https:/'; }; f"
+  pr = "!f() { open \"$(git repourl)/compare/$(git branch --show-current)\"; }; f"
 
 
 [delta]
@@ -140,6 +155,8 @@
 [init]
   ; templatedir = ~/.git_template
   defaultBranch = main
+[advice]
+  ; statusHints = false
 
 [protocol "http"]
   allow = always
