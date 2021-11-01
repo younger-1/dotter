@@ -9,6 +9,7 @@ Set-Alias gmap Get-PSReadLineKeyHandler
 Set-Alias ww which
 Set-Alias ss scoop 
 Set-Alias lvim "$HOME\.local\bin\lvim.ps1"
+Set-Alias sys macchina 
 #--------------------------    Set Alias END     ---------------------
 
 # [Directory]
@@ -45,7 +46,7 @@ $book = "$HOME\Documents\0-Book and Materials"
 
 # [File]
 $HOSTS = "$env:SystemRoot\system32\drivers\etc\hosts";
-$AHK = "$config/AutoHotkeyU64.ahk"
+$AHK = "$config\AutoHotkeyU64.ahk"
 
 # [env]
 # qv2ray
