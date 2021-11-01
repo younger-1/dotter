@@ -22,14 +22,6 @@
 # $env:XDG_CONFIG_HOME="$env:LOCALAPPDATA"
 # $env:XDG_CACHE_HOME="$env:TEMP"
  
-# $env:LUNARVIM_RUNTIME_DIR = ($env:LUNARVIM_RUNTIME_DIR, "$env:XDG_DATA_HOME\lunarvim", 1 -ne $null)[0]
-# $env:LUNARVIM_CONFIG_DIR = ($env:LUNARVIM_CONFIG_DIR, "$env:XDG_CONFIG_HOME\lvim", 1 -ne $null)[0]    
-# $env:LUNARVIM_CACHE_DIR = ($env:LUNARVIM_CACHE_DIR, "$env:XDG_CACHE_HOME\lvim", 1 -ne $null)[0]
-#
-$env:LUNARVIM_RUNTIME_DIR = "$HOME\.local\share\lunarvim"
-$env:LUNARVIM_CONFIG_DIR = "$HOME\.config\lvim"
-$env:LUNARVIM_CACHE_DIR = "$HOME\.cache\lvim"
- 
 $env:SHELL = "cmd"
 $env:EDITOR = "nvim"
 $env:VISUAL = "code.cmd"
@@ -58,7 +50,7 @@ $env:PATHEXT += ";.py"
 $env:JULIA_PKG_SERVER = 'https://mirrors.tuna.tsinghua.edu.cn/julia'
 
 # [elixir]
-function ie { 
+function iel { 
     iex.bat --werl
 }
 
@@ -145,7 +137,7 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function NextWord
 
 
 # https://www.tutorialspoint.com/explain-powershell-profile
-# . $HOME/Documents/PowerShell/my-alias.ps1
+# Source my-alias first.
 . $PSScriptRoot/my-alias.ps1
 . $PSScriptRoot/my-func.ps1
 . $PSScriptRoot/my-tool.ps1

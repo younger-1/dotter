@@ -2,6 +2,11 @@
 
 [credential]
   helper = gopass
+; [credential "helperselector"]
+;   selected = manager-core
+[credential "helperselector"]
+  selected = <no helper>
+
 [user]
   name = Xavier Young
   email = 45989017+younger-1@users.noreply.github.com

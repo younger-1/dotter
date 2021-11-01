@@ -148,7 +148,26 @@ function Set-Env
   [System.Environment]::SetEnvironmentVariable($Name, $Value, $Target)
 }
 
+# <https://github.com/lukesampson/psutils/blob/master/shim.ps1#L32>
+function pick-env($name,$val='__get') {
+	$target = 'User'
+	if($val -eq '__get') { [environment]::getEnvironmentVariable($name,$target) }
+	else { [environment]::setEnvironmentVariable($name,$val,$target) }
+}
+
+function prepend-path($dir) {
+	$path = pick-env 'path'
+	$dir = resolve-path $dir
+	if($path -notmatch [regex]::escape($dir)) {
+		echo "adding $dir to your path."
+		pick-env 'path' "$dir;$path" # for future sessions...
+	} 
+  $env:path = "$dir;$env:path" # for this session
+}
+
 # <https://community.idera.com/database-tools/powershell/powertips/b/tips/posts/taking-screenshot>
+# <https://ephos.github.io/posts/2018-8-20-Timers>
+# <https://stackoverflow.com/questions/1741490/how-to-tell-powershell-to-wait-for-each-command-to-end-before-starting-the-next>
 function Capture-Screen
 {
   param
@@ -200,8 +219,38 @@ function Generate-Passward
   "Your password: $password"
 }
 
-# <https://ephos.github.io/posts/2018-8-20-Timers>
-# <https://stackoverflow.com/questions/1741490/how-to-tell-powershell-to-wait-for-each-command-to-end-before-starting-the-next>
+
+function setup-lunarvim {
+# $env:LUNARVIM_RUNTIME_DIR = ($env:LUNARVIM_RUNTIME_DIR, "$env:XDG_DATA_HOME\lunarvim", 1 -ne $null)[0]
+# $env:LUNARVIM_CONFIG_DIR = ($env:LUNARVIM_CONFIG_DIR, "$env:XDG_CONFIG_HOME\lvim", 1 -ne $null)[0]    
+# $env:LUNARVIM_CACHE_DIR = ($env:LUNARVIM_CACHE_DIR, "$env:XDG_CACHE_HOME\lvim", 1 -ne $null)[0]
+
+  $env:LUNARVIM_RUNTIME_DIR = "$HOME\.local\share\lunarvim"
+  $env:LUNARVIM_CONFIG_DIR = "$HOME\.config\lvim"
+  $env:LUNARVIM_CACHE_DIR = "$HOME\.cache\lvim"
+
+  Set-Env LUNARVIM_RUNTIME_DIR $HOME\.local\share\lunarvim User
+  Set-Env LUNARVIM_CONFIG_DIR $HOME\.config\lvim User
+  Set-Env LUNARVIM_CACHE_DIR $HOME\.cache\lvim User
+
+  $lvim_ps1_path = "$env:LUNARVIM_RUNTIME_DIR\lvim\utils\bin\lvim.ps1"
+  # 1. lvim.ps1: symbolic link
+  New-Item -ItemType SymbolicLink -Path $bin\lvim.ps1 -Target $lvim_ps1_path -Force
+  # 2. lunar: git use lvim as core editor
+  Set-Content -Path $bin\lunar -Value $(-join @("#!/bin/sh", "`r`n", ('powershell.exe -noprofile -ex unrestricted "{0}" "$@"' -f $lvim_ps1_path)))
+  # 3. lvim.cmd: make ps1 accessible from cmd.exe
+  $content = "@echo off
+setlocal enabledelayedexpansion
+set args=%*
+:: replace problem characters in arguments
+set args=%args:`"='%
+set args=%args:(=``(%
+set args=%args:)=``)%
+set invalid=`"='
+if !args! == !invalid! ( set args= )
+powershell -noprofile -ex unrestricted `"& '$lvim_ps1_path' $arg %args%;exit `$lastexitcode`"" 
+  $content | Out-File $bin\lvim.cmd -Encoding ascii
+}
 
 # [proxy]
 $HostIP = "127.0.0.1"

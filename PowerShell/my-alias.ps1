@@ -8,11 +8,16 @@ Set-Alias smap Set-PSReadLineKeyHandler
 Set-Alias gmap Get-PSReadLineKeyHandler
 Set-Alias ww which
 Set-Alias ss scoop 
-Set-Alias lvim "$HOME\.local\bin\lvim.ps1"
 Set-Alias sys macchina 
 #--------------------------    Set Alias END     ---------------------
 
 # [Directory]
+function ensure-dir($dir) {
+  if ((Test-Path "$dir") -eq $false) {
+    New-Item "$dir" -ItemType Directory
+  }
+}
+
 # $env:LOCALAPPDATA
 $localData = "$HOME\AppData\Local"
 # $env:APPDATA
@@ -22,26 +27,40 @@ $config = "$HOME\.config"
 $share = "$HOME\.local\share"
 $bin = "$HOME\.local\bin"
 
+# ($config, $share, $bin).foreach{ ensure-dir $dir }
+foreach ($dir in ($config, $share, $bin)) {
+  ensure-dir $dir
+}
+
 # Scoop
 $scoop = $env:SCOOP
 $apps = "$scoop\apps"
 $cache = "$scoop\cache"
 $bucket = "$scoop\buckets"
 $shims = "$scoop\shims"
+$localshims = "$localData\shims"
 $persist = "$scoop\persist"
 
 # App
 $wt = "$localData\Microsoft\Windows Terminal"
+
 $code = "$roamData\Code\User"
+
 $nvim = "$localData\nvim"
+$nvimdata = "$localData\nvim-data"
 $packer = "$localData\nvim-data\site\pack\packer"
+$lsp = "$roamData\nvim-data\lsp_servers"
+
 $lvim = "$config\lvim"
 $lunar = "$share\lunarvim"
-$lpacker = "$lunar\site\pack\packer"
+$lunarpacker = "$lunar\site\pack\packer"
+if (Test-Path $bin\lunar) {
+  $env:GIT_EDITOR = 'lunar'
+}
 
 # Other
 $icon = "$HOME\Beauty\Icons"
-$notes = "$HOME\desktop\Notes"
+$note = "$HOME\desktop\Notes"
 $book = "$HOME\Documents\0-Book and Materials"
 
 # [File]
