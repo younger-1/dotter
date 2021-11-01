@@ -1,0 +1,9 @@
+# theme = "dark_plus"
+theme = "bogster"
+
+[editor]
+line-number = "relative"
+# shell = ["bash", "-c"]
+
+[lsp]
+display-messages = true
