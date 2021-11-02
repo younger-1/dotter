@@ -50,6 +50,34 @@ unsetproxy() {
 
 setproxy
 
+########################### PATH ##########################
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
+# volta
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
+
+# pnpm
+export PATH="$HOME/pnpm-bin:$PATH"
+
+# julia
+export JULIA_PKG_SERVER=https://mirrors.tuna.tsinghua.edu.cn/julia
+
+# cargo & rust
+export PATH="$HOME/.cargo/bin:$PATH"
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+
+# ruby
+export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
+
+# go
+export PATH="$HOME/go/bin:$PATH"
+
+# lvim
+export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-$HOME/.local/share/lunarvim}"
+export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-$HOME/.config/lvim}"
+
 # To use different colors for different file extensions
 # <https://www.topbug.net/blog/2016/11/28/a-better-ls-command/#better-color>
 # <https://github.com/sharkdp/vivid>
@@ -123,33 +151,5 @@ export PULSE_SERVER=tcp:localhost
 
 # [rg](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file)
 export RIPGREP_CONFIG_PATH=$HOME/dotter/rgrc
-
-########################### PATH ##########################
-export PATH=$HOME/bin:$HOME/.local/bin:$PATH
-
-# volta
-# export VOLTA_HOME="$HOME/.volta"
-# export PATH="$VOLTA_HOME/bin:$PATH"
-
-# pnpm
-export PATH="$HOME/pnpm-bin:$PATH"
-
-# julia
-export JULIA_PKG_SERVER=https://mirrors.tuna.tsinghua.edu.cn/julia
-
-# cargo & rust
-export PATH="$HOME/.cargo/bin:$PATH"
-export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
-export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
-
-# ruby
-export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
-
-# go
-export PATH="$HOME/go/bin:$PATH"
-
-# lvim
-export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-$HOME/.local/share/lunarvim}"
-export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-$HOME/.config/lvim}"
 
 # vim: shiftwidth=4 ft=sh
