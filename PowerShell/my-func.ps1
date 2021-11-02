@@ -289,6 +289,8 @@ function setup-lunarvim {
   $lvim_ps1_path = "$env:XDG_DATA_HOME\lunarvim\lvim\utils\bin\lvim.ps1"
   # 1. lvim.ps1: symbolic link
   New-Item -ItemType SymbolicLink -Path $bin\lvim.ps1 -Target $lvim_ps1_path -Force
+  # or hard link
+  # & "$env:COMSPEC" /c "mklink /h `"$bin\lvim.ps1`" `"$lvim_ps1_path`"" | Out-Null
   # 2. lunar: git use lvim as core editor
   Set-Content -Path $bin\lunar -Value $(-join @("#!/bin/sh", "`r`n", ('powershell.exe -noprofile -ex unrestricted "{0}" "$@"' -f $lvim_ps1_path)))
   # 3. lvim.cmd: make ps1 accessible from cmd.exe
