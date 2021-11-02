@@ -219,23 +219,74 @@ function Generate-Passward
   "Your password: $password"
 }
 
+<#
+    Directory: C:\Users\younger\.local\share
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----           2021/8/29     1:43                firenvim
+d----           2019/11/4    22:16                jupyter
+d----           2021/9/11    14:24                lunarvim
+d----           2021/11/2    11:07                nvim-data
+d----           2021/9/27    12:08                rizin
+d----            2021/2/1    18:00                vifm
+d----           2021/8/28    14:36                wezterm
+d----            2021/1/7    19:01                xonsh
+
+    Directory: C:\Users\younger\.config
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d----           2021/8/27     0:00                alacritty
+d----            2020/1/4    11:43                clash
+d----          2021/10/24    22:09                coc
+d----          2021/10/26    15:22                configstore
+d----           2020/5/16    11:31                dask
+d----           2021/8/31     0:22                git
+d----           2021/4/21     3:21                joplin-desktop
+d----           2021/8/29     0:09                lazygit
+d----           2021/11/1    12:56                lvim
+d----          2020/12/27    19:47                micro
+d----           2020/7/25    22:29                neofetch
+d----          2021/10/23    17:21                nvim
+d----           2020/3/12    12:31                octave
+d----           2020/2/19    13:15                pshazz
+d----            2021/5/7     0:54                qv2ray
+d----           2021/9/21    10:33                s
+d----           2021/8/22    21:53                scoop
+d----           2021/8/27    23:02                thefuck
+d----            2021/9/4    23:39                vifm
+d----            2020/7/4     0:43                xonsh
+la---           2021/8/27    23:02              0 AutoHotkeyU64.ahk -> C:\Users\younger\dotter\autohotkeyU64.ahk
+-a---           2020/6/30    17:25             52 GithubKeyStore.txt
+-a---          2019/11/18    12:27            104 hub
+la---            2021/9/3    23:04              0 rgrc -> C:\Users\younger\dotter\rgrc
+la---           2021/8/27    23:02              0 starship.toml -> C:\Users\younger\dotter\starship.toml
+
+#>
+
+function setup-xdg {
+  $env:XDG_DATA_HOME = "$HOME\.local\share"
+  $env:XDG_CONFIG_HOME = "$HOME\.config"
+  $env:XDG_CACHE_HOME = "$HOME\.cache"
+  Set-Env XDG_DATA_HOME $HOME\.local\share User
+  Set-Env XDG_CONFIG_HOME $HOME\.config User
+  Set-Env XDG_CACHE_HOME $HOME\.cache User
+}
 
 function setup-lunarvim {
-# $env:LUNARVIM_RUNTIME_DIR = ($env:LUNARVIM_RUNTIME_DIR, "$env:XDG_DATA_HOME\lunarvim", 1 -ne $null)[0]
-# $env:LUNARVIM_CONFIG_DIR = ($env:LUNARVIM_CONFIG_DIR, "$env:XDG_CONFIG_HOME\lvim", 1 -ne $null)[0]    
-# $env:LUNARVIM_CACHE_DIR = ($env:LUNARVIM_CACHE_DIR, "$env:XDG_CACHE_HOME\lvim", 1 -ne $null)[0]
+  # $env:LUNARVIM_RUNTIME_DIR = ($env:LUNARVIM_RUNTIME_DIR, "$env:XDG_DATA_HOME\lunarvim", 1 -ne $null)[0]
+  # $env:LUNARVIM_CONFIG_DIR = ($env:LUNARVIM_CONFIG_DIR, "$env:XDG_CONFIG_HOME\lvim", 1 -ne $null)[0]    
+  # $env:LUNARVIM_CACHE_DIR = ($env:LUNARVIM_CACHE_DIR, "$env:XDG_CACHE_HOME\lvim", 1 -ne $null)[0]
 
-  $env:LUNARVIM_RUNTIME_DIR = "$HOME\.local\share\lunarvim"
-  $env:LUNARVIM_CONFIG_DIR = "$HOME\.config\lvim"
-  $env:LUNARVIM_CACHE_DIR = "$HOME\.cache\lvim"
-  Set-Env LUNARVIM_RUNTIME_DIR $HOME\.local\share\lunarvim User
-  Set-Env LUNARVIM_CONFIG_DIR $HOME\.config\lvim User
-  Set-Env LUNARVIM_CACHE_DIR $HOME\.cache\lvim User
+  # $env:LUNARVIM_RUNTIME_DIR = "$HOME\.local\share\lunarvim"
+  # $env:LUNARVIM_CONFIG_DIR = "$HOME\.config\lvim"
+  # $env:LUNARVIM_CACHE_DIR = "$HOME\.cache\lvim"
+  # Set-Env LUNARVIM_RUNTIME_DIR $HOME\.local\share\lunarvim User
+  # Set-Env LUNARVIM_CONFIG_DIR $HOME\.config\lvim User
+  # Set-Env LUNARVIM_CACHE_DIR $HOME\.cache\lvim User
 
-  $env:XDG_DATA_HOME = "$env:LOCALAPPDATA"
-  Set-Env XDG_DATA_HOME $env:LOCALAPPDATA User
-
-  $lvim_ps1_path = "$env:LUNARVIM_RUNTIME_DIR\lvim\utils\bin\lvim.ps1"
+  $lvim_ps1_path = "$env:XDG_DATA_HOME\lunarvim\lvim\utils\bin\lvim.ps1"
   # 1. lvim.ps1: symbolic link
   New-Item -ItemType SymbolicLink -Path $bin\lvim.ps1 -Target $lvim_ps1_path -Force
   # 2. lunar: git use lvim as core editor

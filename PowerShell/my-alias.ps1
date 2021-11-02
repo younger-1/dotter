@@ -18,14 +18,14 @@ function ensure-dir($dir) {
   }
 }
 
-# $env:LOCALAPPDATA
-$localData = "$HOME\AppData\Local"
 # $env:APPDATA
 $roamData = "$HOME\AppData\Roaming"
+# $env:LOCALAPPDATA
+$localData = "$HOME\AppData\Local"
 
-$config = "$HOME\.config"
-$share = "$HOME\.local\share"
 $bin = "$HOME\.local\bin"
+$share = "$HOME\.local\share"
+$config = "$HOME\.config"
 
 # ($config, $share, $bin).foreach{ ensure-dir $dir }
 foreach ($dir in ($config, $share, $bin)) {
@@ -46,10 +46,10 @@ $wt = "$localData\Microsoft\Windows Terminal"
 
 $code = "$roamData\Code\User"
 
-$nvim = "$localData\nvim"
-$nvimdata = "$localData\nvim-data"
-$packer = "$localData\nvim-data\site\pack\packer"
-$lsp = "$localData\nvim-data\lsp_servers"
+$nvim = "$config\nvim"
+$neovim = "$share\nvim-data"
+$packer = "$neovim\site\pack\packer"
+$lsp = "$neovim\lsp_servers"
 
 $lvim = "$config\lvim"
 $lunar = "$share\lunarvim"
