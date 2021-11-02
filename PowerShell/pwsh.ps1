@@ -127,6 +127,8 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function NextWord
 
 . $env:scoop\apps\ripgrep\current\complete\_rg.ps1
 
+. $env:scoop\apps\bottom\current\completion\_btm.ps1
+
 . $PSScriptRoot/completion-procs.ps1
 
 # Invoke-Expression -Command $(starship completions powershell | Out-String)
