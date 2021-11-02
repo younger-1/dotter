@@ -228,10 +228,12 @@ function setup-lunarvim {
   $env:LUNARVIM_RUNTIME_DIR = "$HOME\.local\share\lunarvim"
   $env:LUNARVIM_CONFIG_DIR = "$HOME\.config\lvim"
   $env:LUNARVIM_CACHE_DIR = "$HOME\.cache\lvim"
-
   Set-Env LUNARVIM_RUNTIME_DIR $HOME\.local\share\lunarvim User
   Set-Env LUNARVIM_CONFIG_DIR $HOME\.config\lvim User
   Set-Env LUNARVIM_CACHE_DIR $HOME\.cache\lvim User
+
+  $env:XDG_DATA_HOME = "$env:LOCALAPPDATA"
+  Set-Env XDG_DATA_HOME $env:LOCALAPPDATA User
 
   $lvim_ps1_path = "$env:LUNARVIM_RUNTIME_DIR\lvim\utils\bin\lvim.ps1"
   # 1. lvim.ps1: symbolic link

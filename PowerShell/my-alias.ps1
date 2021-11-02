@@ -49,7 +49,7 @@ $code = "$roamData\Code\User"
 $nvim = "$localData\nvim"
 $nvimdata = "$localData\nvim-data"
 $packer = "$localData\nvim-data\site\pack\packer"
-$lsp = "$roamData\nvim-data\lsp_servers"
+$lsp = "$localData\nvim-data\lsp_servers"
 
 $lvim = "$config\lvim"
 $lunar = "$share\lunarvim"
