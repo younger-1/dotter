@@ -35,10 +35,14 @@ showproxy() {
 }
 
 setproxy() {
-    export http_proxy=http://$HostIP:$HttpPort/
-    export https_proxy=http://$HostIP:$HttpPort/
-    export ftp_proxy=http://$HostIP:$HttpPort/
-    export ALL_PROXY=socks5://$HostIP:$SocksPort/
+    local port
+    local ip
+    [[ "$#" -gt 0 ]] && port="$1" || port="$HttpPort"
+    [[ "$#" -gt 1 ]] && ip="$2" || ip="$HostIP"
+    export http_proxy=http://$ip:$port/
+    export https_proxy=http://$ip:$port/
+    export ftp_proxy=http://$ip:$port/
+    export ALL_PROXY=socks5://$ip:$port/
 }
 
 unsetproxy() {
