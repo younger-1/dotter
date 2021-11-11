@@ -35,24 +35,29 @@ showproxy() {
 }
 
 setproxy() {
-    local port
-    local ip
-    [[ "$#" -gt 0 ]] && port="$1" || port="$HttpPort"
-    [[ "$#" -gt 1 ]] && ip="$2" || ip="$HostIP"
-    export http_proxy=http://$ip:$port/
-    export https_proxy=http://$ip:$port/
-    export ftp_proxy=http://$ip:$port/
-    export ALL_PROXY=socks5://$ip:$port/
+    local ad="$1"
+    export http_proxy=http://$ad/
+    export https_proxy=http://$ad/
+    export ftp_proxy=http://$ad/
+    # export ALL_PROXY=socks5://$HostIP:$SocksPort/
 }
 
 unsetproxy() {
     unset https_proxy
     unset http_proxy
     unset ftp_proxy
-    unset ALL_PROXY
+    # unset ALL_PROXY
 }
 
-setproxy
+setv2ray() {
+    setproxy $HostIP:$HttpPort
+}
+
+setgithub() {
+    setproxy 127.0.0.1:38457
+}
+
+setv2ray
 
 ########################### PATH ##########################
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
