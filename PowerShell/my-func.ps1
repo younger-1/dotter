@@ -305,6 +305,10 @@ set invalid=`"='
 if !args! == !invalid! ( set args= )
 powershell -noprofile -ex unrestricted `"& '$lvim_ps1_path' $arg %args%;exit `$lastexitcode`"" 
   $content | Out-File $bin\lvim.cmd -Encoding ascii
+
+  # use same tree-sitter
+  # New-Item -ItemType SymbolicLink -Path $share\nvim-data\site\pack\packer\start\nvim-treesitter -Target $lunar\site\pack\packer\start\nvim-treesitter
+  # Copy-Item -Path $lunar\site\pack\packer\start\nvim-treesitter\parser\* -Destination $share\nvim-data\site\pack\packer\start\nvim-treesitter\parser
 }
 
 # [proxy]
