@@ -59,6 +59,13 @@ setgithub() {
 
 setv2ray
 
+# ssh
+if [[ -x "$(command -v keychain)" ]]; then
+    eval `keychain --eval --agents ssh id_rsa`
+else
+    echo "😅 keychain is missing.\n"
+fi
+
 ########################### PATH ##########################
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
@@ -160,5 +167,14 @@ export PULSE_SERVER=tcp:localhost
 
 # [rg](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file)
 export RIPGREP_CONFIG_PATH=$HOME/dotter/rgrc
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # vim: shiftwidth=4 ft=sh

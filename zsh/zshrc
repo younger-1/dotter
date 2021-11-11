@@ -371,6 +371,9 @@ zinit light supercrabtree/k
 zinit ice as"program"
 zinit light DanielFGray/fzf-scripts
 
+zinit ice as"program" pick"src/*"
+zinit light Manas140/sh
+
 # Note: fzf-tab needs to be loaded after compinit, but before plugins which will wrap widgets, such as zsh-autosuggestions or fast-syntax-highlighting
 # Note: syntax-highlighting plugins (fast-syntax-highlighting, zsh-syntax-highlighting), should be loaded after plugins that are issuing compdefs
 zinit wait depth=1 lucid light-mode for \
