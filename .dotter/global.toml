@@ -57,8 +57,6 @@ helix = { target = "~/.config/helix", type = "symbolic" }
 
 [vim]
 
-depends = [ "default" ]
-
 [vim.files]
 
 vimrc = { target = "~/.vimrc", type = "symbolic" }
@@ -120,3 +118,10 @@ depends = [ "linux" ]
 
 "paru.conf" = "~/.config/paru/paru.conf"
 "yay.json" = "~/.config/yay/config.json"
+
+[openSUSE]
+
+depends = [ "linux" ]
+
+[openSUSE.files]
+
