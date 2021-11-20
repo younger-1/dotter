@@ -83,6 +83,7 @@ depends = [ "default" ]
 [linux.files]
 "tmux.conf.local.sh" = "~/.tmux.conf.local"
 "paru.conf" = "~/.config/paru/paru.conf"
+"yay.json" = "~/.config/yay/config.json"
 Ranger = "~/.config/ranger"
 task = { target = "~/.config/task", type = "symbolic" }
 
