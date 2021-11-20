@@ -4,6 +4,7 @@
 [default]
 
 [default.variables]
+
 username = "Xavier Younger"
 locale   = "zh-cn"
 os = "linux"
@@ -17,6 +18,7 @@ screen_size = "1920x1080"
 terminal = "xfce4-terminal"
 
 [default.files]
+
 gitconfig = "~/.gitconfig"
 "conda.yml" = "~/.condarc"
 npmrc = "~/.npmrc"
@@ -58,14 +60,17 @@ helix = { target = "~/.config/helix", type = "symbolic" }
 depends = [ "default" ]
 
 [vim.files]
+
 vimrc = { target = "~/.vimrc", type = "symbolic" }
 gvimrc = { target = "~/.gvimrc", type = "symbolic" }
 
 
 [win]
+
 depends = [ "default" ]
 
 [win.files]
+
 wslconfig = "~/.wslconfig"
 "tabnine.toml" = "~/AppData/Roaming/TabNine/TabNine.toml"
 "typora.json" = "~/AppData/Roaming/Typora/conf/conf.user.json"
@@ -77,23 +82,41 @@ PowerShell = { target = "~/Documents/PowerShell", type = "symbolic" }
 "PowerShell/powershell.ps1" = "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
 WindowsTerminal = { target = "~/AppData/Local/Microsoft/Windows Terminal", type = "symbolic" }
 
-[linux]
+[shell]
+
 depends = [ "default" ]
 
-[linux.files]
-"tmux.conf.local.sh" = "~/.tmux.conf.local"
-"paru.conf" = "~/.config/paru/paru.conf"
-"yay.json" = "~/.config/yay/config.json"
-Ranger = "~/.config/ranger"
-task = { target = "~/.config/task", type = "symbolic" }
-
-[shell]
-depends = ["linux"]
-
 [shell.files]
+
 profile = "~/.profile"
+bin = { target = "~/bin", type = "symbolic" }
+
+[zsh]
+
+depends = [ "shell" ]
+
+[zsh.files]
+
 zsh = "~/zsh"
 "zsh/zshenv" = "~/zsh/.zshenv"
 "zsh/zshrc" = "~/zsh/.zshrc"
 "zsh/p10k" = "~/.p10k.zsh"
-bin = { target = "~/bin", type = "symbolic" }
+
+[linux]
+
+depends = [ "zsh" ]
+
+[linux.files]
+
+"tmux.conf.local.sh" = "~/.tmux.conf.local"
+Ranger = "~/.config/ranger"
+task = { target = "~/.config/task", type = "symbolic" }
+
+[archlinux]
+
+depends = [ "linux" ]
+
+[archlinux.files]
+
+"paru.conf" = "~/.config/paru/paru.conf"
+"yay.json" = "~/.config/yay/config.json"
