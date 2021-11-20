@@ -72,6 +72,14 @@ function nvi {
     nvim --noplugin $args
 }
 
+function viat {
+    vim -u $HOME/dotter/pager.vim $args
+}
+
+function nviat {
+    nvim -u $HOME/dotter/pager.vim $args
+}
+
 # Change working dir in powershell to last dir in lf on exit.
 function lf() {
     $tmp = [System.IO.Path]::GetTempFileName()
@@ -131,21 +139,21 @@ if (Get-Command Set-PsFzfOption -errorAction SilentlyContinue) {
 # fzf
 # $env:FZF_DEFAULT_COMMAND = 'procs.exe --color=always'
 # $env:FZF_DEFAULT_COMMAND = 'rg --hidden --no-ignore --files'
-$env:FZF_DEFAULT_COMMAND = 'fd --color=always --hidden --exclude .git'
+# $env:FZF_DEFAULT_COMMAND = 'fd --color=always --hidden --exclude .git'
 
 # $env:FZF_DEFAULT_OPTS = '--layout=reverse --border'
-$env:FZF_DEFAULT_OPTS = "--ansi --multi --cycle `
-        --height 110 --layout=reverse --border=sharp `
-        --bind='ctrl-a:toggle-all' `
-        --bind='ctrl-l:clear-screen' `
-        --bind='ctrl-d:half-page-down' `
-        --bind='ctrl-u:half-page-up' `
-        --bind='ctrl-f:page-down' `
-        --bind='ctrl-b:page-up' "
+# $env:FZF_DEFAULT_OPTS = "--ansi --multi --cycle `
+#         --height 110 --layout=reverse --border=sharp `
+#         --bind='ctrl-a:toggle-all' `
+#         --bind='ctrl-l:clear-screen' `
+#         --bind='ctrl-d:half-page-down' `
+#         --bind='ctrl-u:half-page-up' `
+#         --bind='ctrl-f:page-down' `
+#         --bind='ctrl-b:page-up' "
 
 # $env:FZF_CTRL_T_COMMAND = $env:FZF_DEFAULT_COMMAND
 # $env:FZF_CTRL_T_COMMAND = "cmd /c dir /s/b/a:-d-h"
-$env:FZF_CTRL_T_OPTS = "--ansi --layout=reverse --border=sharp --prompt='>>> ' --marker='| ' -m  --header='Younger Searching' --color=16 --preview='bat --color=always --number {}' --preview-window=right:sharp --bind 'ctrl-y:execute-silent(bat {} | clip)+abort'"
+# $env:FZF_CTRL_T_OPTS = "--ansi --layout=reverse --border=sharp --prompt='>>> ' --marker='| ' -m  --header='Younger Searching' --color=16 --preview='bat --color=always --number {}' --preview-window=right:sharp --bind 'ctrl-y:execute-silent(bat {} | clip)+abort'"
 
 <# Usage:   
     1. vim (f)

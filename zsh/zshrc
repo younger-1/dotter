@@ -106,6 +106,8 @@ alias bd='bat -d'
 alias dir='dirs -v'
 alias nvi='nvim --noplugin'
 alias vi='vim --noplugin'
+alias nviat='nvim -u ~/dotter/pager.vim'
+alias viat='vim -u ~/dotter/pager.vim'
 alias ...='../..'
 
 # File search functions
