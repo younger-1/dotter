@@ -1,0 +1,125 @@
+# espanso configuration file
+
+# This is the default configuration file, change it as you like it
+# You can refer to the official documentation:
+# https://espanso.org/docs/
+
+# Matches are the substitution rules, when you type the "trigger" string
+# it gets replaced by the "replace" string.
+matches:
+  # Simple text replacement
+  - trigger: ":espanso"
+    replace: "Hi there!"
+
+  # Dates
+  - trigger: ":date"
+    replace: "{{mydate}}"
+    vars:
+      - name: mydate
+        type: date
+        params:
+          format: "%m/%d/%Y"
+
+  # Shell commands
+  - trigger: ":shell"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "echo Hello from your shell"
+
+  - trigger: ":br"
+    replace: "Best Regards,\nXavier Young"
+
+  - trigger: "include newlines"
+    replace: |
+              exactly as you see
+              will appear these three
+              lines of poetry
+
+  - trigger: "fold newlines"
+    replace: >
+              this is really a
+              single line of text
+              despite appearances
+
+  - trigger: ":now"
+    replace: "It's {{mytime}}"
+    vars:
+      - name: mytime
+        type: date
+        params:
+          format: "%H:%M"
+
+  - trigger: ":div"
+    replace: "<div>$|$</div>"
+
+  - triggers: ["alh", "alo"]
+    replace: "although"
+    word: true
+    propagate_case: true
+
+  - trigger: ":pyscript"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: script
+        params:
+          args:
+            - python
+            - "%CONFIG%/scripts/hello.py"
+
+  - trigger: ":ip"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: shell
+        params:
+          cmd: "curl 'https://api.ipify.org'"
+
+  - trigger: ":quote"
+    replace: "{{output}}"
+    vars:
+      - name: output
+        type: random
+        params:
+          choices:
+            - "Every moment is a fresh beginning."
+            - "Everything you can imagine is real."
+            - "Whatever you do, do it well."
+
+  - trigger: ":a"
+    replace: "<a href='{{clipboard}}' />$|$</a>"
+    vars:
+      - name: "clipboard"
+        type: "clipboard"
+
+  - trigger: ":greet"
+    form: |
+      Hey {{name}},
+      {{text}}
+      Happy Birthday!
+    form_fields:
+      text:
+        multiline: true 
+
+  - trigger: ":form"
+    form: |
+      {{choices}}
+    form_fields:
+      choices:
+        type: choice
+        values:
+          - First choice
+          - Second choice
+
+  - trigger: ";form"
+    form: |
+      {{choices}}
+    form_fields:
+      choices:
+        type: list
+        values:
+          - First choice
+          - Second choice

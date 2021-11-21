@@ -53,6 +53,7 @@ fd = { target = "~/.config/fd", type = "symbolic" }
 "clangd.yaml" = "~/.config/clangd/config.yaml"
 broot = { target = "~/.config/broot", type = "symbolic" }
 helix = { target = "~/.config/helix", type = "symbolic" }
+espanso = { target = "~/.config/espanso", type = "symbolic" }
 
 
 [vim]
