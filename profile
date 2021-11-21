@@ -59,13 +59,6 @@ setgithub() {
 
 setv2ray
 
-# ssh
-if [[ -x "$(command -v keychain)" ]]; then
-    eval `keychain --eval --agents ssh id_rsa`
-else
-    echo "😅 keychain is missing.\n"
-fi
-
 ########################### PATH ##########################
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
