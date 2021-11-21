@@ -89,9 +89,13 @@ depends = [ "default" ]
 profile = "~/.profile"
 bin = { target = "~/bin", type = "symbolic" }
 
-[zsh]
+[bash]
 
-depends = [ "shell" ]
+[bash.files]
+
+bash_profile = "~/.bash_profile"
+
+[zsh]
 
 [zsh.files]
 
@@ -108,7 +112,7 @@ fish = "~/.config/fish"
 
 [linux]
 
-depends = [ "zsh", "fish" ]
+depends = [ "shell", "bash", "zsh", "fish" ]
 
 [linux.files]
 

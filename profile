@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Set XDG dirs
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
