@@ -154,7 +154,11 @@ fi
 if [ -n "$DISPLAY" ]; then
     export BROWSER=firefox
 else 
-    export BROWSER=links
+    if [[ -x "$(command -v links)" ]]; then
+        export BROWSER=links
+    elif [[ -x "$(command -v w3m)" ]]; then
+        export BROWSER=links
+    fi
 fi
 
 # Compilation flags
