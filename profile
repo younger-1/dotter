@@ -170,4 +170,7 @@ export RIPGREP_CONFIG_PATH=$HOME/dotter/rgrc
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
+# PYTHONSTARTUP
+export PYTHONSTARTUP=~/dotter/python_startup.py
+
 # vim: shiftwidth=4 ft=sh
