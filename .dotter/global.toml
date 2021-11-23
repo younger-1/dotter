@@ -107,7 +107,7 @@ depends = [ "zsh" ]
 [linux.files]
 
 "tmux.conf.local.sh" = "~/.tmux.conf.local"
-Ranger = "~/.config/ranger"
+Ranger = { target = "~/.config/ranger", type = "symbolic" }
 task = { target = "~/.config/task", type = "symbolic" }
 
 [archlinux]
