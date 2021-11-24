@@ -19,6 +19,14 @@ export HostIP=$(cat /etc/resolv.conf | grep 'nameserver' | awk '{print $2}')
 export HttpPort=10809
 export SocksPort=10808
 
+# ssh
+if [[ -x "$(command -v keychain)" ]]; then
+    # eval `keychain --eval --agents ssh id_rsa`
+    eval $(keychain --eval --agents ssh --quick --quiet id_rsa --nogui)
+else
+    echo "😅 keychain is missing.\n"
+fi
+
 showproxy() {
     echo ''
     echo 'Show Proxy:'

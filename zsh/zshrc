@@ -3,13 +3,6 @@
 # zsh configuration
 # (c) 2011-2017 Alexander Lockshyn
 
-# ssh
-if [[ -x "$(command -v keychain)" ]]; then
-    eval `keychain --eval --agents ssh id_rsa`
-else
-    echo "😅 keychain is missing.\n"
-fi
-
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
