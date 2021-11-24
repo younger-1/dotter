@@ -68,6 +68,9 @@ key[Control-Right]="${terminfo[kRIT5]}"
 [[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
 [[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
 
+# <https://jdhao.github.io/2019/06/13/zsh_bind_keys/>
+bindkey '^[[H' beginning-of-line
+bindkey '^[[F' end-of-line
 
 # Case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
@@ -132,12 +135,35 @@ function what() {
     bat $(whence $1)
 }
 
-function ra() {
-    ranger --choosedir=$HOME/.rangerdir $*
-    LASTDIR=`cat $HOME/.rangerdir`
-    cd "$LASTDIR"
+# always change the dir 
+function rar {
+    ranger --choosedir=/tmp/rangerdir_cd $*
+    LASTDIR=`cat /tmp/rangerdir_cd`
+    if [[ $LASTDIR != $PWD ]]; then
+        cd "$LASTDIR"
+    fi
 }
 
+# changes the dir only when you quit ranger with keybinding capital Q
+function ra {
+    local IFS=$'\t\n'
+    local tempfile="$(mktemp -t tmp.XXXXXX)"
+    local ranger_cmd=(
+        command
+        ranger
+        --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
+    )
+    
+    ${ranger_cmd[@]} "$@"
+    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
+        cd -- "$(cat "$tempfile")" || return
+    fi
+    command rm -f -- "$tempfile" 2>/dev/null
+}
+bindkey -s '^o' "ra\n"
+
+bindkey -s '\ee' 'nvim $(fzf)\n'
+bindkey -s '\eE' 'lvim $(fzf)\n'
 
 # Remembering recent directories
 # autoload -Uz add-zsh-hook
@@ -360,7 +386,7 @@ zinit load zdharma/zsh-diff-so-fancy
 
 # zsh-startify, a vim-startify like plugin
 zinit ice wait"0b" lucid atload"zsh-startify"
-zinit load zdharma/zsh-startify
+zinit load zdharma-continuum/zsh-startify
 
 # declare-zsh
 zinit ice wait"2" lucid
