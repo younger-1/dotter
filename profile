@@ -187,4 +187,7 @@ export RIPGREP_CONFIG_PATH=$HOME/dotter/rgrc
 # PYTHONSTARTUP
 export PYTHONSTARTUP=~/dotter/python_startup.py
 
+# [webinstall.dev]: envman
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
 # vim: shiftwidth=4 ft=sh
