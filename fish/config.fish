@@ -12,6 +12,7 @@ function on_exit --on-event fish_exit
     echo fish is now exiting
 end
 
+# zoxide
 if test -x (command -s zoxide)
     set -gx _ZO_ECHO 1
     zoxide init fish | source   

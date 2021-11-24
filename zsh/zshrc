@@ -3,12 +3,17 @@
 # zsh configuration
 # (c) 2011-2017 Alexander Lockshyn
 
+source ~/zsh/boot.sh
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
     source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+
+source ~/zsh/common.sh
+source ~/zsh/key.zsh
 
 bindkey -e # emacs keymap
 HISTFILE=$ZDOTDIR/.histfile
@@ -30,41 +35,6 @@ HISTCONTROL=ignoreboth
 # https://stackoverflow.com/questions/58861448/zsh-delete-current-previous-argument-entirely
 WORDCHARS='*?_-.~=&;!#$%^(){}<>'
 
-typeset -g -A key
-key[Home]="${terminfo[khome]}"
-key[End]="${terminfo[kend]}"
-key[Insert]="${terminfo[kich1]}"
-key[Backspace]="${terminfo[kbs]}"
-key[Delete]="${terminfo[kdch1]}"
-key[Up]="${terminfo[kcuu1]}"
-key[Down]="${terminfo[kcud1]}"
-key[Left]="${terminfo[kcub1]}"
-key[Right]="${terminfo[kcuf1]}"
-key[PageUp]="${terminfo[kpp]}"
-key[PageDown]="${terminfo[knp]}"
-key[Shift-Tab]="${terminfo[kcbt]}"
-key[Control-Left]="${terminfo[kLFT5]}"
-key[Control-Right]="${terminfo[kRIT5]}"
-# setup key accordingly
-[[ -n "${key[Home]}"      ]] && bindkey -- "${key[Home]}"       beginning-of-line
-[[ -n "${key[End]}"       ]] && bindkey -- "${key[End]}"        end-of-line
-[[ -n "${key[Insert]}"    ]] && bindkey -- "${key[Insert]}"     overwrite-mode
-[[ -n "${key[Backspace]}" ]] && bindkey -- "${key[Backspace]}"  backward-delete-char
-[[ -n "${key[Delete]}"    ]] && bindkey -- "${key[Delete]}"     delete-char
-[[ -n "${key[Up]}"        ]] && bindkey -- "${key[Up]}"         up-line-or-history
-[[ -n "${key[Down]}"      ]] && bindkey -- "${key[Down]}"       down-line-or-history
-[[ -n "${key[Left]}"      ]] && bindkey -- "${key[Left]}"       backward-char
-[[ -n "${key[Right]}"     ]] && bindkey -- "${key[Right]}"      forward-char
-[[ -n "${key[PageUp]}"    ]] && bindkey -- "${key[PageUp]}"     beginning-of-buffer-or-history
-[[ -n "${key[PageDown]}"  ]] && bindkey -- "${key[PageDown]}"   end-of-buffer-or-history
-[[ -n "${key[Shift-Tab]}" ]] && bindkey -- "${key[Shift-Tab]}"  reverse-menu-complete
-[[ -n "${key[Control-Left]}"  ]] && bindkey -- "${key[Control-Left]}"  backward-word
-[[ -n "${key[Control-Right]}" ]] && bindkey -- "${key[Control-Right]}" forward-word
-
-# <https://jdhao.github.io/2019/06/13/zsh_bind_keys/>
-bindkey '^[[H' beginning-of-line
-bindkey '^[[F' end-of-line
-
 # Case insensitive path-completion
 zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
 zstyle ':completion:*' menu select # select completions with arrow keys
@@ -84,79 +54,6 @@ typeset -U PATH path
 
 # For a full list of active aliases, run `alias`.
 alias zshnew="autoload -Uz zsh-newuser-install && zsh-newuser-install -f"
-alias wan='w3mman'
-alias untar='tar -xzvf'
-# Color output
-# https://wiki.archlinux.org/index.php/Color_output_in_console
-#
-# Prints all 256 colors across the screen:
-# (x=`tput op` y=`printf %76s`;for i in {0..256};do o=00$i;echo -e ${o:${#o}-3:3} `tput setaf $i;tput setab $i`${y// /=}$x;done)
-alias diff='diff --color=auto'
-alias grep='grep --color=auto'
-alias ip='ip -color=auto'
-# alias ls='ls --color=auto'
-alias ls='exa'
-alias l='exa -l'
-alias la='exa -a'
-alias ll='exa -la'
-alias lt='exa --tree'
-alias b='bat'
-alias ba='bat -A'
-alias bd='bat -d'
-alias dir='dirs -v'
-alias nvi='nvim --noplugin'
-alias vi='vim --noplugin'
-alias nviat='nvim -u ~/dotter/pager.vim'
-alias viat='vim -u ~/dotter/pager.vim'
-alias ...='../..'
-
-# File search functions
-function f() { find . -iname "*$1*" ${@:2} }
-function r() { grep "$1" ${@:2} -R . }
-
-function md() { mkdir -p "$@" && cd "$_"; }
-
-function touchx() { touch $1; chmod +x $1 }
-
-function fdls() { fd $@ -X exa -lhd }
-
-function today() {
-  date +"%A, %B %-d, %Y"
-}
-
-function what() {
-    bat $(whence $1)
-}
-
-# always change the dir 
-function rar {
-    ranger --choosedir=/tmp/rangerdir_cd $*
-    LASTDIR=`cat /tmp/rangerdir_cd`
-    if [[ $LASTDIR != $PWD ]]; then
-        cd "$LASTDIR"
-    fi
-}
-
-# changes the dir only when you quit ranger with keybinding capital Q
-function ra {
-    local IFS=$'\t\n'
-    local tempfile="$(mktemp -t tmp.XXXXXX)"
-    local ranger_cmd=(
-        command
-        ranger
-        --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
-    )
-    
-    ${ranger_cmd[@]} "$@"
-    if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
-        cd -- "$(cat "$tempfile")" || return
-    fi
-    command rm -f -- "$tempfile" 2>/dev/null
-}
-bindkey -s '^o' "ra\n"
-
-bindkey -s '\ee' 'nvim $(fzf)\n'
-bindkey -s '\eE' 'lvim $(fzf)\n'
 
 # Remembering recent directories
 # autoload -Uz add-zsh-hook
@@ -183,79 +80,6 @@ autoload -Uz run-help
 alias help=run-help
 # Assistant functions have to be enabled separately:
 autoload -Uz run-help-git run-help-ip run-help-openssl run-help-p4 run-help-sudo run-help-svk run-help-svn
-
-# z.lua
-if false && [[ -f /usr/share/z.lua/z.lua ]]; then
-    eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced)"    # ZSH 初始化
-    # export _ZL_MATCH_MODE=1
-    export _ZL_HYPHEN=1
-    export _ZL_ECHO=1
-    alias zi='z -i'      # cd with interactive selection
-    alias zz='z -I'      # use fzf to select in multiple matches
-    alias zc='z -c'      # restrict matches to subdirs of $PWD
-    alias zb='z -b'      # quickly cd to the parent directory
-    alias zh='z -I -t .'
-elif [[ -x "$(command -v zoxide)" ]]; then
-    export _ZO_ECHO=1
-    eval "$(zoxide init zsh)"
-    function zz() {
-        __zoxide_zi "$@"
-    }
-fi
-
-# lazygit
-# https://github.com/jesseduffield/lazygit#changing-directory-on-exit
-function lg() {
-    export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
-    lazygit "$@"
-    if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
-	cd "$(cat $LAZYGIT_NEW_DIR_FILE)"
-	rm -f $LAZYGIT_NEW_DIR_FILE > /dev/null
-    fi
-}
-
-# rga
-# https://github.com/phiresky/ripgrep-all
-# Use rga interactively via fzf
-function rga-fzf() {
-    RG_PREFIX="rga --files-with-matches"
-    local file
-    file="$(
-	FZF_DEFAULT_COMMAND="$RG_PREFIX '$1'" \
-	    fzf --sort --preview="[[ ! -z {} ]] && rga --pretty --context 5 {q} {}" \
-	    --phony -q "$1" \
-	    --bind "change:reload:$RG_PREFIX {q}" \
-	    --preview-window="70%:wrap"
-    )" &&
-    echo "opening $file" &&
-    xdg-open "$file"
-}
-
-# navi
-if [[ -x "$(command -v navi)" ]]; then
-  eval "$(navi widget zsh)"
-fi
-
-# broot
-# <https://dystroy.org/broot/conf_verbs/>
-# <https://dystroy.org/broot/tricks/>
-# <https://dystroy.org/blog/gg/>
-function br {                               
-    local cmd cmd_file code                 
-    cmd_file=$(mktemp)                      
-    if broot --outcmd "$cmd_file" "$@"; then
-        cmd=$(<"$cmd_file")                 
-        rm -f "$cmd_file"                   
-        eval "$cmd"                         
-    else                                    
-        code=$?                             
-        rm -f "$cmd_file"                   
-        return "$code"                      
-    fi 
-}
-alias bs="br --conf ~/.config/broot/select.toml"
-alias be="br --conf ~/.config/broot/edit.toml"
-
 
 # fzf-tab
 # https://github.com/Aloxaf/fzf-tab#usage
