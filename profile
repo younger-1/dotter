@@ -2,22 +2,6 @@
 
 ########################### System ##########################
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
-# for VcXsrv to display
-# export DISPLAY=:0.0
-# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-# export LIBGL_ALWAYS_INDIRECT=1
-
-########################### APP ##########################
-
 # Set XDG dirs
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
@@ -33,60 +17,19 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export XDG_VIDEOS_DIR=~/Videos
 fi
 
-########################### PATH ##########################
-export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
 
-# volta
-# export VOLTA_HOME="$HOME/.volta"
-# export PATH="$VOLTA_HOME/bin:$PATH"
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-# pnpm
-export PATH="$HOME/pnpm-bin:$PATH"
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# julia
-export JULIA_PKG_SERVER=https://mirrors.tuna.tsinghua.edu.cn/julia
-
-# cargo & rust
-export PATH="$HOME/.cargo/bin:$PATH"
-export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
-export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
-
-# ruby
-export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
-
-# go
-export PATH="$HOME/go/bin:$PATH"
-
-# lvim
-export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-$HOME/.local/share/lunarvim}"
-export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-$HOME/.config/lvim}"
-
-# To use different colors for different file extensions
-# <https://www.topbug.net/blog/2016/11/28/a-better-ls-command/#better-color>
-# <https://github.com/sharkdp/vivid>
-if [[ -x "$(command -v vivid)" ]]; then
-    export LS_COLORS="$(vivid generate molokai)"
-    function setcolor() {
-        export LS_COLORS="$(vivid generate $1)"
-    }
-else
-    eval "$(dircolors)"
-fi
-
-export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
-export LESS='-R '
-# export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
-# export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
-
-# For man to display colors
-# export MANPATH="/usr/local/man:$MANPATH"
-export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
-export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
-export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
-export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
-export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
-export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
-export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+# for VcXsrv to display
+# export DISPLAY=:0.0
+# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+# export LIBGL_ALWAYS_INDIRECT=1
 
 # Terminal Test
 # [ANSI escape code](https://en.wikipedia.org/wiki/ANSI_escape_code#Colors)
@@ -95,6 +38,9 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # echo -e "\e[4munderline\e[0m"
 # echo -e "\e[9mstrikethrough\e[0m"
 # echo -e "\e[31mHello World\e[0m"
+
+
+########################### APP ##########################
 
 # https://wiki.archlinux.org/index.php/Environment_variables
 # Preferred editor for local and remote sessions
@@ -125,8 +71,67 @@ else
     fi
 fi
 
+export PAGER='less -RF'
+
+# To use different colors for different file extensions
+# <https://www.topbug.net/blog/2016/11/28/a-better-ls-command/#better-color>
+# <https://github.com/sharkdp/vivid>
+if [[ -x "$(command -v vivid)" ]]; then
+    export LS_COLORS="$(vivid generate molokai)"
+    function setcolor() {
+        export LS_COLORS="$(vivid generate $1)"
+    }
+else
+    eval "$(dircolors)"
+fi
+
+export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+export LESS='-R '
+# export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+# export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
+
+# For man to display colors
+# export MANPATH="/usr/local/man:$MANPATH"
+export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
+export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
+export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\E[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\E[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
+
 # for PulseAudio
 export PULSE_SERVER=tcp:localhost
+
+
+########################### PATH ##########################
+
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
+# volta
+# export VOLTA_HOME="$HOME/.volta"
+# export PATH="$VOLTA_HOME/bin:$PATH"
+
+# pnpm
+export PATH="$HOME/pnpm-bin:$PATH"
+
+# julia
+export JULIA_PKG_SERVER=https://mirrors.tuna.tsinghua.edu.cn/julia
+
+# cargo & rust
+export PATH="$HOME/.cargo/bin:$PATH"
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+
+# ruby
+export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
+
+# go
+export PATH="$HOME/go/bin:$PATH"
+
+# lvim
+export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-$HOME/.local/share/lunarvim}"
+export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-$HOME/.config/lvim}"
 
 # [rg](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file)
 export RIPGREP_CONFIG_PATH=$HOME/dotter/rgrc
@@ -137,9 +142,12 @@ export PYTHONSTARTUP=~/dotter/python_startup.py
 # [webinstall.dev]: envman
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# [brew]
+# [brew]: 
+# <https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/>
+# <https://docs.brew.sh/Homebrew-on-Linux>
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-
-export PAGER='less -RF'
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
 
 # vim: shiftwidth=4 ft=sh
