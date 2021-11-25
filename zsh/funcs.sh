@@ -1,18 +1,18 @@
 # File search functions
-function f() { find . -iname "*$1*" ${@:2} }
-function r() { grep "$1" ${@:2} -R . }
+function f { find . -iname "*$1*" ${@:2}; }
+function r { grep "$1" ${@:2} -R .; }
 
-function md() { mkdir -p "$@" && cd "$_"; }
+function md { mkdir -p "$@" && cd "$_"; }
 
-function touchx() { touch $1; chmod +x $1 }
+function touchx { touch $1; chmod +x $1; }
 
-function fdls() { fd $@ -X exa -lhd }
+function fdls { fd $@ -X exa -lhd; }
 
-function today() {
+function today {
   date +"%A, %B %-d, %Y"
 }
 
-function what() {
+function what {
     bat $(whence $1)
 }
 
@@ -44,7 +44,7 @@ function ra {
 
 # z.lua
 if false && [[ -f /usr/share/z.lua/z.lua ]]; then
-    eval "$(lua /usr/share/z.lua/z.lua --init zsh enhanced)"    # ZSH 初始化
+    eval "$(lua /usr/share/z.lua/z.lua --init ${ZSH_NAME:-bash} enhanced)"    # zsh/bash 初始化
     # export _ZL_MATCH_MODE=1
     export _ZL_HYPHEN=1
     export _ZL_ECHO=1
@@ -55,15 +55,15 @@ if false && [[ -f /usr/share/z.lua/z.lua ]]; then
     alias zh='z -I -t .'
 elif [[ -x "$(command -v zoxide)" ]]; then
     export _ZO_ECHO=1
-    eval "$(zoxide init zsh)"
-    function zz() {
+    eval "$(zoxide init ${ZSH_NAME:-bash})"
+    function zz {
         __zoxide_zi "$@"
     }
 fi
 
 # lazygit
 # https://github.com/jesseduffield/lazygit#changing-directory-on-exit
-function lg() {
+function lg {
     export LAZYGIT_NEW_DIR_FILE=~/.lazygit/newdir
     lazygit "$@"
     if [ -f $LAZYGIT_NEW_DIR_FILE ]; then
@@ -75,7 +75,7 @@ function lg() {
 # rga
 # https://github.com/phiresky/ripgrep-all
 # Use rga interactively via fzf
-function rga-fzf() {
+function rga-fzf {
     RG_PREFIX="rga --files-with-matches"
     local file
     file="$(
@@ -91,7 +91,7 @@ function rga-fzf() {
 
 # navi
 if [[ -x "$(command -v navi)" ]]; then
-  eval "$(navi widget zsh)"
+  eval "$(navi widget ${ZSH_NAME:-bash})"
 fi
 
 # broot

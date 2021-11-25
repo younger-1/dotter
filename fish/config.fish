@@ -20,3 +20,8 @@ if test -x (command -s zoxide)
         __zoxide_zi $argv
     end
 end
+
+# navi
+if test -x (command -s navi)
+    navi widget fish | source
+end

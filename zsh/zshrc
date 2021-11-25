@@ -5,6 +5,9 @@
 
 source ~/zsh/boot.sh
 
+# Discard duplicates from both $PATH and $path
+typeset -U PATH path
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -48,9 +51,6 @@ autoload -Uz colors && colors
 # autoload -Uz vcs_info && vcs_info
 # Time
 # RPS1='%(?..%{$fg_bold[red]%}[%? $(kill -l $?)]%{${reset_color}%} )%T'
-
-# Discard duplicates from both $PATH and $path
-typeset -U PATH path
 
 # For a full list of active aliases, run `alias`.
 alias zshnew="autoload -Uz zsh-newuser-install && zsh-newuser-install -f"

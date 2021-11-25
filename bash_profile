@@ -1,12 +1,15 @@
 #!/bin/bash
 
 # If not running interactively, don't do anything
-[[ $- != *i* ]] && return
+# [[ $- != *i* ]] && return
 
 function use_bash {
-  [[ -f ~/.profile ]] && . ~/.profile
+  source ~/.profile
+  source ~/zsh/boot.sh
 
   [[ -f ~/.bashrc ]] && . ~/.bashrc
+
+  source ~/zsh/common.sh
 }
 
 function use_zsh {
@@ -18,7 +21,8 @@ function use_zsh {
 }
 
 function use_fish {
-  [[ -f ~/.profile ]] && . ~/.profile
+  source ~/.profile
+  source ~/zsh/boot.sh
 
   if [[ -x "$(command -v fish)" ]]; then
     exec fish
