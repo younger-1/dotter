@@ -18,7 +18,6 @@ fi
 source ~/zsh/common.sh
 source ~/zsh/key.zsh
 
-bindkey -e # emacs keymap
 HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=50000
 SAVEHIST=$HISTSIZE

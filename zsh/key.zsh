@@ -1,3 +1,8 @@
+# <https://github.com/romkatv/zsh4humans>
+# <https://gitlab.com/bertrand-benoit/scripts-common>
+
+bindkey -e # emacs keymap
+
 # key
 typeset -g -A key
 key[Home]="${terminfo[khome]}"

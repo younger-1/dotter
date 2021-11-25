@@ -1,4 +1,4 @@
-# set -gx SHELL $__fish_bin_dir/fish
+set -gx SHELL $__fish_bin_dir/fish
 
 if status --is-login
     # set -px PATH ~/linux/bin
@@ -13,7 +13,7 @@ function on_exit --on-event fish_exit
 end
 
 # zoxide
-if test -x (command -s zoxide)
+if command -vq zoxide
     set -gx _ZO_ECHO 1
     zoxide init fish | source   
     function zz
@@ -22,6 +22,6 @@ if test -x (command -s zoxide)
 end
 
 # navi
-if test -x (command -s navi)
+if command -vq navi
     navi widget fish | source
 end
