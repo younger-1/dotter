@@ -1,5 +1,23 @@
 #!/bin/bash
 
+########################### System ##########################
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# for VcXsrv to display
+# export DISPLAY=:0.0
+# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
+# export LIBGL_ALWAYS_INDIRECT=1
+
+########################### APP ##########################
+
 # Set XDG dirs
 export XDG_CONFIG_HOME=~/.config
 export XDG_CACHE_HOME=~/.cache
@@ -107,34 +125,20 @@ else
     fi
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# for VcXsrv to display
-# export DISPLAY=:0.0
-# export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2; exit;}'):0.0
-# export LIBGL_ALWAYS_INDIRECT=1
-
 # for PulseAudio
 export PULSE_SERVER=tcp:localhost
 
 # [rg](https://github.com/BurntSushi/ripgrep/blob/master/GUIDE.md#configuration-file)
 export RIPGREP_CONFIG_PATH=$HOME/dotter/rgrc
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # PYTHONSTARTUP
 export PYTHONSTARTUP=~/dotter/python_startup.py
 
 # [webinstall.dev]: envman
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+
+# [brew]
+test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 export PAGER='less -RF'
 

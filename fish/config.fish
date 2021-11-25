@@ -12,6 +12,10 @@ function on_exit --on-event fish_exit
     echo fish is now exiting
 end
 
+# volta
+# set -gx VOLTA_HOME "$HOME/.volta"
+# set -gx PATH "$VOLTA_HOME/bin" $PATH
+
 # zoxide
 if command -vq zoxide
     set -gx _ZO_ECHO 1

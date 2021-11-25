@@ -32,3 +32,4 @@ function use_fish {
 }
 
 use_fish
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
