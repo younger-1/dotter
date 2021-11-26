@@ -7,6 +7,8 @@ function use_bash {
   source ~/.profile
   source ~/zsh/boot.sh
 
+  source ~/zsh/oh-my-bash.sh
+
   [[ -f ~/.bashrc ]] && . ~/.bashrc
 
   source ~/zsh/common.sh
