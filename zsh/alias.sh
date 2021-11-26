@@ -1,3 +1,43 @@
+# <https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions>
+
+# cat
+alias b='bat'
+alias ba='bat -A'
+alias bd='bat -d'
+alias cat="bat --style=plain --pager='less -RF'"
+
+# ls
+if alias la &>/dev/null; then unalias la; fi
+
+function ls { exa --icons $@; }
+function la { ls -a $@; }
+function lag { ls -a --git-ignore $@; }
+function ll { ls -l --git $@; }
+function lla { la -l --git $@; }
+function lt { ls --tree $@; }
+function llt { ll --tree $@; }
+
+function l { lla --header $@; }
+function lz { l --sort=size $@; }
+function lm { l --modified --sort=modified $@; }
+function lM { l --changed  --sort=changed $@; }
+function li { l --accessed --sort=accessed $@; }
+function lc { l --created  --sort=created $@; }
+
+
+# function l { lsd -l $args }
+
+# dirs
+alias dir='dirs -v'
+alias ...='../..'
+
+# vim
+alias nvi='nvim --noplugin'
+alias vi='vim --noplugin'
+alias nviat='nvim -u ~/dotter/pager.vim'
+alias viat='vim -u ~/dotter/pager.vim'
+
+# others
 alias wan='w3mman'
 alias untar='tar -xzvf'
 # Color output
@@ -8,19 +48,3 @@ alias untar='tar -xzvf'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
-# alias ls='ls --color=auto'
-alias ls='exa'
-alias l='exa -l'
-alias la='exa -a'
-alias ll='exa -la'
-alias lt='exa --tree'
-alias b='bat'
-alias ba='bat -A'
-alias bd='bat -d'
-alias cat="bat --style=plain --pager='less -RF'"
-alias dir='dirs -v'
-alias nvi='nvim --noplugin'
-alias vi='vim --noplugin'
-alias nviat='nvim -u ~/dotter/pager.vim'
-alias viat='vim -u ~/dotter/pager.vim'
-alias ...='../..'
