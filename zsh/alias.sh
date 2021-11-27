@@ -9,23 +9,19 @@ alias cat="bat --style=plain --pager='less -RF'"
 # ls
 if alias la &>/dev/null; then unalias la; fi
 
-function ls { exa --icons $@; }
+function ls { exa --icons --classify --group-directories-first $@; }
 function la { ls -a $@; }
-function lag { ls -a --git-ignore $@; }
-function ll { ls -l --git $@; }
-function lla { la -l --git $@; }
+function lag { la --git-ignore $@; }
+function l { ls -l --git $@; }
 function lt { ls --tree $@; }
-function llt { ll --tree $@; }
+function llt { l --tree --no-permissions $@; }
 
-function l { lla --header $@; }
-function lz { l --sort=size $@; }
-function lm { l --modified --sort=modified $@; }
-function lM { l --changed  --sort=changed $@; }
-function li { l --accessed --sort=accessed $@; }
-function lc { l --created  --sort=created $@; }
-
-
-# function l { lsd -l $args }
+function ll { l -a --header --time-style=long-iso $@; }
+function lz { ll --sort=size $@; }
+function lm { ll --modified --sort=modified $@; }
+function lM { ll --changed  --sort=changed $@; }
+function li { ll --accessed --sort=accessed $@; }
+function lc { ll --created  --sort=created $@; }
 
 # dirs
 alias dir='dirs -v'
@@ -34,8 +30,8 @@ alias ...='../..'
 # vim
 alias nvi='nvim --noplugin'
 alias vi='vim --noplugin'
-alias nviat='nvim -u ~/dotter/pager.vim'
-alias viat='vim -u ~/dotter/pager.vim'
+alias nvicat='nvim -u ~/dotter/pager.vim'
+alias vicat='vim -u ~/dotter/pager.vim'
 
 # others
 alias wan='w3mman'

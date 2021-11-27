@@ -40,5 +40,3 @@ bindkey '^[[H' beginning-of-line
 bindkey '^[[F' end-of-line
 
 bindkey -s '^o' "ra\n"
-bindkey -s '\ee' 'nvim $(fzf)\n'
-bindkey -s '\eE' 'lvim $(fzf)\n'
