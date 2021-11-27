@@ -17,6 +17,7 @@ fi
 
 source ~/zsh/common.sh
 source ~/zsh/key.zsh
+source ~/zsh/tools.zsh
 
 HISTFILE=$ZDOTDIR/.histfile
 HISTSIZE=50000
