@@ -119,6 +119,7 @@ depends = [ "shell", "bash", "zsh", "fish" ]
 "tmux.conf.local.sh" = "~/.tmux.conf.local"
 Ranger = { target = "~/.config/ranger", type = "symbolic" }
 task = { target = "~/.config/task", type = "symbolic" }
+"locale.conf" = "~/.config/locale.conf"
 
 [archlinux]
 

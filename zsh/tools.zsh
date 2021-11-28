@@ -5,6 +5,9 @@ local _bin="$HOME/.local/bin"
 autoload compinit
 compinit
 
+# autocomplete hidden files
+_comp_options+=(globdots)
+
 # <https://hacdias.com/2021/05/30/cd-alias-completions-zsh>
 # function cdc() {
 #   cd "$_config/$1"

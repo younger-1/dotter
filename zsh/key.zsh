@@ -33,3 +33,5 @@ zle -N down-line-or-beginning-search
 
 # My customs
 bindkey -s '^o' "ra\n"
+bindkey "^[ " magic-space
+bindkey "^[!" expand-history
