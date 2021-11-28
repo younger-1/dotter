@@ -26,6 +26,7 @@ function lc { ll --created  --sort=created $@; }
 # dirs
 alias dir='dirs -v'
 alias ...='../..'
+alias cdroot='cd $(git rev-parse --show-toplevel)'
 
 # vim
 alias nvi='nvim --noplugin'
