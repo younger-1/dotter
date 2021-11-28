@@ -38,3 +38,8 @@ Available:
 - Use like so: {{command_output "cargo --help"}}
 - All the helpers from [handlebars_misc_helpers](https://github.com/davidB/handlebars_misc_helpers)
 
+### TODO
+
+<https://github.com/romkatv/zsh4humans>
+
+<https://gitlab.com/bertrand-benoit/scripts-common>
