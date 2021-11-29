@@ -7,7 +7,10 @@ alias bd='bat -d'
 alias cat="bat --style=plain --pager='less -RF'"
 
 # ls
+if alias ls &>/dev/null; then unalias ls; fi
 if alias la &>/dev/null; then unalias la; fi
+if alias l &>/dev/null; then unalias l; fi
+if alias ll &>/dev/null; then unalias ll; fi
 
 function ls { exa --icons --classify --group-directories-first $@; }
 function la { ls -a $@; }
