@@ -6,7 +6,6 @@
 # [[ $- != *i* ]] && return
 
 source ~/.profile
-source ~/zsh/boot.sh
 
 function use_bash {
   source ~/zsh/oh-my-bash.sh
