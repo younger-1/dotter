@@ -3,7 +3,14 @@
 ##
 ## Control the behaviour of the readline library used e.g.                                                                                                  ## by the bash in the interactive mode for line editing.
 ## by the bash in the interactive mode for line editing.
+##
+## By default, <C-x C-r> is bound to re-read-init-file.
 ################################################################################
+
+# <http://www.softpanorama.org/Scripting/Shellorama/Bash_as_command_interpreter/inputrc.shtml>
+# <http://www.softpanorama.org/Scripting/Shellorama/Bash_as_command_interpreter/command_completion.shtml>
+# <https://ss64.com/bash/syntax-inputrc.html>
+# <https://brettterpstra.com/2015/07/09/shell-tricks-inputrc-binding-fun/>
 
 # $include /etc/inputrc
 
@@ -12,13 +19,11 @@
 #
 set bell-style none
 
-
 # If set to on, words which have more than one possible completion without
 # any possible partial completion cause the matches to be listed immediately
 # instead of ringing the bell.
 #
 set show-all-if-unmodified on
-
 
 # If set to on, words which have more than one possible completion cause the
 # matches to be listed immediately instead of ringing the bell.
@@ -30,21 +35,26 @@ set show-all-if-ambiguous on
 #
 set completion-prefix-display-length 3
 
-#
-set colored-stats On
-set completion-ignore-case On
-set mark-symlinked-directories On
-set visible-stats On
-set page-completions off
+# Enable 8bit input
+set meta-flag on
+set input-meta on
+# Turns off 8th bit stripping
+set convert-meta off
+# Keep the 8th bit for display
+set output-meta on
 
-# set meta-flag on
-# set input-meta on
-# set convert-meta off
-# set output-meta on
+#
+set colored-stats on
+set completion-ignore-case on
+set mark-symlinked-directories on
+set visible-stats on
+set page-completions on
 
 $if Bash
 # Quote the current or previous word
 "\C-xq": "\eb\"\ef\""
+"\C-j": menu-complete
+"\C-k": menu-complete-backward
 $endif
 
 # "\C-p":history-search-backward
