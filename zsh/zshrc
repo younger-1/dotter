@@ -3,7 +3,7 @@
 # zsh configuration
 # (c) 2011-2017 Alexander Lockshyn
 
-source ~/zsh/boot.sh
+# echo "home zshrc"
 
 # Discard duplicates from both $PATH and $path
 typeset -U PATH path

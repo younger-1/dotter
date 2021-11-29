@@ -71,7 +71,7 @@ plugins=(
   bashmarks
 )
 
-source $OSH/oh-my-bash.sh
+[[ -f $OSH/oh-my-bash.sh ]] && source $OSH/oh-my-bash.sh
 
 # User configuration
 

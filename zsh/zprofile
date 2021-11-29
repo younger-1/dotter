@@ -1,0 +1,6 @@
+#!/bin/zsh
+
+# echo "home zsh profile"
+
+source ~/.profile
+source ~/zsh/boot.sh

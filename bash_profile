@@ -1,12 +1,14 @@
 #!/bin/bash
 
+# echo "home bash profile"
+
 # If not running interactively, don't do anything
 # [[ $- != *i* ]] && return
 
-function use_bash {
-  source ~/.profile
-  source ~/zsh/boot.sh
+source ~/.profile
+source ~/zsh/boot.sh
 
+function use_bash {
   source ~/zsh/oh-my-bash.sh
 
   [[ -f ~/.bashrc ]] && . ~/.bashrc
@@ -23,9 +25,6 @@ function use_zsh {
 }
 
 function use_fish {
-  source ~/.profile
-  source ~/zsh/boot.sh
-
   if [[ -x "$(command -v fish)" ]]; then
     exec fish
   else

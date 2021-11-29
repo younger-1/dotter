@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# echo "home profile"
+
+# The purpose of the "profile" files is to 
+# contain commands that ought only run once, only at the beginning of login
+
 ########################### System ##########################
 
 # Set XDG dirs
