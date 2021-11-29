@@ -94,6 +94,7 @@ bin = { target = "~/bin", type = "symbolic" }
 [bash.files]
 
 bash_profile = "~/.bash_profile"
+inputrc = "~/.inputrc"
 
 [zsh]
 
