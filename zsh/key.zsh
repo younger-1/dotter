@@ -25,11 +25,11 @@ source ~/zsh/linux-keyboard.sh
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-[[ -n "${key[Up]}"   ]] && bindkey -- "${key[Up]}"   up-line-or-beginning-search
-[[ -n "${key[Down]}" ]] && bindkey -- "${key[Down]}" down-line-or-beginning-search
+bindkey "\ep" up-line-or-beginning-search
+bindkey "\en" down-line-or-beginning-search
 
-[[ -n "${key[A-Left]}"  ]] && bindkey -- "${key[A-Left]}"  emacs-backward-word
-[[ -n "${key[A-Right]}" ]] && bindkey -- "${key[A-Right]}" emacs-forward-word
+# [[ -n "${key[A-Left]}"  ]] && bindkey -- "${key[A-Left]}"  emacs-backward-word
+# [[ -n "${key[A-Right]}" ]] && bindkey -- "${key[A-Right]}" emacs-forward-word
 
 # My customs
 bindkey -s '^o' "ra\n"
