@@ -1,20 +1,26 @@
 ################################################################################
-## ~/.inputrc                                                                                                                                               ##                                                                                                                                                          ## Control the behaviour of the readline library used e.g.                                                                                                  ## by the bash in the interactive mode for line editing.
+## ~/.inputrc
 ##
-## Control the behaviour of the readline library used e.g.                                                                                                  ## by the bash in the interactive mode for line editing.
-## by the bash in the interactive mode for line editing.
+## Fallback chain: $INPUTRC -> ~/.inputrc -> /etc/inputrc
 ##
-## By default, <C-x C-r> is bound to re-read-init-file.
+## controls the behaviour of line input editing for programs that use the GNU Readline library.  
+## Existing programs include FTP, Bash, and GDB.
+##
+## You can re-read the inputrc file with <C-x C-r> which is bound to re-read-init-file.
+## 
+## bind -v - list the current Readline variable names and values.
+## bind -p - list the current Readline key sequences and bindings.
 ################################################################################
 
 # <http://www.softpanorama.org/Scripting/Shellorama/Bash_as_command_interpreter/inputrc.shtml>
 # <http://www.softpanorama.org/Scripting/Shellorama/Bash_as_command_interpreter/command_completion.shtml>
-# <https://ss64.com/bash/syntax-inputrc.html>
 # <https://brettterpstra.com/2015/07/09/shell-tricks-inputrc-binding-fun/>
 
+# First, include any system-wide bindings and variable
+# 
 # $include /etc/inputrc
 
-# The bell style used e.g. on error or tab completion, possible values                                                                                      # are `none', `visible', and `audible' the ringing the bell.
+# The bell style used e.g. on error or tab completion, possible values
 # are `none', `visible', and `audible' the ringing the bell.
 #
 set bell-style none
@@ -49,17 +55,26 @@ set completion-ignore-case on
 set mark-symlinked-directories on
 set visible-stats on
 
-
 # set show-mode-in-prompt on
 # set editing-mode vi
 
 $if Bash
-# "\C-w": unix-word-rubout
-# "\C-w": backward-kill-word
+  # "\C-w": unix-word-rubout
+  # "\C-w": backward-kill-word
+  # var -> var=|...
+  "\C-x\C-l": "\C-a\C-k$\C-y\e\C-e\C-a\C-y="
+  # var -> ${var}
+  "\C-xb": "\eb$\{\ef}"
+  # PATH=|...
+  "\C-xp": "PATH=${PATH}\e\C-e\C-a\ef\C-f"
+$endif
+
+$if Ftp
+  "\C-xg": "get \M-?"
+  "\C-xt": "put \M-?"
 $endif
 
 "\C-j": menu-complete
-"\C-k": menu-complete-backward
 
 "\ep": history-search-backward
 "\en": history-search-forward
@@ -68,5 +83,5 @@ $endif
 "\e[A": history-substring-search-backward
 "\e[B": history-substring-search-forward
 
-# Quote the current or previous word
+# word -> "word"
 "\C-xq": "\eb\"\ef\""
