@@ -61,12 +61,21 @@ set visible-stats on
 $if Bash
   # "\C-w": unix-word-rubout
   # "\C-w": backward-kill-word
-  # var -> var=|...
-  "\C-x\C-l": "\C-a\C-k$\C-y\e\C-e\C-a\C-y="
+  # "\C-]": "cd ..\C-m"
+  "\C-o": "ra\C-m"
+  
+  # $var -> ...
+  # "\e\C-e": expand
+  # var -> ...
+  "\C-xl": "\eb$\ef\e\C-e"
+  # var -> var=...
+  "\C-x\C-l": "\eb\ed\C-y=$\C-y\e\C-e"
   # var -> ${var}
   "\C-xb": "\eb$\{\ef}"
   # PATH=|...
   "\C-xp": "PATH=${PATH}\e\C-e\C-a\ef\C-f"
+  # a b -> sudo a b
+  "\C-xs": "\C-p\C-asudo \C-e\C-m"
 $endif
 
 $if Ftp
