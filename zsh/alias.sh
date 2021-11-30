@@ -16,6 +16,7 @@ function ls { exa --icons --classify --group-directories-first $@; }
 function la { ls -a $@; }
 function lag { la --git-ignore $@; }
 function l { ls -l --git $@; }
+function l. { l -d .* $@; }
 function lt { ls --tree $@; }
 function llt { l --tree --no-permissions $@; }
 

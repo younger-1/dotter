@@ -9,6 +9,8 @@ source ~/.profile
 
 function use_bash {
   source ~/zsh/oh-my-bash.sh
+  # FIXME: oh-my-bash bind up/down
+  bind -f ~/.inputrc
 
   [[ -f ~/.bashrc ]] && . ~/.bashrc
 

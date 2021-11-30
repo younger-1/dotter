@@ -19,16 +19,16 @@
 #
 set bell-style none
 
-# If set to on, words which have more than one possible completion without
-# any possible partial completion cause the matches to be listed immediately
-# instead of ringing the bell.
-#
-set show-all-if-unmodified on
-
 # If set to on, words which have more than one possible completion cause the
 # matches to be listed immediately instead of ringing the bell.
 #
 set show-all-if-ambiguous on
+
+# If set to on, words which have more than one possible completion without
+# any possible partial completion cause the matches to be listed immediately
+# instead of ringing the bell.
+#
+# set show-all-if-unmodified on
 
 # $ ls /usr/share/zsh/functions/Completion/comp
 # ...audit    ...dump     ...init     ...install
@@ -43,19 +43,30 @@ set convert-meta off
 # Keep the 8th bit for display
 set output-meta on
 
-#
+# set expand-tilde on
 set colored-stats on
 set completion-ignore-case on
 set mark-symlinked-directories on
 set visible-stats on
-set page-completions on
+
+
+# set show-mode-in-prompt on
+# set editing-mode vi
 
 $if Bash
-# Quote the current or previous word
-"\C-xq": "\eb\"\ef\""
-"\C-j": menu-complete
-"\C-k": menu-complete-backward
+# "\C-w": unix-word-rubout
+# "\C-w": backward-kill-word
 $endif
 
-# "\C-p":history-search-backward
-# "\C-n":history-search-forward
+"\C-j": menu-complete
+"\C-k": menu-complete-backward
+
+"\ep": history-search-backward
+"\en": history-search-forward
+
+# up and down
+"\e[A": history-substring-search-backward
+"\e[B": history-substring-search-forward
+
+# Quote the current or previous word
+"\C-xq": "\eb\"\ef\""
