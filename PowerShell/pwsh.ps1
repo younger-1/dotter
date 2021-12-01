@@ -38,6 +38,8 @@ $env:VISUAL = "code.cmd"
 # [rust]
 # $env:RUSTUP_DIST_SERVER = "http://mirrors.rustcc.cn"
 # $env:RUSTUP_UPDATE_ROOT = "http://mirrors.rustcc.cn/rustup"
+$env:RUSTUP_DIST_SERVER = "https://rsproxy.cn"
+$env:RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup"
 
 # [python]
 $env:PYTHONIOENCODING = 'utf-8'

@@ -127,8 +127,10 @@ export JULIA_PKG_SERVER=https://mirrors.tuna.tsinghua.edu.cn/julia
 
 # cargo & rust
 export PATH="$HOME/.cargo/bin:$PATH"
-export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
-export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+# export RUSTUP_DIST_SERVER=http://mirrors.rustcc.cn
+# export RUSTUP_UPDATE_ROOT=http://mirrors.rustcc.cn/rustup
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
 # ruby
 export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
