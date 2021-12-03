@@ -7,11 +7,12 @@ email = "younger321@foxmail.com"
 # target-dir = ".cargo/target"
 
 [source]
-crates-io = { replace-with = "sjtu" }
+crates-io = { replace-with = "rsproxy" }
 tuna = { registry = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git" }
 ustc = { registry = "git://mirrors.ustc.edu.cn/crates.io-index" }
 sjtu = { registry = "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index" }
 rustcc = { registry = "git://crates.rustcc.cn/crates.io-index" }
+rsproxy = { registry = "https://rsproxy.cn/crates.io-index" }
 
 # required by cargo-update
 [registries]
@@ -19,8 +20,11 @@ tuna = { index = "https://mirrors.tuna.tsinghua.edu.cn/git/crates.io-index.git" 
 ustc = { index = "git://mirrors.ustc.edu.cn/crates.io-index" }
 sjtu = { index = "https://mirrors.sjtug.sjtu.edu.cn/git/crates.io-index" }
 rustcc = { index = "git://crates.rustcc.cn/crates.io-index" }
+rsproxy= { index = "https://rsproxy.cn/crates.io-index" }
 
 [http]
 check-revoke = false
 #check-config = false
 
+[net]
+git-fetch-with-cli = true

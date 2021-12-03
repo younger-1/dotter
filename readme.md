@@ -3,15 +3,20 @@
 - <http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html>
 - <https://toml.io/en/v1.0.0>
 
+
+
 ## Installation
 
 todo
+
 
 ## Templating
 
 - <https://github.com/SuperCuber/dotter/wiki/Templating-and-Caching>
 - <https://handlebarsjs.com/guide/builtin-helpers.html>
 - <https://github.com/davidB/handlebars_misc_helpers>
+
+
 
 ### Builtin variables
 
@@ -21,6 +26,7 @@ Dotter automatically defines the built-in variable dotter, that is a mapping inc
   - intended to be used like `{{#if dotter.packages.my_package}}`, this will evaluate to false for packages that aren't in the mapping
 - dotter.files - a mapping between the source and target of each deployed file
 - dotter.os - either windows or unix, use something like {{#if (eq dotter.os "unix")}}
+
 
 
 ### Helpers
@@ -38,7 +44,13 @@ Available:
 - Use like so: {{command_output "cargo --help"}}
 - All the helpers from [handlebars_misc_helpers](https://github.com/davidB/handlebars_misc_helpers)
 
-### TODO
+
+
+## TODO
+
+- minimal vimrc
+- minimal zsh
+- minimal bash
 
 <https://github.com/romkatv/zsh4humans>
 
