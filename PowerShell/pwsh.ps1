@@ -25,6 +25,8 @@
 $env:SHELL = "cmd"
 $env:EDITOR = "nvim"
 $env:VISUAL = "code.cmd"
+
+$env:GITHUB_AUTH_TOKEN = "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"
  
 # TODO
 # function or script for curl/wget/aria2 to use hub.fastgit.org

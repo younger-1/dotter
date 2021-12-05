@@ -49,6 +49,8 @@ fi
 
 ########################### APP ##########################
 
+export GITHUB_AUTH_TOKEN=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
+
 # https://wiki.archlinux.org/index.php/Environment_variables
 # Preferred editor for local and remote sessions
 if [[ -x "$(command -v lvim)" ]]; then

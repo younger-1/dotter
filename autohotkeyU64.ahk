@@ -65,31 +65,31 @@ return
 ; Map <CR> to <Ctrl>
 ; And side-effect: shift+enter is like press enter continually
 ; https://usman.io/emacs-ergonomics-using-caps-and-enter-as-ctrls/
-KeyPress=0
 
-^enter::^enter
-enter::
-    KeyWait enter, D
-    KeyPress++
-    SendInput {ctrl down}
-    KeyWait, enter, t1000
-    if errorlevel = 1
-    {
-        SendInput {ctrl up}
-        KeyPress=0
-        Timeout=1
-        return
-    }
-    if Timeout != 1
-    {
-        SendInput {ctrl up}
-        if (a_priorkey = "enter") && (KeyPress >= 1)
-            send,{enter}
-    }
-    Timeout=
-    SendInput {ctrl up}
-    KeyPress=0
-return
+; KeyPress=0
+; ^enter::^enter
+; enter::
+;     KeyWait enter, D
+;     KeyPress++
+;     SendInput {ctrl down}
+;     KeyWait, enter, t1000
+;     if errorlevel = 1
+;     {
+;         SendInput {ctrl up}
+;         KeyPress=0
+;         Timeout=1
+;         return
+;     }
+;     if Timeout != 1
+;     {
+;         SendInput {ctrl up}
+;         if (a_priorkey = "enter") && (KeyPress >= 1)
+;             send,{enter}
+;     }
+;     Timeout=
+;     SendInput {ctrl up}
+;     KeyPress=0
+; return
 
 ;; Windows Terminal appear/disappear
 ;; https://gist.github.com/andrewgodwin/89920ee02501ab12d09b02500897066c
