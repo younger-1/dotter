@@ -37,6 +37,7 @@ AppSettings = { target = "~/AppSettings", type = "symbolic" }
 "s.cfg" = "~/.config/s/config"
 "gpg.conf" = "~/.gnupg/gpg.conf"
 "markdownlint.jsonc" = "~/.markdownlintrc"
+"gh-prs.yml" = "~/.config/prs/sections.yml"
 
 # windows diff
 pip = "~/.config/pip/pip.conf"
