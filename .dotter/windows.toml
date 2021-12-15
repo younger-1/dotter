@@ -6,6 +6,7 @@ nerd_font = "NF"
 colorscheme = "nord"
 
 [default.files]
+vim = { target = "~/vimfiles", type = "symbolic"}
 pip = "~/AppData/Roaming/pip/pip.ini"
 "lsd.yml" = "~/AppData/Roaming/lsd/config.yaml"
 "bottom.toml" = "~/AppData/Roaming/bottom/bottom.toml"

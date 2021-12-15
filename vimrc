@@ -1,12 +1,4 @@
 
-" Normally this if-block is not needed, because `:set nocp` is done
-" automatically when .vimrc is found. However, this might be useful
-" when you execute `vim -u .vimrc` from the command line.
-if &compatible
-  " :set nocompatible should not be executed twice to avoid side effects
-  set nocompatible
-endif
-
 set ttimeout
 set ttimeoutlen=100
 set display+=lastline
@@ -660,15 +652,11 @@ set completeopt+=menuone        " Always show menu, even for one item
 set completeopt+=noselect       " Do not select a match in the menu.
 set completeopt+=noinsert       " Do not insert any text for a match until the user selects from menu.
 
-" [Vim files]
-" :echo undofile({name})
-" :swap
-if has('persistent_undo')
-  " set undofile                  " keep an undo file (undo changes after closing)
-  " set undodir=
+" grep
+if executable('rg')
+  let &grepprg = 'rg --vimgrep --hidden'
+  set grepformat=%f:%l:%c:%m,%f:%l:%m
 endif
-" set noswapfile                  " Swap file is not suitable for big files
-" set nowritebackup
 
 " If you like to keep a lot of backups, you could use a BufWritePre
 " autocommand to change 'backupext' just before writing the file to
@@ -956,7 +944,8 @@ nnoremap <Leader>s :w<CR>
 
 " Stop highlighting when clearing screen
 " nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
-nnoremap <silent> <C-L> :nohlsearch<C-R>='<Bar>diffupdate'<CR><CR><C-L>
+" nnoremap <silent> <C-L> :nohlsearch<C-R>='<Bar>diffupdate'<CR><CR><C-L>
+nnoremap <Esc><Esc> <cmd>nohlsearch<CR><Esc>
 
 " This breaks undo at each line break
 inoremap <CR> <C-G>u<CR>

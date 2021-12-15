@@ -40,6 +40,7 @@ AppSettings = { target = "~/AppSettings", type = "symbolic" }
 "gh-prs.yml" = "~/.config/prs/sections.yml"
 
 # windows diff
+vim = { target = "~/.vim", type = "symbolic"}
 pip = "~/.config/pip/pip.conf"
 "lsd.yml" = "~/.config/lsd/config.yaml"
 "bottom.toml" = "~/.config/bottom/bottom.toml"

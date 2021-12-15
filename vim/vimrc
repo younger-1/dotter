@@ -1,0 +1,70 @@
+" <https://github.com/halkn/dotfiles/blob/master/.vim/vimrc>
+" <https://github.com/janlazo/dotvim8/blob/master/shared.vim>
+
+" Normally this if-block is not needed, because `:set nocp` is done
+" automatically when .vimrc is found. However, this might be useful
+" when you execute `vim -u .vimrc` from the command line.
+if &compatible
+  " :set nocompatible should not be executed twice to avoid side effects
+  set nocompatible
+endif
+
+" environment variable
+let $VIM_CONFIG_DIR = expand('<sfile>:p:h')
+let $VIM_DATA_DIR = $XDG_DATA_HOME == "" ?
+\ expand('$HOME/.local/share/vim') :
+\ expand('$XDG_DATA_HOME/vim')
+let $VIM_CACHE_DIR = $XDG_CACHE_HOME == "" ?
+\ expand('$HOME/.cache/vim') :
+\ expand('$XDG_CACHE_HOME/vim')
+
+" [Vim files]
+" :echo undofile({name})
+" :swap
+set viminfofile=$VIM_CACHE_DIR/viminfo
+set noswapfile                  " Swap file is not suitable for big files
+set undofile
+set undodir=$VIM_CACHE_DIR/undo
+" call mkdir(&undodir, "p")
+
+let g:data_dir = $HOME .. (has('win32') ? '/vimfiles' : '/.vim')
+if empty(glob(data_dir .. '/autoload/plug.vim'))
+  silent execute '!curl -fLo ' .. data_dir .. '/autoload/plug.vim --create-dirs  https://raw.fastgit.org/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.cache/vim/plugged')
+  Plug 'junegunn/vim-plug'
+  " [Theme]
+  Plug 'morhetz/gruvbox'
+  Plug 'ryanoasis/vim-devicons'
+
+  " [Motion]
+  Plug 'justinmk/vim-sneak'
+  Plug 'haya14busa/vim-asterisk'
+  Plug 'bkad/CamelCaseMotion'
+  " Plug 'wellle/targets.vim'
+  Plug 'unblevable/quick-scope'
+  Plug 'andymass/vim-matchup'
+
+  " [Change]
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-abolish'
+  Plug 'tpope/vim-repeat'
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-entire'
+  " Plug 'tommcdo/vim-exchange'
+  " -- Comment
+  Plug 'tpope/vim-commentary'
+  " Plug 'preservim/nerdcommenter'
+  " Plug 'tyru/caw.vim'
+  Plug 'mg979/vim-visual-multi'
+  Plug 'junegunn/vim-easy-align'
+
+  " [Vim]
+  Plug 'tpope/vim-scriptease'
+  Plug 'sheerun/vim-polyglot'
+
+  Plug 'itchyny/lightline.vim'
+call plug#end()
+
