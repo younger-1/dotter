@@ -10,15 +10,6 @@
 let $vim_config_dir = $HOME .. (has('win32') ? '/vimfiles' : '/.vim')
 let $vim_cache_dir = expand('$HOME/.cache/vim')
 
-" [Vim files]
-" :echo undofile({name})
-" :swap
-set viminfofile=$vim_cache_dir/viminfo
-set noswapfile                  " Swap file is not suitable for big files
-set undofile
-set undodir=$vim_cache_dir/undo
-" call mkdir(&undodir, 'p')
-
 let s:install_path = $vim_config_dir .. '/autoload/plug.vim'
 if empty(glob(s:install_path))
   silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -60,14 +51,97 @@ call plug#begin()
   Plug 'itchyny/lightline.vim'
 call plug#end()
 
-set bg=dark
 colorscheme gruvbox
 
-" Search
+" Use vertical bar cursor in Insert mode
+let &t_SI .= "\e[6 q"
+" Use Block cursor in Normal mode
+let &t_EI .= "\e[2 q"
+" Use Underline cursor in Replace mode
+let &t_SR .= "\e[4 q"
+
+if exists('$TMUX')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+
+" [vim files]
+set viminfo^=!                  " Save and restore global variables
+set viminfofile=$vim_cache_dir/viminfo
+set noswapfile                  " Swap file is not suitable for big files
+set undofile                    " Saves undo history to an undo file
+set undodir=$vim_cache_dir/undo
+" call mkdir(&undodir, 'p')
+
+" [search]
 set hlsearch
-set ignorecase
 set incsearch
+set ignorecase
 set smartcase
 
-set wildmenu
-set completeopt=menu,menuone,noinsert,noselect
+" [cmdline]
+set wildmenu                    " Enhanced tab completion
+set history=2000                " Keep 2000 lines of command line history
+
+" [insert]
+set complete-=i                 " Keyword completion ins-completion do not scan included files
+set completeopt+=menuone        " Always show menu, even for one item
+set completeopt+=noselect       " Do not select a match in the menu.
+set completeopt+=noinsert       " Do not insert any text for a match until the user selects from menu.
+set backspace=indent,eol,start
+
+" [appearance]
+set number
+set relativenumber
+
+set t_Co=256                    " Number of colors
+set termguicolors
+set bg=dark
+
+set display+=lastline           " When `wrap` on, @@@ is put in the end of the last screen line to indicate the rest of the line is not displayed
+
+set formatoptions+=j            " Delete comment character when joining commented lines
+set sessionoptions-=options
+set viewoptions-=options
+
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+set fileformats=unix,dos,mac    " Use unix's LF in new buffer
+
+set splitbelow                  " Force all horizontal splits to go below current window
+set splitright                  " Force all vertical splits to go to the right of current window
+
+set hidden                      " Buffer should still exist if window is closed
+
+set timeoutlen=500              " Time to wait for a mapped sequence to complete
+set updatetime=300              " Faster completion. Time to update file swap, make diff markers appear quickly
+
+set synmaxcol=400               " For performance tweaks
+
+set whichwrap+=<,>,[,],h,l
+
+let g:mapleader = ' '
+let g:maplocalleader = '-'
+
+nnoremap <leader>r :source $MYVIMRC<cr>
+nnoremap <leader>w :w<cr>
+nnoremap <leader>q :q<cr>
+nnoremap g<C-l> <cmd>nohlsearch<cr><C-l>
+
+" Caputre result for Ex-Command.
+command! -nargs=1 -complete=command Capture
+\ <mods> new |
+\ setlocal buftype=nofile bufhidden=hide noswapfile |
+\ call setline(1, split(execute(<q-args>), '\n'))
+
+" Count for char in current buffer.
+command! -nargs=0 Wc %s/.//nge
+
+augroup young_ft
+  autocmd!
+  autocmd FileType qf,help,man nnoremap <silent> <buffer> q :close<CR>
+  autocmd FileType help nnoremap <buffer> <CR> <C-]>
+  autocmd FileType help nnoremap <buffer> <BS> <C-T>
+  autocmd FileType help nnoremap <buffer> { :pop<cr>
+  autocmd FileType help nnoremap <buffer> } :tag<cr> 
+  autocmd FileType vim setlocal foldlevel=0 foldmethod=marker foldmarker=\ {{{,\ }}}
+augroup END

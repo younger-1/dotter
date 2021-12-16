@@ -11,12 +11,6 @@ endif
 
 set ttimeout
 set ttimeoutlen=100
-set display+=lastline
-set formatoptions+=j            " Delete comment character when joining commented lines
-set history=1000                " Keep 1000 lines of command line history
-set tabpagemax=50               " Maximum number of tab pages
-set viminfo^=!                  " Save and restore global variables
-
 
 """""""""""""""""""""""""""""
 "      Younger's vimrc      "
@@ -540,29 +534,7 @@ let g:everforest_better_performance = 0
 """"""""""""""""""""""
 
 " Settings {{{
-set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
-set wildmenu                    " Enhanced tab completion
-set fileformats=unix,dos,mac    " Use unix's LF in new buffer
-
-set splitright                  " Vertical windows should be split to right
-set splitbelow                  " Horizontal windows should split to bottom
-set hidden                      " Buffer should still exist if window is closed
-set backspace=indent,eol,start
-set lazyredraw                  " Don't redraw while executing macros (good performance config)
-
 set noerrorbells                " No beeps when error happens
-
-set updatetime=200              " Time to update file swap, make diff markers appear quickly
-
-set timeoutlen=500
-
-set nrformats-=octal            " For CTRL-A and CTRL-X work better
-
-set sessionoptions-=options
-set viewoptions-=options
-set synmaxcol=180               " For performance tweaks
-set whichwrap=b,s,<,>
-
 
 " [Win10]
 
@@ -596,16 +568,6 @@ else
   if has('nvim')
     let g:python3_host_prog = '/usr/sbin/python'
   endif
-endif
-
-" [Search]
-set ignorecase
-set smartcase
-
-set hlsearch
-set incsearch
-if has('nvim')
-  set inccommand=split
 endif
 
 " [Appearance]
@@ -655,12 +617,6 @@ set showmatch                   " When a bracket is inserted, briefly jump to th
 set listchars=eol:↲,space:·,trail:~,tab:>-,extends:>,precedes:<,nbsp:+
 set pumheight=30                " Completion window max size
 set shortmess+=c                " Don't pass useless messages to |ins-completion-menu|.
-
-" [Complete]
-set complete-=i
-set completeopt+=menuone        " Always show menu, even for one item
-set completeopt+=noselect       " Do not select a match in the menu.
-set completeopt+=noinsert       " Do not insert any text for a match until the user selects from menu.
 
 " grep
 if executable('rg')
