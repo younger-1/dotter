@@ -20,6 +20,9 @@ nmap Y y$
 
 imap jk <ESC>
 
+nmap <C-w>m workbench.action.minimizeOtherEditors
+nmap <C-w>M workbench.action.maximizeEditor
+
 nmap yon :set number!<cr>
 nmap yor :set relativenumber!<cr>
 nmap yow editor.action.toggleWordWrap
@@ -27,10 +30,14 @@ nmap yoW editor.action.toggleRenderWhitespace
 
 nmap <space>; vim.showQuickpickCmdLine
 nmap <space>/ workbench.view.search
+
 nmap <space>z workbench.action.toggleZenMode
-nmap <C-w>m workbench.action.minimizeOtherEditors
-nmap <C-w>M workbench.action.maximizeEditor
 
 nmap g<C-l> :nohlsearch<cr>
 
+nmap <space>bo workbench.action.closeOtherEditors
 
+nmap <space>gr git.revertChange
+
+nmap <space>bs workbench.action.toggleSplitEditorInGroup
+nmap <space>bS workbench.action.toggleSplitEditorInGroupLayout

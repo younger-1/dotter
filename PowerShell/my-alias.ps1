@@ -54,9 +54,9 @@ $lsp = "$neovim\lsp_servers"
 $lvim = "$config\lvim"
 $lunar = "$share\lunarvim"
 $lunarpacker = "$lunar\site\pack\packer"
-if (Test-Path $bin\lunar) {
-  $env:GIT_EDITOR = 'lunar'
-}
+# if (Test-Path $bin\lunar) {
+#   $env:GIT_EDITOR = 'lunar'
+# }
 
 # Other
 $icon = "$HOME\Beauty\Icons"
