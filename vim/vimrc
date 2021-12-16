@@ -1,14 +1,10 @@
+" vim: textwidth=100 shiftwidth=2
+" vim: foldmethod=marker foldmarker=\ {{{,\ }}}
+
 " <https://github.com/halkn/dotfiles/blob/master/.vim/vimrc>
 " <https://github.com/janlazo/dotvim8/blob/master/shared.vim>
 " <https://github.com/cocopon/dotfiles/blob/main/.vimrc>
-
-" Normally this if-block is not needed, because `:set nocp` is done
-" automatically when .vimrc is found. However, this might be useful
-" when you execute `vim -u .vimrc` from the command line.
-if &compatible
-  " :set nocompatible should not be executed twice to avoid side effects
-  set nocompatible
-endif
+" <https://github.com/junegunn/dotfiles/blob/master/vimrc>
 
 " let $vim_config_dir = expand('<sfile>:p:h')
 let $vim_config_dir = $HOME .. (has('win32') ? '/vimfiles' : '/.vim')
@@ -21,15 +17,16 @@ set viminfofile=$vim_cache_dir/viminfo
 set noswapfile                  " Swap file is not suitable for big files
 set undofile
 set undodir=$vim_cache_dir/undo
-" call mkdir(&undodir, "p")
+" call mkdir(&undodir, 'p')
 
-if empty(glob($vim_config_dir .. '/autoload/plug.vim'))
-  silent execute '!curl -fLo ' .. $vim_config_dir .. '/autoload/plug.vim --create-dirs  https://raw.fastgit.org/junegunn/vim-plug/master/plug.vim'
+let s:install_path = $vim_config_dir .. '/autoload/plug.vim'
+if empty(glob(s:install_path))
+  silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" vim-plug will set `g:plug_home` to it
-call plug#begin('~/.cache/vim/plugged')
+let g:plug_home = $vim_cache_dir .. '/plugged'
+call plug#begin()
   " [Theme]
   Plug 'morhetz/gruvbox'
   Plug 'ryanoasis/vim-devicons'

@@ -1,3 +1,13 @@
+" vim: textwidth=100 shiftwidth=2
+" vim: foldmethod=marker foldmarker=\ {{{,\ }}}
+
+" Normally this if-block is not needed, because `:set nocp` is done
+" automatically when .vimrc is found. However, this might be useful
+" when you execute `vim -u .vimrc` from the command line.
+if &compatible
+  " :set nocompatible should not be executed twice to avoid side effects
+  set nocompatible
+endif
 
 set ttimeout
 set ttimeoutlen=100
@@ -1866,7 +1876,3 @@ let g:neovide_cursor_trail_length=0.8
 "
 let g:neovide_cursor_animation_length=0.18
 " }}}
-
-
-" vim: textwidth=100 shiftwidth=2
-" vim: foldmethod=marker foldmarker=\ {{{,\ }}}
