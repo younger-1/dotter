@@ -6,10 +6,10 @@ map j gj
 " nmap <Left> 2zl
 " nmap <Right> 2zh
 
-nmap <Up>    <C-w><Up>
-nmap <Down>  <C-w><Down>
-nmap <Left>  <C-w><Left>
-nmap <Right> <C-w><Right>
+" nmap <Up>    <C-w><Up>
+" nmap <Down>  <C-w><Down>
+" nmap <Left>  <C-w><Left>
+" nmap <Right> <C-w><Right>
 
 nmap <C-Up>    <C-w>-
 nmap <C-Down>  <C-w>+

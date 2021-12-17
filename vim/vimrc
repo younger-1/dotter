@@ -5,6 +5,7 @@
 " <https://github.com/janlazo/dotvim8/blob/master/shared.vim>
 " <https://github.com/cocopon/dotfiles/blob/main/.vimrc>
 " <https://github.com/junegunn/dotfiles/blob/master/vimrc>
+" <https://github.com/akinsho/dotfiles/blob/main/vim/.vimrc>
 
 " let $vim_config_dir = expand('<sfile>:p:h')
 let $vim_config_dir = $HOME .. (has('win32') ? '/vimfiles' : '/.vim')
@@ -49,6 +50,9 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
 
   Plug 'itchyny/lightline.vim'
+  Plug 'mhinz/vim-startify'
+  Plug 'airblade/vim-rooter'
+  Plug 'bagrat/vim-buffet'
 call plug#end()
 
 colorscheme gruvbox
@@ -122,9 +126,17 @@ set whichwrap+=<,>,[,],h,l
 let g:mapleader = ' '
 let g:maplocalleader = '-'
 
+nnoremap <leader>pi :PlugInstall<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
+nnoremap <leader>ps :PlugStatus<CR>
+nnoremap <leader>pc :PlugClean<CR>
+nnoremap <leader>pu :PlugUpdate<CR>
+nnoremap <leader>pU :PlugUpgrade<CR>
+
 nnoremap <leader>r :source $MYVIMRC<cr>
 nnoremap <leader>w :w<cr>
 nnoremap <leader>q :q<cr>
+nnoremap <leader>c :bd<cr>
 nnoremap g<C-l> <cmd>nohlsearch<cr><C-l>
 
 " Caputre result for Ex-Command.
@@ -145,3 +157,4 @@ augroup young_ft
   autocmd FileType help nnoremap <buffer> } :tag<cr> 
   autocmd FileType vim setlocal foldlevel=0 foldmethod=marker foldmarker=\ {{{,\ }}}
 augroup END
+
