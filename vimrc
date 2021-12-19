@@ -1,21 +1,8 @@
 " vim: textwidth=100 shiftwidth=2
 " vim: foldmethod=marker foldmarker=\ {{{,\ }}}
 
-" Normally this if-block is not needed, because `:set nocp` is done
-" automatically when .vimrc is found. However, this might be useful
-" when you execute `vim -u .vimrc` from the command line.
-if &compatible
-  " :set nocompatible should not be executed twice to avoid side effects
-  set nocompatible
-endif
-
 set ttimeout
 set ttimeoutlen=100
-
-"""""""""""""""""""""""""""""
-"      Younger's vimrc      "
-"   `1 23 4 56 78 9 0- =    "
-"""""""""""""""""""""""""""""
 
 " Basic {{{
 " For debug reason, do NOT create $VIM\vimrc, as it will be sourced before "$HOME\_vimrc"
@@ -39,12 +26,6 @@ set ttimeoutlen=100
 " set langmenu=en_US.UTF-8
 " set langmenu=zh_TW.UTF-8
 " set langmenu=zh_CN.UTF-8
-
-" Must be set before filetype detection or syntax highlighting.
-" {for vim but not neovim}
-set encoding=utf-8
-" :scriptencoding must be placed after 'encoding' option
-scriptencoding utf-8
 
 " }}}
 

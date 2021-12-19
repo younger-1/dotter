@@ -1,15 +1,35 @@
 " vim: textwidth=100 shiftwidth=2
 " vim: foldmethod=marker foldmarker=\ {{{,\ }}}
 
+"""""""""""""""""""""""""""""
+"      Younger's vimrc      "
+"   `1 23 4 56 78 9 0- =    "
+"""""""""""""""""""""""""""""
+
 " <https://github.com/halkn/dotfiles/blob/master/.vim/vimrc>
 " <https://github.com/janlazo/dotvim8/blob/master/shared.vim>
 " <https://github.com/cocopon/dotfiles/blob/main/.vimrc>
 " <https://github.com/junegunn/dotfiles/blob/master/vimrc>
 " <https://github.com/akinsho/dotfiles/blob/main/vim/.vimrc>
+" <https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/>
+
+" Normally this if-block is not needed, because `:set nocp` is done
+" automatically when .vimrc is found. However, this might be useful
+" when you execute `vim -u .vimrc` from the command line.
+if &compatible
+  " :set nocompatible should not be executed twice to avoid side effects
+  set nocompatible
+endif
+
+" If you set the 'encoding' option in your |.vimrc|,
+" `:scriptencoding` must be placed after that.
+set encoding=utf-8
+scriptencoding utf-8
 
 " let $vim_config_dir = expand('<sfile>:p:h')
 let $vim_config_dir = $HOME .. (has('win32') ? '/vimfiles' : '/.vim')
-let $vim_cache_dir = expand('$HOME/.cache/vim')
+let $vim_cache_dir = expand('~/.cache/vim')
+let $nvim_config_dir = expand('~/.config/nvim')
 
 let s:install_path = $vim_config_dir .. '/autoload/plug.vim'
 if empty(glob(s:install_path))
@@ -56,6 +76,8 @@ call plug#begin()
 call plug#end()
 
 colorscheme gruvbox
+filetype plugin indent on
+syntax on
 
 " Use vertical bar cursor in Insert mode
 let &t_SI .= "\e[6 q"
@@ -70,6 +92,8 @@ if exists('$TMUX')
 endif
 
 " [vim files]
+set rtp^=$nvim_config_dir
+set rtp+=$nvim_config_dir/after
 set viminfo^=!                  " Save and restore global variables
 set viminfofile=$vim_cache_dir/viminfo
 set noswapfile                  " Swap file is not suitable for big files
@@ -97,6 +121,7 @@ set backspace=indent,eol,start
 " [appearance]
 set number
 set relativenumber
+set laststatus=2
 
 set t_Co=256                    " Number of colors
 set termguicolors
@@ -123,6 +148,8 @@ set synmaxcol=400               " For performance tweaks
 
 set whichwrap+=<,>,[,],h,l
 
+set mouse=
+
 let g:mapleader = ' '
 let g:maplocalleader = '-'
 
@@ -148,13 +175,13 @@ command! -nargs=1 -complete=command Capture
 " Count for char in current buffer.
 command! -nargs=0 Wc %s/.//nge
 
-augroup young_ft
-  autocmd!
-  autocmd FileType qf,help,man nnoremap <silent> <buffer> q :close<CR>
-  autocmd FileType help nnoremap <buffer> <CR> <C-]>
-  autocmd FileType help nnoremap <buffer> <BS> <C-T>
-  autocmd FileType help nnoremap <buffer> { :pop<cr>
-  autocmd FileType help nnoremap <buffer> } :tag<cr> 
-  autocmd FileType vim setlocal foldlevel=0 foldmethod=marker foldmarker=\ {{{,\ }}}
-augroup END
+" augroup young_ft
+"   autocmd!
+"   autocmd FileType qf,help,man nnoremap <silent> <buffer> q :close<CR>
+"   autocmd FileType help nnoremap <buffer> <CR> <C-]>
+"   autocmd FileType help nnoremap <buffer> <BS> <C-T>
+"   autocmd FileType help nnoremap <buffer> { :pop<cr>
+"   autocmd FileType help nnoremap <buffer> } :tag<cr> 
+"   autocmd FileType vim setlocal foldlevel=0 foldmethod=marker foldmarker=\ {{{,\ }}}
+" augroup END
 
