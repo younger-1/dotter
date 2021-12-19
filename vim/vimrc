@@ -25,23 +25,33 @@ endif
 " `:scriptencoding` must be placed after that.
 set encoding=utf-8
 scriptencoding utf-8
+" language zh_CN.uft-8
+" language en_US.uft-8
 
 " let $vim_config_dir = expand('<sfile>:p:h')
 let $vim_config_dir = $HOME .. (has('win32') ? '/vimfiles' : '/.vim')
 let $vim_cache_dir = expand('~/.cache/vim')
 let $nvim_config_dir = expand('~/.config/nvim')
 
+let s:is_plugged = 1
 let s:install_path = $vim_config_dir .. '/autoload/plug.vim'
 if empty(glob(s:install_path))
   silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+let g:plug_url_format = 'https://github.com/%s.git'
 let g:plug_home = $vim_cache_dir .. '/plugged'
 call plug#begin()
+  Plug $nvim_config_dir
+
   " [Theme]
   Plug 'morhetz/gruvbox'
   Plug 'ryanoasis/vim-devicons'
+
+  " [Basic]
+  Plug 'sheerun/vim-polyglot', { 'on' : [] }
+  Plug 'airblade/vim-rooter', { 'on' : [] }
 
   " [Motion]
   Plug 'justinmk/vim-sneak'
@@ -67,12 +77,14 @@ call plug#begin()
 
   " [Vim]
   Plug 'tpope/vim-scriptease'
-  Plug 'sheerun/vim-polyglot'
-
+  Plug 'bagrat/vim-buffet'
   Plug 'itchyny/lightline.vim'
   Plug 'mhinz/vim-startify'
-  Plug 'airblade/vim-rooter'
-  Plug 'bagrat/vim-buffet'
+  Plug 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
+  Plug 'junegunn/limelight.vim', { 'on' : 'Limelight' }
+
+" `call plug#end()` to update 'runtimepath' and initialize plugin system
+" Automatically executes `filetype plugin indent on` and `syntax enable`
 call plug#end()
 
 colorscheme gruvbox
@@ -92,8 +104,10 @@ if exists('$TMUX')
 endif
 
 " [vim files]
-set rtp^=$nvim_config_dir
-set rtp+=$nvim_config_dir/after
+if !s:is_plugged && isdirectory($nvim_config_dir)
+  set rtp^=$nvim_config_dir
+  set rtp+=$nvim_config_dir/after
+endif
 set viminfo^=!                  " Save and restore global variables
 set viminfofile=$vim_cache_dir/viminfo
 set noswapfile                  " Swap file is not suitable for big files
