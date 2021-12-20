@@ -18,3 +18,13 @@ let $vim_config_dir = $HOME .. (has('win32') ? '/vimfiles' : '/.vim')
 let $vim_cache_dir = expand('~/.cache/vim')
 let $nvim_config_dir = expand('~/.config/nvim')
 
+let g:is_win = has('win32')
+let g:is_vim8 = has('patch-8.0.0039') && exists('*job_start')
+let g:path_sep = g:is_win ? '\' : '/'
+let g:sidebar_width = 30
+let g:type_t = {
+\   'string':  type(''),
+\   'list':    type([]),
+\   'dict':    type({}),
+\   'funcref': type(function('call'))
+\ }

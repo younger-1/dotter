@@ -41,7 +41,7 @@ function! Check_missing(...)
 endfunction
 
 function s:after_plug()
-  if s:is_plugged 
+  if s:is_plugged
     return
   endif
 
@@ -85,6 +85,7 @@ function s:plugging()
   " Plug 'preservim/nerdcommenter'
   " Plug 'tyru/caw.vim'
   Plug 'mg979/vim-visual-multi'
+    let g:VM_default_mappings = 0
   Plug 'junegunn/vim-easy-align'
 
   " [Vim]
@@ -97,6 +98,17 @@ function s:plugging()
 
   Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'Shougo/defx.nvim'
+
+  Plug 'preservim/nerdcommenter'
+  Plug 'preservim/nerdtree'
+    nnoremap <leader>e <Cmd>NERDTreeToggle<CR>
+    autocmd BufEnter * ++nested if (tabpagenr('$') == 1 && winnr('$') == 1 && &filetype ==# 'nerdtree') | q | endif
+    let g:NERDTreeDirArrowExpandable = '▸'
+    let g:NERDTreeDirArrowCollapsible = '▾'
+    let g:NERDTreeIgnore = [
+      \ '\.git$', '\.hg$', '\.svn$', '\.swp$',
+      \ '\.pyc$', '\.pyo$', '__pycache__$'
+      \ ]
 endfunction
 
 let s:is_plugged = 1
@@ -104,6 +116,8 @@ let s:is_plugged = 1
 call s:before_plug()
 call s:boot_plug()
 call s:after_plug()
+
+IncScript config/defx.vim
 
 if s:is_plugged
   colorscheme gruvbox

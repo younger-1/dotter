@@ -1,3 +1,6 @@
+let g:mapleader = ' '
+let g:maplocalleader = '-'
+
 " Disable default plugin
 let g:loaded_gzip               = 1
 let g:loaded_tar                = 1
@@ -64,7 +67,9 @@ set sidescrolloff=8
 " 唐僧问道：‘泼猴，若我救你出来，你该如何报答我？’ 悟空：“你若放我出来，我定会送你上西天！”
 set showmatch                   " When a bracket is inserted, briefly jump to the matching one
 set matchpairs+=【:】,（:）,《:》,‘:’,“:”,；:。,，:。
-set listchars=eol:↲,space:·,trail:~,tab:>-,extends:>,precedes:<,nbsp:+
+set list
+set listchars=tab:●·,extends:→,precedes:←,trail:■
+" set listchars=eol:↲,space:·,trail:~,tab:>-,extends:>,precedes:<,nbsp:+
 
 " [appearance]
 " +-------------------------------------------------+
@@ -104,6 +109,7 @@ set viewoptions-=options
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
 set fileformats=unix,dos,mac    " Use unix's LF in new buffer
 
+set winminheight=0 winminwidth=0
 set splitbelow                  " Force all horizontal splits to go below current window
 set splitright                  " Force all vertical splits to go to the right of current window
 

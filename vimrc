@@ -923,16 +923,7 @@ nmap ga <Plug>(LiveEasyAlign)
 
 
 " [nerdtree]
-map <Leader>nn <Cmd>NERDTreeToggle<CR>
 map <Leader>nf <Cmd>NERDTreeFind<CR>
-
-" let g:NERDTreeDirArrowExpandable = '▸'
-" let g:NERDTreeDirArrowCollapsible = '▾'
-
-let g:NERDTreeIgnore = [
-  \ '\.git$', '\.hg$', '\.svn$', '\.swp$',
-  \ '\.pyc$', '\.pyo$', '__pycache__$'
-  \ ]
 
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1

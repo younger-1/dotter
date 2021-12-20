@@ -13,6 +13,7 @@
 " <https://github.com/akinsho/dotfiles/blob/main/vim/.vimrc>
 " <https://github.com/liuchengxu/vim-better-default/blob/master/plugin/default.vim>
 " <https://www.freecodecamp.org/news/vimrc-configuration-guide-customize-your-vim-editor/>
+" <https://github.com/PhilRunninger/nvim_config/blob/master/init.vim>
 
 " let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
 let s:home = fnamemodify(expand('<sfile>:p'), ':h')
@@ -26,3 +27,9 @@ IncScript core/cmd.vim
 IncScript core/autocmd.vim
 IncScript core/mappings.vim
 
+" TODO:
+" <https://github.com/haya14busa/is.vim>
+" <https://github.com/osyo-manga/vim-anzu>
+" <https://github.com/PhilRunninger/bufselect.vim>
+" <https://github.com/t9md/vim-choosewin>
+" <https://stackoverflow.com/questions/48950476/make-nerdtree-use-choosewin-on-open-file>
