@@ -100,6 +100,10 @@ function s:plugging()
   Plug 'bagrat/vim-buffet'
   Plug 'itchyny/lightline.vim'
   Plug 'mhinz/vim-startify'
+    " Do not change working directory when opening files.
+    let g:startify_change_to_dir = 0
+    let g:startify_fortune_use_unicode = 1
+
   Plug 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
   Plug 'junegunn/limelight.vim', { 'on' : 'Limelight' }
 
@@ -124,8 +128,10 @@ call s:before_plug()
 call s:boot_plug()
 call s:after_plug()
 
+" <https://github.com/jdhao/nvim-config/blob/master/core/plugins.vim>
 IncScript config/defx.vim
 IncScript config/my_tree.vim
+IncScript config/matchup.vim
 
 if s:is_plugged
   colorscheme bogster
