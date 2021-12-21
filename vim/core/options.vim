@@ -31,9 +31,10 @@ set undodir=$vim_cache_dir/undo
 if !isdirectory(&undodir)
   call mkdir(&undodir, 'p')
 endif
-set backup "generate a backupfile when open file
-set backupext=.vbak  "backup file'a suffix
-set backupdir=$vim_cache_dir/backup  "backup file's directory
+
+set nobackup
+set backupext=.vbak
+set backupdir=$vim_cache_dir/backup
 if !isdirectory(&backupdir)
   call mkdir(&backupdir, 'p')
 endif
@@ -61,8 +62,8 @@ set autoindent
 set smartindent
 
 set tabstop=8                   " Immediately know wheather current file use tab instead of space
-" set expandtab                   " Not useful, `smarttab` will also expandtab for you
-" set softtabstop=2               " Number of spaces that a <Tab> counts for
+set expandtab                   " Always expand tab, `smarttab` will also expandtab for you
+set softtabstop=2               " Number of spaces that a <Tab> counts for
 set shiftwidth=2                " Number of spaces of (auto)indent
 set smarttab                    " <Tab> in front of a line inserts blanks according to 'shiftwidth'
 

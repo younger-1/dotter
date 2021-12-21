@@ -16,26 +16,14 @@
 " <https://github.com/PhilRunninger/nvim_config/blob/master/init.vim>
 " <https://github.com/tracyone/vinux>
 
-" let s:home = fnamemodify(resolve(expand('<sfile>:p')), ':h')
-let s:home = fnamemodify(expand('<sfile>:p'), ':h')
-
-function! s:path_2(name)
-  return a:name ->fnamemodify(':p:h:t') .. '/' .. a:name ->fnamemodify(':p:t')
-endfunction
+" let g:vhome = fnamemodify(resolve(expand('<sfile>:p')), ':h')
+let g:vhome = '<sfile>:p' ->expand() ->fnamemodify(':h')
 
 function! s:complete(...) abort
-  " return (s:home .. '/**/*.vim') ->glob(0, 1) ->map('s:path_2(v:val)') ->sort() ->join("\n")
-  " return (s:home .. '/**/*.vim') ->glob(0, 1) ->map({_, v -> fnamemodify(v, ':s?' .. fnameescape(s:home) .. '??')}) ->sort() ->join("\n")
-  " return (s:home .. '/**/*.vim') ->glob(0, 1) ->map({_, v -> fnamemodify(v, ':s?' .. escape(s:home, '\') .. '??') ->strpart(1)}) ->sort() ->join("\n")
-  " return (s:home .. '/**/*.vim') ->glob(0, 1) ->map('substitute(v:val, s:home .. "/", "", "")') ->sort() ->join("\n")
-  return (s:home .. '/**/*.vim') ->glob(0, 1) ->map('strpart(v:val, strlen(s:home) + 1)') ->sort() ->join("\n")
+  " return (g:vhome .. '/**/*.vim') ->glob(0, 1) ->map({_, v -> fnamemodify(v, ':s?' .. escape(g:vhome, '\') .. '??') ->strpart(1)}) ->sort() ->join("\n")
+  return (g:vhome .. '/**/*.vim') ->glob(0, 1) ->map('strpart(v:val, strlen(g:vhome) + 1)') ->sort() ->join("\n")
 endfunction
-command! -nargs=1 -complete=custom,s:complete IncScript exec 'so ' .. fnameescape(s:home .. '/<args>')
-
-command! -nargs=1 -complete=color CC echo <q-args>
-command! -nargs=1 -complete=expression EE echo <q-args>
-command! -nargs=1 -complete=function FF echo <q-args>
-command! -nargs=1 -complete=event VV ecoh <q-args>
+command! -nargs=1 -complete=custom,s:complete IncScript exec 'so ' .. fnameescape(g:vhome .. '/<args>')
 
 IncScript core/start.vim
 IncScript core/options.vim

@@ -110,16 +110,14 @@ function s:plugging()
   Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'Shougo/defx.nvim'
 
-  Plug 'preservim/nerdcommenter'
-
   Plug 'preservim/nerdtree'
+  Plug 'preservim/nerdcommenter'
 
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'
 
   Plug 'voldikss/vim-floaterm'
-
-  Plug 'simnalamburt/vim-mundo'
+  Plug 'mbbill/undotree'
 endfunction
 
 let s:is_plugged = 1
