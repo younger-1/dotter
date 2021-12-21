@@ -31,11 +31,11 @@ function s:boot_plug()
 endfunction
 
 function! s:check_missing(...)
-  let l:msg = '[young] find missing plugins: '
   let g:plugs_missing = filter(values(g:plugs), '!isdirectory(v:val.dir)')
   if len(g:plugs_missing)
     let g:plugs_missing = map(g:plugs_missing, 'fnamemodify(v:val.dir, ":h:t")')
-    let l:msg .= string(g:plugs_missing)
+    let l:msg = len(g:plugs_missing) ->printf('[young] find %s missing plugins: ')
+    let l:msg .= g:plugs_missing ->string()
     echomsg l:msg
   endif
 endfunction
@@ -59,6 +59,7 @@ function s:plugging()
 
   " [Theme]
   Plug 'vv9k/bogster'
+  Plug 'lifepillar/vim-gruvbox8'
   Plug 'ryanoasis/vim-devicons'
 
   " [Basic]
@@ -106,7 +107,15 @@ function s:plugging()
   Plug 'Shougo/defx.nvim'
 
   Plug 'preservim/nerdcommenter'
+
   Plug 'preservim/nerdtree'
+
+  Plug 'mhinz/vim-signify'
+  Plug 'tpope/vim-fugitive'
+
+  Plug 'voldikss/vim-floaterm'
+
+  Plug 'simnalamburt/vim-mundo'
 endfunction
 
 let s:is_plugged = 1

@@ -24,9 +24,11 @@ function! s:path_2(name)
 endfunction
 
 function! s:complete(...) abort
+  " return (s:home .. '/**/*.vim') ->glob(0, 1) ->map('s:path_2(v:val)') ->sort() ->join("\n")
   " return (s:home .. '/**/*.vim') ->glob(0, 1) ->map({_, v -> fnamemodify(v, ':s?' .. fnameescape(s:home) .. '??')}) ->sort() ->join("\n")
   " return (s:home .. '/**/*.vim') ->glob(0, 1) ->map({_, v -> fnamemodify(v, ':s?' .. escape(s:home, '\') .. '??') ->strpart(1)}) ->sort() ->join("\n")
-  return (s:home .. '/**/*.vim') ->glob(0, 1) ->map('s:path_2(v:val)') ->sort() ->join("\n")
+  " return (s:home .. '/**/*.vim') ->glob(0, 1) ->map('substitute(v:val, s:home .. "/", "", "")') ->sort() ->join("\n")
+  return (s:home .. '/**/*.vim') ->glob(0, 1) ->map('strpart(v:val, strlen(s:home) + 1)') ->sort() ->join("\n")
 endfunction
 command! -nargs=1 -complete=custom,s:complete IncScript exec 'so ' .. fnameescape(s:home .. '/<args>')
 
