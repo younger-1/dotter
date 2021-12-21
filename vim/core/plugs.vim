@@ -27,10 +27,10 @@ function s:boot_plug()
   " Automatically executes `filetype plugin indent on` and `syntax enable`
   call plug#end()
 
-  call timer_start(50, 'Check_missing')
+  call timer_start(50, function('<SID>check_missing'))
 endfunction
 
-function! Check_missing(...)
+function! s:check_missing(...)
   let l:msg = '[young] find missing plugins: '
   let g:plugs_missing = filter(values(g:plugs), '!isdirectory(v:val.dir)')
   if len(g:plugs_missing)
@@ -58,12 +58,12 @@ function s:plugging()
   Plug $nvim_config_dir
 
   " [Theme]
-  Plug 'morhetz/gruvbox'
+  Plug 'vv9k/bogster'
   Plug 'ryanoasis/vim-devicons'
 
   " [Basic]
   Plug 'sheerun/vim-polyglot', { 'on' : [] }
-  Plug 'airblade/vim-rooter', { 'on' : [] }
+  Plug 'airblade/vim-rooter'
 
   " [Motion]
   Plug 'justinmk/vim-sneak'
@@ -86,6 +86,12 @@ function s:plugging()
   " Plug 'tyru/caw.vim'
   Plug 'mg979/vim-visual-multi'
     let g:VM_default_mappings = 0
+    let g:VM_maps = {}
+    let g:VM_maps["Undo"] = 'u'
+    let g:VM_maps["Redo"] = '<C-r>'
+    let g:VM_maps['Find Under']         = '<C-n>'
+    let g:VM_maps['Find Subword Under'] = '<C-n>'
+
   Plug 'junegunn/vim-easy-align'
 
   " [Vim]
@@ -101,14 +107,6 @@ function s:plugging()
 
   Plug 'preservim/nerdcommenter'
   Plug 'preservim/nerdtree'
-    nnoremap <leader>e <Cmd>NERDTreeToggle<CR>
-    autocmd BufEnter * ++nested if (tabpagenr('$') == 1 && winnr('$') == 1 && &filetype ==# 'nerdtree') | q | endif
-    let g:NERDTreeDirArrowExpandable = '▸'
-    let g:NERDTreeDirArrowCollapsible = '▾'
-    let g:NERDTreeIgnore = [
-      \ '\.git$', '\.hg$', '\.svn$', '\.swp$',
-      \ '\.pyc$', '\.pyo$', '__pycache__$'
-      \ ]
 endfunction
 
 let s:is_plugged = 1
@@ -118,10 +116,12 @@ call s:boot_plug()
 call s:after_plug()
 
 IncScript config/defx.vim
+IncScript config/my_tree.vim
 
 if s:is_plugged
-  colorscheme gruvbox
+  colorscheme bogster
 else
-  colorscheme murphy
+  " colorscheme murphy
+  colorscheme uwu
 endif
 
