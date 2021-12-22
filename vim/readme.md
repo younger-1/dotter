@@ -3,6 +3,7 @@
 ### config
 
 1. a statusline with color
+2. YU: event, theme, config
 
 ### plugin
 

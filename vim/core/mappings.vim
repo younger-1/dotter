@@ -86,16 +86,8 @@ onoremap L $
 tnoremap <nowait> <Esc><Esc> <C-\\><C-N>
 tnoremap <nowait> JJ <C-\\><C-N>
 
-" [vim-plug]
-nnoremap <leader>pi :PlugInstall<CR>
-nnoremap <leader>pu :PlugUpdate<CR>
-nnoremap <leader>ps :PlugStatus<CR>
-nnoremap <leader>pc :PlugClean<CR>
-nnoremap <leader>pu :PlugUpdate<CR>
-nnoremap <leader>pU :PlugUpgrade<CR>
 
 " [leader]
-nnoremap <leader>; <cmd>Startify<cr>
 nnoremap <leader>r <cmd>source $MYVIMRC<cr>
 nnoremap <leader>w <cmd>w<cr>
 nnoremap <leader>q <cmd>q<cr>

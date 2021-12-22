@@ -17,8 +17,6 @@ function s:boot_plug()
     return
   endif
 
-  command! PU PlugUpdate | PlugUpgrade
-
   call plug#begin()
 
   call s:plugging()
@@ -134,9 +132,11 @@ call s:after_plug()
 IncScript config/defx.vim
 IncScript config/my_tree.vim
 IncScript config/matchup.vim
+IncScript config/startify.vim
+IncScript config/vim-plug.vim
 
 if s:is_plugged
-  colorscheme bogster
+  colorscheme gruvbox8_hard
 else
   " colorscheme murphy
   colorscheme uwu
