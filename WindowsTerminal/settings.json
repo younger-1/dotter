@@ -4,8 +4,12 @@
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "theme": "system",
     "startOnUserLogin": true,
-    // To unbind a default keybinding, set the command to "unbound"
-    "keybindings": [
+    // To unbind a default keybinding, set the command to "unbound" or null
+    "actions": [
+        {
+            "command": null,
+            "keys": "f11"
+        },
         {
             "command": {
                 "action": "newTab",
@@ -13,6 +17,15 @@
             },
             "keys": [
                 "alt+shift+a"
+            ]
+        },
+        {
+            "command": {
+                "action": "newTab",
+                "profile": "openSUSE"
+            },
+            "keys": [
+                "alt+shift+b"
             ]
         },
         {
@@ -81,14 +94,6 @@
             "keys": "alt+shift+n"
         },
         {
-            "command": "duplicateTab",
-            "keys": "alt+shift+d"
-        },
-        {
-            "command": "closeOtherTabs",
-            "keys": "alt+shift+q"
-        },
-        {
             "command": {
                 "action": "moveTab",
                 "direction": "forward"
@@ -110,11 +115,15 @@
             "command": "prevTab",
             "keys": "alt+shift+h"
         },
-        // [Pane Management]
         {
-            "command": "closePane",
-            "keys": "alt+shift+w"
+            "command": "nextTab",
+            "keys": "alt+shift+right"
         },
+        {
+            "command": "prevTab",
+            "keys": "alt+shift+left"
+        },
+        // [Pane Management]
         {
             "command": "toggleReadOnlyMode",
             "keys": "alt+shift+o"
@@ -125,7 +134,7 @@
                 "split": "horizontal",
                 "splitMode": "duplicate"
             },
-            "keys": "alt+shift+numpad_minus"
+            "keys": "alt+shift+-"
         },
         {
             "command": {
@@ -133,35 +142,35 @@
                 "split": "vertical",
                 "splitMode": "duplicate"
             },
-            "keys": "alt+shift+numpad_plus"
+            "keys": "alt+shift+="
         },
-        {
-            "command": {
-                "action": "moveFocus",
-                "direction": "left"
-            },
-            "keys": "alt+h"
-        },
-        {
-            "command": {
-                "action": "moveFocus",
-                "direction": "right"
-            },
-            "keys": "alt+l"
-        },
+        // {
+        //     "command": {
+        //         "action": "moveFocus",
+        //         "direction": "left"
+        //     },
+        //     "keys": "alt+shift+h"
+        // },
+        // {
+        //     "command": {
+        //         "action": "moveFocus",
+        //         "direction": "right"
+        //     },
+        //     "keys": "alt+shift+l"
+        // },
         // {
         //     "command": {
         //         "action": "moveFocus",
         //         "direction": "down"
         //     },
-        //     "keys": "alt+j"
+        //     "keys": "alt+shift+j"
         // },
         // {
         //     "command": {
         //         "action": "moveFocus",
         //         "direction": "up"
         //     },
-        //     "keys": "alt+k"
+        //     "keys": "alt+shift+k"
         // },
         {
             "command": "togglePaneZoom",
@@ -171,19 +180,19 @@
         // [Scrollback]
         {
             "command": "scrollDown",
-            "keys": "alt+j"
-        },
-        {
-            "command": "scrollUp",
-            "keys": "alt+k"
-        },
-        {
-            "command": "scrollDownPage",
             "keys": "alt+shift+j"
         },
         {
-            "command": "scrollUpPage",
+            "command": "scrollUp",
             "keys": "alt+shift+k"
+        },
+        {
+            "command": "scrollDownPage",
+            "keys": "alt+shift+down"
+        },
+        {
+            "command": "scrollUpPage",
+            "keys": "alt+shift+up"
         }
         // [Visual Adjustments]
     ],
@@ -207,9 +216,13 @@
                 "colorScheme": "ayu",
                 "backgroundImage": "%HOME%/Beauty/Icons/v-logo.png",
                 "fontFace": "Delugia Light",
+                // "fontFace": "mononoki NF",
+                // "fontFace": "monoid NF",
+                // "fontFace": "TerminessTTF NF",
                 // "fontFace": "CaskaydiaCove NF",
                 // "fontFace": "JetBrainsMono NF",
                 // "fontFace": "DejaVuSansMono NF",
+                // "fontFace": "mononoki NF",
                 // "cursorColor": "#8FF7B1",
                 "acrylicOpacity": 0.8
             },
@@ -240,7 +253,17 @@
                 // "fontFace": "Delugia",
                 // "fontFace": "Delugia Light",
                 "cursorColor": "#6f847d",
-                "startingDirectory": "//wsl$/Arch/home/young",
+                // "startingDirectory": "//wsl$/Arch/home/young",
+                "commandline": "arch",
+                "acrylicOpacity": 0.8
+            },
+            {
+                "name": "openSUSE",
+                "guid": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
+                "source": "Windows.Terminal.Wsl",
+                "icon": "%HOME%/Beauty/Icons/linux/opensuse.ico",
+                // "startingDirectory": "//wsl$/openSUSE-Tumbleweed/home/yanger",
+                "commandline": "openSUSE-Tumbleweed",
                 "acrylicOpacity": 0.8
             },
             {
