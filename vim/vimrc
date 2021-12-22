@@ -33,10 +33,3 @@ IncScript core/plugs.vim
 IncScript core/cmd.vim
 IncScript core/autocmd.vim
 
-" TODO:
-" <https://github.com/haya14busa/is.vim>
-" <https://github.com/osyo-manga/vim-anzu>
-" <https://github.com/PhilRunninger/bufselect.vim>
-" <https://github.com/t9md/vim-choosewin>
-" <https://stackoverflow.com/questions/48950476/make-nerdtree-use-choosewin-on-open-file>
-" <https://github.com/tweekmonster/startuptime.vim>
