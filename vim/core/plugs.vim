@@ -72,6 +72,10 @@ function s:plugging()
   Plug 'bkad/CamelCaseMotion'
   " Plug 'wellle/targets.vim'
   Plug 'unblevable/quick-scope'
+    let g:qs_lazy_highlight = 1
+    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
+    let g:qs_buftype_blacklist = ['terminal', 'nofile']
+    let g:qs_filetype_blacklist = ['dashboard', 'startify']
   Plug 'andymass/vim-matchup'
 
   " [Change]

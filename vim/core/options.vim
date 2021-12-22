@@ -39,6 +39,16 @@ if !isdirectory(&backupdir)
   call mkdir(&backupdir, 'p')
 endif
 
+" Ignore certain files and folders when globing
+set wildignore+=*.o,*.obj,*.dylib,*.bin,*.dll,*.exe
+set wildignore+=*/.git/*,*/.svn/*,*/__pycache__/*,*/build/**
+set wildignore+=*.jpg,*.png,*.jpeg,*.bmp,*.gif,*.tiff,*.svg,*.ico
+set wildignore+=*.pyc,*.pkl
+set wildignore+=*.DS_Store
+set wildignore+=*.aux,*.bbl,*.blg,*.brf,*.fls,*.fdb_latexmk,*.synctex.gz,*.xdv
+set wildignorecase              " Ignore file and dir name cases in cmd-completion
+let &backupskip = &backupskip .. &wildignore
+
 " [search]
 set hlsearch
 set incsearch
@@ -73,13 +83,19 @@ set linebreak                   " Smart word wrapping
 set display+=lastline           " When `wrap` on, @@@ is put in the end of the last screen line to indicate the rest of the line is not displayed
 set scrolloff=2
 set sidescrolloff=8
-" 朝闻道，金、木、水、火、土；【真香定律（王境泽）】；《静夜诗（李白）》。
+" 朝闻道，<金、木、水、火、土>；【真香定律（王境泽）】；《静夜诗（李白）》。
 " 唐僧问道：‘泼猴，若我救你出来，你该如何报答我？’ 悟空：“你若放我出来，我定会送你上西天！”
 set showmatch                   " When a bracket is inserted, briefly jump to the matching one
-set matchpairs+=【:】,（:）,《:》,‘:’,“:”,；:。,，:。
+set matchpairs+=<:>,「:」,『:』,【:】,（:）,《:》,‘:’,“:”,；:。,，:。
+
 set list
-set listchars=tab:●·,extends:→,precedes:←,trail:■
+set listchars=tab:●·,extends:→,precedes:←,trail:■,nbsp:␣
 " set listchars=eol:↲,space:·,trail:~,tab:>-,extends:>,precedes:<,nbsp:+
+" set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
+
+" Change fillchars for folding, vertical split, end of buffer, and message separator
+set fillchars=fold:\ ,eob:\ ,vert:\│
+
 
 " [appearance]
 " +-------------------------------------------------+
@@ -135,6 +151,7 @@ set mouse=
 
 set whichwrap+=<,>,[,],h,l
 set backspace=indent,eol,start
+
 
 " [Win10]
 " To use powershell (on Windows): >
