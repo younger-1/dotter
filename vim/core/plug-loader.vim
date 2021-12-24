@@ -53,7 +53,7 @@ function s:after_plug()
 endfunction
 
 function s:plugging()
-  Plug $nvim_config_dir
+  Plug $nvim_config_dir, { 'as' : 'younger' }
 
   " [Theme]
   Plug 'vv9k/bogster'
@@ -117,9 +117,14 @@ function s:plugging()
 
   Plug 'mhinz/vim-signify'
   Plug 'tpope/vim-fugitive'
+  Plug 'junegunn/gv.vim'
 
   Plug 'voldikss/vim-floaterm'
   Plug 'mbbill/undotree'
+
+  Plug 'vim-denops/denops.vim'
+  " Plug 'vim-denops/denops-helloworld.vim'
+
 endfunction
 
 let s:is_plugged = 1
@@ -139,6 +144,7 @@ if s:is_plugged
   colorscheme gruvbox8_hard
 else
   " colorscheme murphy
-  colorscheme uwu
+  " colorscheme uwu
+  colorscheme paper
 endif
 

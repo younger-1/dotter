@@ -20,8 +20,8 @@
 let g:vhome = '<sfile>:p' ->expand() ->fnamemodify(':h')
 
 function! s:complete(...) abort
-  " return (g:vhome .. '/**/*.vim') ->glob(0, 1) ->map({_, v -> fnamemodify(v, ':s?' .. escape(g:vhome, '\') .. '??') ->strpart(1)}) ->sort() ->join("\n")
-  return (g:vhome .. '/**/*.vim') ->glob(0, 1) ->map('strpart(v:val, strlen(g:vhome) + 1)') ->sort() ->join("\n")
+  " return (g:vhome .. '/**/*.vim') ->glob(0, 1) ->map({_, v -> fnamemodify(v, ':s?' .. escape(g:vhome, '\') .. '??') ->strpart(1)}) ->join("\n")
+  return (g:vhome .. '/**/*.vim') ->glob(0, 1) ->map('strpart(v:val, strlen(g:vhome) + 1)') ->join("\n")
 endfunction
 command! -nargs=1 -complete=custom,s:complete IncScript exec 'so ' .. fnameescape(g:vhome .. '/<args>')
 
@@ -29,7 +29,7 @@ IncScript core/start.vim
 IncScript core/options.vim
 IncScript core/func.vim
 IncScript core/mappings.vim
-IncScript core/plugs.vim
+IncScript core/plug-loader.vim
 IncScript core/cmd.vim
 IncScript core/autocmd.vim
 

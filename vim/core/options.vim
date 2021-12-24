@@ -76,6 +76,7 @@ set expandtab                   " Always expand tab, `smarttab` will also expand
 set softtabstop=2               " Number of spaces that a <Tab> counts for
 set shiftwidth=2                " Number of spaces of (auto)indent
 set smarttab                    " <Tab> in front of a line inserts blanks according to 'shiftwidth'
+set shiftround                  " Round indent to multiple of 'shiftwidth'.  Applies to > and <
 
 " [text display]
 set nowrap
@@ -85,8 +86,9 @@ set scrolloff=2
 set sidescrolloff=8
 " 朝闻道，<金、木、水、火、土>；【真香定律（王境泽）】；《静夜诗（李白）》。
 " 唐僧问道：‘泼猴，若我救你出来，你该如何报答我？’ 悟空：“你若放我出来，我定会送你上西天！”
-set showmatch                   " When a bracket is inserted, briefly jump to the matching one
 set matchpairs+=<:>,「:」,『:』,【:】,（:）,《:》,‘:’,“:”,；:。,，:。
+set showmatch                   " When a bracket is inserted, briefly jump to the matching one
+set matchtime=3                 " Tenths of a second to show the matching paren
 
 set list
 set listchars=tab:●·,extends:→,precedes:←,trail:■,nbsp:␣

@@ -63,7 +63,7 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap ZA <cmd>wqa<cr>
 nnoremap <BS> <C-^>
-nnoremap <ESC> <cmd>nohl<cr>
+nnoremap <ESC><ESC> <cmd>nohl<cr>
 nnoremap <S-CR> <cmd>wqa<CR>
 nnoremap <expr> <CR> (&buftype is# '' ? ':w<CR>' : '<CR>')
 
