@@ -116,6 +116,8 @@ function s:plugging()
   Plug 'preservim/nerdcommenter'
 
   Plug 'mhinz/vim-signify'
+  " Plug 'airblade/vim-gitgutter'
+
   Plug 'tpope/vim-fugitive'
   Plug 'junegunn/gv.vim'
 
@@ -123,8 +125,11 @@ function s:plugging()
   Plug 'mbbill/undotree'
 
   Plug 'vim-denops/denops.vim'
-  " Plug 'vim-denops/denops-helloworld.vim'
+  Plug 'lambdalisue/guise.vim'
 
+  Plug 'lervag/vimtex', { 'for' : 'tex' }
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'MattesGroeger/vim-bookmarks'
 endfunction
 
 let s:is_plugged = 1

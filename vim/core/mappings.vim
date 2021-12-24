@@ -83,8 +83,8 @@ onoremap H ^
 onoremap L $
 
 " [term_mode]
-tnoremap <nowait> <Esc><Esc> <C-\\><C-N>
-tnoremap <nowait> JJ <C-\\><C-N>
+tnoremap <nowait> <Esc><Esc> <C-\><C-N>
+tnoremap <nowait> JJ <C-\><C-N>
 
 
 " [leader]
