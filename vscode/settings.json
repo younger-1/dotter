@@ -21,6 +21,7 @@
     "editor.cursorBlinking": "expand",
     "editor.minimap.renderCharacters": false,
     "editor.acceptSuggestionOnEnter": "on",
+    "editor.suggestSelection": "first",
     "editor.suggest.preview": true,
     "editor.suggest.localityBonus": true,
     "editor.inlayHints.enabled": true,
@@ -81,7 +82,12 @@
     },
     "workbench.editor.autoLockGroups": {
         "latex-workshop-pdf-hook": true,
-        "mainThreadWebview-markdown.preview": true
+        "mainThreadWebview-markdown.preview": true,
+        "terminalEditor": true,
+        "jupyter-notebook": true,
+        // "workbench.input.interactive": true,
+        // "workbench.editorinputs.searchEditorInput": true,
+        // "hexEditor.hexedit": true,
     },
     "workbench.colorTheme": "One Monokai",
     "emmet.triggerExpansionOnTab": true,
@@ -164,6 +170,7 @@
     },
     "debug.toolBarLocation": "docked",
     "debug.showBreakpointsInOverviewRuler": true,
+    "problems.sortOrder": "position",
     "snippet.verbose": true,
     "tabnine.experimentalAutoImports": true,
     "js/ts.implicitProjectConfig.checkJs": false,
@@ -206,6 +213,7 @@
     "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
     "gitlens.views.commits.avatars": false,
     "gitlens.views.fileHistory.avatars": false,
+    "gitlens.keymap": "alternate",
     "gitlens.codeLens.scopes": [
         "document",
         "containers",
@@ -221,6 +229,7 @@
     "vim.handleKeys": {
         "<C-c>": false,
         "<C-d>": true,
+        "<C-h>": true,
         "<C-i>": true,
         "<C-o>": true,
         "<C-r>": true,
@@ -236,10 +245,11 @@
     "vim.sneakReplacesF": true,
     "vim.replaceWithRegister": true,
     "vim.camelCaseMotion.enable": true,
+    "vim.visualstar": true,
     "vim.highlightedyank.enable": true,
     "vim.highlightedyank.duration": 500,
-    "vim.highlightedyank.color": "LightGreen",
-    "vim.highlightedyank.textColor": "Black",
+    // "vim.highlightedyank.color": "LightGreen",
+    // "vim.highlightedyank.textColor": "Black",
     "vim.foldfix": true,
     "vim.history": 100,
     "vim.startofline": false,
@@ -578,24 +588,6 @@
         },
     ],
     "vim.insertModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "<C-u>"
-            ],
-            "after": [
-                "<Esc>",
-                "I"
-            ]
-        },
-        {
-            "before": [
-                "<C-i>"
-            ],
-            "after": [
-                "<Esc>",
-                "A"
-            ]
-        },
         {
             "before": [
                 "<C-d>"
