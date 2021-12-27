@@ -3,6 +3,9 @@ noremap! <C-a> <Home>
 noremap! <C-e> <End>
 noremap! <A-f> <S-Right>
 noremap! <A-b> <S-Left>
+noremap! ( ()<Left>
+noremap! [ []<Left>
+noremap! { {}<Left>
 
 " [insert_mode]
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
@@ -26,9 +29,15 @@ cnoremap <A-n> <Down>
 cnoremap <A-p> <Up>
 cnoremap <C-v> <C-r>+
 
+" cnoremap ( ()<Left>
+" cnoremap [ []<Left>
+" cnoremap { {}<Left>
+
 " [map_mode]
 noremap <expr> k v:count == 0 ? "gk" : "k"
 noremap <expr> j v:count == 0 ? "gj" : "j"
+noremap <expr> 0 getline('.')[0 : col('.') - 2] =~# '^\\s\\+$' ? '0' : '^'
+
 
 " [normal_mode]
 nnoremap H <cmd>bp<cr>
@@ -49,7 +58,15 @@ nnoremap <S-Down> <C-W>+
 nnoremap <S-Right> <C-W>>
 nnoremap <S-Left> <C-W><
 
+" Vertical/Horizontal Scrolling
+nnoremap <A-l> zl
+nnoremap <A-h> zh
+nnoremap <A-j> <C-E>
+nnoremap <A-k> <C-Y>
+
 nnoremap <C-w>m <C-W>_<C-W>\|
+nnoremap <c-w>S :bo split<cr>
+nnoremap <c-w>V :bo vert split<cr>
 
 nnoremap ]q <cmd>cnext<cr>
 nnoremap [q <cmd>cprev<cr>
@@ -77,6 +94,8 @@ vnoremap H ^
 vnoremap L $
 vnoremap K :move '<-2<CR>gv-gv
 vnoremap J :move '>+1<CR>gv-gv
+" Search visual selection
+vnoremap g/ "sy/\V<C-r>=escape(@s,'/\')<CR><CR>``
 
 " [operator_mode]
 onoremap H ^
@@ -89,8 +108,16 @@ tnoremap <nowait> JJ <C-\><C-N>
 
 " [leader]
 nnoremap <leader>r <cmd>source $MYVIMRC<cr>
+nnoremap <leader>re <cmd>e $MYVIMRC<cr>
 nnoremap <leader>w <cmd>w<cr>
 nnoremap <leader>q <cmd>q<cr>
 nnoremap <leader>c <cmd>bd<cr>
+nnoremap <leader>z <cmd>Goyo<cr>
 
+nnoremap <leader>bo :%bd <bar> e# <bar> bd #<CR>
+nnoremap <leader>bb :ls<CR>:b
+nnoremap <leader>bs :ls<CR>:sb
+nnoremap <leader>bv :ls<CR>:vertical sb
+nnoremap <leader>bt :ls<CR>:tab sb
+nnoremap <leader>bd :ls<CR>:bdelete
 

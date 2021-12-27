@@ -108,10 +108,14 @@ function s:plugging()
 
   Plug 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
   Plug 'junegunn/limelight.vim', { 'on' : 'Limelight' }
+    autocmd User GoyoEnter Limelight
+    autocmd User GoyoLeave Limelight!
 
   Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
   Plug 'Shougo/defx.nvim'
+  Plug 'gelguy/wilder.nvim'
 
+  " Plug 'tpope/vim-vinegar'
   Plug 'preservim/nerdtree'
   Plug 'preservim/nerdcommenter'
 
@@ -130,6 +134,7 @@ function s:plugging()
   Plug 'lervag/vimtex', { 'for' : 'tex' }
   Plug 'ctrlpvim/ctrlp.vim'
   Plug 'MattesGroeger/vim-bookmarks'
+
 endfunction
 
 let s:is_plugged = 1
@@ -144,6 +149,7 @@ IncScript config/my_tree.vim
 IncScript config/matchup.vim
 IncScript config/startify.vim
 IncScript config/vim-plug.vim
+call wilder#setup({'modes': [':', '/', '?']})
 
 if s:is_plugged
   colorscheme gruvbox8_hard
