@@ -149,7 +149,7 @@ IncScript config/my_tree.vim
 IncScript config/matchup.vim
 IncScript config/startify.vim
 IncScript config/vim-plug.vim
-call wilder#setup({'modes': [':', '/', '?']})
+call wilder#setup({'modes': ['/', '?']})
 
 if s:is_plugged
   colorscheme gruvbox8_hard

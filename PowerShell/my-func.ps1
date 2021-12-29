@@ -313,15 +313,12 @@ powershell -noprofile -ex unrestricted `"& '$lvim_ps1_path' $arg %args%;exit `$l
 
 # [proxy]
 $HostIP = "127.0.0.1"
-$HttpPort = 10809
-$SocksPort = 10808
+$HttpPort = 7890
 
 function showproxy {
     Write-Host ""
-    Write-Host "Show Proxy:"
     Write-Host "http_proxy=$env:http_proxy"
     Write-Host "https_proxy=$env:https_proxy"
-    Write-Host "ALL_proxy=$env:ALL_proxy"
     Write-Host ""
     echo "curl --connect-timeout 2 baidu.com"
     curl --connect-timeout 2 baidu.com
@@ -333,14 +330,23 @@ function showproxy {
 function setproxy  {
     $env:http_proxy="http://${HostIP}:$HttpPort"
     $env:https_proxy="http://${HostIP}:$HttpPort"
-    $env:ALL_proxy="socks5://${HostIP}:$SocksPort"
 }
 
 function unsetproxy {
     $env:http_proxy=""
     $env:https_proxy=""
-    $env:ALL_proxy=""
 }
 
 setproxy
 
+function setv2ray {
+    $HttpPort = 10809
+    setproxy
+    showproxy
+}
+
+function setclash {
+    $HttpPort = 7890
+    setproxy
+    showproxy
+}
