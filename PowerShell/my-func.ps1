@@ -320,11 +320,11 @@ function showproxy {
     Write-Host "http_proxy=$env:http_proxy"
     Write-Host "https_proxy=$env:https_proxy"
     Write-Host ""
-    echo "curl --connect-timeout 2 baidu.com"
-    curl --connect-timeout 2 baidu.com
+    echo "curl.exe --connect-timeout 2 baidu.com"
+    curl.exe --connect-timeout 2 baidu.com
     Write-Host ""
-    echo "curl --connect-timeout 2 google.com"
-    curl --connect-timeout 2 google.com
+    echo "curl.exe --connect-timeout 2 google.com"
+    curl.exe --connect-timeout 2 google.com
 }
 
 function setproxy  {

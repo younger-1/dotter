@@ -1,5 +1,5 @@
-map k gk
-map j gj
+noremap k gk
+noremap j gj
 
 " nmap <Up> <C-Y>
 " nmap <Down> <C-E>
@@ -33,7 +33,7 @@ nmap <space>/ workbench.view.search
 
 nmap <space>z workbench.action.toggleZenMode
 
-nmap g<C-l> :nohlsearch<cr>
+nnoremap <esc><esc> :nohlsearch<cr>
 
 nmap <space>bo workbench.action.closeOtherEditors
 
@@ -41,3 +41,5 @@ nmap <space>gr git.revertChange
 
 nmap <space>bs workbench.action.toggleSplitEditorInGroup
 nmap <space>bS workbench.action.toggleSplitEditorInGroupLayout
+
+map <Tab> %
