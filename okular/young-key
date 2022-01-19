@@ -1,0 +1,82 @@
+<gui version="1" name="okular">
+  <ActionProperties>
+    <Action shortcut="Ctrl+G" name="go_goto_page"/>
+    <Action shortcut="Ctrl+Home; G, G" name="first_page"/>
+    <Action shortcut="Ctrl+End; Shift+G" name="last_page"/>
+    <Action shortcut="Ctrl+B" name="bookmark_add"/>
+    <Action shortcut="Ctrl+K, R" name="rename_bookmark"/>
+    <Action shortcut="Ctrl+P" name="previous_bookmark"/>
+    <Action shortcut="Ctrl+N" name="next_bookmark"/>
+    <Action shortcut="Ctrl+F; /" name="edit_find"/>
+    <Action shortcut="Alt+]" name="edit_find_next"/>
+    <Action shortcut="Alt+[" name="edit_find_prev"/>
+    <Action shortcut="Ctrl+Shift+," name="options_configure"/>
+    <Action shortcut="Alt+Return" name="properties"/>
+    <Action shortcut="F5; Refresh" name="file_reload"/>
+    <Action shortcut="Esc" name="close_find_bar"/>
+    <Action shortcut="Ctrl+C; Ctrl+Ins" name="edit_copy"/>
+    <Action shortcut="Ctrl+A" name="edit_select_all"/>
+    <Action shortcut="Ctrl+S" name="file_save"/>
+    <Action shortcut="Ctrl+Shift+S" name="file_save_as"/>
+    <Action shortcut="Ctrl+K, Ctrl+B" name="show_leftpanel"/>
+    <Action shortcut="Ctrl+K, Ctrl+P" name="show_bottombar"/>
+    <Action shortcut="Ctrl+K, Ctrl+S" name="show_signatures"/>
+    <Action shortcut="Ctrl+Shift+P" name="presentation"/>
+    <Action shortcut="B" name="switch_blackscreen_mode"/>
+    <Action shortcut="Ctrl+K, C" name="options_configure_color_modes"/>
+    <Action shortcut="Ctrl+K, A" name="options_configure_annotations"/>
+    <Action shortcut="Ctrl++; Ctrl+=" name="view_zoom_in"/>
+    <Action shortcut="Ctrl+-" name="view_zoom_out"/>
+    <Action shortcut="Ctrl+0" name="view_actual_size"/>
+    <Action shortcut="Ctrl+K, O" name="view_auto_fit"/>
+    <Action shortcut="Ctrl+J" name="fit_window_to_page"/>
+    <Action shortcut="Ctrl+K, S" name="view_render_mode_single"/>
+    <Action shortcut="Ctrl+K, F" name="view_render_mode_facing"/>
+    <Action shortcut="Ctrl+M, C" name="view_continuous"/>
+    <Action shortcut="Ctrl+M, Ctrl+B" name="mouse_drag"/>
+    <Action shortcut="Ctrl+M, Z" name="mouse_zoom"/>
+    <Action shortcut="Ctrl+V" name="color_mode_change_colors"/>
+    <Action shortcut="Alt+Left" name="go_document_back"/>
+    <Action shortcut="Alt+Right" name="go_document_forward"/>
+    <Action shortcut="Ctrl+M, Ctrl+V" name="mouse_select"/>
+    <Action shortcut="Ctrl+M, Ctrl+S" name="mouse_textselect"/>
+    <Action shortcut="Ctrl+M, Ctrl+T" name="mouse_tableselect"/>
+    <Action shortcut="Ctrl+6" name="mouse_magnifier"/>
+    <Action shortcut="Shift+Up" name="view_scroll_up"/>
+    <Action shortcut="Shift+Down" name="view_scroll_down"/>
+    <Action shortcut="Shift+Space" name="view_scroll_page_up"/>
+    <Action shortcut="Space" name="view_scroll_page_down"/>
+    <Action shortcut="Ctrl+K, Ctrl+F" name="view_toggle_forms"/>
+    <Action shortcut="Ctrl+Z" name="edit_undo"/>
+    <Action shortcut="Ctrl+Shift+Z" name="edit_redo"/>
+    <Action shortcut="Ctrl+M, H" name="annotation_highlighter"/>
+    <Action shortcut="Ctrl+M, U" name="annotation_underline"/>
+    <Action shortcut="Ctrl+M, W; " name="annotation_squiggle"/>
+    <Action shortcut="Ctrl+M, S" name="annotation_strike_out"/>
+    <Action shortcut="Ctrl+M, T" name="annotation_typewriter"/>
+    <Action shortcut="Ctrl+M, I" name="annotation_inline_note"/>
+    <Action shortcut="Ctrl+M, O" name="annotation_popup_note"/>
+    <Action shortcut="Ctrl+L, J" name="annotation_freehand_line"/>
+    <Action shortcut="Ctrl+M, A" name="annotation_arrow"/>
+    <Action shortcut="Ctrl+M, L" name="annotation_straight_line"/>
+    <Action shortcut="Ctrl+M, R" name="annotation_rectangle"/>
+    <Action shortcut="Ctrl+Shift+B" name="annotation_bookmark"/>
+    <Action shortcut="Ctrl+K, Ctrl+C" name="annotation_settings_opacity"/>
+    <Action shortcut="Ctrl+Y" name="mainToolBar"/>
+    <Action shortcut="Ctrl+T" name="annotationToolBar"/>
+    <Action shortcut="Ctrl+;" name="open_kcommand_bar"/>
+    <Action shortcut="Ctrl+O" name="file_open"/>
+    <Action shortcut="Ctrl+R" name="file_open_recent"/>
+    <Action shortcut="Ctrl+K, P" name="file_print"/>
+    <Action shortcut="Ctrl+W; Ctrl+Esc" name="file_close"/>
+    <Action shortcut="Ctrl+K, Ctrl+W" name="file_quit"/>
+    <Action shortcut="Ctrl+K, Ctrl+M" name="options_show_menubar"/>
+    <Action shortcut="Ctrl+Shift+F" name="fullscreen"/>
+    <Action shortcut="Ctrl+PgDown; Ctrl+]" name="tab-next"/>
+    <Action shortcut="Ctrl+PgUp; Ctrl+[" name="tab-previous"/>
+    <Action shortcut="Ctrl+Shift+T" name="undo-close-tab"/>
+    <Action shortcut="Ctrl+Alt+,; Ctrl+," name="options_configure_keybinding"/>
+    <Action shortcut="Ctrl+K, T" name="options_configure_toolbars"/>
+    <Action shortcut="Shift+F1" name="help_whats_this"/>
+  </ActionProperties>
+</gui>

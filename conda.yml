@@ -1,7 +1,6 @@
 channels:
   - conda-forge
   - defaults
-show_channel_urls: true
 channel_alias: https://mirrors.tuna.tsinghua.edu.cn/anaconda/
 default_channels:
   - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
@@ -13,13 +12,22 @@ custom_channels:
   bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch-lts: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
   simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
-auto_activate_base: false
-ssl_verify: true
+
+show_channel_urls: true
 changeps1: true
-report_errors: false
-channel_priority: strict
+
 safety_checks: disabled
+auto_activate_base: false
+ssl_verify: false
+report_errors: false
+
+envs_dirs:
+  - ~/.conda/envs
+
+pkgs_dirs:
+  - ~/.conda/pkgs
 # create_default_packages:
 #   - python=3.7.4
 # env_prompt: ({name})

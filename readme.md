@@ -51,6 +51,7 @@ Available:
 - minimal vimrc
 - minimal zsh
 - minimal bash
+- backup `$env:path`
 
 <https://github.com/romkatv/zsh4humans>
 
