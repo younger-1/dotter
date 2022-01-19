@@ -123,6 +123,9 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function NextWord
 
 
 # [Sourced file]
+# Get-ChildItem "$PROFILE\..\demo\" | ForEach-Object {
+#     . $_.FullName
+# }
 
 # (& rustup completions powershell) | Out-String | Invoke-Expression
 . $PSScriptRoot/completion-rustup.ps1
@@ -130,18 +133,21 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function NextWord
 # Invoke-Expression -Command $(gh completion -s powershell | Out-String)
 . $PSScriptRoot/completion-gh.ps1
 
+# starship completions powershell
+. $PSScriptRoot/completion-starship.ps1
+
+# yq shell-completion powershell
+. $PSScriptRoot/completion-yq.ps1
+
+# procs --completion powershell
+. $PSScriptRoot/completion-procs.ps1
+
+# pdm completion powershell
+. $PSScriptRoot/completion-pdm.ps1
+
 . $env:scoop\apps\ripgrep\current\complete\_rg.ps1
 
 . $env:scoop\apps\bottom\current\completion\_btm.ps1
-
-. $PSScriptRoot/completion-procs.ps1
-
-# Invoke-Expression -Command $(starship completions powershell | Out-String)
-. $PSScriptRoot/completion-starship.ps1
-
-# Invoke-Expression -Command $(yq shell-completion powershell | Out-String)
-. $PSScriptRoot/completion-yq.ps1
-
 
 # https://www.tutorialspoint.com/explain-powershell-profile
 # Source my-alias first.

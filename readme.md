@@ -10,6 +10,15 @@
 todo
 
 
+## Usage
+
+```
+dotter deploy -v
+dotter undeploy -v -y
+```
+
+
+
 ## Templating
 
 - <https://github.com/SuperCuber/dotter/wiki/Templating-and-Caching>
