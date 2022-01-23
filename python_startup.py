@@ -4,6 +4,11 @@ import sys
 try:
     from ptpython.repl import embed
 except ImportError:
-    print("🤣: ptpython is not available: falling back to standard prompt")
+    try:
+        import prompt_toolkit as pt
+    except ImportError:
+        print("🤣: ptpython or ipython is not installed")
+        del pt
 else:
+    print("😎: Fire!")
     sys.exit(embed(globals(), locals()))

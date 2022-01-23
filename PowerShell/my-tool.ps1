@@ -30,7 +30,7 @@ function visual {
 function condaIt { powershell.exe -ExecutionPolicy ByPass -NoExit -Command "& 'C:\Users\younger\AppData\Local\Continuum\anaconda3\shell\condabin\conda-hook.ps1' ; conda activate 'C:\Users\younger\AppData\Local\Continuum\anaconda3' " }
 function condaCmd { cmd.exe /K %LocalAppData%/Continuum/Anaconda3/Scripts/activate.bat %LocalAppData%/Continuum/Anaconda3 }
 
-function cai {
+function ipy {
     conda activate
     ipython.exe
     conda deactivate

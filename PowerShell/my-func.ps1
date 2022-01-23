@@ -60,17 +60,17 @@ function killall {
 }
 
 <# Usage:
-    1. ef
-    2. ef $SCOOP
-    3. ef $HOSTS
+  1. ef
+  2. ef $SCOOP
+  3. ef $HOSTS
 #>
 function ef($name) {
-    if ($null -eq $name) { 
-        explorer.exe . 
+    if ($null -eq $name) {
+        explorer.exe .
         return
     }
     $name = $name -replace '/', '\'
-    if (Test-Path -Path $name -PathType Container) { 
+    if (Test-Path -Path $name -PathType Container) {
         explorer.exe $name
     }
     elseif (Test-Path -Path $name -PathType Leaf) {

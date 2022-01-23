@@ -47,7 +47,7 @@ $env:RUSTUP_UPDATE_ROOT = "https://rsproxy.cn/rustup"
 # [python]
 $env:PYTHONIOENCODING = 'utf-8'
 # $env:PYTHONSTARTUP="$(python -m jedi repl)"
-# $env:PYTHONSTARTUP = "$HOME/.pythonrc.py"
+$env:PYTHONSTARTUP = "$HOME\dotter\python_startup.py"
 # Python 直接执行
 $env:PATHEXT += ";.py"
 
