@@ -114,3 +114,7 @@ function br {
 alias bs="br --conf ~/.config/broot/select.toml"
 alias be="br --conf ~/.config/broot/edit.toml"
 
+# direnv
+if [[ -x "$(command -v direnv)" ]]; then
+  eval "$(direnv hook ${ZSH_NAME:-bash})"
+fi
