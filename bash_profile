@@ -8,6 +8,8 @@
 source ~/.profile
 
 function use_bash {
+  # [[ $- == *i* ]] && source /usr/share/blesh/ble.sh --noattach
+
   source ~/zsh/oh-my-bash.sh
   # FIXME: oh-my-bash bind up/down
   bind -f ~/.inputrc
@@ -15,6 +17,8 @@ function use_bash {
   [[ -f ~/.bashrc ]] && . ~/.bashrc
 
   source ~/zsh/common.sh
+
+  # [[ ${BLE_VERSION-} ]] && ble-attach
 }
 
 function use_zsh {
