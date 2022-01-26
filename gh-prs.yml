@@ -13,6 +13,10 @@
 #     - charmbracelet/lipgloss
 #   filters: -author:@me
 
+- title: awesome-neovim
+  repos:
+    - rockerBOO/awesome-neovim
+
 - title: LunarVim
   repos:
     - LunarVim/LunarVim
@@ -35,6 +39,10 @@
   repos:
     - jose-elias-alvarez/null-ls.nvim
 
+- title: telescope
+  repos:
+    - nvim-telescope/telescope.nvim
+
 - title: vscode
   repos:
     - microsoft/vscode
@@ -42,3 +50,8 @@
 - title: vscode-vim
   repos:
     - VSCodeVim/Vim
+
+- title: logseq
+  repos:
+    - logseq/logseq
+
