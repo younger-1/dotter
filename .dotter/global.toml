@@ -37,7 +37,7 @@ AppSettings = { target = "~/AppSettings", type = "symbolic" }
 "s.cfg" = "~/.config/s/config"
 "gpg.conf" = "~/.gnupg/gpg.conf"
 "markdownlint.jsonc" = "~/.markdownlintrc"
-"gh-prs.yml" = "~/.config/prs/sections.yml"
+"gh-prs.yml" = "~/.config/prs/config.yml"
 
 # windows diff
 vim = { target = "~/.vim", type = "symbolic"}

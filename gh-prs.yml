@@ -1,57 +1,46 @@
-# - title: My Pull Requests
-#   repos:
-#     - dlvhdr/gh-prs
-#   filters: author:@me
+defaults:
+  preview:
+    open: true
+    width: 50
+  prsLimit: 20
+
+prSections:
+- title: Pull Requests
+  filters: is:open author:@me
+- title: Pull Requests
+  filters: is:closed author:@me
 # - title: Needs My Review
-#   repos:
-#     - dlvhdr/gh-prs
-#   filters: review-requested:@me
-# - title: Subscribed
-#   repos:
-#     - cli/cli
-#     - charmbracelet/glamour
-#     - charmbracelet/lipgloss
-#   filters: -author:@me
+#   filters: is:open review-requested:@me
+- title: gh-prs
+  filters: repo:dlvhdr/gh-prs
 
 - title: awesome-neovim
-  repos:
-    - rockerBOO/awesome-neovim
+  filters: repo:rockerBOO/awesome-neovim
 
 - title: LunarVim
-  repos:
-    - LunarVim/LunarVim
-  filters: -author:@me
+  filters: -author:@me repo:LunarVim/LunarVim
 
 - title: LunarVim@
-  repos:
-    - LunarVim/LunarVim
-  filters: author:@me
+  filters: author:@me repo:LunarVim/LunarVim
 
 - title: neovim
-  repos:
-    - neovim/neovim
+  filters: repo:neovim/neovim
 
 - title: nvim-lspconfig
-  repos:
-    - neovim/nvim-lspconfig
+  filters: repo:neovim/nvim-lspconfig
 
 - title: null-ls.nvim
-  repos:
-    - jose-elias-alvarez/null-ls.nvim
+  filters: repo:jose-elias-alvarez/null-ls.nvim
 
 - title: telescope
-  repos:
-    - nvim-telescope/telescope.nvim
+  filters: repo:nvim-telescope/telescope.nvim
 
 - title: vscode
-  repos:
-    - microsoft/vscode
+  filters: repo:microsoft/vscode
 
 - title: vscode-vim
-  repos:
-    - VSCodeVim/Vim
+  filters: repo:VSCodeVim/Vim
 
 - title: logseq
-  repos:
-    - logseq/logseq
+  filters: repo:logseq/logseq
 
