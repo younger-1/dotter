@@ -26,8 +26,8 @@ $env:SHELL = "cmd"
 $env:EDITOR = "nvim"
 $env:VISUAL = "code.cmd"
 
-$env:GITHUB_AUTH_TOKEN = "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"
-$env:GITTY_TOKENS = "github.com=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"
+$env:GITHUB_AUTH_TOKEN = $(gpg --quiet -d $HOME/dotter/gpg/github.younger)
+$env:GITTY_TOKENS = "github.com={0}" -f $env:GITHUB_AUTH_TOKEN
  
 # TODO
 # function or script for curl/wget/aria2 to use hub.fastgit.org
