@@ -49,8 +49,8 @@ fi
 
 ########################### APP ##########################
 
-export GITHUB_AUTH_TOKEN=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
-export GITTY_TOKENS=github.com=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
+export GITHUB_AUTH_TOKEN=$(gpg --quiet -d $HOME/dotter/gpg/github.younger)
+export GITTY_TOKENS=github.com=$GITHUB_AUTH_TOKEN
 
 # https://wiki.archlinux.org/index.php/Environment_variables
 # Preferred editor for local and remote sessions
