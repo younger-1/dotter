@@ -1,22 +1,34 @@
 # vim: ft=gitconfig
 
+[include]
+  path = ~/.config/git/delta.theme
+
 [delta]
+  side-by-side = false
+  line-numbers = true
   ; syntax-theme = DarkNeon
   ; syntax-theme = Dracula
-  ; side-by-side = true
-  ; features = line-numbers decorations
-  line-numbers = true
-  ; line-numbers-left-format = "🚀"
-  ; line-numbers-right-format = "{np:>3}│"
-  ; minus-style = red bold ul "#ffeeee"
-[delta "decorations"]
+  ; features = my-line-numbers my-decorations
+  ;features = collared-trogon
+  ; features = coracias-caudatus
+  ; features = hoopoe
+  ;features = tangara-chilensis
+  ;features = villsau
+  ;features = woolly-mammoth
+  ;features = calochortus-lyallii
+  ;features = mantis-shrimp
+
+[delta "my-decorations"]
   commit-decoration-style = bold yellow box ul
   file-style = bold yellow ul
   file-decoration-style = none
   hunk-header-decoration-style = cyan box ul
-[delta "line-numbers"]
+  ; minus-style = red bold ul "#ffeeee"
+[delta "my-line-numbers"]
   line-numbers-left-style = cyan
   line-numbers-right-style = cyan
   line-numbers-minus-style = 124
   line-numbers-plus-style = 28
+  ; line-numbers-left-format = "🚀"
+  ; line-numbers-right-format = "{np:>3}│"
 
