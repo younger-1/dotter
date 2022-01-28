@@ -6,6 +6,8 @@
   branch = yes
   diff   = auto
   status = auto
+  grep = auto
+  interactive = auto
 
 [color "branch"]
   current = yellow reverse
