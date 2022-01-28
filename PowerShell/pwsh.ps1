@@ -145,6 +145,12 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function NextWord
 # pdm completion powershell
 . $PSScriptRoot/completion-pdm.ps1
 
+# <https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete>
+. $PSScriptRoot/completion-dotnet.ps1
+
+# <https://github.com/gokcehan/lf/blob/master/etc/lf.ps1>
+. $PSScriptRoot/completion-lf.ps1
+
 . $env:scoop\apps\ripgrep\current\complete\_rg.ps1
 
 . $env:scoop\apps\bottom\current\completion\_btm.ps1

@@ -8,7 +8,8 @@ except ImportError:
         import prompt_toolkit as pt
     except ImportError:
         print("🤣: ptpython or ipython is not installed")
-        del pt
+    else:
+        print("😎: Fire!")
 else:
     print("😎: Fire!")
     sys.exit(embed(globals(), locals()))

@@ -1,5 +1,7 @@
+# <https://www.conventionalcommits.org/en/v1.0.0/#commit-message-with-scope>
+#
 # head: <type>(<scope>): <subject>
-# - type: feat, fix, docs, style, refactor, test, chore
+# - type: feat, fix, docs, style, refactor, revert, test, chore, perf, build, ci
 # - scope: can be empty (eg. if the change is a global or difficult to assign to a single component)
 # - subject: start with verb (such as 'change', not 'changed'), 50-character line
 #
