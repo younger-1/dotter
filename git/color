@@ -1,17 +1,17 @@
 # vim: ft=gitconfig
 
 [color]
+  ui = auto
+  pager  = yes
   branch = yes
   diff   = auto
   status = auto
-  pager  = yes
-  ui = auto
 
-#[color "branch"]
-#    current = green
-#    local   = yellow
-#    remote  = cyan
-#
+[color "branch"]
+  current = yellow reverse
+  local   = cyan
+  remote  = red
+
 #[color "diff"]
 #    meta = yellow
 #    frag = magenta
