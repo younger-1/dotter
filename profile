@@ -113,6 +113,9 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # for PulseAudio
 export PULSE_SERVER=tcp:localhost
 
+# <https://unix.stackexchange.com/questions/608842/zshrc-export-gpg-tty-tty-says-not-a-tty>
+export GPG_TTY=$(tty)
+
 
 ########################### PATH ##########################
 
