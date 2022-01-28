@@ -1,11 +1,14 @@
 # https://github.com/mhinz/dotfiles/blob/master/.config/git/config
 # https://github.com/grml/grml-etc-core/blob/master/etc/skel/.gitconfig
 
+[include]
+  path = ~/.config/git/delta
+  path = ~/.config/git/color
+
 [credential]
   helper = gopass
-; [credential "helperselector"]
-;   selected = manager-core
 [credential "helperselector"]
+  ; selected = manager-core
   selected = <no helper>
 
 # Notice: We do not set user section by default so syncing
@@ -122,50 +125,6 @@
   pr = "!f() { open \"$(git repourl)/compare/$(git branch --show-current)\"; }; f"
   who = "!f() { git log -1 --pretty=\"format:%an <%ae>\" --author=\"$1\"; }; f"
   root = rev-parse --show-toplevel
-
-
-[delta]
-  ; syntax-theme = DarkNeon
-  ; syntax-theme = Dracula
-  ; side-by-side = true
-  ; features = line-numbers decorations
-  line-numbers = true
-  ; line-numbers-left-format = "🚀"
-  ; line-numbers-right-format = "{np:>3}│"
-  ; minus-style = red bold ul "#ffeeee"
-[delta "decorations"]
-  commit-decoration-style = bold yellow box ul
-  file-style = bold yellow ul
-  file-decoration-style = none
-  hunk-header-decoration-style = cyan box ul
-[delta "line-numbers"]
-  line-numbers-left-style = cyan
-  line-numbers-right-style = cyan
-  line-numbers-minus-style = 124
-  line-numbers-plus-style = 28
-
-[color]
-  branch = yes
-  diff   = auto
-  status = auto
-  pager  = yes
-  ui = auto
-#[color "branch"]
-#    current = green
-#    local   = yellow
-#    remote  = cyan
-#
-#[color "diff"]
-#    meta = yellow
-#    frag = magenta
-#    old  = red
-#    new  = green
-#
-#[color "status"]
-#    header    = magenta
-#    added     = yellow
-#    changed   = green
-#    untracked = cyan
 
 [gui]
   encoding = utf-8
