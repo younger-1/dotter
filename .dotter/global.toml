@@ -19,7 +19,6 @@ terminal = "xfce4-terminal"
 
 [default.files]
 
-gitconfig = "~/.gitconfig"
 "conda.yml" = "~/.condarc"
 npmrc = "~/.npmrc"
 yarnrc = "~/.yarnrc"
