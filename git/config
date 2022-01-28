@@ -1,5 +1,9 @@
+# vim: ft=gitconfig
+# <https://www.git-scm.com/docs/git-config>
+#
 # https://github.com/mhinz/dotfiles/blob/master/.config/git/config
 # https://github.com/grml/grml-etc-core/blob/master/etc/skel/.gitconfig
+# https://github.com/michaelherold/dotfiles/tree/main/config/git
 
 [include]
   path = ~/.config/git/alias
@@ -46,9 +50,12 @@
   diffFilter = delta --color-only
 
 [init]
-  ; templatedir = ~/.git_template
+  templatedir = ~/.config/git/template
   defaultBranch = main
-
+[commit]
+  ; verbose = true
+  ; gpgsign = true ; Stupid: <https://code-examples.net/en/q/9b0c2e>
+  template = ~/.config/git/message
 [pull]
   rebase = true
 [push]
@@ -59,10 +66,6 @@
   autoStash = true
 [submodule]
   recurse = true
-[commit]
-  ; verbose = true
-  ; gpgsign = true ; Stupid: <https://code-examples.net/en/q/9b0c2e>
-  ; template = ~/.gitmessage
 
 [gui]
   encoding = utf-8
@@ -106,6 +109,11 @@
 [http]
   sslVerify = false
   postBuffer = 524288000
+
+[url "git@github.com:"]
+  insteadOf = gh:
+[url "git@gitlab.com:"]
+  insteadOf = gl:
 
 ; [url "https://github.com.cnpmjs.org/"]
 ; [url "https://hub.fastgit.org/"]
