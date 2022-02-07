@@ -78,12 +78,17 @@ function ef($name) {
     }
 }
 
-# Get alias of a cmdlet
-function gcl ($cmdletname) {
+# find alias of a cmdlet
+function find-alias([String]$cmdletname) {
     Get-Alias |
     Where-Object -FilterScript { $_.Definition -like "$cmdletname" } |
     Format-Table -Property Definition, Name -AutoSize
 }
+
+# 1. gal ii
+# 2. gal -Definition Invoke-Item
+# 3. fal Invoke-Item
+Set-Alias fal find-alias
 
 # test for `man about_Profiles`
 function colorConsole {
