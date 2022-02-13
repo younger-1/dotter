@@ -115,19 +115,29 @@ set title
 set cursorcolumn
 set cursorline
 
-" Use vertical bar cursor in Insert mode
-let &t_SI ..= "\e[6 q"
-" Use Block cursor in Normal mode
-let &t_EI ..= "\e[2 q"
-" Use Underline cursor in Replace mode
-let &t_SR ..= "\e[4 q"
-
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"  " Set foreground color (R, G, B)
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"  " Set background color (R, G, B)
-
 set t_Co=256                    " Number of colors
 set termguicolors
 set bg=dark
+
+" Note: must be set after `termguicolors`
+" 1 or 0 -> blinking block
+" 2 -> solid block
+" 3 -> blinking underscore
+" 4 -> solid underscore
+" 5 -> blinking vertical bar
+" 6 -> solid vertical bar
+let &t_EI = "\e[2 q"
+let &t_SI = "\e[6 q"
+let &t_SR = "\e[4 q"
+
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"  " Set foreground color (R, G, B)
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"  " Set background color (R, G, B)
+
+" augroup windows_term
+"   autocmd!
+"   autocmd VimEnter * silent echo
+" augroup END
+
 
 " [misc]
 set formatoptions+=j            " Delete comment character when joining commented lines

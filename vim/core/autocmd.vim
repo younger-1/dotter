@@ -34,3 +34,4 @@ augroup mySetup
   " Restart with cursor in the location from last session.   {{{2
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 augroup END
+

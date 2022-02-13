@@ -3,9 +3,9 @@ noremap! <C-a> <Home>
 noremap! <C-e> <End>
 noremap! <A-f> <S-Right>
 noremap! <A-b> <S-Left>
-noremap! ( ()<Left>
-noremap! [ []<Left>
-noremap! { {}<Left>
+" noremap! ( ()<Left>
+" noremap! [ []<Left>
+" noremap! { {}<Left>
 
 " [insert_mode]
 inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
