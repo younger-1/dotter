@@ -120,6 +120,7 @@ set termguicolors
 set bg=dark
 
 " Note: must be set after `termguicolors`
+" https://github.com/microsoft/terminal/issues/4335
 " 1 or 0 -> blinking block
 " 2 -> solid block
 " 3 -> blinking underscore
@@ -133,10 +134,12 @@ let &t_SR = "\e[4 q"
 " let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"  " Set foreground color (R, G, B)
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"  " Set background color (R, G, B)
 
-" augroup windows_term
-"   autocmd!
-"   autocmd VimEnter * silent echo
-" augroup END
+" https://github.com/microsoft/terminal/issues/68#issuecomment-658310258
+augroup windows_terminal
+  autocmd!
+  " autocmd VimLeave * silent !echo -ne "\x1b[\x35 q"
+  " autocmd VimLeave * let &t_EI = "\e[6 q"
+augroup END
 
 
 " [misc]

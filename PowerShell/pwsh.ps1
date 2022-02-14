@@ -21,14 +21,14 @@
 # $env:XDG_DATA_HOME="$env:APPDATA"
 # $env:XDG_CONFIG_HOME="$env:LOCALAPPDATA"
 # $env:XDG_CACHE_HOME="$env:TEMP"
- 
+
 $env:SHELL = "cmd"
 $env:EDITOR = "nvim"
 $env:VISUAL = "code.cmd"
 
 $env:GITHUB_AUTH_TOKEN = $(gpg --quiet -d $HOME/dotter/gpg/github.younger)
 $env:GITTY_TOKENS = "github.com={0}" -f $env:GITHUB_AUTH_TOKEN
- 
+
 # TODO
 # function or script for curl/wget/aria2 to use hub.fastgit.org
 
@@ -55,7 +55,7 @@ $env:PATHEXT += ";.py"
 $env:JULIA_PKG_SERVER = 'https://mirrors.tuna.tsinghua.edu.cn/julia'
 
 # [elixir]
-function iel { 
+function iel {
     iex.bat --werl
 }
 
@@ -105,7 +105,7 @@ Set-PSReadLineKeyHandler -Chord Ctrl+n -Function NextHistory
 # 查看可使用的颜色
 # [enum]::getvalues([consolecolor])
 # 查看键盘键
-# [enum]::getvalues([System.ConsoleKey]) 
+# [enum]::getvalues([System.ConsoleKey])
 Set-PSReadLineKeyHandler -Chord Ctrl+w -Function BackwardKillWord
 Set-PSReadLineKeyHandler -Chord Ctrl+c -Function RevertLine
 Set-PSReadLineKeyHandler -Chord "Escape,Ctrl+w" -Function UnixWordRubout
@@ -143,7 +143,8 @@ Set-PSReadLineKeyHandler -Chord Ctrl+RightArrow -Function NextWord
 . $PSScriptRoot/completion-procs.ps1
 
 # pdm completion powershell
-. $PSScriptRoot/completion-pdm.ps1
+# FIXME: too slow, take 2 sec
+# . $PSScriptRoot/completion-pdm.ps1
 
 # <https://docs.microsoft.com/en-us/dotnet/core/tools/enable-tab-autocomplete>
 . $PSScriptRoot/completion-dotnet.ps1
