@@ -138,6 +138,8 @@ let &t_SR = "\e[4 q"
 augroup windows_terminal
   autocmd!
   " autocmd VimLeave * silent !echo -ne "\x1b[\x35 q"
+  " autocmd VimLeave * silent !echo -ne "\e[6 q"
+  " autocmd VimLeave * silent !printf "\e[6 q"
   " autocmd VimLeave * let &t_EI = "\e[6 q"
 augroup END
 

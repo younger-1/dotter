@@ -64,8 +64,8 @@
   prune = false
 [rebase]
   autoStash = true
-[submodule]
-  recurse = true
+; [submodule]
+;   recurse = true ; It will cause much CPU consumption
 
 [gui]
   encoding = utf-8
@@ -108,7 +108,6 @@
   allow = always
 [http]
   sslVerify = false
-  postBuffer = 524288000
 
 [url "git@github.com:"]
   insteadOf = gh:
