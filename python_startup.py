@@ -3,12 +3,17 @@
 import os
 import sys
 
-global ic, pt
+global ic, pt, pd
 
 try:
     from icecream import ic
 except ImportError:  # Graceful fallback if IceCream isn't installed.
     ic = lambda *a: None if not a else (a[0] if len(a) == 1 else a)  # noqa
+
+try:
+    import pdir as pd
+except ImportError:
+    pd = dir
 
 try:
     import prompt_toolkit as pt

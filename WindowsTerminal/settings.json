@@ -1,6 +1,7 @@
 {
     // "$schema": "https://aka.ms/terminal-profiles-schema",
-    "$schema": "https://raw.fastgit.org/microsoft/terminal/release-1.10/doc/cascadia/profiles.schema.json",
+    // "$schema": "https://raw.fastgit.org/microsoft/terminal/release-1.11/doc/cascadia/profiles.schema.json",
+    "$schema": "https://raw.githubusercontent.com/microsoft/terminal/release-1.11/doc/cascadia/profiles.schema.json",
     "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "theme": "system",
     "startOnUserLogin": true,
@@ -62,14 +63,14 @@
                 "action": "findMatch",
                 "direction": "next"
             },
-            "keys": "alt+]"
+            "keys": "alt+shift+]"
         },
         {
             "command": {
                 "action": "findMatch",
                 "direction": "prev"
             },
-            "keys": "alt+["
+            "keys": "alt+shift+["
         },
         {
             "command": "toggleAlwaysOnTop",
@@ -115,14 +116,14 @@
             "command": "prevTab",
             "keys": "alt+shift+h"
         },
-        {
-            "command": "nextTab",
-            "keys": "alt+shift+right"
-        },
-        {
-            "command": "prevTab",
-            "keys": "alt+shift+left"
-        },
+        // {
+        //     "command": "nextTab",
+        //     "keys": "alt+shift+right"
+        // },
+        // {
+        //     "command": "prevTab",
+        //     "keys": "alt+shift+left"
+        // },
         // [Pane Management]
         {
             "command": "toggleReadOnlyMode",
@@ -179,27 +180,34 @@
         // [Clipboard Integration]
         // [Scrollback]
         {
-            "command": "scrollDown",
+            "command": "scrollDownPage",
             "keys": "alt+shift+j"
         },
         {
-            "command": "scrollUp",
-            "keys": "alt+shift+k"
-        },
-        {
-            "command": "scrollDownPage",
-            "keys": "alt+shift+down"
-        },
-        {
             "command": "scrollUpPage",
-            "keys": "alt+shift+up"
+            "keys": "alt+shift+k"
         }
-        // [Visual Adjustments]
     ],
     "profiles": {
         "defaults": {
             "colorScheme": "ayu",
-            "fontFace": "SauceCodePro NF",
+            "font": {
+                "face": "Delugia",
+                "features": {
+                    // "ss01": 1,
+                    "calt": 0,
+                    // "clig": 0,
+                    // "dlig": 0,
+                },
+                "axes": {
+                    "wght": 300,
+                    // "ital": 1,
+                    // "slnt": 1,
+                    // "opsz": 1,
+                    // "wdth": 1,
+                }
+            },
+            "intenseTextStyle": "bold",
             "bellStyle": "all",
             // "experimental.pixelShaderPath": "C:/Users/younger/Desktop/oops/Awesome/windows-terminal-shaders/hueshift.hlsl",
             "backgroundImageOpacity": 0.4,
@@ -215,14 +223,17 @@
                 "source": "Windows.Terminal.PowershellCore",
                 "colorScheme": "ayu",
                 "backgroundImage": "%HOME%/Beauty/Icons/v-logo.png",
-                "fontFace": "Delugia Light",
+                // "fontFace": "Hasklug NF",
+                // "fontFace": "VictorMono NF",
+                // "fontFace": "霞鹜文楷等宽",
                 // "fontFace": "mononoki NF",
                 // "fontFace": "monoid NF",
                 // "fontFace": "TerminessTTF NF",
                 // "fontFace": "CaskaydiaCove NF",
                 // "fontFace": "JetBrainsMono NF",
                 // "fontFace": "DejaVuSansMono NF",
-                // "fontFace": "mononoki NF",
+                // "fontFace": "SauceCodePro NF",
+                // "fontFace": "Hack NF",
                 // "cursorColor": "#8FF7B1",
                 "acrylicOpacity": 0.8
             },
@@ -250,8 +261,13 @@
                 "colorScheme": "Tango Dark",
                 "icon": "%HOME%/Beauty/Icons/linux/arch.png",
                 "backgroundImage": "%HOME%/Beauty/Icons/linux/arch-linux1.png",
-                // "fontFace": "Delugia",
-                // "fontFace": "Delugia Light",
+                "font": {
+                    "face": "SauceCodePro NF",
+                    // "face": "Hack NF",
+                    "axes": {
+                        "wght": 400,
+                    }
+                },
                 "cursorColor": "#6f847d",
                 // "startingDirectory": "//wsl$/Arch/home/young",
                 "commandline": "arch",
@@ -325,7 +341,7 @@
             {
                 "name": "Git Bash",
                 "guid": "{6b639849-a5a6-4940-921d-80e9a0a54f32}",
-                "commandline": "%GIT_INSTALL_ROOT%/bin/bash.exe -l -i", // login shell, interactive shell 
+                "commandline": "%GIT_INSTALL_ROOT%/bin/bash.exe -l -i", // login shell, interactive shell
                 "icon": "%GIT_INSTALL_ROOT%/usr/share/git/git-for-windows.ico",
                 "startingDirectory": "%HOME%",
                 "acrylicOpacity": 0.8

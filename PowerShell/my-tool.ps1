@@ -1,4 +1,4 @@
-﻿$mytool = $PSCommandPath
+$mytool = $PSCommandPath
 
 function suu { scoop update; scoop update * }
 
@@ -45,7 +45,7 @@ function jsh {
 }
 
 # SpaceVim
-function svi($path) { 
+function svi($path) {
     # Don't use following:
     # $env:XDG_CONFIG_HOME = "$HOME/.cache"
     # $env:XDG_CONFIG_HOME = "$HOME/.SpaceVim.d"
@@ -53,19 +53,6 @@ function svi($path) {
     $env:XDG_CONFIG_HOME = "$HOME/blogs"
     nvim $path
     $env:XDG_CONFIG_HOME = ""
-}
-
-# Note: git is fun and git.exe/ps1 is the exectable
-# This can omit: $git_init = $false
-function git {
-    if ($global:git_init) {
-        git.exe $args
-    }
-    else {
-        Import-Module posh-git
-        $global:git_init = $true
-        git.exe $args
-    }
 }
 
 function nvi {
@@ -108,6 +95,30 @@ function br() {
     }
 }
 
+# Note: git is func and git.exe/ps1 is the exectable
+# This can omit: $git_init = $false
+function git {
+    if ($global:git_init) {
+        git.exe $args
+    }
+    else {
+        Import-Module posh-git
+        $global:git_init = $true
+        git.exe $args
+    }
+}
+
+function gitcm($scope) {
+    if (($args).count -gt 0) {
+      $git_msg = "[{0}]: {1}" -f $scope, ($args -join ' ')
+    } else {
+      $git_msg = $scope
+    }
+    # echo $git_msg
+    git c -m $git_msg
+}
+
+
 # [dotfiles]
 # https://seankilleen.com/2020/04/how-to-create-a-powershell-alias-with-parameters/
 # https://stackoverflow.com/questions/62861665/powershell-pass-all-parameters-received-in-function-and-handle-parameters-with
@@ -116,12 +127,10 @@ function dot {
     git --git-dir=$HOME/dotfiles.git --work-tree=$HOME @args
 }
 
-
-
 # PSFzf
 if (Get-Command Set-PsFzfOption -errorAction SilentlyContinue) {
     Set-PsFzfOption -PSReadlineChordReverseHistory 'Ctrl+r'
-    # Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' 
+    # Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t'
     # Set-PSReadLineKeyHandler -Key Tab -ScriptBlock { Invoke-FzfTabCompletion }
 }
 
@@ -155,10 +164,10 @@ if (Get-Command Set-PsFzfOption -errorAction SilentlyContinue) {
 # $env:FZF_CTRL_T_COMMAND = "cmd /c dir /s/b/a:-d-h"
 # $env:FZF_CTRL_T_OPTS = "--ansi --layout=reverse --border=sharp --prompt='>>> ' --marker='| ' -m  --header='Younger Searching' --color=16 --preview='bat --color=always --number {}' --preview-window=right:sharp --bind 'ctrl-y:execute-silent(bat {} | clip)+abort'"
 
-<# Usage:   
+<# Usage:
     1. vim (f)
     2. bat (f)
-    3. (f) | bat 
+    3. (f) | bat
     4. f (ss prefix trojan-go)
     5. vim (f (ss prefix trojan-go))
 #>
