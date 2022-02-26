@@ -1,11 +1,28 @@
 # Windows OS-specific configuration
 
+[win.files]
+
+wslconfig = "~/.wslconfig"
+"tabnine.toml" = "~/AppData/Roaming/TabNine/TabNine.toml"
+"typora.json" = "~/AppData/Roaming/Typora/conf/conf.user.json"
+"baidu_pcs.json" = "~/AppData/Roaming/BaiduPCS-Go/pcs_config.json"
+"dev_sidecar.json" = "~/.dev-sidecar/config.json5"
+PowerShell = { target = "~/Documents/PowerShell", type = "symbolic" }
+"PowerShell/pwsh.ps1" = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
+"PowerShell/powershell.ps1" = "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
+WindowsTerminal = { target = "~/AppData/Local/Microsoft/Windows Terminal", type = "symbolic" }
+# TODO: New-Item -ItemType SymbolicLink -Path ~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState/settings.json -Target ~/dotter/WindowsTerminal/settings.json -Force
+# WindowsTerminal = { target = "~/AppData/Local/Packages/Microsoft.WindowsTerminal_8wekyb3d8bbwe/LocalState", type = "symbolic" }
+"winfetch.ps1" = "~/.config/winfetch/config.ps1"
+
 [default.variables]
+
 os = "windows"
 nerd_font = "NF"
 colorscheme = "nord"
 
 [default.files]
+
 vim = { target = "~/vimfiles", type = "symbolic"}
 pip = "~/AppData/Roaming/pip/pip.ini"
 "lsd.yml" = "~/AppData/Roaming/lsd/config.yaml"
@@ -25,6 +42,7 @@ espanso = { target = "$scoop/persist/espanso/.espanso", type = "symbolic" }
 "poetry.toml" = "~/AppData/Roaming/pypoetry/config.toml"
 
 [vim.files]
+
 vimrc = { target = "~/_vimrc", type = "symbolic" }
 gvimrc = { target = "~/_gvimrc", type = "symbolic" }
 

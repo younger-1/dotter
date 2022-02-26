@@ -1,6 +1,10 @@
 [helpers]
 # hex2rgb = ".dotter/helpers/hex2rgb.rhai"
 
+[win]
+
+depends = [ "default" ]
+
 [default]
 
 [default.variables]
@@ -58,31 +62,12 @@ helix = { target = "~/.config/helix", type = "symbolic" }
 espanso = { target = "~/.config/espanso", type = "symbolic" }
 "poetry.toml" = "~/.config/pypoetry/config.toml"
 
-
 [vim]
 
 [vim.files]
 
 vimrc = { target = "~/.vimrc", type = "symbolic" }
 gvimrc = { target = "~/.gvimrc", type = "symbolic" }
-
-
-[win]
-
-depends = [ "default" ]
-
-[win.files]
-
-wslconfig = "~/.wslconfig"
-"tabnine.toml" = "~/AppData/Roaming/TabNine/TabNine.toml"
-"typora.json" = "~/AppData/Roaming/Typora/conf/conf.user.json"
-"baidu_pcs.json" = "~/AppData/Roaming/BaiduPCS-Go/pcs_config.json"
-"dev_sidecar.json" = "~/.dev-sidecar/config.json5"
-PowerShell = { target = "~/Documents/PowerShell", type = "symbolic" }
-"PowerShell/pwsh.ps1" = "~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1"
-"PowerShell/powershell.ps1" = "~/Documents/WindowsPowerShell/Microsoft.PowerShell_profile.ps1"
-WindowsTerminal = { target = "~/AppData/Local/Microsoft/Windows Terminal", type = "symbolic" }
-"winfetch.ps1" = "~/.config/winfetch/config.ps1"
 
 [shell]
 

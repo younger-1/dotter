@@ -1,8 +1,9 @@
+// https://docs.microsoft.com/en-us/windows/terminal/install
 {
     // "$schema": "https://aka.ms/terminal-profiles-schema",
     // "$schema": "https://raw.fastgit.org/microsoft/terminal/release-1.11/doc/cascadia/profiles.schema.json",
     "$schema": "https://raw.githubusercontent.com/microsoft/terminal/release-1.11/doc/cascadia/profiles.schema.json",
-    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
+    "defaultProfile": "PowerShellCore",
     "theme": "system",
     "startOnUserLogin": true,
     // To unbind a default keybinding, set the command to "unbound" or null
@@ -221,6 +222,7 @@
                 "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 // "commandline": "%SCOOP%/apps/pwsh/current/pwsh.exe", // or use new shim
                 "source": "Windows.Terminal.PowershellCore",
+                "startingDirectory": "%HOME%",
                 "colorScheme": "ayu",
                 "backgroundImage": "%HOME%/Beauty/Icons/v-logo.png",
                 // "fontFace": "Hasklug NF",
