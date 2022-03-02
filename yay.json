@@ -1,5 +1,5 @@
 {
-	"aururl": "https://aur.tuna.tsinghua.edu.cn",
+	"aururl": "https://aur.archlinux.org",
 	"buildDir": "$HOME/.cache/yay",
 	"absdir": "$HOME/.cache/yay/abs",
 	"editor": "",
@@ -10,7 +10,6 @@
 	"pacmanconf": "/etc/pacman.conf",
 	"redownload": "no",
 	"rebuild": "no",
-	"batchinstall": false,
 	"answerclean": "",
 	"answerdiff": "",
 	"answeredit": "",
@@ -26,8 +25,8 @@
 	"sudobin": "sudo",
 	"sudoflags": "",
 	"requestsplitn": 150,
-	"sortmode": 0,
 	"completionrefreshtime": 7,
+	"bottomup": true,
 	"sudoloop": false,
 	"timeupdate": false,
 	"devel": false,
@@ -39,5 +38,7 @@
 	"diffmenu": true,
 	"editmenu": false,
 	"combinedupgrade": false,
-	"useask": false
+	"useask": false,
+	"batchinstall": false,
+	"singlelineresults": false
 }
