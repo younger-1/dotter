@@ -1,3 +1,5 @@
+let s:is_plugged = 1
+
 function s:before_plug()
   if !s:is_plugged
     return
@@ -8,12 +10,29 @@ function s:before_plug()
   if empty(glob(s:install_path))
     " silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
     silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/autoload/jetpack.vim'
+
     " autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   endif
 
   " let g:plug_url_format = 'https://github.com/%s.git'
   " let g:plug_home = $vim_cache_dir .. '/plugged'
+
   let g:jetpack#optimization = 2
+endfunction
+
+function s:after_plug()
+  " NOTE: define command to use local plugins, see:<https://github.com/tani/vim-jetpack/issues/36>
+  command -nargs=1 JetpackLocal if isdirectory(<args>) | set rtp^=<args> | endif
+    \| if isdirectory(<args>..'/after') | set rtp+=<args>/after | endif
+
+  JetpackLocal $nvim_config_dir
+
+  if s:is_plugged
+    return
+  endif
+
+  filetype plugin indent on
+  syntax on
 endfunction
 
 function s:boot_plug()
@@ -44,25 +63,8 @@ function! s:check_missing(...)
   endif
 endfunction
 
-function s:after_plug()
-  if s:is_plugged
-    return
-  endif
-
-  filetype plugin indent on
-  syntax on
-
-  if isdirectory($nvim_config_dir)
-    set rtp^=$nvim_config_dir
-    set rtp+=$nvim_config_dir/after
-  endif
-endfunction
-
-function s:plugging()
+  function s:plugging()
   " <https://github.com/tani/vim-jetpack/blob/main/doc/jetpack.txt>
-
-  " TODO: not support
-  " Jetpack $nvim_config_dir, { 'as' : 'younger' }
 
   " [Theme]
   Jetpack 'vv9k/bogster'
@@ -123,7 +125,7 @@ function s:plugging()
   " TODO: join line
   Jetpack 'roxma/nvim-yarp'
   Jetpack 'roxma/vim-hug-neovim-rpc'
-  Jetpack 'Shougo/defx.nvim'
+  Jetpack 'Shougo/defx.nvim', { 'on' : 'Defx' }
   Jetpack 'gelguy/wilder.nvim'
 
   " Jetpack 'tpope/vim-vinegar'
@@ -145,21 +147,28 @@ function s:plugging()
   Jetpack 'lervag/vimtex', { 'for' : 'tex' }
   Jetpack 'ctrlpvim/ctrlp.vim'
   Jetpack 'MattesGroeger/vim-bookmarks'
-
 endfunction
 
-let s:is_plugged = 1
+""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""
 
 call s:before_plug()
 call s:boot_plug()
 call s:after_plug()
 
-" <https://github.com/jdhao/nvim-config/blob/master/core/plugins.vim>
-IncScript config/defx.vim
-IncScript config/my_tree.vim
-IncScript config/matchup.vim
-IncScript config/startify.vim
-IncScript config/vim-plug.vim
+function! s:config_complete(...) abort
+  return (g:vhome .. '/config/*.vim') ->glob(0, 1) ->map('strpart(v:val, strlen(g:vhome) + strlen("/config/"))') ->join("\n")
+endfunction
+
+command! -nargs=1 -complete=custom,s:config_complete ConfigSource exec 'so ' .. fnameescape(g:vhome .. '/config/<args>')
+
+ConfigSource defx.vim
+ConfigSource my_tree.vim
+ConfigSource matchup.vim
+ConfigSource startify.vim
+ConfigSource vim-plug.vim
+
 call wilder#setup({'modes': ['/', '?']})
 
 if s:is_plugged
@@ -169,4 +178,3 @@ else
   " colorscheme uwu
   colorscheme paper
 endif
-
