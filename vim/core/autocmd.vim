@@ -35,3 +35,25 @@ augroup mySetup
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 augroup END
 
+" function! s:plug_doc()
+"   let name = matchstr(getline('.'), '^- \zs\S\+\ze:')
+"   if has_key(g:plugs, name)
+"     for doc in split(globpath(g:plugs[name].dir, 'doc/*.txt'), '\n')
+"       execute 'tabe' doc
+"     endfor
+"   endif
+" endfunction
+
+augroup _vim_plug
+  autocmd!
+
+  " <https://github.com/junegunn/vim-plug/wiki/extra>
+  " Run PlugInstall if there are missing plugins
+  " autocmd VimEnter *
+  "   \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  "   \| PlugInstall --sync | source $MYVIMRC
+  "   \| endif
+
+  " Open help docs
+  " autocmd FileType vim-plug nnoremap <buffer> <silent> H :call <sid>plug_doc()<cr>
+augroup END

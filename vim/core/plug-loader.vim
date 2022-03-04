@@ -3,13 +3,17 @@ function s:before_plug()
     return
   endif
 
-  let s:install_path = $vim_config_dir .. '/autoload/plug.vim'
+  " let s:install_path = $vim_config_dir .. '/autoload/plug.vim'
+  let s:install_path = $vim_config_dir .. '/autoload/jetpack.vim'
   if empty(glob(s:install_path))
-    silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    " silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+    silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/autoload/jetpack.vim'
+    " autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
   endif
-  let g:plug_url_format = 'https://github.com/%s.git'
-  let g:plug_home = $vim_cache_dir .. '/plugged'
+
+  " let g:plug_url_format = 'https://github.com/%s.git'
+  " let g:plug_home = $vim_cache_dir .. '/plugged'
+  let g:jetpack#optimization = 2
 endfunction
 
 function s:boot_plug()
@@ -17,15 +21,17 @@ function s:boot_plug()
     return
   endif
 
-  call plug#begin()
+  " call plug#begin()
+  call jetpack#begin()
 
   call s:plugging()
 
   " `call plug#end()` to update 'runtimepath' and initialize plugin system
   " Automatically executes `filetype plugin indent on` and `syntax enable`
-  call plug#end()
+  " call plug#end()
+  call jetpack#end()
 
-  call timer_start(50, function('<SID>check_missing'))
+  " call timer_start(50, function('<SID>check_missing'))
 endfunction
 
 function! s:check_missing(...)
@@ -53,41 +59,44 @@ function s:after_plug()
 endfunction
 
 function s:plugging()
-  Plug $nvim_config_dir, { 'as' : 'younger' }
+  " <https://github.com/tani/vim-jetpack/blob/main/doc/jetpack.txt>
+
+  " TODO: not support
+  " Jetpack $nvim_config_dir, { 'as' : 'younger' }
 
   " [Theme]
-  Plug 'vv9k/bogster'
-  Plug 'lifepillar/vim-gruvbox8'
-  Plug 'ryanoasis/vim-devicons'
+  Jetpack 'vv9k/bogster'
+  Jetpack 'lifepillar/vim-gruvbox8'
+  Jetpack 'ryanoasis/vim-devicons'
 
   " [Basic]
-  Plug 'sheerun/vim-polyglot', { 'on' : [] }
-  Plug 'airblade/vim-rooter'
+  Jetpack 'sheerun/vim-polyglot', { 'on' : [] }
+  Jetpack 'airblade/vim-rooter'
 
   " [Motion]
-  Plug 'justinmk/vim-sneak'
-  Plug 'haya14busa/vim-asterisk'
-  Plug 'bkad/CamelCaseMotion'
-  " Plug 'wellle/targets.vim'
-  Plug 'unblevable/quick-scope'
+  Jetpack 'justinmk/vim-sneak'
+  Jetpack 'haya14busa/vim-asterisk'
+  Jetpack 'bkad/CamelCaseMotion'
+  " Jetpack 'wellle/targets.vim'
+  Jetpack 'unblevable/quick-scope'
     let g:qs_lazy_highlight = 1
     let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
     let g:qs_buftype_blacklist = ['terminal', 'nofile']
     let g:qs_filetype_blacklist = ['dashboard', 'startify']
-  Plug 'andymass/vim-matchup'
+  Jetpack 'andymass/vim-matchup'
 
   " [Change]
-  Plug 'tpope/vim-surround'
-  Plug 'tpope/vim-abolish'
-  Plug 'tpope/vim-repeat'
-  Plug 'kana/vim-textobj-user'
-  Plug 'kana/vim-textobj-entire'
-  " Plug 'tommcdo/vim-exchange'
+  Jetpack 'tpope/vim-surround'
+  Jetpack 'tpope/vim-abolish'
+  Jetpack 'tpope/vim-repeat'
+  Jetpack 'kana/vim-textobj-user'
+  Jetpack 'kana/vim-textobj-entire'
+  " Jetpack 'tommcdo/vim-exchange'
   " -- Comment
-  Plug 'tpope/vim-commentary'
-  " Plug 'preservim/nerdcommenter'
-  " Plug 'tyru/caw.vim'
-  Plug 'mg979/vim-visual-multi'
+  Jetpack 'tpope/vim-commentary'
+  " Jetpack 'preservim/nerdcommenter'
+  " Jetpack 'tyru/caw.vim'
+  Jetpack 'mg979/vim-visual-multi'
     let g:VM_default_mappings = 0
     let g:VM_maps = {}
     let g:VM_maps["Undo"] = 'u'
@@ -95,45 +104,47 @@ function s:plugging()
     let g:VM_maps['Find Under']         = '<C-n>'
     let g:VM_maps['Find Subword Under'] = '<C-n>'
 
-  Plug 'junegunn/vim-easy-align'
+  Jetpack 'junegunn/vim-easy-align'
 
   " [Vim]
-  Plug 'tpope/vim-scriptease'
-  Plug 'bagrat/vim-buffet'
-  Plug 'itchyny/lightline.vim'
-  Plug 'mhinz/vim-startify'
+  Jetpack 'tpope/vim-scriptease'
+  Jetpack 'bagrat/vim-buffet'
+  Jetpack 'itchyny/lightline.vim'
+  Jetpack 'mhinz/vim-startify'
     " Do not change working directory when opening files.
     let g:startify_change_to_dir = 0
     let g:startify_fortune_use_unicode = 1
 
-  Plug 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
-  Plug 'junegunn/limelight.vim', { 'on' : 'Limelight' }
+  Jetpack 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
+  Jetpack 'junegunn/limelight.vim', { 'on' : 'Limelight' }
     autocmd User GoyoEnter Limelight
     autocmd User GoyoLeave Limelight!
 
-  Plug 'roxma/nvim-yarp' | Plug 'roxma/vim-hug-neovim-rpc'
-  Plug 'Shougo/defx.nvim'
-  Plug 'gelguy/wilder.nvim'
+  " TODO: join line
+  Jetpack 'roxma/nvim-yarp'
+  Jetpack 'roxma/vim-hug-neovim-rpc'
+  Jetpack 'Shougo/defx.nvim'
+  Jetpack 'gelguy/wilder.nvim'
 
-  " Plug 'tpope/vim-vinegar'
-  Plug 'preservim/nerdtree'
-  Plug 'preservim/nerdcommenter'
+  " Jetpack 'tpope/vim-vinegar'
+  Jetpack 'preservim/nerdtree'
+  Jetpack 'preservim/nerdcommenter'
 
-  Plug 'mhinz/vim-signify'
-  " Plug 'airblade/vim-gitgutter'
+  Jetpack 'mhinz/vim-signify'
+  " Jetpack 'airblade/vim-gitgutter'
 
-  Plug 'tpope/vim-fugitive'
-  Plug 'junegunn/gv.vim'
+  Jetpack 'tpope/vim-fugitive'
+  Jetpack 'junegunn/gv.vim'
 
-  Plug 'voldikss/vim-floaterm'
-  Plug 'mbbill/undotree'
+  Jetpack 'voldikss/vim-floaterm'
+  Jetpack 'mbbill/undotree'
 
-  Plug 'vim-denops/denops.vim'
-  Plug 'lambdalisue/guise.vim'
+  Jetpack 'vim-denops/denops.vim'
+  Jetpack 'lambdalisue/guise.vim'
 
-  Plug 'lervag/vimtex', { 'for' : 'tex' }
-  Plug 'ctrlpvim/ctrlp.vim'
-  Plug 'MattesGroeger/vim-bookmarks'
+  Jetpack 'lervag/vimtex', { 'for' : 'tex' }
+  Jetpack 'ctrlpvim/ctrlp.vim'
+  Jetpack 'MattesGroeger/vim-bookmarks'
 
 endfunction
 
