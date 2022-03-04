@@ -63,7 +63,7 @@ function! s:check_missing(...)
   endif
 endfunction
 
-  function s:plugging()
+function s:plugging()
   " <https://github.com/tani/vim-jetpack/blob/main/doc/jetpack.txt>
 
   " [Theme]
@@ -163,13 +163,33 @@ endfunction
 
 command! -nargs=1 -complete=custom,s:config_complete ConfigSource exec 'so ' .. fnameescape(g:vhome .. '/config/<args>')
 
-ConfigSource defx.vim
-ConfigSource my_tree.vim
-ConfigSource matchup.vim
-ConfigSource startify.vim
-ConfigSource vim-plug.vim
+augroup _young_jetpack
+  autocmd!
+augroup END
 
+function! s:config(config) abort
+  for name in jetpack#names()
+    if name =~ a:config
+      let plugin = name
+      break
+    endif
+  endfor
+  if !exists('l:plugin')
+    echomsg '[young]: ' .. a:config .. '(config) is not clear'
+    return
+  endif
+  let JetName = substitute(substitute(plugin, '\W\+', '_', 'g'), '\(^\|_\)\(.\)', '\u\2', 'g')
+  execute printf('autocmd _young_jetpack User Jetpack%s ConfigSource %s.vim', JetName, a:config)
+endfunction
+command! -nargs=1 Config call s:config("<args>")
+
+Config defx
+Config nerdtree
+Config matchup
+Config startify
 call wilder#setup({'modes': ['/', '?']})
+
+delcommand Config
 
 if s:is_plugged
   colorscheme gruvbox8_hard
