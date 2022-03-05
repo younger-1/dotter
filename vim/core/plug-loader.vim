@@ -1,4 +1,4 @@
-let s:is_plugged = 1
+let g:is_plugged = 1
 
 function s:init_plug()
   " NOTE: define command to use local plugins, see:<https://github.com/tani/vim-jetpack/issues/36>
@@ -7,7 +7,7 @@ function s:init_plug()
 
   UseLocal $nvim_config_dir
 
-  if !s:is_plugged
+  if !g:is_plugged
     filetype plugin indent on
     syntax on
     return
@@ -26,10 +26,12 @@ function s:init_plug()
   " let g:plug_home = $vim_cache_dir .. '/plugged'
 
   let g:jetpack#optimization = 2
+  " autocmd VimEnter * set path^=.
+  autocmd VimEnter * let &path = '.,' .. getcwd() .. ',' .. &path
 endfunction
 
 function s:boot_plug()
-  if !s:is_plugged
+  if !g:is_plugged
     return
   endif
 
@@ -81,6 +83,7 @@ function s:plugging()
   Jetpack 'justinmk/vim-sneak'
   Jetpack 'haya14busa/vim-asterisk'
   Jetpack 'bkad/CamelCaseMotion'
+  " Jetpack 'chaoren/vim-wordmotion'
   " Jetpack 'wellle/targets.vim'
   Jetpack 'unblevable/quick-scope'
   Jetpack 'andymass/vim-matchup'
@@ -141,45 +144,3 @@ endfunction
 
 call s:init_plug()
 call s:boot_plug()
-
-function! s:config_complete(...) abort
-  return (g:vhome .. '/config/*.vim') ->glob(0, 1) ->map('strpart(v:val, strlen(g:vhome) + strlen("/config/"))') ->join("\n")
-endfunction
-
-command! -nargs=1 -complete=custom,s:config_complete ConfigSource exec 'so ' .. fnameescape(g:vhome .. '/config/<args>')
-
-augroup _young_jetpack
-  autocmd!
-augroup END
-
-function! s:config(config) abort
-  for name in jetpack#names()
-    if name =~ a:config
-      let plugin = name
-      break
-    endif
-  endfor
-  if !exists('l:plugin')
-    echomsg '[young]: ' .. a:config .. '(config) is not clear'
-    return
-  endif
-  let JetName = substitute(substitute(plugin, '\W\+', '_', 'g'), '\(^\|_\)\(.\)', '\u\2', 'g')
-  " execute printf('autocmd _young_jetpack User JetpackPre%s ConfigSource %s.vim', JetName, a:config)
-  execute printf('autocmd _young_jetpack User Jetpack%s ConfigSource %s.vim', JetName, a:config)
-endfunction
-command! -nargs=1 Config call s:config("<args>")
-
-Config defx
-Config nerdtree
-Config matchup
-Config startify
-
-delcommand Config
-
-if s:is_plugged
-  colorscheme gruvbox8_hard
-else
-  " colorscheme murphy
-  " colorscheme paper
-  colorscheme uwu
-endif

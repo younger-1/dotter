@@ -37,3 +37,11 @@ endif
 if jetpack#tap('defx.nvim')
   nnoremap <leader>n <cmd>Defx<CR>
 endif
+
+if jetpack#tap('vim-startify')
+  nnoremap <leader>; <cmd>Startify<cr>
+endif
+
+if jetpack#tap('CamelCaseMotion')
+  let g:camelcasemotion_key = '\'
+endif

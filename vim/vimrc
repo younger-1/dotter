@@ -32,4 +32,7 @@ HomeSource core/func.vim
 HomeSource core/mappings.vim
 HomeSource core/cmd.vim
 HomeSource core/autocmd.vim
+
 HomeSource core/plug-loader.vim
+HomeSource core/theme.vim
+HomeSource config/init.vim
