@@ -18,8 +18,8 @@ function! s:config(config) abort
     return
   endif
   let JetName = substitute(substitute(plugin, '\W\+', '_', 'g'), '\(^\|_\)\(.\)', '\u\2', 'g')
-  " execute printf('autocmd _young_jetpack User JetpackPre%s ConfigSource %s.vim', JetName, a:config)
-  execute printf('autocmd _young_jetpack User Jetpack%s ConfigSource %s.vim', JetName, a:config)
+  execute printf('autocmd _young_jetpack User Jetpack%sPre  ConfigSource %s.vim', JetName, a:config)
+  execute printf('autocmd _young_jetpack User Jetpack%sPost ConfigSource %s.vim', JetName, a:config)
 endfunction
 
 command! -nargs=1 -complete=custom,s:config_complete ConfigSource exec 'so ' .. fnameescape(g:vhome .. '/config/<args>')

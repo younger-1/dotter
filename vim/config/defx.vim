@@ -1,6 +1,11 @@
 " <https://zhuanlan.zhihu.com/p/88329719>
 " <https://elianiva.my.id/post/defx-nvim>
 
+if !exists('g:yo_defx')
+  let g:yo_defx = 1
+  finish
+endif
+
 autocmd FileType defx call s:defx_init()
 
 " auto close last defx windows

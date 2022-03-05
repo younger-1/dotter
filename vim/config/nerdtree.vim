@@ -3,19 +3,19 @@
 "   finish
 " endif
 
-" if !exists("g:yo_nerdtree")
-"   let g:yo_nerdtree = 1
-"   finish
-" endif
+if !exists("g:yo_nerdtree")
+  autocmd BufEnter * ++nested if (tabpagenr('$') == 1 && winnr('$') == 1 && &filetype ==# 'nerdtree') | q | endif
 
-autocmd BufEnter * ++nested if (tabpagenr('$') == 1 && winnr('$') == 1 && &filetype ==# 'nerdtree') | q | endif
+  let g:NERDTreeDirArrowExpandable = ''
+  let g:NERDTreeDirArrowCollapsible = ''
+  let g:NERDTreeIgnore = [
+    \ '\.git$', '\.hg$', '\.svn$', '\.swp$',
+    \ '\.pyc$', '\.pyo$', '__pycache__$'
+    \ ]
 
-let g:NERDTreeDirArrowExpandable = ''
-let g:NERDTreeDirArrowCollapsible = ''
-let g:NERDTreeIgnore = [
-  \ '\.git$', '\.hg$', '\.svn$', '\.swp$',
-  \ '\.pyc$', '\.pyo$', '__pycache__$'
-  \ ]
+  let g:yo_nerdtree = 1
+  finish
+endif
 
 nnoremap <leader>E <cmd>call <SID>nerd_tree_find_toggle(string(expand("%:p")))<CR>
 
