@@ -107,8 +107,9 @@ tnoremap <nowait> JJ <C-\><C-N>
 
 
 " [leader]
-nnoremap <leader>r <cmd>source $MYVIMRC<cr>
-nnoremap <leader>re <cmd>e $MYVIMRC<cr>
+nnoremap <leader>yr <cmd>source $MYVIMRC <bar> :echomsg '[young]: vimrc refreshed!'<cr>
+nnoremap <leader>yc <cmd>e $MYVIMRC<cr>
+
 nnoremap <leader>w <cmd>w<cr>
 nnoremap <leader>q <cmd>q<cr>
 nnoremap <leader>c <cmd>bd<cr>

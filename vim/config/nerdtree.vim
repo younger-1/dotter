@@ -17,7 +17,7 @@ if !exists("g:yo_nerdtree")
   finish
 endif
 
-nnoremap <leader>E <cmd>call <SID>nerd_tree_find_toggle(string(expand("%:p")))<CR>
+nnoremap <leader>e <cmd>call <SID>nerd_tree_find_toggle(string(expand("%:p")))<CR>
 
 function! s:nerd_tree_find_toggle(path)
   if g:NERDTree.IsOpen()

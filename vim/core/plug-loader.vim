@@ -74,74 +74,75 @@ endfunction
 
 function! s:plugging()
   " <https://github.com/tani/vim-jetpack/blob/main/doc/jetpack.txt>
-  Jetpack 'tani/vim-jetpack', { 'opt': 1 }
+  J 'tani/vim-jetpack', { 'opt': 1 }
 
   " [Theme]
-  Jetpack 'vv9k/bogster'
-  Jetpack 'lifepillar/vim-gruvbox8'
-  Jetpack 'ryanoasis/vim-devicons'
+  J 'vv9k/bogster'
+  J 'lifepillar/vim-gruvbox8'
+  J 'ryanoasis/vim-devicons'
 
   " [Basic]
-  Jetpack 'sheerun/vim-polyglot',
-  Jetpack 'airblade/vim-rooter'
+  J 'sheerun/vim-polyglot',
+  J 'airblade/vim-rooter'
 
   " [Motion]
-  Jetpack 'justinmk/vim-sneak'
-  Jetpack 'haya14busa/vim-asterisk'
-  Jetpack 'bkad/CamelCaseMotion'
-  " Jetpack 'chaoren/vim-wordmotion'
-  " Jetpack 'wellle/targets.vim'
-  Jetpack 'unblevable/quick-scope'
-  Jetpack 'andymass/vim-matchup'
+  J 'justinmk/vim-sneak'
+  J 'haya14busa/vim-asterisk'
+  J 'bkad/CamelCaseMotion'
+  " J 'chaoren/vim-wordmotion'
+  " J 'wellle/targets.vim'
+  J 'unblevable/quick-scope'
+  J 'andymass/vim-matchup'
 
   " [Change]
-  Jetpack 'tpope/vim-surround'
-  Jetpack 'tpope/vim-abolish'
-  Jetpack 'tpope/vim-repeat'
-  Jetpack 'kana/vim-textobj-user'
-  Jetpack 'kana/vim-textobj-entire'
-  " Jetpack 'tommcdo/vim-exchange'
+  J 'tpope/vim-surround'
+  J 'tpope/vim-abolish'
+  J 'tpope/vim-repeat'
+  J 'kana/vim-textobj-user'
+  J 'kana/vim-textobj-entire'
+  " J 'tommcdo/vim-exchange'
   " -- Comment
-  Jetpack 'tpope/vim-commentary'
-  " Jetpack 'preservim/nerdcommenter'
-  " Jetpack 'tyru/caw.vim'
-  Jetpack 'mg979/vim-visual-multi'
-  Jetpack 'junegunn/vim-easy-align'
+  J 'tpope/vim-commentary'
+  " J 'preservim/nerdcommenter'
+  " J 'tyru/caw.vim'
+  J 'mg979/vim-visual-multi'
+  J 'junegunn/vim-easy-align'
 
   " [Vim]
-  Jetpack 'tpope/vim-scriptease'
-  Jetpack 'bagrat/vim-buffet'
-  Jetpack 'itchyny/lightline.vim'
-  Jetpack 'mhinz/vim-startify'
+  J 'tpope/vim-scriptease'
+  J 'bagrat/vim-buffet'
+  J 'itchyny/lightline.vim'
+  J 'mhinz/vim-startify'
 
-  Jetpack 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
-  Jetpack 'junegunn/limelight.vim', { 'on' : 'Limelight' }
+  J 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
+  J 'junegunn/limelight.vim', { 'on' : 'Limelight' }
 
   " TODO: join line
-  Jetpack 'roxma/nvim-yarp'
-  Jetpack 'roxma/vim-hug-neovim-rpc'
-  Jetpack 'Shougo/defx.nvim', { 'on' : 'Defx' }
-  Jetpack 'gelguy/wilder.nvim'
+  J 'roxma/nvim-yarp' | J 'roxma/vim-hug-neovim-rpc'
+  J 'Shougo/defx.nvim', { 'on' : 'Defx' }
+  J 'gelguy/wilder.nvim'
 
-  " Jetpack 'tpope/vim-vinegar'
-  Jetpack 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
-  Jetpack 'preservim/nerdcommenter'
+  " J 'tpope/vim-vinegar'
+  J 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
+  J 'preservim/nerdcommenter'
 
-  Jetpack 'mhinz/vim-signify'
-  " Jetpack 'airblade/vim-gitgutter'
+  J 'mhinz/vim-signify'
+  " J 'airblade/vim-gitgutter'
 
-  Jetpack 'tpope/vim-fugitive'
-  Jetpack 'junegunn/gv.vim'
+  J 'tpope/vim-fugitive'
+  J 'junegunn/gv.vim'
 
-  Jetpack 'voldikss/vim-floaterm'
-  Jetpack 'mbbill/undotree'
+  J 'voldikss/vim-floaterm'
+  J 'mbbill/undotree'
 
-  Jetpack 'vim-denops/denops.vim'
-  Jetpack 'lambdalisue/guise.vim'
+  J 'vim-denops/denops.vim'
+  J 'lambdalisue/guise.vim'
 
-  Jetpack 'lervag/vimtex', { 'for' : 'tex' }
-  Jetpack 'ctrlpvim/ctrlp.vim'
-  Jetpack 'MattesGroeger/vim-bookmarks'
+  J 'lervag/vimtex', { 'for' : 'tex' }
+  J 'ctrlpvim/ctrlp.vim'
+  J 'MattesGroeger/vim-bookmarks'
+
+  " J 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
 endfunction
 
 """"""""""""""""""""""""""""""
