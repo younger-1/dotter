@@ -1,7 +1,15 @@
 let s:is_plugged = 1
 
-function s:before_plug()
+function s:init_plug()
+  " NOTE: define command to use local plugins, see:<https://github.com/tani/vim-jetpack/issues/36>
+  command -nargs=1 UseLocal if isdirectory(<args>) | set rtp^=<args> | endif
+    \| if isdirectory(<args>..'/after') | set rtp+=<args>/after | endif
+
+  UseLocal $nvim_config_dir
+
   if !s:is_plugged
+    filetype plugin indent on
+    syntax on
     return
   endif
 
@@ -20,21 +28,6 @@ function s:before_plug()
   let g:jetpack#optimization = 2
 endfunction
 
-function s:after_plug()
-  " NOTE: define command to use local plugins, see:<https://github.com/tani/vim-jetpack/issues/36>
-  command -nargs=1 JetpackLocal if isdirectory(<args>) | set rtp^=<args> | endif
-    \| if isdirectory(<args>..'/after') | set rtp+=<args>/after | endif
-
-  JetpackLocal $nvim_config_dir
-
-  if s:is_plugged
-    return
-  endif
-
-  filetype plugin indent on
-  syntax on
-endfunction
-
 function s:boot_plug()
   if !s:is_plugged
     return
@@ -50,17 +43,26 @@ function s:boot_plug()
   " call plug#end()
   call jetpack#end()
 
-  " call timer_start(50, function('<SID>check_missing'))
+  call timer_start(50, function('<SID>check_missing'))
 endfunction
 
 function! s:check_missing(...)
-  let g:plugs_missing = filter(values(g:plugs), '!isdirectory(v:val.dir)')
+  " let g:plugs_missing = filter(values(g:plugs), '!isdirectory(v:val.dir)')
+  let g:plugs_missing = filter(jetpack#names(), '!jetpack#tap(v:val)')
   if len(g:plugs_missing)
-    let g:plugs_missing = map(g:plugs_missing, 'fnamemodify(v:val.dir, ":h:t")')
+    " let g:plugs_missing = map(g:plugs_missing, 'fnamemodify(v:val.dir, ":h:t")')
     let l:msg = len(g:plugs_missing) ->printf('[young] find %s missing plugins: ')
     let l:msg .= g:plugs_missing ->string()
     echomsg l:msg
   endif
+
+  " install missing plugins
+  " for name in jetpack#names()
+  "   if !jetpack#tap(name)
+  "     call jetpack#sync()
+  "     break
+  "   endif
+  " endfor
 endfunction
 
 function s:plugging()
@@ -72,7 +74,7 @@ function s:plugging()
   Jetpack 'ryanoasis/vim-devicons'
 
   " [Basic]
-  Jetpack 'sheerun/vim-polyglot', { 'on' : [] }
+  Jetpack 'sheerun/vim-polyglot',
   Jetpack 'airblade/vim-rooter'
 
   " [Motion]
@@ -81,10 +83,6 @@ function s:plugging()
   Jetpack 'bkad/CamelCaseMotion'
   " Jetpack 'wellle/targets.vim'
   Jetpack 'unblevable/quick-scope'
-    let g:qs_lazy_highlight = 1
-    let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
-    let g:qs_buftype_blacklist = ['terminal', 'nofile']
-    let g:qs_filetype_blacklist = ['dashboard', 'startify']
   Jetpack 'andymass/vim-matchup'
 
   " [Change]
@@ -99,13 +97,6 @@ function s:plugging()
   " Jetpack 'preservim/nerdcommenter'
   " Jetpack 'tyru/caw.vim'
   Jetpack 'mg979/vim-visual-multi'
-    let g:VM_default_mappings = 0
-    let g:VM_maps = {}
-    let g:VM_maps["Undo"] = 'u'
-    let g:VM_maps["Redo"] = '<C-r>'
-    let g:VM_maps['Find Under']         = '<C-n>'
-    let g:VM_maps['Find Subword Under'] = '<C-n>'
-
   Jetpack 'junegunn/vim-easy-align'
 
   " [Vim]
@@ -113,14 +104,9 @@ function s:plugging()
   Jetpack 'bagrat/vim-buffet'
   Jetpack 'itchyny/lightline.vim'
   Jetpack 'mhinz/vim-startify'
-    " Do not change working directory when opening files.
-    let g:startify_change_to_dir = 0
-    let g:startify_fortune_use_unicode = 1
 
   Jetpack 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
   Jetpack 'junegunn/limelight.vim', { 'on' : 'Limelight' }
-    autocmd User GoyoEnter Limelight
-    autocmd User GoyoLeave Limelight!
 
   " TODO: join line
   Jetpack 'roxma/nvim-yarp'
@@ -129,7 +115,7 @@ function s:plugging()
   Jetpack 'gelguy/wilder.nvim'
 
   " Jetpack 'tpope/vim-vinegar'
-  Jetpack 'preservim/nerdtree'
+  Jetpack 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
   Jetpack 'preservim/nerdcommenter'
 
   Jetpack 'mhinz/vim-signify'
@@ -153,9 +139,8 @@ endfunction
 """"""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""
 
-call s:before_plug()
+call s:init_plug()
 call s:boot_plug()
-call s:after_plug()
 
 function! s:config_complete(...) abort
   return (g:vhome .. '/config/*.vim') ->glob(0, 1) ->map('strpart(v:val, strlen(g:vhome) + strlen("/config/"))') ->join("\n")
@@ -179,6 +164,7 @@ function! s:config(config) abort
     return
   endif
   let JetName = substitute(substitute(plugin, '\W\+', '_', 'g'), '\(^\|_\)\(.\)', '\u\2', 'g')
+  " execute printf('autocmd _young_jetpack User JetpackPre%s ConfigSource %s.vim', JetName, a:config)
   execute printf('autocmd _young_jetpack User Jetpack%s ConfigSource %s.vim', JetName, a:config)
 endfunction
 command! -nargs=1 Config call s:config("<args>")
@@ -187,7 +173,6 @@ Config defx
 Config nerdtree
 Config matchup
 Config startify
-call wilder#setup({'modes': ['/', '?']})
 
 delcommand Config
 
@@ -195,6 +180,6 @@ if s:is_plugged
   colorscheme gruvbox8_hard
 else
   " colorscheme murphy
-  " colorscheme uwu
-  colorscheme paper
+  " colorscheme paper
+  colorscheme uwu
 endif

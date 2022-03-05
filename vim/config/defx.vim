@@ -1,7 +1,6 @@
 " <https://zhuanlan.zhihu.com/p/88329719>
 " <https://elianiva.my.id/post/defx-nvim>
 
-nnoremap <leader>n <cmd>Defx<CR>
 autocmd FileType defx call s:defx_init()
 
 " auto close last defx windows
@@ -98,7 +97,7 @@ function! s:defx_init()
         \ defx#is_directory() ?
         \ defx#do_action('open_directory') : defx#do_action('drop')
   nnoremap <silent><buffer><expr> <2-LeftMouse>
-        \ defx#is_directory() ? 
+        \ defx#is_directory() ?
         \     (
         \     defx#is_opened_tree() ?
         \     defx#do_action('close_tree') :
@@ -302,7 +301,7 @@ function! s:defx_my_settings() abort
                 \ defx#async_action('drop')
     nnoremap <silent><buffer><expr> <2-LeftMouse>
                 \ defx#async_action('drop')
-    nnoremap <silent><buffer><expr> yy 
+    nnoremap <silent><buffer><expr> yy
                 \ defx#do_action('copy')
     nnoremap <silent><buffer><expr> m
                 \ defx#do_action('move')
