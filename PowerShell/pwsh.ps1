@@ -1,4 +1,4 @@
-﻿<#
+<#
  * FileName: Microsoft.PowerShell_profile.ps1
  * Email: younger_321@163.com
  * Copyright: No copyright. You can use this code for anything with no warranty.
@@ -203,7 +203,7 @@ $env:_ZL_HYPHEN = 1
 $env:_ZO_ECHO = 1
 Invoke-Expression (& {
         $hook = if ($PSVersionTable.PSVersion.Major -lt 6) { 'prompt' } else { 'pwd' }
-        (zoxide init --hook $hook powershell) -join "`n"
+        (zoxide init --hook $hook powershell | Out-String)
     })
 Set-Alias zz __zoxide_zi
 

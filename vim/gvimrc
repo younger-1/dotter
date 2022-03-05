@@ -27,10 +27,26 @@ set guifont=等距更纱黑体_SC:h12
 " set guifont=Iosevka_NF:h12
 
 
-" [Gui Options]
-set guioptions-=T " Removes GUI bars
-" set guioptions-=l " Removes scrollbars
+" [Gui Options] default: geTmLr
+set guioptions=g
+" set guioptions-=e " Disables the GUI tabline
+" set guioptions-=T " Removes GUI bars
+" set guioptions-=m " remove menu bar
+" set guioptions-=L " Removes scrollbars
 " set guioptions-=r " Removes scrollbars
 " set guioptions-=b " Removes scrollbars
-set guioptions-=e " Disables the GUI tab line in favor of the plain text version,
-set guioptions+=c       " Console-like dialogs are used instead of graphical popup ones.
+" set guioptions+=c " Console-like dialogs are used instead of graphical popup ones.
+
+nnoremap yOe <cmd>call GuiOptions('e')<cr>
+nnoremap yOt <cmd>call GuiOptions('T')<cr>
+nnoremap yOm <cmd>call GuiOptions('m')<cr>
+nnoremap yOl <cmd>call GuiOptions('L')<cr>
+nnoremap yOr <cmd>call GuiOptions('r')<cr>
+
+function! GuiOptions(opt)
+  if stridx(&guioptions, a:opt) == -1
+    exec 'set guioptions+=' .. a:opt
+  else
+    exec 'set guioptions-=' .. a:opt
+  endif
+endfunction

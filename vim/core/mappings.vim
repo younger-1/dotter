@@ -105,6 +105,14 @@ onoremap L $
 tnoremap <nowait> <Esc><Esc> <C-\><C-N>
 tnoremap <nowait> JJ <C-\><C-N>
 
+" [toggle]
+nnoremap yon <cmd>set nu!<cr>
+nnoremap yor <cmd>set rnu!<cr>
+nnoremap yol <cmd>set list!<cr>
+nnoremap yow <cmd>set wrap!<cr>
+nnoremap yos <cmd>set spell!<cr>
+nnoremap yom :set mouse=<C-R>=&mouse == "" ? "a" : ""<cr><cr>
+nnoremap yob :set background=<C-R>=&background == "dark" ? "light" : "dark"<cr><cr>
 
 " [leader]
 nnoremap <leader>yr <cmd>source $MYVIMRC <bar> :echomsg '[young]: vimrc refreshed!'<cr>
