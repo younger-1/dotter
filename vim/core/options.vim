@@ -190,7 +190,7 @@ if has('win32')
   let &pythonthreehome = $scoop .. '/apps/python/current'
 
   if !filereadable(&pythonthreehome .. '/' .. &pythonthreedll)
-    echomsg "[young] python3 not installed"
+    echomsg '[young]: python3 not installed'
   endif
 endif
 

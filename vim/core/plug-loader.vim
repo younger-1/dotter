@@ -13,17 +13,13 @@ function s:init_plug()
     return
   endif
 
-  " let s:install_path = $vim_config_dir .. '/autoload/plug.vim'
-  let s:install_path = $vim_config_dir .. '/autoload/jetpack.vim'
+  let s:install_path = $vim_config_dir .. '/pack/jetpack/opt/vim-jetpack'
   if empty(glob(s:install_path))
-    " silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-    silent execute '!curl -fLo ' .. s:install_path .. ' --create-dirs https://raw.githubusercontent.com/tani/vim-jetpack/master/autoload/jetpack.vim'
-
-    " autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+    " vim's system() can't use List as input
+    echomsg '[young]: vim-jetpack ...'
+    echomsg '[young]: clone into ' .. s:install_path
+    call system('git clone --depth 1 https://github.com/tani/vim-jetpack ' .. s:install_path)
   endif
-
-  " let g:plug_url_format = 'https://github.com/%s.git'
-  " let g:plug_home = $vim_cache_dir .. '/plugged'
 
   let g:jetpack#optimization = 2
   " autocmd VimEnter * set path^=.
@@ -35,7 +31,8 @@ function s:boot_plug()
     return
   endif
 
-  " call plug#begin()
+  packadd vim-jetpack
+
   call jetpack#begin()
 
   call s:plugging()
@@ -69,6 +66,7 @@ endfunction
 
 function s:plugging()
   " <https://github.com/tani/vim-jetpack/blob/main/doc/jetpack.txt>
+  Jetpack 'tani/vim-jetpack', { 'opt': 1 }
 
   " [Theme]
   Jetpack 'vv9k/bogster'
