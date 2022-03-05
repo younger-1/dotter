@@ -1,0 +1,36 @@
+""""""""""""""""""""""
+"      Settings      "
+""""""""""""""""""""""
+
+" set noguipty      " Make external commands work through a pipe instead of a pseudo-tty
+set mouse=nvi
+set nomousehide     " Don't hide the mouse when typing text
+
+" Make shift-insert work like in Xterm
+" map <S-Insert> <MiddleMouse>
+" map! <S-Insert> <MiddleMouse>
+
+
+" [GUI Font]
+" This will bring up a font requester, where you can pick the font you want.
+" set guifont=*
+
+" GVim-bad-char:  Delugia_Nerd_Font, JetBrainsMono_NF, Consolas,
+"                 Cascadia_Code, Cascadia_Mono, CaskaydiaCove_NF,
+"                 FiraCode_NF, FiraMono_NF, FuraMono_NF
+" { b for bold, i for italic, W300 for light, W200 for extraLight }
+" set guifont=Hack_NF:h12
+" set guifont=DejaVuSansMono_NF:h11
+set guifont=等距更纱黑体_SC:h12
+" set guifont=Sarasa_Term_SC_Light:h14:W300
+" set guifont=Sarasa_Term_SC_Extralight:h14:W200:i
+" set guifont=Iosevka_NF:h12
+
+
+" [Gui Options]
+set guioptions-=T " Removes GUI bars
+" set guioptions-=l " Removes scrollbars
+" set guioptions-=r " Removes scrollbars
+" set guioptions-=b " Removes scrollbars
+set guioptions-=e " Disables the GUI tab line in favor of the plain text version,
+set guioptions+=c       " Console-like dialogs are used instead of graphical popup ones.

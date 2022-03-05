@@ -1,6 +1,6 @@
 let g:is_plugged = 1
 
-function s:init_plug()
+function! s:init_plug()
   " NOTE: define command to use local plugins, see:<https://github.com/tani/vim-jetpack/issues/36>
   command -nargs=1 UseLocal if isdirectory(<args>) | set rtp^=<args> | endif
     \| if isdirectory(<args>..'/after') | set rtp+=<args>/after | endif
@@ -15,6 +15,7 @@ function s:init_plug()
 
   let s:install_path = $vim_config_dir .. '/pack/jetpack/opt/vim-jetpack'
   if empty(glob(s:install_path))
+    let s:first_boot = 1
     " vim's system() can't use List as input
     echomsg '[young]: vim-jetpack ...'
     echomsg '[young]: clone into ' .. s:install_path
@@ -26,7 +27,7 @@ function s:init_plug()
   autocmd VimEnter * let &path = '.,' .. getcwd() .. ',' .. &path
 endfunction
 
-function s:boot_plug()
+function! s:boot_plug()
   if !g:is_plugged
     return
   endif
@@ -42,7 +43,14 @@ function s:boot_plug()
   " call plug#end()
   call jetpack#end()
 
+  call s:first_boot()
   call timer_start(50, function('<SID>check_missing'))
+endfunction
+
+function! s:first_boot()
+  if exists('s:first_boot')
+    JetpackSync
+  endif
 endfunction
 
 function! s:check_missing(...)
@@ -64,7 +72,7 @@ function! s:check_missing(...)
   " endfor
 endfunction
 
-function s:plugging()
+function! s:plugging()
   " <https://github.com/tani/vim-jetpack/blob/main/doc/jetpack.txt>
   Jetpack 'tani/vim-jetpack', { 'opt': 1 }
 
