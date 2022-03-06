@@ -29,6 +29,7 @@ yarnrc = "~/.yarnrc"
 gemrc = "~/.gemrc"
 rgrc = "~/.config/rgrc"
 netrc = "~/.netrc"
+emacs = "~/.config/emacs"
 spacemacs = "~/.spacemacs"
 Doom = { target = "~/.doom.d", type = "symbolic"}
 SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}
