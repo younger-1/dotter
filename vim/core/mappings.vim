@@ -68,12 +68,16 @@ nnoremap <C-w>m <C-W>_<C-W>\|
 nnoremap <c-w>S :bo split<cr>
 nnoremap <c-w>V :bo vert split<cr>
 
+nnoremap <C-q> <cmd>call QuickFixToggle()<cr>
+nnoremap <C-e> <cmd>call LocListToggle()<cr>
 nnoremap ]q <cmd>cnext<cr>
 nnoremap [q <cmd>cprev<cr>
-nnoremap <C-q> <cmd>call QuickFixToggle()<cr>
+nnoremap ]Q <Cmd>cnewer<CR>
+nnoremap [Q <Cmd>colder<CR>
 nnoremap ]e <cmd>lnext<cr>
 nnoremap [e <cmd>lprev<cr>
-nnoremap <C-e> <cmd>call LocListToggle()<cr>
+nnoremap ]E <Cmd>lnewer<CR>
+nnoremap [E <Cmd>lolder<CR>
 
 nnoremap Y y$
 nnoremap n nzz

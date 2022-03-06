@@ -57,6 +57,7 @@ set smartcase
 
 " [cmdline]
 set wildmenu                    " Enhanced tab completion
+set wildoptions=pum,tagfile
 set history=2000                " Keep 2000 lines of command line history
 
 " [insert]
