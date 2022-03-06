@@ -46,6 +46,10 @@ if jetpack#tap('CamelCaseMotion')
   let g:camelcasemotion_key = '\'
 endif
 
+if jetpack#tap('lexima.vim')
+  " let g:lexima_enable_basic_rules = 1
+endif
+
 if jetpack#tap('vim-which-key')
   nnoremap <silent> <leader> <cmd>WhichKey '<Space>'<CR>
   nnoremap <silent> <localleader> <cmd>WhichKey '\'<CR>

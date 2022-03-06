@@ -79,70 +79,88 @@ function! s:plugging()
   " [Theme]
   J 'vv9k/bogster'
   J 'lifepillar/vim-gruvbox8'
+
+  " [Appearance]
   J 'ryanoasis/vim-devicons'
 
-  " [Basic]
-  J 'sheerun/vim-polyglot',
-  J 'airblade/vim-rooter'
-
-  " [Motion]
+  " [Edit]
+  " -- Motion
   J 'justinmk/vim-sneak'
+  J 'andymass/vim-matchup'
   J 'haya14busa/vim-asterisk'
+  J 'unblevable/quick-scope'
   J 'bkad/CamelCaseMotion'
   " J 'chaoren/vim-wordmotion'
+  " -- Textobject
+  J 'kana/vim-textobj-user'
+  J 'kana/vim-textobj-entire'
   " J 'wellle/targets.vim'
-  J 'unblevable/quick-scope'
-  J 'andymass/vim-matchup'
+  " --
 
   " [Change]
   J 'tpope/vim-surround'
   J 'tpope/vim-abolish'
   J 'tpope/vim-repeat'
-  J 'kana/vim-textobj-user'
-  J 'kana/vim-textobj-entire'
+  J 'mg979/vim-visual-multi'
+  J 'junegunn/vim-easy-align'
   " J 'tommcdo/vim-exchange'
   " -- Comment
   J 'tpope/vim-commentary'
   " J 'preservim/nerdcommenter'
   " J 'tyru/caw.vim'
-  J 'mg979/vim-visual-multi'
-  J 'junegunn/vim-easy-align'
+  " -- Autopair
+  J 'cohama/lexima.vim'
+  " --
 
   " [Vim]
   J 'tpope/vim-scriptease'
-  J 'bagrat/vim-buffet'
-  J 'itchyny/lightline.vim'
-  J 'mhinz/vim-startify'
 
-  J 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
-  J 'junegunn/limelight.vim', { 'on' : 'Limelight' }
-
-  " TODO: join line
+  " [File]
+  J 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
+  " J 'tpope/vim-vinegar'
   J 'roxma/nvim-yarp' | J 'roxma/vim-hug-neovim-rpc'
   J 'Shougo/defx.nvim', { 'on' : 'Defx' }
-  J 'gelguy/wilder.nvim'
+  " -- Project
+  J 'airblade/vim-rooter'
+  " -- Session
+  " --
 
-  " J 'tpope/vim-vinegar'
-  J 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
-  J 'preservim/nerdcommenter'
+  " [Find]
+  J 'ctrlpvim/ctrlp.vim'
 
+  " [Git]
   J 'mhinz/vim-signify'
   " J 'airblade/vim-gitgutter'
-
   J 'tpope/vim-fugitive'
   J 'junegunn/gv.vim'
 
+  " [UI]
+  J 'itchyny/lightline.vim'
+  J 'mhinz/vim-startify'
+  J 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
   J 'voldikss/vim-floaterm'
   J 'mbbill/undotree'
 
+  " [Lang]
+  J 'sheerun/vim-polyglot',
+
+  " [Write]
+  J 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
+  J 'junegunn/limelight.vim', { 'on' : 'Limelight' }
+  " -- LaTex
+  J 'lervag/vimtex', { 'for' : 'tex' }
+  " -- Markdown
+  " --
+
+  " [Denops]
   J 'vim-denops/denops.vim'
   J 'lambdalisue/guise.vim'
 
-  J 'lervag/vimtex', { 'for' : 'tex' }
-  J 'ctrlpvim/ctrlp.vim'
-  J 'MattesGroeger/vim-bookmarks'
+  J 'bagrat/vim-buffet'
 
-  J 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
+  J 'gelguy/wilder.nvim'
+
+  J 'MattesGroeger/vim-bookmarks'
 endfunction
 
 """"""""""""""""""""""""""""""
