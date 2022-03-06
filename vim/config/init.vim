@@ -30,5 +30,6 @@ Config defx
 Config nerdtree
 Config matchup
 Config startify
+Config which-key
 
 delcommand Config

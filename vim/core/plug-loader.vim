@@ -142,7 +142,7 @@ function! s:plugging()
   J 'ctrlpvim/ctrlp.vim'
   J 'MattesGroeger/vim-bookmarks'
 
-  " J 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
+  J 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
 endfunction
 
 """"""""""""""""""""""""""""""

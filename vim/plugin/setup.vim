@@ -45,3 +45,27 @@ endif
 if jetpack#tap('CamelCaseMotion')
   let g:camelcasemotion_key = '\'
 endif
+
+if jetpack#tap('vim-which-key')
+  nnoremap <silent> <leader> <cmd>WhichKey '<Space>'<CR>
+  nnoremap <silent> <localleader> <cmd>WhichKey '\'<CR>
+  nnoremap <silent> ] <Cmd>WhichKey ']'<CR>
+  nnoremap <silent> [ <Cmd>WhichKey '['<CR>
+  nnoremap <silent> g <Cmd>WhichKey 'g'<CR>
+  nnoremap <silent> z <Cmd>WhichKey 'z'<CR>
+  nnoremap <silent> y <Cmd>WhichKey 'y'<CR>
+  " nnoremap <silent> , <Cmd>WhichKey ','<CR>
+  " nnoremap <silent> <C-f> <Cmd>WhichKey '<C-f>'<CR>
+  " nnoremap <silent> <C-w> <Cmd>WhichKey '<C-w>'<CR>
+
+  vnoremap <silent> <leader> <Cmd>WhichKeyVisual '<Space>'<CR>
+  vnoremap <silent> <localleader> <Cmd>WhichKeyVisual '\'<CR>
+  vnoremap <silent> ] <Cmd>WhichKeyVisual ']'<CR>
+  vnoremap <silent> [ <Cmd>WhichKeyVisual '['<CR>
+  " vnoremap <silent> g <Cmd>WhichKeyVisual 'g'<CR>
+  " vnoremap <silent> z <Cmd>WhichKeyVisual 'z'<CR>
+  " vnoremap <silent> y <Cmd>WhichKey 'y'<CR>
+  " vnoremap <silent> , <Cmd>WhichKeyVisual ','<CR>
+  " vnoremap <silent> <C-f> <Cmd>WhichKey '<C-f>'<CR>
+  " vnoremap <silent> <C-w> <Cmd>WhichKey '<C-w>'<CR>
+endif
