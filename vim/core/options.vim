@@ -61,7 +61,7 @@ set grepformat=%f:%l:%c:%m,%f:%l:%m
 " [cmdline]
 set wildmenu                    " Enhanced tab completion
 set wildoptions=pum,tagfile
-set history=2000                " Keep 2000 lines of command line history
+set history=6000                " Keep 2000 lines of command line history
 
 " [insert]
 set complete-=i                 " Keyword completion ins-completion do not scan included files
@@ -87,6 +87,7 @@ set nowrap
 set linebreak                   " Smart word wrapping
 set display+=lastline           " When `wrap` on, @@@ is put in the end of the last screen line to indicate the rest of the line is not displayed
 set scrolloff=2
+set sidescroll=1
 set sidescrolloff=8
 " 朝闻道，<金、木、水、火、土>；【真香定律（王境泽）】；《静夜诗（李白）》。
 " 唐僧问道：‘泼猴，若我救你出来，你该如何报答我？’ 悟空：“你若放我出来，我定会送你上西天！”
@@ -99,8 +100,11 @@ set listchars=tab:●·,extends:→,precedes:←,trail:■,nbsp:␣
 " set listchars=eol:↲,space:·,trail:~,tab:>-,extends:>,precedes:<,nbsp:+
 " set listchars=tab:▸\ ,extends:❯,precedes:❮,nbsp:␣
 
+set showbreak=↪
+
 " Change fillchars for folding, vertical split, end of buffer, and message separator
 set fillchars=fold:\ ,eob:\ ,vert:\│
+" set fillchars=vert:│,fold:·,sep:│
 
 
 " [appearance]
@@ -115,6 +119,7 @@ set signcolumn=yes              " Whether or not to draw the signolumn
 set laststatus=2                " Show status line always
 set showtabline=2               " Show tab line always
 set ruler                       " Show the line and column number of the cursor position
+set showcmd
 set title
 set cursorcolumn
 set cursorline
@@ -173,6 +178,23 @@ set mouse=
 set whichwrap+=<,>,[,],h,l
 set backspace=indent,eol,start
 
+" [nvim-defaults]
+set autoread
+set background=dark
+set belloff=all
+set cscopeverbose
+" set formatoptions' defaults to "tcqj"
+set nofsync
+set nojoinspaces
+set langnoremap
+set nolangremap
+set nrformats=bin,hex
+" set shortmess' includes "F", excludes "S"
+set nostartofline
+set switchbuf=uselast
+set tabpagemax=50
+set ttimeoutlen=50
+set ttyfast
 
 " [Win10]
 " To use powershell (on Windows): >

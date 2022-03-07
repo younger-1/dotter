@@ -84,9 +84,10 @@ nnoremap n nzz
 nnoremap N Nzz
 nnoremap ZA <cmd>wqa<cr>
 nnoremap <BS> <C-^>
+" BUG: vim's bug, nvim is ok
 nnoremap <ESC><ESC> <cmd>nohl<cr>
-nnoremap <S-CR> <cmd>wqa<CR>
-nnoremap <expr> <CR> (&buftype is# '' ? ':w<CR>' : '<CR>')
+" nnoremap <S-CR> <cmd>wqa<CR>
+" nnoremap <expr> <CR> (&buftype is# '' ? ':w<CR>' : '<CR>')
 
 " [visual_mode]
 vnoremap < <gv

@@ -94,6 +94,7 @@ function! s:plugging()
   " -- Textobject
   J 'kana/vim-textobj-user'
   J 'kana/vim-textobj-entire'
+  J 'michaeljsmith/vim-indent-object'
   " J 'wellle/targets.vim'
   " --
 
@@ -125,9 +126,21 @@ function! s:plugging()
   " -- Session
   " --
 
-  " [Find]
+  " [Search]
+  " J 'junegunn/fzf' | J 'junegunn/fzf.vim'
+  " J 'Yggdroot/LeaderF'
+  " J 'liuchengxu/vim-clap'
+  " J 'vim-ctrlspace/vim-ctrlspace'
+  " -- Find
   J 'ctrlpvim/ctrlp.vim'
   J 'junegunn/fzf', { 'event' : 'BufWinEnter' } | J 'junegunn/fzf.vim'
+  " -- Grep
+  " J 'brooth/far.vim'
+  " J 'mhinz/vim-grepper'
+  " J 'dyng/ctrlsf.vim'
+  " J 'dyng/ctrlsf.vim'
+  " J 'hrsh7th/vim-seak'
+  " --
 
   " [Git]
   J 'mhinz/vim-signify'
@@ -136,11 +149,15 @@ function! s:plugging()
   J 'junegunn/gv.vim'
 
   " [UI]
-  J 'itchyny/lightline.vim'
-  J 'mhinz/vim-startify'
   J 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
   J 'voldikss/vim-floaterm'
   J 'mbbill/undotree'
+  " -- Dashboard
+  J 'mhinz/vim-startify'
+  " -- Bufferline
+  " -- Statusline
+  J 'itchyny/lightline.vim'
+  " --
 
   " [Lang]
   J 'sheerun/vim-polyglot',
@@ -166,15 +183,23 @@ function! s:plugging()
   " -- Markdown
   " --
 
-  " [Denops]
-  J 'vim-denops/denops.vim'
-  J 'lambdalisue/guise.vim'
+  " [Tool]
+  " -- Open
+  " J 'justinmk/vim-gtfo'
+  " -- Together
+  " --
 
   J 'bagrat/vim-buffet'
 
   J 'gelguy/wilder.nvim'
 
   J 'MattesGroeger/vim-bookmarks'
+
+  " [Coc]
+
+  " [Denops]
+  J 'vim-denops/denops.vim'
+  J 'lambdalisue/guise.vim'
 endfunction
 
 """"""""""""""""""""""""""""""
