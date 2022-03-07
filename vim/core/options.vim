@@ -54,6 +54,9 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set grepprg=rg\ --vimgrep\ --no-heading\ --color=never
+set grepformat=%f:%l:%c:%m,%f:%l:%m
+
 
 " [cmdline]
 set wildmenu                    " Enhanced tab completion

@@ -144,6 +144,19 @@ function! s:plugging()
   " [Lang]
   J 'sheerun/vim-polyglot',
 
+  " [LSP]
+  " J 'prabirshrestha/vim-lsp'
+  " J 'prabirshrestha/asyncomplete.vim'
+
+  " [Code]
+  " -- Snippet Engine
+  " J 'SirVer/ultisnips' | J 'thomasfaingnaert/vim-lsp-ultisnips'
+  " J 'hrsh7th/vim-vsnip' | J 'hrsh7th/vim-vsnip-integ'
+  " -- Snippet
+  J 'honza/vim-snippets'
+  " J 'rafamadriz/friendly-snippets'
+  " --
+
   " [Write]
   J 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
   J 'junegunn/limelight.vim', { 'on' : 'Limelight' }
