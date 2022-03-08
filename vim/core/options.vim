@@ -121,7 +121,7 @@ set showtabline=2               " Show tab line always
 set ruler                       " Show the line and column number of the cursor position
 set showcmd
 set title
-set cursorcolumn
+" set cursorcolumn
 set cursorline
 
 set t_Co=256                    " Number of colors

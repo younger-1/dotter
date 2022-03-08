@@ -111,6 +111,9 @@ tnoremap <nowait> <Esc><Esc> <C-\><C-N>
 tnoremap <nowait> JJ <C-\><C-N>
 
 " [toggle]
+nnoremap yo- <cmd>set cursorline!<cr>
+nnoremap yo\| <cmd>set cursorcolumn!<cr>
+nnoremap yo<tab> :call TabToggle()<cr>
 nnoremap yon <cmd>set nu!<cr>
 nnoremap yor <cmd>set rnu!<cr>
 nnoremap yol <cmd>set list!<cr>

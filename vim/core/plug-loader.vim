@@ -73,133 +73,139 @@ function! s:check_missing(...)
 endfunction
 
 function! s:plugging()
+  command! -bar JetClean call jetpack#clean()
+  command! -nargs=* -bar JetInstall call jetpack#install(<args>)
+  command! -nargs=* -bar JetUpdate call jetpack#update(<args>)
+  command! -nargs=+ -bar Yo call jetpack#add(<args>)
+
   " <https://github.com/tani/vim-jetpack/blob/main/doc/jetpack.txt>
-  J 'tani/vim-jetpack', { 'opt': 1 }
+  Yo 'tani/vim-jetpack', { 'opt': 1 }
 
   " [Theme]
-  J 'vv9k/bogster'
-  J 'lifepillar/vim-gruvbox8'
+  Yo 'vv9k/bogster'
+  Yo 'lifepillar/vim-gruvbox8'
 
   " [Appearance]
-  J 'ryanoasis/vim-devicons'
+  Yo 'ryanoasis/vim-devicons'
 
   " [Edit]
   " -- Motion
-  J 'justinmk/vim-sneak'
-  J 'andymass/vim-matchup'
-  J 'haya14busa/vim-asterisk'
-  J 'unblevable/quick-scope'
-  J 'bkad/CamelCaseMotion'
-  " J 'chaoren/vim-wordmotion'
+  Yo 'justinmk/vim-sneak'
+  Yo 'andymass/vim-matchup'
+  Yo 'haya14busa/vim-asterisk'
+  Yo 'unblevable/quick-scope'
+  Yo 'bkad/CamelCaseMotion'
+  " Yo 'chaoren/vim-wordmotion'
   " -- Textobject
-  J 'kana/vim-textobj-user'
-  J 'kana/vim-textobj-entire'
-  J 'michaeljsmith/vim-indent-object'
-  " J 'wellle/targets.vim'
+  Yo 'kana/vim-textobj-user'
+  Yo 'kana/vim-textobj-entire'
+  Yo 'michaeljsmith/vim-indent-object'
+  " Yo 'wellle/targets.vim'
   " --
 
   " [Change]
-  J 'tpope/vim-surround'
-  J 'tpope/vim-abolish'
-  J 'tpope/vim-repeat'
-  J 'mg979/vim-visual-multi'
-  J 'junegunn/vim-easy-align'
-  " J 'tommcdo/vim-exchange'
+  Yo 'tpope/vim-surround'
+  Yo 'tpope/vim-abolish'
+  Yo 'tpope/vim-repeat'
+  Yo 'mg979/vim-visual-multi'
+  Yo 'junegunn/vim-easy-align'
+  " Yo 'tommcdo/vim-exchange'
   " -- Comment
-  J 'tpope/vim-commentary'
-  " J 'preservim/nerdcommenter'
-  " J 'tyru/caw.vim'
+  Yo 'tpope/vim-commentary'
+  " Yo 'preservim/nerdcommenter'
+  " Yo 'tyru/caw.vim'
   " -- Autopair
-  J 'cohama/lexima.vim'
+  Yo 'cohama/lexima.vim'
   " --
 
   " [Vim]
-  J 'tpope/vim-scriptease'
+  Yo 'tpope/vim-scriptease'
 
   " [File]
-  J 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
-  " J 'tpope/vim-vinegar'
-  J 'roxma/nvim-yarp' | J 'roxma/vim-hug-neovim-rpc'
-  J 'Shougo/defx.nvim', { 'on' : 'Defx' }
+  Yo 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
+  " Yo 'tpope/vim-vinegar'
+  Yo 'roxma/nvim-yarp' | Yo 'roxma/vim-hug-neovim-rpc'
+  Yo 'Shougo/defx.nvim', { 'on' : 'Defx' }
   " -- Project
-  J 'airblade/vim-rooter'
+  Yo 'airblade/vim-rooter'
   " -- Session
   " --
 
   " [Search]
-  " J 'junegunn/fzf' | J 'junegunn/fzf.vim'
-  " J 'Yggdroot/LeaderF'
-  " J 'liuchengxu/vim-clap'
-  " J 'vim-ctrlspace/vim-ctrlspace'
+  " Yo 'junegunn/fzf' | Yo 'junegunn/fzf.vim'
+  " Yo 'Yggdroot/LeaderF'
+  " Yo 'liuchengxu/vim-clap'
+  " Yo 'vim-ctrlspace/vim-ctrlspace'
   " -- Find
-  J 'ctrlpvim/ctrlp.vim'
-  J 'junegunn/fzf', { 'event' : 'BufWinEnter' } | J 'junegunn/fzf.vim'
+  Yo 'ctrlpvim/ctrlp.vim'
+  Yo 'junegunn/fzf', { 'event' : 'BufWinEnter' } | Yo 'junegunn/fzf.vim'
+  Yo 'ctrlpvim/ctrlp.vim'
   " -- Grep
-  " J 'brooth/far.vim'
-  " J 'mhinz/vim-grepper'
-  " J 'dyng/ctrlsf.vim'
-  " J 'dyng/ctrlsf.vim'
-  " J 'hrsh7th/vim-seak'
+  " Yo 'brooth/far.vim'
+  " Yo 'mhinz/vim-grepper'
+  " Yo 'dyng/ctrlsf.vim'
+  " Yo 'dyng/ctrlsf.vim'
+  " Yo 'hrsh7th/vim-seak'
   " --
 
   " [Git]
-  J 'mhinz/vim-signify'
-  " J 'airblade/vim-gitgutter'
-  J 'tpope/vim-fugitive'
-  J 'junegunn/gv.vim'
+  Yo 'mhinz/vim-signify'
+  " Yo 'airblade/vim-gitgutter'
+  Yo 'tpope/vim-fugitive'
+  Yo 'junegunn/gv.vim'
 
   " [UI]
-  J 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
-  J 'voldikss/vim-floaterm'
-  J 'mbbill/undotree'
+  Yo 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
+  Yo 'voldikss/vim-floaterm'
+  Yo 'mbbill/undotree'
   " -- Dashboard
-  J 'mhinz/vim-startify'
+  Yo 'mhinz/vim-startify'
   " -- Bufferline
   " -- Statusline
-  J 'itchyny/lightline.vim'
+  Yo 'itchyny/lightline.vim'
   " --
 
   " [Lang]
-  J 'sheerun/vim-polyglot',
+  Yo 'sheerun/vim-polyglot',
 
   " [LSP]
-  " J 'prabirshrestha/vim-lsp'
-  " J 'prabirshrestha/asyncomplete.vim'
+  " Yo 'prabirshrestha/vim-lsp'
+  " Yo 'prabirshrestha/asyncomplete.vim'
 
   " [Code]
   " -- Snippet Engine
-  " J 'SirVer/ultisnips' | J 'thomasfaingnaert/vim-lsp-ultisnips'
-  " J 'hrsh7th/vim-vsnip' | J 'hrsh7th/vim-vsnip-integ'
+  " Yo 'SirVer/ultisnips' | Yo 'thomasfaingnaert/vim-lsp-ultisnips'
+  " Yo 'hrsh7th/vim-vsnip' | Yo 'hrsh7th/vim-vsnip-integ'
   " -- Snippet
-  J 'honza/vim-snippets'
-  " J 'rafamadriz/friendly-snippets'
+  Yo 'honza/vim-snippets'
+  " Yo 'rafamadriz/friendly-snippets'
   " --
 
   " [Write]
-  J 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
-  J 'junegunn/limelight.vim', { 'on' : 'Limelight' }
+  Yo 'junegunn/goyo.vim',      { 'on' : 'Goyo' }
+  Yo 'junegunn/limelight.vim', { 'on' : 'Limelight' }
   " -- LaTex
-  J 'lervag/vimtex', { 'for' : 'tex' }
+  Yo 'lervag/vimtex', { 'for' : 'tex' }
   " -- Markdown
   " --
 
   " [Tool]
   " -- Open
-  " J 'justinmk/vim-gtfo'
+  " Yo 'justinmk/vim-gtfo'
   " -- Together
   " --
 
-  J 'bagrat/vim-buffet'
+  Yo 'bagrat/vim-buffet'
 
-  J 'gelguy/wilder.nvim'
+  Yo 'gelguy/wilder.nvim'
 
-  J 'MattesGroeger/vim-bookmarks'
+  Yo 'MattesGroeger/vim-bookmarks'
 
   " [Coc]
 
   " [Denops]
-  J 'vim-denops/denops.vim'
-  J 'lambdalisue/guise.vim'
+  Yo 'vim-denops/denops.vim'
+  Yo 'lambdalisue/guise.vim'
 endfunction
 
 """"""""""""""""""""""""""""""
