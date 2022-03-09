@@ -3,14 +3,14 @@
 
 [win]
 
-depends = [ "default" ]
+depends = ["default"]
 
 [default]
 
 [default.variables]
 
 username = "Xavier Younger"
-locale   = "zh-cn"
+locale = "zh-cn"
 os = "linux"
 font = "Hack"
 font_size = 12
@@ -31,8 +31,8 @@ rgrc = "~/.config/rgrc"
 netrc = "~/.netrc"
 emacs = "~/.config/emacs"
 spacemacs = "~/.spacemacs"
-Doom = { target = "~/.doom.d", type = "symbolic"}
-SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic"}
+Doom = { target = "~/.doom.d", type = "symbolic" }
+SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic" }
 "cargo.toml" = "~/.cargo/config.toml"
 "starship.toml" = "~/.config/starship.toml"
 "fuck.py" = "~/.config/thefuck/settings.py"
@@ -43,9 +43,10 @@ AppSettings = { target = "~/AppSettings", type = "symbolic" }
 "markdownlint.jsonc" = "~/.markdownlintrc"
 "gh-prs.yml" = "~/.config/prs/config.yml"
 git = { target = "~/.config/git", type = "symbolic" }
+Wezterm = { target = "~/.config/wezterm", type = "symbolic" }
 
 # windows diff
-vim = { target = "~/.vim", type = "symbolic"}
+vim = { target = "~/.vim", type = "symbolic" }
 pip = "~/.config/pip/pip.conf"
 "lsd.yml" = "~/.config/lsd/config.yaml"
 "bottom.toml" = "~/.config/bottom/bottom.toml"
@@ -72,7 +73,7 @@ gvimrc = { target = "~/.gvimrc", type = "symbolic" }
 
 [shell]
 
-depends = [ "default" ]
+depends = ["default"]
 
 [shell.files]
 
@@ -104,7 +105,7 @@ fish = "~/.config/fish"
 
 [linux]
 
-depends = [ "shell", "bash", "zsh", "fish" ]
+depends = ["shell", "bash", "zsh", "fish"]
 
 [linux.files]
 
@@ -115,7 +116,7 @@ task = { target = "~/.config/task", type = "symbolic" }
 
 [archlinux]
 
-depends = [ "linux" ]
+depends = ["linux"]
 
 [archlinux.files]
 
@@ -124,7 +125,6 @@ depends = [ "linux" ]
 
 [openSUSE]
 
-depends = [ "linux" ]
+depends = ["linux"]
 
 [openSUSE.files]
-

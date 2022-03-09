@@ -23,7 +23,7 @@ colorscheme = "nord"
 
 [default.files]
 
-vim = { target = "~/vimfiles", type = "symbolic"}
+vim = { target = "~/vimfiles", type = "symbolic" }
 pip = "~/AppData/Roaming/pip/pip.ini"
 "lsd.yml" = "~/AppData/Roaming/lsd/config.yaml"
 "bottom.toml" = "~/AppData/Roaming/bottom/bottom.toml"
@@ -45,4 +45,3 @@ espanso = { target = "$scoop/persist/espanso/.espanso", type = "symbolic" }
 
 vimrc = { target = "~/_vimrc", type = "symbolic" }
 gvimrc = { target = "~/_gvimrc", type = "symbolic" }
-
