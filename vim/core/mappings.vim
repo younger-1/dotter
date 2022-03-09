@@ -139,4 +139,3 @@ nnoremap <leader>bs :ls<CR>:sb
 nnoremap <leader>bv :ls<CR>:vertical sb
 nnoremap <leader>bt :ls<CR>:tab sb
 nnoremap <leader>bd :ls<CR>:bdelete
-

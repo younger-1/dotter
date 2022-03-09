@@ -34,3 +34,7 @@
 - My wrapper: cd/open/findfile/readme for plugin by using `echo jetpack#get('vim-rooter').path`
 - lazy load: support event and function like `call fzf#run()`
 - rewrite with vim9script
+
+### ThinkVim
+
+<https://github.com/imxiejie/ThinkVim>

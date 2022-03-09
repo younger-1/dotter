@@ -120,9 +120,16 @@ function! s:plugging()
 
   " [Vim]
   Yo 'tpope/vim-scriptease'
+  Yo 'gelguy/wilder.nvim'
 
   " [BWT]
-  Yo 'codcodog/simplebuffer.vim', { 'on' : 'SimpleBufferToggle' }
+  " -- switcher
+  " Yo 'codcodog/simplebuffer.vim', { 'on' : 'SimpleBufferToggle' }
+  " Yo 'mhinz/vim-sayonara', { 'on' : 'Sayonara' }
+  " -- window
+  Yo 'dhruvasagar/vim-zoom'
+  " --
+
   " [File]
   Yo 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
   " Yo 'tpope/vim-vinegar'
@@ -134,18 +141,15 @@ function! s:plugging()
   " --
 
   " [Search]
-  " Yo 'junegunn/fzf' | Yo 'junegunn/fzf.vim'
+  Yo 'junegunn/fzf', { 'event' : 'BufWinEnter' } | Yo 'junegunn/fzf.vim'
   " Yo 'Yggdroot/LeaderF'
   " Yo 'liuchengxu/vim-clap'
   " Yo 'vim-ctrlspace/vim-ctrlspace'
   " -- Find
   Yo 'ctrlpvim/ctrlp.vim'
-  Yo 'junegunn/fzf', { 'event' : 'BufWinEnter' } | Yo 'junegunn/fzf.vim'
-  Yo 'ctrlpvim/ctrlp.vim'
   " -- Grep
   " Yo 'brooth/far.vim'
   " Yo 'mhinz/vim-grepper'
-  " Yo 'dyng/ctrlsf.vim'
   " Yo 'dyng/ctrlsf.vim'
   " Yo 'hrsh7th/vim-seak'
   " --
@@ -163,6 +167,7 @@ function! s:plugging()
   " -- Dashboard
   Yo 'mhinz/vim-startify'
   " -- Bufferline
+  Yo 'bagrat/vim-buffet', { 'event' : 'BufWinEnter' }
   " -- Statusline
   Yo 'itchyny/lightline.vim'
   " --
@@ -196,10 +201,6 @@ function! s:plugging()
   " Yo 'justinmk/vim-gtfo'
   " -- Together
   " --
-
-  Yo 'bagrat/vim-buffet'
-
-  Yo 'gelguy/wilder.nvim'
 
   Yo 'MattesGroeger/vim-bookmarks'
 

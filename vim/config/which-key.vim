@@ -51,6 +51,10 @@ g:space_whichkey.f = {
   r: 'gtags: reference',
 }
 
+for i in range(0, 9)
+  g:space_whichkey[i] = 'which_key_ignore'
+endfor
+
 # let g:space_whichkey['W'] = {
 #   \ 'name' : '+windows' ,
 #   \ 'h' : ['<C-W>5<'    , 'shrink-width']    ,
