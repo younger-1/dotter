@@ -25,3 +25,12 @@
 <https://github.com/joom/latex-unicoder.vim>
 
 - A plugin to type Unicode chars in Vim, using their LaTeX names.
+
+### jetpack
+
+- UI: let cursor movable, not modifiable, diff-mode
+- JetpackSync allow soft/mixed/hard update
+- `jetpack#bundle()` need refactoring to improve modularity and allow plugin-name parameter
+- My wrapper: cd/open/findfile/readme for plugin by using `echo jetpack#get('vim-rooter').path`
+- lazy load: support event and function like `call fzf#run()`
+- rewrite with vim9script

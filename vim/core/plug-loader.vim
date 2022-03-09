@@ -127,6 +127,7 @@ function! s:plugging()
 
   " [Find]
   J 'ctrlpvim/ctrlp.vim'
+  J 'junegunn/fzf', { 'event' : 'BufWinEnter' } | J 'junegunn/fzf.vim'
 
   " [Git]
   J 'mhinz/vim-signify'

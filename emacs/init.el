@@ -15,7 +15,10 @@
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 (package-initialize)
 
-(setq inhibit-startup-message t)
+;; Not load default.init shipped by OS or site
+; (setq inhibit-default-init t)
+
+; (setq inhibit-startup-message t)
 
 (global-linum-mode 1)
 ; (setq linum-format "%d| ")
@@ -35,3 +38,6 @@
 
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 (setq default-frame-alist (quote ((fullscreen . maximized))))
+
+;; To activate and use Nord Emacs as your default color theme load it in your init file:
+(load-theme 'nord t)
