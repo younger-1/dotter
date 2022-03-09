@@ -121,6 +121,8 @@ function! s:plugging()
   " [Vim]
   Yo 'tpope/vim-scriptease'
 
+  " [BWT]
+  Yo 'codcodog/simplebuffer.vim', { 'on' : 'SimpleBufferToggle' }
   " [File]
   Yo 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
   " Yo 'tpope/vim-vinegar'

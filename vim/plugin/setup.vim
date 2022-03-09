@@ -73,3 +73,8 @@ if jetpack#tap('vim-which-key')
   " vnoremap <silent> <C-f> <Cmd>WhichKey '<C-f>'<CR>
   " vnoremap <silent> <C-w> <Cmd>WhichKey '<C-w>'<CR>
 endif
+
+if jetpack#tap('simplebuffer.vim')
+  nnoremap <leader>bf <cmd>SimpleBufferToggle<cr>
+endif
+

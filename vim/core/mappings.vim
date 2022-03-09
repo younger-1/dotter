@@ -80,6 +80,8 @@ nnoremap ]E <Cmd>lnewer<CR>
 nnoremap [E <Cmd>lolder<CR>
 
 nnoremap Y y$
+" qq to record, Q to replay
+nnoremap Q @q
 nnoremap n nzz
 nnoremap N Nzz
 nnoremap ZA <cmd>wqa<cr>
