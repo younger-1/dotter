@@ -1,3 +1,5 @@
+# vim: ft=dosini
+
 [wsl2]
 memory=4GB
 processors=4

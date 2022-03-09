@@ -1,4 +1,5 @@
 ;; -*- mode: emacs-lisp -*-
+;; vim: ft=lisp
 ;; This file is loaded by Spacemacs at startup.
 ;; It must be stored in your home directory.
 
@@ -313,7 +314,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
     '(("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")
       ("org-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/org/")
       ("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")))
-  
+
   ;; 自定义英文字体
   ;; "SauceCodePro NF"  "JetBrainsMono NF"  "DejaVuSansMono NF"
   (setq-default dotspacemacs-default-font '("JetBrainsMono NF"

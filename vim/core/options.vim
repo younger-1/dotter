@@ -139,7 +139,7 @@ let &t_SR = "\e[4 q"
 " let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"  " Set background color (R, G, B)
 
 " https://github.com/microsoft/terminal/issues/68#issuecomment-658310258
-augroup windows_terminal
+augroup _restore_cursorshape_exit
   autocmd!
   " autocmd VimLeave * silent !echo -ne "\x1b[\x35 q"
   " autocmd VimLeave * silent !echo -ne "\e[6 q"

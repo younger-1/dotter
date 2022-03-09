@@ -1,4 +1,4 @@
-# vim ft=rc
+# vim: ft=config
 
 # Don't let ripgrep vomit really long lines to my terminal, and show a preview.
 --max-columns=150
@@ -7,6 +7,11 @@
 # Add my 'web' type.
 --type-add
 web:*.{html,css,js}*
+
+# Add my 'zshrc' type
+--type-add=zshrc:*.zsh*
+--type-add=bashrc:*.sh*
+--type-add=automake:*makefile.in*
 
 # Set the colors.
 --colors=line:style:bold
@@ -23,8 +28,8 @@ web:*.{html,css,js}*
 # search hidden files and directories (dot files)
 --hidden
 
-# don't respect ignore files (.gitignore, .ignore, ...) 
---no-ignore
+# don't respect ignore files (.gitignore, .ignore, ...)
+# --no-ignore
 
 # Using glob patterns to include/exclude files or folders
 --glob=!.git/*
