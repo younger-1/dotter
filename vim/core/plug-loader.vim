@@ -84,6 +84,7 @@ function! s:plugging()
   " [Theme]
   Yo 'vv9k/bogster'
   Yo 'lifepillar/vim-gruvbox8'
+  Yo 'vimpostor/vim-prism'
 
   " [Appearance]
   Yo 'ryanoasis/vim-devicons'
@@ -91,6 +92,7 @@ function! s:plugging()
   " [Edit]
   " -- Motion
   Yo 'justinmk/vim-sneak'
+  " Yo 'easymotion/vim-easymotion'
   Yo 'andymass/vim-matchup'
   Yo 'haya14busa/vim-asterisk'
   Yo 'unblevable/quick-scope'
@@ -158,12 +160,13 @@ function! s:plugging()
   Yo 'mhinz/vim-signify'
   " Yo 'airblade/vim-gitgutter'
   Yo 'tpope/vim-fugitive'
+  " Yo 'tpope/vim-rhubarb' " github integration
   Yo 'junegunn/gv.vim'
 
   " [UI]
   Yo 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
   Yo 'voldikss/vim-floaterm'
-  Yo 'mbbill/undotree'
+  Yo 'mbbill/undotree', { 'on': 'UndotreeToggle' }
   " -- Dashboard
   Yo 'mhinz/vim-startify'
   " -- Bufferline
@@ -186,6 +189,10 @@ function! s:plugging()
   " -- Snippet
   Yo 'honza/vim-snippets'
   " Yo 'rafamadriz/friendly-snippets'
+  " -- Linting
+  " Yo 'dense-analysis/ale'
+  " -- Debugging
+  " Yo 'puremourning/vimspector'
   " --
 
   " [Write]
@@ -205,6 +212,7 @@ function! s:plugging()
   Yo 'MattesGroeger/vim-bookmarks'
 
   " [Coc]
+  " Yo 'neoclide/coc.nvim', { 'branch': 'release' }
 
   " [Denops]
   Yo 'vim-denops/denops.vim'
