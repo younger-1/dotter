@@ -88,6 +88,9 @@ $endif
 "\ep": history-search-backward
 "\en": history-search-forward
 
+"\er": beginning-of-history
+"\es": end-of-history
+
 # up and down
 "\e[A": history-substring-search-backward
 "\e[B": history-substring-search-forward

@@ -79,6 +79,9 @@ nnoremap [e <cmd>lprev<cr>
 nnoremap ]E <Cmd>lnewer<CR>
 nnoremap [E <Cmd>lolder<CR>
 
+nnoremap ]t <Cmd>tabnext<CR>
+nnoremap [t <Cmd>tabprev<CR>
+
 nnoremap Y y$
 " qq to record, Q to replay
 nnoremap Q @q

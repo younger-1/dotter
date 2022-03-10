@@ -83,13 +83,14 @@ if jetpack#tap('vim-sayonara')
 endif
 
 if jetpack#tap('vim-buffet')
-  let g:buffet_show_index = 1
-  " let g:buffet_separator = "▎"
   let g:buffet_powerline_separators = 1
+  " let g:buffet_noseparator = "▌"
+  " let g:buffet_separator = "▎"
+  let g:buffet_show_index = 1
   let g:buffet_modified_icon = " ●"
   let g:buffet_tab_icon = ""
-  let g:buffet_left_trunc_icon = "\uf0a8"
-  let g:buffet_right_trunc_icon = "\uf0a9"
+  let g:buffet_left_trunc_icon = ""
+  let g:buffet_right_trunc_icon = ""
 
   nnoremap <leader>c <cmd>Bw<cr>
   nnoremap <leader>bo <cmd>Bonly<cr>
@@ -120,8 +121,8 @@ if jetpack#tap('lightline.vim')
   " TODO: <https://github.com/bagrat/dotfiles/blob/master/vim/config/statusline.vim>
   vim9cmd g:lightline = {
     colorscheme: 'wombat',
-    # separator: { 'left': '', 'right': '' },
-    # subseparator: { 'left': '|', 'right': '|' },
+    separator: { 'left': '', 'right': '' },
+    subseparator: { 'left': '│', 'right': '│' },
     active: {
       left: [
         [ 'mode', 'paste' ],
@@ -146,4 +147,18 @@ if jetpack#tap('lightline.vim')
     endif
     return ''
   endfunction
+endif
+
+if jetpack#tap('vim-floaterm')
+  let g:floaterm_keymap_toggle = '<C-t>'
+  let g:floaterm_keymap_next   = ']\'
+  let g:floaterm_keymap_prev   = '[\'
+  let g:floaterm_keymap_new    = ']<C-t>'
+  let g:floaterm_keymap_kill   = '[<C-t>'
+
+  " let g:floaterm_keymap_toggle = '<leader>tt'
+  " let g:floaterm_keymap_next   = '<leader>tj'
+  " let g:floaterm_keymap_prev   = '<leader>tk'
+  " let g:floaterm_keymap_new    = '<leader>tT'
+  " let g:floaterm_keymap_kill   = 'No need!'
 endif
