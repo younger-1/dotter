@@ -122,7 +122,9 @@ function! s:plugging()
 
   " [Vim]
   Yo 'tpope/vim-scriptease'
+  " Yo 'tpope/vim-sleuth'
   Yo 'gelguy/wilder.nvim'
+  " Yo 'Shougo/echodoc.vim'
 
   " [BWT]
   " -- switcher
