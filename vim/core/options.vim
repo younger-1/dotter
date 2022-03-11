@@ -178,6 +178,8 @@ set mouse=
 set whichwrap+=<,>,[,],h,l
 set backspace=indent,eol,start
 
+set diffopt+=vertical
+
 " [nvim-defaults]
 set autoread
 set background=dark

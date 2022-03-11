@@ -126,6 +126,7 @@ nnoremap yow <cmd>set wrap!<cr>
 nnoremap yos <cmd>set spell!<cr>
 nnoremap yom :set mouse=<C-R>=&mouse == "" ? "a" : ""<cr><cr>
 nnoremap yob :set background=<C-R>=&background == "dark" ? "light" : "dark"<cr><cr>
+nnoremap yov :set ve=<C-R>=&ve == "" ? "all" : ""<cr><cr>
 
 " [leader]
 nnoremap <leader>yr <cmd>source $MYVIMRC <bar> :echomsg '[young]: vimrc refreshed!'<cr>
