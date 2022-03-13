@@ -116,6 +116,7 @@
 
 ; [url "https://github.com.cnpmjs.org/"]
 ; [url "https://hub.fastgit.org/"]
+; [url "https://gitclone.com/github.com"]
 ;   insteadOf = https://github.com/
 
 ; [url "https://github.com/"]

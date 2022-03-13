@@ -3,10 +3,10 @@
 ;; This file controls what Doom modules are enabled and what order they load
 ;; in. Remember to run 'doom sync' after modifying it!
 
-;; (setq package-archives '(("gnu" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
-;;                          ("melpa" . "http://mirrors.ustc.edu.cn/elpa/melpa/")))
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+;; (setq package-archives '(("gnu-cn" . "http://mirrors.ustc.edu.cn/elpa/gnu/")
+;;                          ("melpa-cn" . "http://mirrors.ustc.edu.cn/elpa/melpa/")))
+(setq package-archives '(("gnu-cn"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("melpa-cn" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
 ;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
 ;;      documentation. There you'll find a link to Doom's Module Index where all
