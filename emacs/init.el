@@ -11,9 +11,10 @@
 ;                      (emacs-init-time "%.2f")
 ;                      gcs-done)))
 
+; (require 'package)
 (setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
                          ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-(package-initialize)
+; (package-initialize)
 
 ;; Not load default.init shipped by OS or site
 ; (setq inhibit-default-init t)
@@ -40,5 +41,6 @@
 (setq default-frame-alist (quote ((fullscreen . maximized))))
 
 ;; To activate and use Nord Emacs as your default color theme load it in your init file:
-(load-theme 'nord t)
+;; (load-theme 'nord t)
+
 (put 'narrow-to-region 'disabled nil)

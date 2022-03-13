@@ -15,7 +15,7 @@
   helper = gopass
 [credential "helperselector"]
   ; selected = manager-core
-	selected = manager-core
+  ; selected = <no helper>
 
 # Notice: We do not set user section by default so syncing
 # with this file is as easy as possible. Use
