@@ -31,8 +31,9 @@
 
 [core]
   editor = nvim
-  ; autocrlf = true
-  autocrlf = input
+  safecrlf = warn
+  ; autocrlf = true # Set CRLF line endings in your working directory and the repository has LF line endings.
+  autocrlf = input # No output conversion is performed.
   quotepath = false
   pager = delta
   ; pager = delta --plus-color="#012800" --minus-color="#340001" --theme='Solarized (dark)'
@@ -116,6 +117,7 @@
 
 ; [url "https://github.com.cnpmjs.org/"]
 ; [url "https://hub.fastgit.org/"]
+; [url "https://hub.fastgit.xyz/"]
 ; [url "https://gitclone.com/github.com"]
 ;   insteadOf = https://github.com/
 
