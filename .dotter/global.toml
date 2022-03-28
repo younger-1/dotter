@@ -63,6 +63,7 @@ broot = { target = "~/.config/broot", type = "symbolic" }
 helix = { target = "~/.config/helix", type = "symbolic" }
 espanso = { target = "~/.config/espanso", type = "symbolic" }
 "poetry.toml" = "~/.config/pypoetry/config.toml"
+"youtube-dl/conf" = "~/.config/youtube-dl/config"
 
 [vim]
 

@@ -1,0 +1,143 @@
+# vim: ft=config
+
+# <https://github.com/ytdl-org/youtube-dl/blob/master/README.md#configuration>
+#
+# <https://github.com/mjgbenigno/youtube-dl_configs/blob/master/youtube-dl.conf>
+# <https://github.com/zacharyd3/Unraid-Youtube-dl-Config/blob/master/Downloader/Youtube-dl/youtube-dl.conf>
+# <https://github.com/Phate6660/dotfiles/tree/master/.config>
+
+# Number of retries (default is 10), or "infinite".
+# -R 30
+# --retries "infinite"
+
+# Number of retries for a fragment (default is 10), or "infinite" (DASH, hlsnative and ISM)
+# --fragment-retries 20
+
+# Continue on download errors, for example to skip unavailable videos in a playlist
+# --ignore-errors
+-i
+
+# Bypass geographic restriction via faking X-Forwarded-For HTTP header
+# --geo-bypass
+
+# Use the specified HTTP/HTTPS/SOCKS proxy. To enable SOCKS proxy, specify a proper scheme.
+# For example socks5://127.0.0.1:1080/. Pass in an empty string (--proxy "") for direct connection
+# --proxy 127.0.0.1:7890
+
+# Use the specified external downloader. Currently supports aria2c,avconv,axel,c url,ffmpeg,httpie,wget
+--external-downloader aria2c
+--external-downloader-args "-c -j 16 -x 16 -s 16 -k 1M"
+
+# Output filename template, see the "OUTPUT TEMPLATE" for all the info.
+# Default template: -o %(title)s-%(id)s.%(ext)s
+# --output
+# -o ./youtube-dl/%(uploader)s/%(title)s.%(ext)s
+-o '%(playlist)s/%(playlist_index)s.%(title)s.%(ext)s'
+# TODO:
+# -o '%(playlist_title)s.%(playlist_index)02d.%(title)s.%(ext)s'
+
+# Restrict filenames to only ASCII characters, and avoid "&" and spaces in filenames
+# --restrict-filenames
+
+# Video format code, see the "FORMAT SELECTION" for all the info
+# Default format: -f bestvideo+bestaudio/best
+# 1. specify the order of preference: -f 22/17/18
+# 2. download several formats of the same video: -f 22,17,18
+# 3. filter the video formats by putting a condition in brackets: -f "best[height=720]", -f "[filesize>10M]"
+# 4. merge the video and audio of two formats into a single file(requires ffmpeg or avconv installed): -f <video-format>+<audio-format>
+
+# -f '(bestvideo+bestaudio/best)'
+
+# Grab 4K if available
+# -f "(bestvideo[height>=2160][vcodec=vp9.2][fps>61]/bestvideo[height>=2160][vcodec=vp9.2]/bestvideo[height>=2160]/bestvideo[height>=2160]/bestvideo[height>=1080]/bestvideo)+(bestaudio[acodec=opus]/bestaudio)/best"
+
+# Grab 1080p if available
+-f "(bestvideo[height>=1080][vcodec=vp9.2][fps>61]/bestvideo[height>=1080][vcodec=vp9.2]/bestvideo[height>=1080]/bestvideo[height>=1080]/bestvideo)+(bestaudio[acodec=opus]/bestaudio)/best"
+
+# Quickly
+# -f 'best[filesize<50M]/best[height<=720]/best[height<=1080]/best'
+
+# DASH
+# -f 'best[filesize<30M]/best[height<=480]'
+
+# Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it.
+--download-archive "~/dotter/youtube-dl/archive.txt"
+# File containing URLs to download ('-' for stdin), one URL per line. Lines starting with '#', ';' or ']' are considered as comments and ignored.
+# --batch-file "/mnt/user/Storage/Google Drive/Server Files/Downloader/Youtube-dl/youtube-dl-channels.txt"
+# -a "~/dotter/youtube-dl/channels.txt"
+
+# Download Newest First
+# --playlist-reverse
+# Download only the video, if the URL refers to a video and a playlist.
+--no-playlist
+# Download the playlist, if the URL refers to a video and a playlist.
+# --yes-playlist
+
+# Write metadata to the video file
+--add-metadata
+# Write video description to a .description file
+# --write-description
+# Write video metadata to a .info.json file
+# --write-info-json
+# Write thumbnail image to disk
+# --write-thumbnail
+
+# Do not overwrite files
+# --no-overwrites
+# -w
+
+# Subtitle format, accepts formats preference, for example: "srt" or "ass/srt/best"
+--sub-format srt/ass/idx/best/vtt
+# Convert the subtitles to other format (currently supported: srt|ass|vtt|lrc)
+--convert-subs srt
+
+# Write subtitle file
+--write-sub
+# Write automatically generated subtitle file (YouTube only)
+--write-auto-sub
+# Download all the available subtitles
+# --all-subs
+# Languages of the subtitles to download
+# (optional) separated by commas, use --list-subs for available language tags
+# --sub-lang en,zh-Hans
+--sub-lang en
+# Embed subtitles in the video (only for mp4, webm and mkv videos)
+--embed-subs
+
+# Use ffmpeg to re-encode video to 'mkv'; takes CPU power
+# Encode the video to another format if necessary (currently supported: mp4|flv|ogg|webm|mkv|avi)
+# --recode-video mkv
+
+# If a merge is required (e.g. bestvideo+bestaudio), output to given container format.
+# One of mkv, mp4, ogg, webm, flv. Ignored if no merge is required
+# --merge-output-format mkv
+
+# Specify audio format: "best", "aac", "flac", "mp3", "m4a", "opus", "vorbis", or "wav"; "best" by default; No effect without -x
+--audio-format "flac"
+# Specify ffmpeg/avconv audio quality, insert a value between 0 (better) and 9 (worse) for VBR or a specific bitrate like 128K (default 5)
+--audio-quality 0
+
+# Specify a custom user agent
+--user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36"
+# Specify a custom referer, use if the video access is restricted to one domain
+# --referer
+
+### [Verbosity / Simulation Options:]
+# -q
+# --no-warnings
+# -v
+
+# Shows progress in console title (where possible)
+--console-title
+
+# Enable this to only get the metadata and files.
+# --skip-download
+
+# -g, --get-url                        Simulate, quiet but print URL
+# -e, --get-title                      Simulate, quiet but print title
+# --get-filename                       Simulate, quiet but print output filename
+
+# Example: video in playlist
+# youtube-dl 'https://www.youtube.com/watch?v=INTu30BHZGk&list=PLEoMzSkcN8oPH1au7H6B7bBJ4ZO7BXjSZ&index=4' --get-filename
+# Example: playlist
+# youtube-dl 'https://www.youtube.com/playlist?list=PLEoMzSkcN8oPH1au7H6B7bBJ4ZO7BXjSZ' --get-filename

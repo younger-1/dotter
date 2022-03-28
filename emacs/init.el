@@ -41,3 +41,4 @@
 
 ;; To activate and use Nord Emacs as your default color theme load it in your init file:
 (load-theme 'nord t)
+(put 'narrow-to-region 'disabled nil)
