@@ -31,8 +31,9 @@
 # Output filename template, see the "OUTPUT TEMPLATE" for all the info.
 # Default template: -o %(title)s-%(id)s.%(ext)s
 # --output
-# -o ./youtube-dl/%(uploader)s/%(title)s.%(ext)s
--o '%(playlist)s/%(playlist_index)s.%(title)s.%(ext)s'
+# -o ~/youtube/%(uploader)s/%(title)s.%(ext)s
+# -o '%(playlist)s/%(playlist_index)s.%(title)s.%(ext)s'
+-o ~/Downloads/youtube/%(playlist)s/%(playlist_index)s.%(title)s.%(ext)s
 # TODO:
 # -o '%(playlist_title)s.%(playlist_index)02d.%(title)s.%(ext)s'
 

@@ -1,0 +1,27 @@
+# vim: ft=config
+
+-i
+
+--downloader aria2c
+--downloader-args aria2c:"-c -j 16 -x 16 -s 16 -k 1M"
+
+-o ~/Downloads/youtube/%(playlist)s/%(playlist_index)s.%(title)s.%(ext)s
+
+# -f "(bestvideo[height>=1080][vcodec=vp9.2][fps>61]/bestvideo[height>=1080][vcodec=vp9.2]/bestvideo[height>=1080]/bestvideo[height>=1080]/bestvideo)+(bestaudio[acodec=opus]/bestaudio)/best"
+-f "bestvideo[height<=?1080][fps<=?60][vcodec!=vp9]+bestaudio/best"
+
+--download-archive "~/dotter/youtube-dl/archive.txt"
+
+--no-playlist
+
+--add-metadata
+
+--sub-format srt/ass/idx/best/vtt
+--convert-subs srt
+
+# --write-sub
+# --write-auto-sub
+--sub-lang "en,zh-*"
+--embed-subs
+
+--console-title

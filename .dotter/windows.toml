@@ -41,6 +41,7 @@ helix = { target = "~/AppData/Roaming/helix", type = "symbolic" }
 espanso = { target = "$scoop/persist/espanso/.espanso", type = "symbolic" }
 "poetry.toml" = "~/AppData/Roaming/pypoetry/config.toml"
 "youtube-dl/conf" = "~/AppData/Roaming/youtube-dl/config.txt"
+"yt-dlp/config" = "~/AppData/Roaming/yt-dlp/config"
 
 [vim.files]
 

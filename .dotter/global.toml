@@ -64,6 +64,7 @@ helix = { target = "~/.config/helix", type = "symbolic" }
 espanso = { target = "~/.config/espanso", type = "symbolic" }
 "poetry.toml" = "~/.config/pypoetry/config.toml"
 "youtube-dl/conf" = "~/.config/youtube-dl/config"
+"yt-dlp/config" = "~/.config/yt-dlp/config"
 
 [vim]
 
