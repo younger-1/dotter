@@ -10,7 +10,8 @@
 # -f "(bestvideo[height>=1080][vcodec=vp9.2][fps>61]/bestvideo[height>=1080][vcodec=vp9.2]/bestvideo[height>=1080]/bestvideo[height>=1080]/bestvideo)+(bestaudio[acodec=opus]/bestaudio)/best"
 -f "bestvideo[height<=?1080][fps<=?60][vcodec!=vp9]+bestaudio/best"
 
---download-archive "~/dotter/youtube-dl/archive.txt"
+# --download-archive "~/dotter/youtube-dl/archive.txt"
+--download-archive "~/Downloads/youtube/%(playlist)s/0-downloaded.txt"
 
 --no-playlist
 
