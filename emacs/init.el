@@ -28,6 +28,11 @@
   :ensure t
   :config (which-key-mode))
 
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
 ;; Not load default.init shipped by OS or site
 ; (setq inhibit-default-init t)
 
@@ -62,7 +67,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(which-key use-package try)))
+ '(package-selected-packages '(org-bullets which-key use-package try)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
