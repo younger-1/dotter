@@ -16,6 +16,8 @@
 [credential "helperselector"]
   ; selected = manager-core
   ; selected = <no helper>
+[credential "https://gitee.com"]
+  provider = generic
 
 # Notice: We do not set user section by default so syncing
 # with this file is as easy as possible. Use

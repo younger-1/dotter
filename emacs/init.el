@@ -57,6 +57,21 @@
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 (setq default-frame-alist (quote ((fullscreen . maximized))))
 
+;; (defun emacs-workflow-open ()
+;;   ;(interactive)
+;;   (split-window-right)
+;;   (other-window 1)
+;;   (split-window-below)
+;;   (other-window 1)
+;;   (multi-term)
+;;   (rename-buffer "term-run")
+;;   (multi-term)
+;;   (rename-buffer "term-test")
+;;   (multi-term)
+;;   (rename-buffer "term")
+;;   (switch-to-buffer "term-run"))
+;; (add-hook 'after-init-hook #'emacs-workflow-open)
+
 ;; To activate and use Nord Emacs as your default color theme load it in your init file:
 ;; (load-theme 'nord t)
 
