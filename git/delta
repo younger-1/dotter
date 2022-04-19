@@ -8,11 +8,11 @@
   line-numbers = true
   ; syntax-theme = DarkNeon
   ; syntax-theme = Dracula
-  ; features = my-line-numbers my-decorations
-  ;features = collared-trogon
-  ; features = coracias-caudatus
-  ; features = hoopoe
-  features = tangara-chilensis
+  features = my-line-numbers my-decorations
+  ; features = collared-trogon
+  ; features = coracias-caudatus # light
+  ; features = hoopoe #light
+  ; features = tangara-chilensis
   ;features = villsau
   ;features = woolly-mammoth
   ;features = calochortus-lyallii
