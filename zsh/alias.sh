@@ -1,5 +1,7 @@
 # <https://www.digitalocean.com/community/tutorials/an-introduction-to-useful-bash-aliases-and-functions>
 
+alias rm='rm -i'
+
 # cat
 alias b='bat'
 alias ba='bat -A'

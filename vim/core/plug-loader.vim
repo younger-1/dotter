@@ -85,6 +85,9 @@ function! s:plugging()
   Yo 'vv9k/bogster'
   Yo 'lifepillar/vim-gruvbox8'
   Yo 'vimpostor/vim-prism'
+  Yo 'srcery-colors/srcery-vim'
+  Yo 'ajmwagar/vim-deus'
+  Yo 'guns/xterm-color-table.vim'
 
   " [Appearance]
   Yo 'ryanoasis/vim-devicons'
