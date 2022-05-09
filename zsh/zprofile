@@ -2,4 +2,5 @@
 
 # echo "home zsh profile"
 
+# Or: emulate sh -c '. ~/.profile'
 source ~/.profile

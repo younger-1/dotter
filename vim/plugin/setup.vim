@@ -150,15 +150,20 @@ if jetpack#tap('lightline.vim')
 endif
 
 if jetpack#tap('vim-floaterm')
+  " let g:floaterm_wintype = 'floating'
+  " let g:floaterm_position = 'center'
+  " let g:floaterm_autoinsert = true
+
   " let g:floaterm_title = '❰$1/$2❱'
-  " let g:floaterm_title = '[$1/$2]'
-  let g:floaterm_title = 'Young($1/$2)'
+  let g:floaterm_title = 'Young [$1/$2]'
+  " let g:floaterm_title = 'Young($1/$2)'
   " let g:floaterm_borderchars = '─│─│┌┐┘└'
   " let g:floaterm_borderchars = '─│─│╭╮╯╰'
   " let g:floaterm_borderchars = '═║═║╔╗╝╚'
   let g:floaterm_borderchars = '━┃━┃┏┓┛┗'
   let g:floaterm_width = 0.8
   let g:floaterm_height = 0.8
+
   let g:floaterm_keymap_toggle = '<C-t>'
   let g:floaterm_keymap_next   = ']\'
   let g:floaterm_keymap_prev   = '[\'
@@ -170,4 +175,6 @@ if jetpack#tap('vim-floaterm')
   " let g:floaterm_keymap_prev   = '<leader>tk'
   " let g:floaterm_keymap_new    = '<leader>tT'
   " let g:floaterm_keymap_kill   = 'No need!'
+
+  " hi FloatermBorder guibg=#32302f guifg=#e78a4e
 endif
