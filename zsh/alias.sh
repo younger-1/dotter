@@ -35,10 +35,13 @@ alias ...='../..'
 alias cdroot='cd $(git rev-parse --show-toplevel)'
 
 # vim
-alias nvi='nvim --noplugin'
-alias vi='vim --noplugin'
-alias nvicat='nvim -u ~/dotter/pager.vim'
-alias vicat='vim -u ~/dotter/pager.vim'
+alias vi='vim --clean'
+alias nvi='nvim --clean'
+alias nvi-norc='nvim -u NORC'
+alias nvi-noplug='nvim --noplugin'
+
+alias vcat='vim -u ~/dotter/pager.vim'
+alias nvcat='nvim -u ~/dotter/pager.vim'
 
 # others
 alias wan='w3mman'

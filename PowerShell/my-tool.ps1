@@ -44,6 +44,22 @@ function jsh {
     $env:JSHELLEDITOR = ''
 }
 
+function vi {
+    vim --clean $args
+}
+
+function nvi {
+    nvim --clean $args
+}
+
+function nvi-norc {
+    nvim -u NORC $args
+}
+
+function nvi-noplug {
+    nvim --noplugin $args
+}
+
 # SpaceVim
 function svi($path) {
     # Don't use following:
@@ -55,15 +71,11 @@ function svi($path) {
     $env:XDG_CONFIG_HOME = ""
 }
 
-function nvi {
-    nvim --noplugin $args
-}
-
-function viat {
+function vcat {
     vim -u $HOME/dotter/pager.vim $args
 }
 
-function nviat {
+function nvcat {
     nvim -u $HOME/dotter/pager.vim $args
 }
 
