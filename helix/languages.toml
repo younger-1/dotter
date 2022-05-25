@@ -1,0 +1,10 @@
+# Language support configuration.
+# <https://docs.helix-editor.com/master/languages.html>
+# <https://github.com/helix-editor/helix/blob/master/languages.toml>
+
+[use-grammars]
+only = [
+  "rust",
+  "c",
+  "cpp",
+]

@@ -1,19 +1,27 @@
-# theme = "dark_plus"
-theme = "bogster"
+theme = "dark_plus"
+# theme = "onedark"
+# theme = "base16_default_dark"
+
+# theme = "everforest_light"
 
 [editor]
 line-number = "relative"
+mouse = false
 # shell = ["bash", "-c"]
+cursor-shape = { normal = "block", select = "underline", insert = "bar" }
 
-[lsp]
+[editor.lsp]
 display-messages = true
 
-# At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
+[editor.file-picker]
+hidden = false
+
 [keys.normal]
 # a = "move_char_left" # Maps the 'a' key to the move_char_left command
 # w = "move_line_up" # Maps the 'w' key move_line_up
 # "C-S-esc" = "extend_line" # Maps Control-Shift-Escape to extend_line
-g = { a = "code_action" } # Maps `ga` to show possible code actions
+# g = { a = "code_action" } # Maps `ga` to show possible code actions
+"ret" = ["open_below", "normal_mode"] # Maps the enter key to open_below then re-enter normal mode
 
 [keys.insert]
 "A-x" = "normal_mode" # Maps Alt-X to enter normal mode
