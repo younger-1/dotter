@@ -9,6 +9,7 @@ line-number = "relative"
 mouse = false
 # shell = ["bash", "-c"]
 cursor-shape = { normal = "block", select = "underline", insert = "bar" }
+true-color = true
 
 [editor.lsp]
 display-messages = true
