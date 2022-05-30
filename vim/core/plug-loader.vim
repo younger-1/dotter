@@ -22,7 +22,7 @@ function! s:init_plug()
     call system('git clone --depth 1 https://github.com/tani/vim-jetpack ' .. s:install_path)
   endif
 
-  let g:jetpack#optimization = 2
+  let g:jetpack#optimization = 1
   " autocmd VimEnter * set path^=.
   autocmd VimEnter * let &path = '.,' .. getcwd() .. ',' .. &path
 endfunction

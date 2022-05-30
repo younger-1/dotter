@@ -16,7 +16,7 @@ function what {
     bat $(whence $1)
 }
 
-# always change the dir 
+# always change the dir
 function rar {
     ranger --choosedir=/tmp/rangerdir_cd $*
     LASTDIR=`cat /tmp/rangerdir_cd`
@@ -34,7 +34,7 @@ function ra {
         ranger
         --cmd="map Q chain shell echo %d > "$tempfile"; quitall"
     )
-    
+
     ${ranger_cmd[@]} "$@"
     if [[ -f "$tempfile" ]] && [[ "$(cat -- "$tempfile")" != "$(echo -n `pwd`)" ]]; then
         cd -- "$(cat "$tempfile")" || return
@@ -98,18 +98,18 @@ fi
 # <https://dystroy.org/broot/conf_verbs/>
 # <https://dystroy.org/broot/tricks/>
 # <https://dystroy.org/blog/gg/>
-function br {                               
-    local cmd cmd_file code                 
-    cmd_file=$(mktemp)                      
+function br {
+    local cmd cmd_file code
+    cmd_file=$(mktemp)
     if broot --outcmd "$cmd_file" "$@"; then
-        cmd=$(<"$cmd_file")                 
-        rm -f "$cmd_file"                   
-        eval "$cmd"                         
-    else                                    
-        code=$?                             
-        rm -f "$cmd_file"                   
-        return "$code"                      
-    fi 
+        cmd=$(<"$cmd_file")
+        rm -f "$cmd_file"
+        eval "$cmd"
+    else
+        code=$?
+        rm -f "$cmd_file"
+        return "$code"
+    fi
 }
 alias bs="br --conf ~/.config/broot/select.toml"
 alias be="br --conf ~/.config/broot/edit.toml"

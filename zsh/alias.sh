@@ -43,6 +43,10 @@ alias nvi-noplug='nvim --noplugin'
 alias vcat='vim -u ~/dotter/pager.vim'
 alias nvcat='nvim -u ~/dotter/pager.vim'
 
+# dotfiles
+# alias dot='/usr/bin/git --git-dir=$HOME/dotfiles.git --work-tree=$HOME'
+alias dot='git --git-dir=$HOME/dotter/.git --work-tree=$HOME/dotter'
+
 # others
 alias wan='w3mman'
 alias untar='tar -xzvf'

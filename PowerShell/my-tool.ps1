@@ -132,11 +132,15 @@ function gitcm($scope) {
 
 
 # [dotfiles]
-# https://seankilleen.com/2020/04/how-to-create-a-powershell-alias-with-parameters/
-# https://stackoverflow.com/questions/62861665/powershell-pass-all-parameters-received-in-function-and-handle-parameters-with
+# https://www.atlassian.com/git/tutorials/dotfiles
+# function dot {
+#     # git --git-dir=$HOME/dotfiles.git --work-tree=$HOME $args
+#     git --git-dir=$HOME/dotfiles.git --work-tree=$HOME @args
+# }
+
 function dot {
     # git --git-dir=$HOME/dotfiles.git --work-tree=$HOME $args
-    git --git-dir=$HOME/dotfiles.git --work-tree=$HOME @args
+    git --git-dir=$HOME/dotter/.git --work-tree=$HOME/dotter @args
 }
 
 # PSFzf
