@@ -1,52 +1,32 @@
-;; -*- lexical-binding: t; -*-
-;;; init.el  -*- lexical-binding: t; mode: emacs-lisp; coding:utf-8; fill-column: 80 -*-
+;;; init.el -*- lexical-binding: t; mode: emacs-lisp; coding:utf-8; fill-column: 80 -*-
 
 ;; <https://github.com/daviwil/dotfiles/blob/master/Emacs.org>
 ;; <https://github.com/bling/dotemacs/blob/master/init.el>
 ;; <https://github.com/mclear-tools/dotemacs/blob/master/init.el>
 
-;; The default is 800 kilobytes.  Measured in bytes.
-;; (setq gc-cons-threshold (* 50 1000 1000))
-
-;; Profile emacs startup
-(add-hook 'emacs-startup-hook
-  (lambda ()
-    (message "*** Emacs loaded in %s seconds with %d garbage collections."
-      (emacs-init-time "%.2f") gcs-done)))
-
-;; (let ((emacs-start-time (current-time)))
-;;   (add-hook 'emacs-startup-hook
-;;     (lambda ()
-;;       (let ((elapsed (float-time (time-subtract (current-time) emacs-start-time))))
-;;         (message "[Emacs initialized in %.3fs]" elapsed)))))
-
-;; (setq initial-buffer-choice (lambda () (help-with-tutorial) (get-buffer "TUTORIAL")))
-
 ;; Not load default.init shipped by OS or site
 ;; (setq inhibit-default-init t)
 
+;; (setq initial-buffer-choice (lambda () (help-with-tutorial) (get-buffer "TUTORIAL")))
+
 ;; (setq inhibit-startup-message t)
 
+(menu-bar-mode 1)
+;; (tool-bar-mode 1)
+;; (scroll-bar-mode 1)
+
+(delete-selection-mode t)
 (global-linum-mode 1)
 ;; (setq linum-format "%d| ")
-
-;; Hightlight current line
+(electric-pair-mode t)
+;; (electric-indent-mode t)
 ;; (global-hl-line-mode 1)
-
-;; Hide bars
-;; (menu-bar-mode -1)
-(tool-bar-mode -1)
-;; (scroll-bar-mode -1)
-
 ;; (global-visual-line-mode)
 ;; (xterm-mouse-mode t)
 ;; (which-function-mode t)
 ;; (blink-cursor-mode -1)
 ;; (global-auto-revert-mode t)
-;; (electric-indent-mode t)
-(electric-pair-mode t)
 ;; (transient-mark-mode t)
-(delete-selection-mode t)
 ;; (random t) ;; seed
 
 ;; (setq ido-enable-flex-matching t)
@@ -55,18 +35,25 @@
 
 ;; (icomplete-mode 1)
 
-(setq tab-always-indent 'complete)
-
-(global-company-mode 1)
-(setq company-minimum-prefix-length 1)
-(setq company-idle-delay 0)
+;; (setq tab-always-indent 'complete)
 
 ;; Show time
 ;; (display-time-mode 1)
 ;; (setq display-time-24hr-format t)
 ;; (setq display-time-day-and-date t)
 
+;; Enable default disabled stuff
 (put 'narrow-to-region 'disabled nil)
+;; (put 'downcase-region 'disabled nil)
+;; (put 'upcase-region 'disabled nil)
+;; (put 'erase-buffer 'disabled nil)
+;; (put 'scroll-left 'disabled nil)
+
+;; Use y and n as confirmations
+(fset 'yes-or-no-p 'y-or-n-p)
+
+;; clean whitespaces before saving
+(add-hook 'before-save-hook 'whitespace-cleanup)
 
 (defalias 'list-buffers 'ibuffer-other-window)
 ;; (defalias 'list-buffers 'ibuffer)
@@ -79,6 +66,11 @@
 ;; Prevent Custom from modifying this file.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
+
+;; Start server - Now we can open any file with emacsclient
+;; (unless (and (fboundp 'server-running-p)
+;;              (server-running-p))
+;;   (server-start))
 
 (global-set-key (kbd "C-h C-q") 'view-emacs-FAQ)
 (global-set-key (kbd "C-h C-f") 'find-function)
@@ -119,31 +111,52 @@
 ;;   (switch-to-buffer "term-run"))
 ;; (add-hook 'after-init-hook #'emacs-workflow-open)
 
+;;; package configuration
 ;; (require 'package)
-;; Prevent package.el from modifying this file.
-(setq package-enable-at-startup nil)
-(setq package-archives '(("gnu"   . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
-                         ("melpa" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
-;; (package-initialize)
+
+;; Emacs 27.x has gnu elpa as the default
+;; Emacs 28.x adds the nongnu elpa to the list by default, so only
+;; need to add nongnu when this isn't Emacs 28+
+;; (when (version< emacs-version "28")
+;;   (add-to-list 'package-archives '("nongnu" . "https://elpa.nongnu.org/nongnu/")))
+;; (add-to-list 'package-archives '("stable" . "https://stable.melpa.org/packages/"))
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+
+(setq package-archives '(("gnu"    . "http://mirrors.tuna.tsinghua.edu.cn/elpa/gnu/")
+                         ("nongnu" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
+                         ("stable" . "http://mirrors.tuna.tsinghua.edu.cn/elpa/stable-melpa/")
+                         ("melpa"  . "http://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
+
+(customize-set-variable 'package-archive-priorities
+                        '(("gnu"    . 99)   ; prefer GNU packages
+                          ("nongnu" . 80)   ; use non-gnu packages if not found in GNU elpa
+                          ("stable" . 70)   ; prefer "released" versions from melpa
+                          ("melpa"  . 0)))  ; if all else fails, get it
+
+(package-initialize)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
 
-(use-package try
-  :ensure t)
+;; (require 'use-package)
+(setq use-package-verbose t)
+(setq use-package-always-ensure 't)
+
+(use-package try)
 
 (use-package which-key
-  :ensure t
   :config (which-key-mode))
 
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+;; (use-package org-bullets
+;;   :config
+;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package company
-  :ensure t)
+  :config
+  (global-company-mode 1)
+  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0))
 
-;; To activate and use Nord Emacs as your default color theme load it in your init file:
-;; (load-theme 'nord t)
+;;; init.el ends here
+
