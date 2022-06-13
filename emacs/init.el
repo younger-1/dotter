@@ -52,8 +52,9 @@
 ;; Use y and n as confirmations
 (fset 'yes-or-no-p 'y-or-n-p)
 
-;; clean whitespaces before saving
-(add-hook 'before-save-hook 'whitespace-cleanup)
+;; Clean whitespaces before saving.
+;; See also whitespace-style and indent-tabs-mode
+;; (add-hook 'before-save-hook 'whitespace-cleanup)
 
 (defalias 'list-buffers 'ibuffer-other-window)
 ;; (defalias 'list-buffers 'ibuffer)
@@ -85,6 +86,9 @@
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
+
+;; Display file commentary section
+;; (global-set-key (kbd "C-h C-c") 'finder-commentary)
 
 ;; 快速打开配置文件
 (defun open-init-file()
@@ -122,6 +126,8 @@
 
 ;;; package configuration
 ;; (require 'package)
+
+(setq package-quickstart t)
 
 ;; Emacs 27.x has gnu elpa as the default
 ;; Emacs 28.x adds the nongnu elpa to the list by default, so only
@@ -172,5 +178,22 @@
 
 (use-package keycast
   :config (keycast-mode t))
+
+(use-package helpful
+  :bind (("C-h f"   . #'helpful-function)
+         ("C-h k"   . #'helpful-key)
+         ("C-h o"   . #'helpful-symbol)
+         ("C-h v"   . #'helpful-variable)
+         ("C-h C-." . #'helpful-at-point)
+         ("C-h C-l" . #'find-library))
+  :init) ;; HACK: - see https://github.com/hlissner/doom-emacs/issues/6063
+
+;; Provide examples of Elisp code
+(use-package elisp-demos
+  :defer 1
+  :config
+  ;; inject demos into helpful
+  (advice-add 'helpful-update :after #'elisp-demos-advice-helpful-update))
+
 ;;; init.el ends here
 
