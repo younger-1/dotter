@@ -63,6 +63,15 @@
 (setq initial-frame-alist (quote ((fullscreen . maximized))))
 (setq default-frame-alist (quote ((fullscreen . maximized))))
 
+;; The value is in 1/10pt, so 100 will give you 10pt.
+;; C-x C-+ and C-x C-- to increase or decrease the buffer text size.
+;; (set-face-attribute 'default nil :height 120)
+;; (set-frame-font "Hack NF 10")
+
+;;让鼠标滚动更好用
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
+
 ;; Prevent Custom from modifying this file.
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
@@ -139,18 +148,21 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-;; (require 'use-package)
-(setq use-package-verbose t)
-(setq use-package-always-ensure 't)
+(require 'use-package)
+;; (setq use-package-verbose t)
+(setq use-package-always-ensure t)
+
+;; (use-package org-bullets
+;;   :config
+;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+;; (use-package esup
+;;   :commands esup)
 
 (use-package try)
 
 (use-package which-key
   :config (which-key-mode))
-
-;; (use-package org-bullets
-;;   :config
-;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
 (use-package company
   :config
@@ -158,5 +170,7 @@
   (setq company-minimum-prefix-length 1)
   (setq company-idle-delay 0))
 
+(use-package keycast
+  :config (keycast-mode t))
 ;;; init.el ends here
 
