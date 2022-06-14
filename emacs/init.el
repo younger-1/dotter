@@ -102,10 +102,10 @@
 ;; Display file commentary section
 ;; (global-set-key (kbd "C-h C-c") 'finder-commentary)
 
-;; 快速打开配置文件
 (defun open-init-file()
+  "打开emacs配置文件"
   (interactive)
-  (find-file "~/.config/emacs/init.el"))
+  (find-file user-init-file))
 
 (global-set-key (kbd "<f2>") 'open-init-file)
 
@@ -189,6 +189,9 @@
   (which-key-mode))
 
 (use-package company
+  :bind (:map company-active-map
+         ("C-j" . #'company-select-next)
+         ("C-k" . #'company-select-previous))
   :config
   (global-company-mode 1)
   (setq company-minimum-prefix-length 1)
@@ -207,6 +210,19 @@
   (setq vertico-cycle t)
   (setq vertico-resize nil))
 
+(use-package orderless
+  :after vertico
+  :config (setq completion-styles '(orderless)))
 
+(use-package marginalia
+  :after vertico
+  :config
+  (marginalia-mode t)
+  (setq marginalia-align 'left))
+
+(use-package embark
+  :bind (("C-."   . embark-act)
+         ("M-."   . embark-dwim)
+         ("C-h ;" . embark-bindings)))
 ;;; init.el ends here
 
