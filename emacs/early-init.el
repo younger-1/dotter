@@ -72,6 +72,11 @@
 ;; !!!Slower
 ;; (setq 'initial-major-mode 'fundamental-mode)
 
+(set-language-environment "UTF-8")
+
+;; set-language-enviornment sets default-input-method, which is unwanted
+(setq default-input-method nil)
+
 ;; Inhibit package initialize
 ;; In Emacs 27+, package initialization occurs before `user-init-file' is
 ;; loaded, but after `early-init-file'.

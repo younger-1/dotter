@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(elisp-demos helpful keycast company which-key use-package try))
+   '(vertico elisp-demos helpful keycast company which-key use-package try))
  '(vc-follow-symlinks t))
 
 (custom-set-faces
@@ -12,4 +12,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:slant normal :weight normal :height 120 :width normal :foundry "outline" :family "Hack NF")))))
+ '(default ((t (:slant normal :weight normal :height 120 :width normal :foundry "outline" :family "SauceCodePro NF")))))

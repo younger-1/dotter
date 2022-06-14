@@ -34,6 +34,15 @@
 ;; (ido-mode 1)
 
 ;; (icomplete-mode 1)
+;; (icomplete-vertical-mode 1)
+;; (custom-set-variables
+;;   '(icomplete-show-matches-on-no-input t)
+;;   '(icomplete-hide-common-prefix nil)
+;;   '(icomplete-compute-delay 0.0)
+;;   '(icomplete-scroll t)
+;;   '(completion-ignore-case t)
+;;   '(read-buffer-completion-ignore-case t)
+;;   '(read-file-name-completion-ignore-case t))
 
 ;; (setq tab-always-indent 'complete)
 
@@ -56,8 +65,8 @@
 ;; See also whitespace-style and indent-tabs-mode
 ;; (add-hook 'before-save-hook 'whitespace-cleanup)
 
-(defalias 'list-buffers 'ibuffer-other-window)
-;; (defalias 'list-buffers 'ibuffer)
+;; (defalias 'list-buffers 'ibuffer-other-window)
+(defalias 'list-buffers 'ibuffer)
 
 ;; (toggle-frame-maximized)
 ;; (toggle-frame-fullscreen)
@@ -68,6 +77,7 @@
 ;; C-x C-+ and C-x C-- to increase or decrease the buffer text size.
 ;; (set-face-attribute 'default nil :height 120)
 ;; (set-frame-font "Hack NF 10")
+;; (add-to-list 'default-frame-alist '(font . "SauceCodePro NF-12"))
 
 ;;让鼠标滚动更好用
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
@@ -86,6 +96,8 @@
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
 (global-set-key (kbd "C-h C-k") 'find-function-on-key)
+(global-set-key (kbd "C-h C-l") 'find-library)
+(global-set-key (kbd "C-h K")   'describe-personal-keybindings)
 
 ;; Display file commentary section
 ;; (global-set-key (kbd "C-h C-c") 'finder-commentary)
@@ -154,7 +166,8 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
 ;; (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
@@ -165,27 +178,19 @@
 ;; (use-package esup
 ;;   :commands esup)
 
-(use-package try)
-
-(use-package which-key
-  :config (which-key-mode))
-
-(use-package company
-  :config
-  (global-company-mode 1)
-  (setq company-minimum-prefix-length 1)
-  (setq company-idle-delay 0))
+;; (use-package try)
 
 (use-package keycast
   :config (keycast-mode t))
 
 (use-package helpful
-  :bind (("C-h f"   . #'helpful-function)
-         ("C-h k"   . #'helpful-key)
-         ("C-h o"   . #'helpful-symbol)
+  :bind (("C-h f"   . #'helpful-callable) ;; Note that the built-in `describe-function' includes both functions and macros
+         ("C-h F"   . #'helpful-function) ;; functions (excludes macros).
+         ("C-h c"   . #'helpful-command) ;; interactive functions
          ("C-h v"   . #'helpful-variable)
-         ("C-h C-." . #'helpful-at-point)
-         ("C-h C-l" . #'find-library))
+         ("C-h k"   . #'helpful-key)
+         ("C-h h"   . #'helpful-at-point)
+         ("C-h o"   . #'helpful-symbol))
   :init) ;; HACK: - see https://github.com/hlissner/doom-emacs/issues/6063
 
 ;; Provide examples of Elisp code
@@ -194,6 +199,40 @@
   :config
   ;; inject demos into helpful
   (advice-add 'helpful-update :after #'elisp-demos-advice-helpful-update))
+
+(use-package which-key
+  :defer 1
+  ;; :diminish ""
+  :custom
+  ;; (which-key-ellipsis "..")
+  ;; (which-key-dont-use-unicode t)
+  (which-key-allow-imprecise-window-fit t)
+  ;; (which-key-side-window-location 'top)
+  (which-key-show-early-on-C-h t)
+  (which-key-idle-delay .45)
+  (which-key-idle-secondary-delay 0.05)
+  :config
+  (which-key-mode))
+
+(use-package company
+  :config
+  (global-company-mode 1)
+  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0))
+
+(use-package vertico
+  :hook (after-init . vertico-mode)
+  :bind (:map vertico-map
+         ("<escape>" . #'minibuffer-keyboard-quit)
+         ("C-n"      . #'vertico-next-group)
+         ("C-p"      . #'vertico-previous-group)
+         ("C-j"      . #'vertico-next)
+         ("C-k"      . #'vertico-previous)
+         ("M-RET"    . #'vertico-exit))
+  :config
+  (setq vertico-cycle t)
+  (setq vertico-resize nil))
+
 
 ;;; init.el ends here
 
