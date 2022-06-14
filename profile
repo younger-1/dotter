@@ -2,7 +2,7 @@
 
 # echo "home profile"
 
-# The purpose of the "profile" files is to 
+# The purpose of the "profile" files is to
 # contain commands that ought only run once, only at the beginning of login
 
 ########################### System ##########################
@@ -73,7 +73,7 @@ fi
 # BROWSER contains the path to the web browser
 if [ -n "$DISPLAY" ]; then
     export BROWSER=firefox
-else 
+else
     if [[ -x "$(command -v links)" ]]; then
         export BROWSER=links
     elif [[ -x "$(command -v w3m)" ]]; then
@@ -82,6 +82,9 @@ else
 fi
 
 export PAGER='less -RF'
+
+# For emacs-28 enable true color in TUI
+export COLORTERM=truecolor
 
 # To use different colors for different file extensions
 # <https://www.topbug.net/blog/2016/11/28/a-better-ls-command/#better-color>
@@ -157,7 +160,7 @@ export PYTHONSTARTUP=~/dotter/python_startup.py
 # [webinstall.dev]: envman
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
-# [brew]: 
+# [brew]:
 # <https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/>
 # <https://docs.brew.sh/Homebrew-on-Linux>
 test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
