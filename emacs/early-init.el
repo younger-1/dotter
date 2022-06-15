@@ -40,7 +40,6 @@
 ;; In noninteractive sessions, prioritize non-byte-compiled source files to
 ;; prevent the use of stale byte-code. Otherwise, it saves us a little IO time
 ;; to skip the mtime checks on every *.elc file.
-;; !!!Slower
 (setq load-prefer-newer noninteractive)
 
 ;; Native compilation settings
@@ -51,24 +50,30 @@
   ;; Set the right directory to store the native compilation cache
   (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory)))
 
-;; Inhibit resizing frame
-(setq frame-inhibit-implied-resize t)
+;; (setq menu-bar-mode nil)
+;; (setq tool-bar-mode nil)
 
 ;; Remove some unneeded UI elements (the user can turn back on anything they wish)
-;; (push '(menu-bar-lines . 0) default-frame-alist)
-;; (push '(tool-bar-lines . 0) default-frame-alist)
-;; (push '(vertical-scroll-bars) default-frame-alist)
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
+
 ;; (push '(internal-border-width . 0) default-frame-alist)
 ;; (push '(mouse-color . "white") default-frame-alist)
 ;; (when (featurep 'ns)
 ;;   (push '(ns-transparent-titlebar . t) default-frame-alist))
-(setq menu-bar-mode nil)
-(setq tool-bar-mode nil)
+
+;; no titlebar (disable if not using a WM)
+;; (push '(undecorated . t) default-frame-alist)
+
+;; Inhibit resizing frame
+(setq frame-inhibit-implied-resize t)
 
 ;; (toggle-frame-maximized)
 ;; (toggle-frame-fullscreen)
 ;; (setq initial-frame-alist (quote ((fullscreen . maximized))))
-(setq default-frame-alist (quote ((fullscreen . maximized))))
+;; (setq default-frame-alist (quote ((fullscreen . maximized))))
+(push '(fullscreen . maximized) default-frame-alist)
 
 ;; The value is in 1/10pt, so 100 will give you 10pt.
 ;; C-x C-+ and C-x C-- to increase or decrease the buffer text size.
@@ -84,8 +89,7 @@
 (load-theme 'deeper-blue t)
 
 ;; Make the initial buffer load faster by setting its mode to fundamental-mode
-;; !!!Slower
-;; (setq 'initial-major-mode 'fundamental-mode)
+(setq initial-major-mode 'fundamental-mode)
 
 (set-language-environment "UTF-8")
 
