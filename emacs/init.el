@@ -29,6 +29,17 @@
 ;; (transient-mark-mode t)
 ;; (random t) ;; seed
 
+(recentf-mode 1)
+;; Save minibuffer history
+(setq history-length 25)
+(savehist-mode 1)
+;; Remember and restore the last cursor location of opened files
+(save-place-mode 1)
+;; Revert buffers when the underlying file has changed
+(global-auto-revert-mode 1)
+;; Revert Dired and other buffers
+(setq global-auto-revert-non-file-buffers t)
+
 ;; (setq ido-enable-flex-matching t)
 ;; (setq ido-everywhere t)
 ;; (ido-mode 1)
@@ -46,6 +57,9 @@
 
 ;; (setq tab-always-indent 'complete)
 
+;; (defalias 'list-buffers 'ibuffer-other-window)
+(defalias 'list-buffers 'ibuffer)
+
 ;; Show time
 ;; (display-time-mode 1)
 ;; (setq display-time-24hr-format t)
@@ -60,30 +74,15 @@
 
 ;; Use y and n as confirmations
 (fset 'yes-or-no-p 'y-or-n-p)
+;; Don't pop up UI dialogs when prompting
+;; (setq use-dialog-box nil)
 
 ;; Clean whitespaces before saving.
 ;; See also whitespace-style and indent-tabs-mode
 ;; (add-hook 'before-save-hook 'whitespace-cleanup)
 
-;; (defalias 'list-buffers 'ibuffer-other-window)
-(defalias 'list-buffers 'ibuffer)
-
-;; (toggle-frame-maximized)
-;; (toggle-frame-fullscreen)
-(setq initial-frame-alist (quote ((fullscreen . maximized))))
-(setq default-frame-alist (quote ((fullscreen . maximized))))
-
-;; The value is in 1/10pt, so 100 will give you 10pt.
-;; C-x C-+ and C-x C-- to increase or decrease the buffer text size.
-;; (set-face-attribute 'default nil :height 120)
-;; (set-frame-font "Hack NF 10")
-;; (add-to-list 'default-frame-alist '(font . "SauceCodePro NF-12"))
-
-;;让鼠标滚动更好用
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
-(setq mouse-wheel-progressive-speed nil)
-
-;; Prevent Custom from modifying this file.
+;; Move customization variables to a separate file and load it
+;; (setq custom-file (locate-user-emacs-file "custom.el"))
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file 'noerror 'nomessage)
 
@@ -101,6 +100,8 @@
 
 ;; Display file commentary section
 ;; (global-set-key (kbd "C-h C-c") 'finder-commentary)
+
+(global-set-key (kbd "<escape>") 'delete-minibuffer-contents)
 
 (defun open-init-file()
   "打开emacs配置文件"
@@ -200,11 +201,12 @@
 (use-package vertico
   :hook (after-init . vertico-mode)
   :bind (:map vertico-map
-         ("<escape>" . #'minibuffer-keyboard-quit)
-         ("C-n"      . #'vertico-next-group)
-         ("C-p"      . #'vertico-previous-group)
          ("C-j"      . #'vertico-next)
          ("C-k"      . #'vertico-previous)
+         ("C-n"      . #'vertico-next-group)
+         ("C-p"      . #'vertico-previous-group)
+         ;; ("M-n"      . #'next-complete-history-element)
+         ;; ("M-p"      . #'previous-complete-history-element)
          ("M-RET"    . #'vertico-exit))
   :config
   (setq vertico-cycle t)

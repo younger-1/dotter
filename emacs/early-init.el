@@ -65,6 +65,21 @@
 (setq menu-bar-mode nil)
 (setq tool-bar-mode nil)
 
+;; (toggle-frame-maximized)
+;; (toggle-frame-fullscreen)
+;; (setq initial-frame-alist (quote ((fullscreen . maximized))))
+(setq default-frame-alist (quote ((fullscreen . maximized))))
+
+;; The value is in 1/10pt, so 100 will give you 10pt.
+;; C-x C-+ and C-x C-- to increase or decrease the buffer text size.
+;; (set-face-attribute 'default nil :height 120)
+;; (set-frame-font "Hack NF 10")
+;; (add-to-list 'default-frame-alist '(font . "SauceCodePro NF-12"))
+
+;;让鼠标滚动更好用
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1) ((control) . nil)))
+(setq mouse-wheel-progressive-speed nil)
+
 ;; Loads a nice blue theme, avoids the white screen flash on startup.
 (load-theme 'deeper-blue t)
 
