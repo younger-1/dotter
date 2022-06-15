@@ -104,11 +104,11 @@
 (defun xy-minibuffer-quit()
   "消解minibuffer"
   (interactive)
-  (if (string< "" (minibuffer-contents))
-      (delete-minibuffer-contents)
-      (minibuffer-keyboard-quit)))
-
-(if (string< "" "") 2 3)
+  (if (string< "" (minibuffer-completion-contents))
+      (backward-kill-sentence)
+      (if (string< "" (minibuffer-contents))
+          (kill-line)
+          (minibuffer-keyboard-quit))))
 
 ;; (global-set-key (kbd "<escape>") 'delete-minibuffer-contents)
 (define-key minibuffer-mode-map (kbd "<escape>") 'xy-minibuffer-quit)
@@ -215,8 +215,8 @@
          ("C-k"      . #'vertico-previous)
          ("C-n"      . #'vertico-next-group)
          ("C-p"      . #'vertico-previous-group)
-         ;; ("M-n"      . #'next-complete-history-element)
-         ;; ("M-p"      . #'previous-complete-history-element)
+         ("M-n"      . #'next-complete-history-element)
+         ("M-p"      . #'previous-complete-history-element)
          ("M-RET"    . #'vertico-exit))
   :config
   (setq vertico-cycle t)
