@@ -19,7 +19,7 @@
 (global-linum-mode 1)
 ;; (setq linum-format "%d| ")
 (electric-pair-mode t)
-;; (electric-indent-mode t)
+;; (electric-indent-mode 1)
 ;; (global-hl-line-mode 1)
 ;; (global-visual-line-mode)
 ;; (xterm-mouse-mode t)
@@ -101,7 +101,17 @@
 ;; Display file commentary section
 ;; (global-set-key (kbd "C-h C-c") 'finder-commentary)
 
-(global-set-key (kbd "<escape>") 'delete-minibuffer-contents)
+(defun xy-minibuffer-quit()
+  "消解minibuffer"
+  (interactive)
+  (if (string< "" (minibuffer-contents))
+      (delete-minibuffer-contents)
+      (minibuffer-keyboard-quit)))
+
+(if (string< "" "") 2 3)
+
+;; (global-set-key (kbd "<escape>") 'delete-minibuffer-contents)
+(define-key minibuffer-mode-map (kbd "<escape>") 'xy-minibuffer-quit)
 
 (defun open-init-file()
   "打开emacs配置文件"
