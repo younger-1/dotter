@@ -4,6 +4,10 @@
 ;; <https://github.com/bling/dotemacs/blob/master/init.el>
 ;; <https://github.com/mclear-tools/dotemacs/blob/master/init.el>
 
+;; Some user information that various programs use
+(setq user-full-name "Xavier Young"
+      user-mail-address "younger321@foxmail.com")
+
 ;; Not load default.init shipped by OS or site
 ;; (setq inhibit-default-init t)
 
@@ -60,6 +64,11 @@
 ;; (defalias 'list-buffers 'ibuffer-other-window)
 (defalias 'list-buffers 'ibuffer)
 
+;; (defconst emacs-tmp-dir (expand-file-name (format "emacs%d" (user-uid)) temporary-file-directory))
+;; (setq backup-directory-alist `((".*" . ,emacs-tmp-dir)))
+;; (setq auto-save-file-name-transforms `((".*" ,emacs-tmp-dir t)))
+;; (setq auto-save-list-file-prefix emacs-tmp-dir)
+
 ;; Show time
 ;; (display-time-mode 1)
 ;; (setq display-time-24hr-format t)
@@ -73,9 +82,11 @@
 ;; (put 'scroll-left 'disabled nil)
 
 ;; Use y and n as confirmations
-(fset 'yes-or-no-p 'y-or-n-p)
+;; (fset 'yes-or-no-p 'y-or-n-p)
+(defalias 'yes-or-no-p 'y-or-n-p)
 ;; Don't pop up UI dialogs when prompting
 ;; (setq use-dialog-box nil)
+(setq ring-bell-function 'ignore)
 
 ;; Clean whitespaces before saving.
 ;; See also whitespace-style and indent-tabs-mode
@@ -156,19 +167,21 @@
 ;; (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
-;; (use-package org-bullets
+(defalias 'use 'use-package)
+
+;; (use org-bullets
 ;;   :config
 ;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-;; (use-package esup
+;; (use esup
 ;;   :commands esup)
 
-;; (use-package try)
+;; (use try)
 
-(use-package keycast
+(use keycast
   :config (keycast-mode t))
 
-(use-package helpful
+(use helpful
   :bind (("C-h f"   . #'helpful-callable) ;; Note that the built-in `describe-function' includes both functions and macros
          ("C-h F"   . #'helpful-function) ;; functions (excludes macros).
          ("C-h c"   . #'helpful-command) ;; interactive functions
@@ -179,13 +192,13 @@
   :init) ;; HACK: - see https://github.com/hlissner/doom-emacs/issues/6063
 
 ;; Provide examples of Elisp code
-(use-package elisp-demos
+(use elisp-demos
   :defer 1
   :config
   ;; inject demos into helpful
   (advice-add 'helpful-update :after #'elisp-demos-advice-helpful-update))
 
-(use-package which-key
+(use which-key
   :defer 1
   ;; :diminish ""
   :custom
@@ -199,7 +212,7 @@
   :config
   (which-key-mode))
 
-(use-package company
+(use company
   :bind (:map company-active-map
          ("C-j" . #'company-select-next)
          ("C-k" . #'company-select-previous))
@@ -208,7 +221,7 @@
   (setq company-minimum-prefix-length 1)
   (setq company-idle-delay 0))
 
-(use-package vertico
+(use vertico
   :hook (after-init . vertico-mode)
   :bind (:map vertico-map
          ("C-j"      . #'vertico-next)
@@ -222,17 +235,17 @@
   (setq vertico-cycle t)
   (setq vertico-resize nil))
 
-(use-package orderless
+(use orderless
   :after vertico
   :config (setq completion-styles '(orderless)))
 
-(use-package marginalia
+(use marginalia
   :after vertico
   :config
   (marginalia-mode t)
   (setq marginalia-align 'left))
 
-(use-package embark
+(use embark
   :bind (("C-."   . embark-act)
          ("M-."   . embark-dwim)
          ("C-h ;" . embark-bindings)))
