@@ -13,7 +13,7 @@
 
 ;; (setq initial-buffer-choice (lambda () (help-with-tutorial) (get-buffer "TUTORIAL")))
 
-;; (setq inhibit-startup-message t)
+(setq inhibit-startup-screen t)
 
 (menu-bar-mode 1)
 ;; (tool-bar-mode 1)
@@ -81,12 +81,8 @@
 ;; (put 'erase-buffer 'disabled nil)
 ;; (put 'scroll-left 'disabled nil)
 
-;; Use y and n as confirmations
-;; (fset 'yes-or-no-p 'y-or-n-p)
-(defalias 'yes-or-no-p 'y-or-n-p)
 ;; Don't pop up UI dialogs when prompting
 ;; (setq use-dialog-box nil)
-(setq ring-bell-function 'ignore)
 
 ;; Clean whitespaces before saving.
 ;; See also whitespace-style and indent-tabs-mode

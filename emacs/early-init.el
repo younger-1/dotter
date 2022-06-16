@@ -51,13 +51,14 @@
   ;; Set the right directory to store the native compilation cache
   (add-to-list 'native-comp-eln-load-path (expand-file-name "eln-cache/" user-emacs-directory)))
 
-;; (setq menu-bar-mode nil)
-;; (setq tool-bar-mode nil)
-
 ;; Remove some unneeded UI elements (the user can turn back on anything they wish)
-(push '(menu-bar-lines . 0) default-frame-alist)
-(push '(tool-bar-lines . 0) default-frame-alist)
-(push '(vertical-scroll-bars) default-frame-alist)
+(setq menu-bar-mode nil)
+(setq tool-bar-mode nil)
+(set-scroll-bar-mode nil)
+
+;; (push '(menu-bar-lines . 0) default-frame-alist)
+;; (push '(tool-bar-lines . 0) default-frame-alist)
+;; (push '(vertical-scroll-bars) default-frame-alist)
 
 ;; (push '(internal-border-width . 0) default-frame-alist)
 ;; (push '(mouse-color . "white") default-frame-alist)
@@ -92,10 +93,11 @@
 ;; Make the initial buffer load faster by setting its mode to fundamental-mode
 (setq initial-major-mode 'fundamental-mode)
 
-(set-language-environment "UTF-8")
+;; !!! bad for M-!/eshell in windows
+;; (set-language-environment "UTF-8")
 
-;; set-language-enviornment sets default-input-method, which is unwanted
-(setq default-input-method nil)
+;; `set-language-enviornment` sets default-input-method, which is unwanted
+;; (setq default-input-method nil)
 
 ;; Inhibit package initialize
 ;; In Emacs 27+, package initialization occurs before `user-init-file' is
