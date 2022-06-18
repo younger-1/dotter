@@ -4,9 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(embark marginalia orderless vertico elisp-demos helpful keycast company which-key use-package))
+   '(ace-jump-mode embark marginalia orderless vertico elisp-demos helpful keycast company which-key use-package))
  '(vc-follow-symlinks t)
- ;; '(ring-bell-function 'ignore)
+ '(ring-bell-function 'ignore)
  '(visible-bell t)
  '(use-short-answers t))
 

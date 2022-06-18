@@ -19,19 +19,20 @@
 ;; (tool-bar-mode 1)
 ;; (scroll-bar-mode 1)
 
-(delete-selection-mode t)
-(global-linum-mode 1)
 ;; (setq linum-format "%d| ")
-(electric-pair-mode t)
-;; (electric-indent-mode 1)
+(global-linum-mode 1)
+;; (global-display-line-numbers-mode 1)
+
 ;; (global-hl-line-mode 1)
 ;; (global-visual-line-mode)
-;; (xterm-mouse-mode t)
-;; (which-function-mode t)
+(delete-selection-mode 1)
+(electric-pair-mode 1)
+;; (electric-indent-mode 1)
 ;; (blink-cursor-mode -1)
-;; (global-auto-revert-mode t)
-;; (transient-mark-mode t)
-;; (random t) ;; seed
+;; (xterm-mouse-mode 1)
+;; (which-function-mode 1)
+;; (transient-mark-mode 1)
+;; (random 1) ;; seed
 
 (recentf-mode 1)
 ;; Save minibuffer history
@@ -98,6 +99,13 @@
 ;;              (server-running-p))
 ;;   (server-start))
 
+;; (defun xy-server-start()
+;;   (require 'server)
+;;   (unless (server-running-p)
+;;     (server-start)))
+
+;; (add-hook 'after-init-hook 'xy-server-start)
+
 (global-set-key (kbd "C-h C-q") 'view-emacs-FAQ)
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
@@ -152,7 +160,7 @@
 ;;   (multi-term)
 ;;   (rename-buffer "term")
 ;;   (switch-to-buffer "term-run"))
-;; (add-hook 'after-init-hook #'emacs-workflow-open)
+;; (add-hook 'after-init-hook 'emacs-workflow-open)
 
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
@@ -160,6 +168,7 @@
 
 (eval-when-compile
   (require 'use-package))
+
 ;; (setq use-package-verbose t)
 (setq use-package-always-ensure t)
 
@@ -198,7 +207,7 @@
   :defer 1
   ;; :diminish ""
   :custom
-  ;; (which-key-ellipsis "..")
+  (which-key-ellipsis "..")
   ;; (which-key-dont-use-unicode t)
   (which-key-allow-imprecise-window-fit t)
   ;; (which-key-side-window-location 'top)
@@ -207,6 +216,9 @@
   (which-key-idle-secondary-delay 0.05)
   :config
   (which-key-mode))
+
+(use ace-jump-mode
+ :bind ("C-." . ace-jump-mode))
 
 (use company
   :bind (:map company-active-map
