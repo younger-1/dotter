@@ -211,9 +211,9 @@
   ;; (which-key-dont-use-unicode t)
   (which-key-allow-imprecise-window-fit t)
   ;; (which-key-side-window-location 'top)
-  (which-key-show-early-on-C-h t)
-  (which-key-idle-delay .45)
-  (which-key-idle-secondary-delay 0.05)
+  (which-key-use-C-h-commands nil)
+  (which-key-idle-delay .5)
+  (which-key-idle-secondary-delay .05)
   :config
   (which-key-mode))
 
@@ -256,6 +256,9 @@
 (use embark
   :bind (("C-."   . embark-act)
          ("M-."   . embark-dwim)
-         ("C-h ;" . embark-bindings)))
+         ("C-h ;" . embark-bindings))
+  :init
+  (setq prefix-help-command 'embark-prefix-help-command))
+
 ;;; init.el ends here
 

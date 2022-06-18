@@ -91,7 +91,7 @@
 (load-theme 'deeper-blue t)
 
 ;; Make the initial buffer load faster by setting its mode to fundamental-mode
-(setq initial-major-mode 'fundamental-mode)
+;; (setq initial-major-mode 'fundamental-mode)
 
 ;; !!! bad for M-!/eshell in windows
 ;; (set-language-environment "UTF-8")
