@@ -4,11 +4,11 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(ace-jump-mode embark marginalia orderless vertico elisp-demos helpful keycast company which-key use-package))
- '(vc-follow-symlinks t)
+   '(consult ace-jump-mode embark marginalia orderless vertico elisp-demos helpful keycast company which-key use-package))
  '(ring-bell-function 'ignore)
- '(visible-bell t)
- '(use-short-answers t))
+ '(use-short-answers t)
+ '(vc-follow-symlinks t)
+ '(visible-bell t))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

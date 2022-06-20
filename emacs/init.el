@@ -99,7 +99,7 @@
 ;;              (server-running-p))
 ;;   (server-start))
 
-;; (defun xy-server-start()
+;; (defun xy-server-start ()
 ;;   (require 'server)
 ;;   (unless (server-running-p)
 ;;     (server-start)))
@@ -116,7 +116,7 @@
 ;; Display file commentary section
 ;; (global-set-key (kbd "C-h C-c") 'finder-commentary)
 
-(defun xy-minibuffer-quit()
+(defun xy-minibuffer-quit ()
   "消解minibuffer"
   (interactive)
   (if (string< "" (minibuffer-completion-contents))
@@ -128,7 +128,10 @@
 ;; (global-set-key (kbd "<escape>") 'delete-minibuffer-contents)
 (define-key minibuffer-mode-map (kbd "<escape>") 'xy-minibuffer-quit)
 
-(defun open-init-file()
+(define-key Info-mode-map (kbd "j") 'next-line)
+(define-key Info-mode-map (kbd "k") 'previous-line)
+
+(defun open-init-file ()
   "打开emacs配置文件"
   (interactive)
   (find-file user-init-file))
@@ -218,7 +221,7 @@
   (which-key-mode))
 
 (use ace-jump-mode
- :bind ("C-." . ace-jump-mode))
+ :bind ("C-c j" . ace-jump-mode))
 
 (use company
   :bind (:map company-active-map
@@ -260,5 +263,7 @@
   :init
   (setq prefix-help-command 'embark-prefix-help-command))
 
+(use consult
+  :bind ("C-s" . 'consult-line))
 ;;; init.el ends here
 
