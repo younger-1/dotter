@@ -116,6 +116,16 @@
 ;; Display file commentary section
 ;; (global-set-key (kbd "C-h C-c") 'finder-commentary)
 
+(require 'info)
+(define-key Info-mode-map (kbd "j") 'next-line)
+(define-key Info-mode-map (kbd "k") 'previous-line)
+
+(require 'help-mode)
+(define-key help-mode-map (kbd "j") 'next-line)
+(define-key help-mode-map (kbd "k") 'previous-line)
+(define-key help-mode-map (kbd "b") 'beginning-of-buffer)
+(define-key help-mode-map (kbd "e") 'end-of-buffer)
+
 (defun xy-minibuffer-quit ()
   "消解minibuffer"
   (interactive)
@@ -127,9 +137,6 @@
 
 ;; (global-set-key (kbd "<escape>") 'delete-minibuffer-contents)
 (define-key minibuffer-mode-map (kbd "<escape>") 'xy-minibuffer-quit)
-
-(define-key Info-mode-map (kbd "j") 'next-line)
-(define-key Info-mode-map (kbd "k") 'previous-line)
 
 (defun open-init-file ()
   "打开emacs配置文件"
@@ -196,7 +203,14 @@
          ("C-h v"   . #'helpful-variable)
          ("C-h k"   . #'helpful-key)
          ("C-h h"   . #'helpful-at-point)
-         ("C-h o"   . #'helpful-symbol))
+         ("C-h o"   . #'helpful-symbol)
+         :map helpful-mode-map
+         ("j" . 'next-line)
+         ("k" . 'previous-line)
+         ("b" . 'beginning-of-buffer)
+         ("e" . 'end-of-buffer))
+
+
   :init) ;; HACK: - see https://github.com/hlissner/doom-emacs/issues/6063
 
 ;; Provide examples of Elisp code

@@ -30,4 +30,5 @@ return {
   send_composed_key_when_right_alt_is_pressed=false,
   use_ime = true,
   window_background_opacity = 0.9,
+  enable_csi_u_key_encoding = true,
 }
