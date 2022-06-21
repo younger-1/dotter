@@ -209,6 +209,8 @@
 (use which-key
   :defer 1
   ;; :diminish ""
+  :bind (("C-h '"  . which-key-show-major-mode)
+         ("C-h \"" . which-key-show-keymap))
   :custom
   (which-key-ellipsis "..")
   ;; (which-key-dont-use-unicode t)
@@ -218,6 +220,8 @@
   (which-key-idle-delay .5)
   (which-key-idle-secondary-delay .05)
   :config
+  (global-unset-key (kbd "C-h C-h"))
+  ;; (define-key help-map "\C-h" 'which-key-C-h-dispatch)
   (which-key-mode))
 
 (use ace-jump-mode
@@ -259,7 +263,9 @@
 (use embark
   :bind (("C-."   . embark-act)
          ("M-."   . embark-dwim)
-         ("C-h ;" . embark-bindings))
+         ("C-h ;" . embark-bindings-in-keymap) ;; TODO
+         ("C-h :" . embark-bindings-in-keymap)
+         ("C-h B" . embark-bindings))
   :init
   (setq prefix-help-command 'embark-prefix-help-command))
 
