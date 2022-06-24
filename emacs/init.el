@@ -22,19 +22,13 @@
 ;; (setq linum-format "%d| ")
 (global-linum-mode 1)
 ;; (global-display-line-numbers-mode 1)
-
+;; (setq-default cursor-type 'bar)
+(blink-cursor-mode -1)
 ;; (global-hl-line-mode 1)
 ;; (global-visual-line-mode)
-(delete-selection-mode 1)
-(electric-pair-mode 1)
-;; (electric-indent-mode 1)
-;; (blink-cursor-mode -1)
-;; (xterm-mouse-mode 1)
-;; (which-function-mode 1)
-;; (transient-mark-mode 1)
-;; (random 1) ;; seed
 
 (recentf-mode 1)
+;; (setq recentf-max-menu-items 10)
 ;; Save minibuffer history
 (setq history-length 25)
 (savehist-mode 1)
@@ -44,6 +38,17 @@
 (global-auto-revert-mode 1)
 ;; Revert Dired and other buffers
 (setq global-auto-revert-non-file-buffers t)
+
+(setq make-backup-files nil)
+
+(delete-selection-mode 1)
+(electric-pair-mode 1)
+;; (electric-indent-mode 1) ; @default
+;; (show-paren-mode 1) ; @default
+;; (xterm-mouse-mode 1)
+;; (which-function-mode 1)
+;; (transient-mark-mode 1)
+;; (random 1) ;; seed
 
 ;; (setq ido-enable-flex-matching t)
 ;; (setq ido-everywhere t)
@@ -119,6 +124,7 @@
 (require 'info)
 (define-key Info-mode-map (kbd "j") 'next-line)
 (define-key Info-mode-map (kbd "k") 'previous-line)
+(define-key Info-mode-map (kbd ".") 'Info-search-next)
 
 (require 'help-mode)
 (define-key help-mode-map (kbd "j") 'next-line)
@@ -131,9 +137,9 @@
   (interactive)
   (if (string< "" (minibuffer-completion-contents))
       (backward-kill-sentence)
-      (if (string< "" (minibuffer-contents))
-          (kill-line)
-          (minibuffer-keyboard-quit))))
+    (if (string< "" (minibuffer-contents))
+        (kill-line)
+      (minibuffer-keyboard-quit))))
 
 ;; (global-set-key (kbd "<escape>") 'delete-minibuffer-contents)
 (define-key minibuffer-mode-map (kbd "<escape>") 'xy-minibuffer-quit)
@@ -156,6 +162,33 @@
     (pop-to-buffer (read-buffer "Buffer: " nil t pred))))
 
 (global-set-key (kbd "<f3>") 'xy-buffer-same-mode)
+
+(defun xy-system-open-directory (file)
+  "Open directory of file using the default application of the system."
+  (interactive "fSystem open directory: ")
+  (if (and (eq system-type 'windows-nt)
+           (fboundp 'w32-shell-execute))
+      (shell-command-to-string
+       (encode-coding-string
+        (replace-regexp-in-string "/" "\\\\"
+                                  (format "explorer.exe %s"
+                                          (file-name-directory (expand-file-name file))))
+        'gbk))
+    (call-process (pcase system-type
+                    ('darwin "open")
+                    ('cygwin "cygstart")
+                    (_ "xdg-open"))
+                  nil 0 nil (file-name-directory (expand-file-name file)))))
+
+(defun xy-system-open-directory-2 (file)
+  "Open directory of file using the default application of the system."
+  (interactive "fSystem open directory: ")
+  (call-process (pcase system-type
+                  ('windows-nt "explorer.exe")
+                  ('cygwin     "cygstart")
+                  ('darwin     "open")
+                  (_           "xdg-open"))
+                nil 0 nil (file-name-directory (expand-file-name file))))
 
 ;; (defun emacs-workflow-open ()
 ;;   ;(interactive)
@@ -239,12 +272,12 @@
   (which-key-mode))
 
 (use ace-jump-mode
- :bind ("C-c j" . ace-jump-mode))
+  :bind ("C-c j" . ace-jump-mode))
 
 (use company
   :bind (:map company-active-map
-         ("C-j" . #'company-select-next)
-         ("C-k" . #'company-select-previous))
+              ("C-j" . #'company-select-next)
+              ("C-k" . #'company-select-previous))
   :config
   (global-company-mode 1)
   (setq company-minimum-prefix-length 1)
@@ -253,13 +286,13 @@
 (use vertico
   :hook (after-init . vertico-mode)
   :bind (:map vertico-map
-         ("C-j"      . #'vertico-next)
-         ("C-k"      . #'vertico-previous)
-         ("C-n"      . #'vertico-next-group)
-         ("C-p"      . #'vertico-previous-group)
-         ("M-n"      . #'next-complete-history-element)
-         ("M-p"      . #'previous-complete-history-element)
-         ("M-RET"    . #'vertico-exit))
+              ("C-j"      . #'vertico-next)
+              ("C-k"      . #'vertico-previous)
+              ("C-n"      . #'vertico-next-group)
+              ("C-p"      . #'vertico-previous-group)
+              ("M-n"      . #'next-complete-history-element)
+              ("M-p"      . #'previous-complete-history-element)
+              ("M-RET"    . #'vertico-exit))
   :config
   (setq vertico-cycle t)
   (setq vertico-resize nil))
@@ -279,11 +312,15 @@
          ("M-."   . embark-dwim)
          ("C-h ;" . embark-bindings-in-keymap) ;; TODO
          ("C-h :" . embark-bindings-in-keymap)
-         ("C-h B" . embark-bindings))
+         ("C-h B" . embark-bindings)
+         :map embark-file-map
+         ("E"     . xy-system-open-directory))
   :init
   (setq prefix-help-command 'embark-prefix-help-command))
 
 (use consult
-  :bind ("C-s" . 'consult-line))
+  :bind (("C-s"   . consult-line)
+         ("C-x b" . consult-buffer)))
+
 ;;; init.el ends here
 
