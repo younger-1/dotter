@@ -163,40 +163,37 @@
 
 (global-set-key (kbd "<f3>") 'xy-buffer-same-mode)
 
-(defun xy-system-open-directory (file)
-  "Open directory of file using the default application of the system."
-  (interactive "fSystem open directory: ")
-  (if (and (eq system-type 'windows-nt)
-           (fboundp 'w32-shell-execute))
-      (shell-command-to-string
-       (encode-coding-string
-        (replace-regexp-in-string "/" "\\\\"
-                                  (format "explorer.exe %s"
-                                          (file-name-directory (expand-file-name file))))
-        'gbk))
-    (call-process (pcase system-type
-                    ('darwin "open")
-                    ('cygwin "cygstart")
-                    (_ "xdg-open"))
-                  nil 0 nil (file-name-directory (expand-file-name file)))))
+;; (defun xy-system-open-directory (file)
+;;   "Open directory of file using the default application of the system."
+;;   (interactive "fSystem open directory: ")
+;;   (if (and (eq system-type 'windows-nt)
+;;            (fboundp 'w32-shell-execute))
+;;       (shell-command-to-string
+;;        (encode-coding-string
+;;         (replace-regexp-in-string "/" "\\\\"
+;;                                   (format "explorer.exe %s"
+;;                                           (file-name-directory (expand-file-name file))))
+;;         'gbk))
+;;     (call-process (pcase system-type
+;;                     ('darwin "open")
+;;                     ('cygwin "cygstart")
+;;                     (_ "xdg-open"))
+;;                   nil 0 nil (file-name-directory (expand-file-name file)))))
 
-(defun xy-system-open-directory-2 (file)
+(defun xy-system-open-directory (file)
   "Open directory of FILE using the default application of the system."
   (interactive "fSystem open directory: ")
   (setq file (file-name-directory (expand-file-name file)))
-  (if (eq system-type 'windows-nt)
-    (setq file (replace-regexp-in-string "/" "\\\\" file)))
-  (call-process (pcase system-type
-                  ('windows-nt "explorer.exe")
-                  ('cygwin     "cygstart")
-                  ('darwin     "open")
-                  (_           "xdg-open"))
-                nil 0 nil file))
+  (xy-system-open file))
 
 (defun xy-system-open-file (file)
   "Open FILE using the default application of the system."
   (interactive "fSystem open file: ")
   (setq file (expand-file-name file))
+  (xy-system-open file))
+
+(defun xy-system-open (file)
+  "Open helper."
   (if (eq system-type 'windows-nt)
     (setq file (replace-regexp-in-string "/" "\\\\" file)))
   (call-process (pcase system-type
@@ -328,7 +325,8 @@
          ("C-h :" . embark-bindings-in-keymap)
          ("C-h B" . embark-bindings)
          :map embark-file-map
-         ("E"     . xy-system-open-directory))
+         ("E"     . xy-system-open-directory)
+         ("F"     . xy-system-open-file))
   :init
   (setq prefix-help-command 'embark-prefix-help-command))
 
