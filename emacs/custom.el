@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(consult ace-jump-mode embark marginalia orderless vertico elisp-demos helpful keycast company which-key use-package))
+   '(use-package-chords diminish consult ace-jump-mode embark marginalia orderless vertico elisp-demos helpful keycast company which-key use-package))
  '(ring-bell-function 'ignore)
  '(use-short-answers t)
  '(vc-follow-symlinks t)

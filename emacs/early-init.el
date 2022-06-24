@@ -11,7 +11,8 @@
 ;; (setq gc-cons-threshold (* 50 1000 1000))
 
 ;; Defer garbage collection further back in the startup process
-(setq gc-cons-threshold most-positive-fixnum gc-cons-percentage 0.6)
+(setq gc-cons-threshold most-positive-fixnum
+      gc-cons-percentage 0.6)
 (add-hook 'emacs-startup-hook
           (defun reset-gc-cons-threshold ()
             (setq gc-cons-threshold 800000 gc-cons-percentage 0.1)))

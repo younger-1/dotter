@@ -19,21 +19,14 @@
 ;; (tool-bar-mode 1)
 ;; (scroll-bar-mode 1)
 
-;; (setq linum-format "%d| ")
-(global-linum-mode 1)
 ;; (global-display-line-numbers-mode 1)
 ;; (setq-default cursor-type 'bar)
 (blink-cursor-mode -1)
 ;; (global-hl-line-mode 1)
 ;; (global-visual-line-mode)
 
-(recentf-mode 1)
-;; (setq recentf-max-menu-items 10)
 ;; Save minibuffer history
 (setq history-length 25)
-(savehist-mode 1)
-;; Remember and restore the last cursor location of opened files
-(save-place-mode 1)
 ;; Revert buffers when the underlying file has changed
 (global-auto-revert-mode 1)
 ;; Revert Dired and other buffers
@@ -121,16 +114,9 @@
 ;; Display file commentary section
 ;; (global-set-key (kbd "C-h C-c") 'finder-commentary)
 
-(require 'info)
-(define-key Info-mode-map (kbd "j") 'next-line)
-(define-key Info-mode-map (kbd "k") 'previous-line)
-(define-key Info-mode-map (kbd ".") 'Info-search-next)
-
-(require 'help-mode)
-(define-key help-mode-map (kbd "j") 'next-line)
-(define-key help-mode-map (kbd "k") 'previous-line)
-(define-key help-mode-map (kbd "b") 'beginning-of-buffer)
-(define-key help-mode-map (kbd "e") 'end-of-buffer)
+(when (eq system-type 'windows-nt)
+  (cd "~/")
+  (setenv "LANG" "en_US"))
 
 (defun xy-minibuffer-quit ()
   "消解minibuffer"
@@ -222,27 +208,91 @@
   (package-refresh-contents)
   (package-install 'use-package))
 
+(eval-and-compile
+  ;; (setq use-package-verbose t)
+  (setq use-package-always-ensure t)
+  ;; (setq use-package-always-defer t)
+  (setq use-package-expand-minimally t)
+  (setq use-package-enable-imenu-support t))
+
 (eval-when-compile
   (require 'use-package))
 
-;; (setq use-package-verbose t)
-(setq use-package-always-ensure t)
+(defalias 'use 'use-package) ;; TODO
 
-(defalias 'use 'use-package)
+(use-package recentf
+  :ensure nil
+  :custom
+  (recentf-max-menu-items  10)
+  ;; (recentf-max-saved-items 50)
+  :init (recentf-mode 1))
 
-;; (use org-bullets
+(use-package savehist
+  :ensure nil
+  :init (savehist-mode 1))
+
+;; Remember and restore the last cursor location of opened files
+(use-package saveplace
+  :ensure nil
+  :init (save-place-mode 1))
+
+;; Revert buffers when the underlying file has changed
+(use-package autorevert
+  :ensure nil
+  :custom
+  ;; Revert Dired and other buffers
+  (global-auto-revert-non-file-buffers t)
+  :init (global-auto-revert-mode 1))
+
+(use-package linum
+  :ensure nil
+  ;; :custom
+  ;; (linum-format "%d| ")
+  :init (global-linum-mode 1))
+
+(use-package info
+  :ensure nil
+  :defer t
+  :bind (:map Info-mode-map
+              ("j" . next-line)
+              ("k" . previous-line)
+              ("." . Info-search-next)))
+
+(use-package help-mode
+  :ensure nil
+  :defer t
+  :bind (:map help-mode-map
+              ("j" . next-line)
+              ("k" . previous-line)
+              ("b" . beginning-of-buffer)
+              ("e" . end-of-buffer)))
+
+(use-package imenu
+  :ensure nil
+  :defer t
+  :custom (imenu-space-replacement nil))
+
+;; (use-package org-bullets
 ;;   :config
 ;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 
-;; (use esup
+;; (use-package esup
 ;;   :commands esup)
 
-;; (use try)
+;; (use-package try)
 
-(use keycast
+(use-package diminish
+  :defer t)
+
+(use-package use-package-chords
+  ;; :defer t ;; TODO
+  :config (key-chord-mode 1))
+
+(use-package keycast
+  :defer 2
   :config (keycast-mode t))
 
-(use helpful
+(use-package helpful
   :bind (("C-h f"   . #'helpful-callable) ;; Note that the built-in `describe-function' includes both functions and macros
          ("C-h F"   . #'helpful-function) ;; functions (excludes macros).
          ("C-h c"   . #'helpful-command) ;; interactive functions
@@ -258,15 +308,15 @@
   :init) ;; HACK: - see https://github.com/hlissner/doom-emacs/issues/6063
 
 ;; Provide examples of Elisp code
-(use elisp-demos
-  :defer 1
+(use-package elisp-demos
+  :defer 2
   :config
   ;; inject demos into helpful
   (advice-add 'helpful-update :after #'elisp-demos-advice-helpful-update))
 
-(use which-key
+(use-package which-key
   :defer 1
-  ;; :diminish ""
+  :diminish ""
   :bind (("C-h '"  . which-key-show-major-mode)
          ("C-h \"" . which-key-show-keymap))
   :custom
@@ -282,19 +332,22 @@
   ;; (define-key help-map "\C-h" 'which-key-C-h-dispatch)
   (which-key-mode))
 
-(use ace-jump-mode
-  :bind ("C-c j" . ace-jump-mode))
+(use-package ace-jump-mode
+  :defer t
+  :chords (("jk" . ace-jump-char-mode)
+           ("jl" . ace-jump-line-mode)))
 
-(use company
+(use-package company
+  :diminish ""
   :bind (:map company-active-map
               ("C-j" . #'company-select-next)
               ("C-k" . #'company-select-previous))
   :config
-  (global-company-mode 1)
   (setq company-minimum-prefix-length 1)
-  (setq company-idle-delay 0))
+  (setq company-idle-delay 0)
+  (global-company-mode 1))
 
-(use vertico
+(use-package vertico
   :hook (after-init . vertico-mode)
   :bind (:map vertico-map
               ("C-j"      . #'vertico-next)
@@ -308,17 +361,17 @@
   (setq vertico-cycle t)
   (setq vertico-resize nil))
 
-(use orderless
+(use-package orderless
   :after vertico
   :config (setq completion-styles '(orderless)))
 
-(use marginalia
+(use-package marginalia
   :after vertico
   :config
   (marginalia-mode t)
   (setq marginalia-align 'left))
 
-(use embark
+(use-package embark
   :bind (("C-."   . embark-act)
          ("M-."   . embark-dwim)
          ("C-h ;" . embark-bindings-in-keymap) ;; TODO
@@ -330,9 +383,11 @@
   :init
   (setq prefix-help-command 'embark-prefix-help-command))
 
-(use consult
+(use-package consult
   :bind (("C-s"   . consult-line)
          ("C-x b" . consult-buffer)))
+
+;; (use-package embark-consult)
 
 ;;; init.el ends here
 
