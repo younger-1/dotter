@@ -181,14 +181,30 @@
                   nil 0 nil (file-name-directory (expand-file-name file)))))
 
 (defun xy-system-open-directory-2 (file)
-  "Open directory of file using the default application of the system."
+  "Open directory of FILE using the default application of the system."
   (interactive "fSystem open directory: ")
+  (setq file (file-name-directory (expand-file-name file)))
+  (if (eq system-type 'windows-nt)
+    (setq file (replace-regexp-in-string "/" "\\\\" file)))
   (call-process (pcase system-type
                   ('windows-nt "explorer.exe")
                   ('cygwin     "cygstart")
                   ('darwin     "open")
                   (_           "xdg-open"))
-                nil 0 nil (file-name-directory (expand-file-name file))))
+                nil 0 nil file))
+
+(defun xy-system-open-file (file)
+  "Open FILE using the default application of the system."
+  (interactive "fSystem open file: ")
+  (setq file (expand-file-name file))
+  (if (eq system-type 'windows-nt)
+    (setq file (replace-regexp-in-string "/" "\\\\" file)))
+  (call-process (pcase system-type
+                  ('windows-nt "explorer.exe")
+                  ('cygwin     "cygstart")
+                  ('darwin     "open")
+                  (_           "xdg-open"))
+                nil 0 nil file))
 
 ;; (defun emacs-workflow-open ()
 ;;   ;(interactive)
@@ -242,8 +258,6 @@
          ("k" . 'previous-line)
          ("b" . 'beginning-of-buffer)
          ("e" . 'end-of-buffer))
-
-
   :init) ;; HACK: - see https://github.com/hlissner/doom-emacs/issues/6063
 
 ;; Provide examples of Elisp code
