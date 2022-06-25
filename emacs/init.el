@@ -213,11 +213,14 @@
   (setq use-package-always-ensure t)
   ;; (setq use-package-always-defer t)
   (setq use-package-expand-minimally t)
+  (setq use-package-compute-statistics t) ;; for `use-package-report`
   (setq use-package-enable-imenu-support t))
 
 (eval-when-compile
   (require 'use-package))
 
+;; (require 'diminish)
+;; (require 'bind-key)
 (defalias 'use 'use-package) ;; TODO
 
 (use-package recentf
@@ -288,6 +291,37 @@
   ;; :defer t ;; TODO
   :config (key-chord-mode 1))
 
+;; (use-package dashboard
+;;   :config
+;;   (dashboard-setup-startup-hook))
+
+(use-package paradox
+  :init
+  (use-package async) ;; for upgrades in the background
+  (setq paradox-execute-asynchronously t
+        ;; paradox-github-token "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"
+        paradox-github-token t
+        paradox-display-star-count nil)
+  ;; :custom
+  ;; (paradox-github-token (getenv "GITHUB_AUTH_TOKEN"))
+  ;; :custom-face
+  ;; (paradox-archive-face ((t (:inherit font-lock-doc-face))))
+  ;; (paradox-description-face ((t (:inherit completions-annotations))))
+  ;; :hook (after-init . paradox-enable)
+  :bind ("C-h p" . paradox-list-packages))
+
+(use-package auto-package-update
+  :init
+  (setq auto-package-update-interval 14
+        auto-package-update-prompt-before-update t
+        auauto-package-update-show-preview t
+        auauto-package-update-delete-old-versions t
+        auto-package-update-hide-results nil)
+  (defalias 'update-packages #'auto-package-update-now)
+  ;; :config
+  ;; (auto-package-update-maybe))
+  :commands auto-package-update-now)
+
 (use-package keycast
   :defer 2
   :config (keycast-mode t))
@@ -339,13 +373,14 @@
 
 (use-package company
   :diminish ""
+  :init
+  (setq company-minimum-prefix-length 1)
+  (setq company-idle-delay 0)
+  (setq company-tooltip-limit 15)
   :bind (:map company-active-map
               ("C-j" . #'company-select-next)
               ("C-k" . #'company-select-previous))
-  :config
-  (setq company-minimum-prefix-length 1)
-  (setq company-idle-delay 0)
-  (global-company-mode 1))
+  :hook (after-init . global-company-mode))
 
 (use-package vertico
   :hook (after-init . vertico-mode)
