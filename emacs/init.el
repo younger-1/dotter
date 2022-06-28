@@ -23,7 +23,7 @@
 ;; (setq-default cursor-type 'bar)
 (blink-cursor-mode -1)
 ;; (global-hl-line-mode 1)
-;; (global-visual-line-mode)
+;; (global-visual-line-mode 1) ; word wrap on and off.
 
 ;; Save minibuffer history
 (setq history-length 25)
@@ -127,8 +127,8 @@
         (kill-line)
       (minibuffer-keyboard-quit))))
 
-;; (global-set-key (kbd "<escape>") 'delete-minibuffer-contents)
-(define-key minibuffer-mode-map (kbd "<escape>") 'xy-minibuffer-quit)
+;; (define-key minibuffer-local-map (kbd "<escape>") 'delete-minibuffer-contents)
+(define-key minibuffer-local-map (kbd "<escape>") 'xy-minibuffer-quit)
 
 (defun open-init-file ()
   "打开emacs配置文件"
@@ -414,15 +414,23 @@
          ("C-h B" . embark-bindings)
          :map embark-file-map
          ("E"     . xy-system-open-directory)
-         ("F"     . xy-system-open-file))
+         ;; ("F"     . xy-system-open-file)
+         ("F"     . consult-file-externally)
+         :map minibuffer-local-map
+         ("C-c e" . embark-export))
   :init
-  (setq prefix-help-command 'embark-prefix-help-command))
+  (setq prefix-help-command #'embark-prefix-help-command))
 
 (use-package consult
   :bind (("C-s"   . consult-line)
          ("C-x b" . consult-buffer)))
 
-;; (use-package embark-consult)
+(use-package embark-consult
+  :after (embark consult)
+  :hook (embark-collect-mode . consult-preview-at-point-mode))
+
+(use-package monokai-theme
+  :config (load-theme 'monokai t))
 
 ;;; init.el ends here
 
