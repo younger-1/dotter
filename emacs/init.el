@@ -15,14 +15,17 @@
 
 (setq inhibit-startup-screen t)
 
+;; Don't pop up UI dialogs when prompting
+;; (setq use-dialog-box nil)
+;; (setq use-file-dialog nil)
+
 (menu-bar-mode 1)
 ;; (tool-bar-mode 1)
 ;; (scroll-bar-mode 1)
 
-;; (global-display-line-numbers-mode 1)
+(global-display-line-numbers-mode 1)
 ;; (setq-default cursor-type 'bar)
 (blink-cursor-mode -1)
-;; (global-hl-line-mode 1)
 ;; (global-visual-line-mode 1) ; word wrap on and off.
 
 ;; Save minibuffer history
@@ -32,7 +35,9 @@
 ;; Revert Dired and other buffers
 (setq global-auto-revert-non-file-buffers t)
 
-(setq make-backup-files nil)
+(setq make-backup-files nil
+      ;; auto-save-default nil
+      create-lockfiles nil)
 
 (delete-selection-mode 1)
 (electric-pair-mode 1)
@@ -80,9 +85,6 @@
 ;; (put 'erase-buffer 'disabled nil)
 ;; (put 'scroll-left 'disabled nil)
 
-;; Don't pop up UI dialogs when prompting
-;; (setq use-dialog-box nil)
-
 ;; Clean whitespaces before saving.
 ;; See also whitespace-style and indent-tabs-mode
 ;; (add-hook 'before-save-hook 'whitespace-cleanup)
@@ -117,6 +119,34 @@
 (when (eq system-type 'windows-nt)
   (cd "~/")
   (setenv "LANG" "en_US"))
+
+;; (defun xy-kill-this-buffer ()
+;;   "Kill the current buffer."
+;;   (interactive)
+;;   (kill-buffer nil))
+
+(bind-key "C-x k" #'kill-this-buffer)
+(bind-key "C-x K" #'kill-some-buffers)
+
+;; (defun xy-kill-all-buffers (&optional reserved)
+;;   "Kill all buffers."
+;;   (interactive)
+;;   (delete-other-windows)
+;;   (save-some-buffers)
+;;   (let ((kill-buffer-query-functions '()))
+;;     (mapc 'kill-buffer (buffer-list))))
+
+(defun xy-kill-other-buffers ()
+  "Kill all other buffers.
+
+It will preserve dired buffers (as well as scratch buffer, term buffers, help buffers, etc, anything not visiting a file."
+  (interactive)
+  (save-some-buffers)
+  (mapc 'kill-buffer
+        (delq (current-buffer)
+              (seq-filter 'buffer-file-name (buffer-list)))))
+
+(bind-key "C-c K" #'xy-kill-other-buffers)
 
 (defun xy-minibuffer-quit ()
   "消解minibuffer"
@@ -225,33 +255,42 @@
 
 (use-package recentf
   :ensure nil
-  :custom
-  (recentf-max-menu-items  10)
-  ;; (recentf-max-saved-items 50)
-  :init (recentf-mode 1))
+  :init
+  (setq recentf-max-menu-items 10)
+  ;; (setq recentf-max-saved-items 50)
+  (recentf-mode 1))
 
 (use-package savehist
   :ensure nil
-  :init (savehist-mode 1))
+  :init
+  (savehist-mode 1))
 
 ;; Remember and restore the last cursor location of opened files
 (use-package saveplace
   :ensure nil
-  :init (save-place-mode 1))
+  :init
+  (save-place-mode 1))
 
 ;; Revert buffers when the underlying file has changed
 (use-package autorevert
   :ensure nil
-  :custom
+  :init
   ;; Revert Dired and other buffers
-  (global-auto-revert-non-file-buffers t)
-  :init (global-auto-revert-mode 1))
+  (setq global-auto-revert-non-file-buffers t)
+  (global-auto-revert-mode 1))
 
-(use-package linum
-  :ensure nil
-  ;; :custom
-  ;; (linum-format "%d| ")
-  :init (global-linum-mode 1))
+;; (use-package linum
+;;   :ensure nil
+;;   :init
+;;   ;; (setq linum-format "%d| ")
+;;   (global-linum-mode 1))
+
+;; (use-package hl-line
+;;   :ensure nil
+;;   :defer t
+;;   ;; :config
+;;   ;; (global-hl-line-mode 1)
+;;   :hook ((prog-mode text-mode) . hl-line-mode))
 
 (use-package info
   :ensure nil
@@ -273,7 +312,8 @@
 (use-package imenu
   :ensure nil
   :defer t
-  :custom (imenu-space-replacement nil))
+  :init
+  (setq imenu-space-replacement nil))
 
 ;; (use-package org-bullets
 ;;   :config
@@ -289,7 +329,8 @@
 
 (use-package use-package-chords
   ;; :defer t ;; TODO
-  :config (key-chord-mode 1))
+  :config
+  (key-chord-mode 1))
 
 ;; (use-package dashboard
 ;;   :config
@@ -324,7 +365,8 @@
 
 (use-package keycast
   :defer 2
-  :config (keycast-mode t))
+  :config
+  (keycast-mode t))
 
 (use-package helpful
   :bind (("C-h f"   . #'helpful-callable) ;; Note that the built-in `describe-function' includes both functions and macros
@@ -353,14 +395,14 @@
   :diminish ""
   :bind (("C-h '"  . which-key-show-major-mode)
          ("C-h \"" . which-key-show-keymap))
-  :custom
-  (which-key-ellipsis "..")
-  ;; (which-key-dont-use-unicode t)
-  (which-key-allow-imprecise-window-fit t)
-  ;; (which-key-side-window-location 'top)
-  (which-key-use-C-h-commands nil)
-  (which-key-idle-delay .5)
-  (which-key-idle-secondary-delay .05)
+  :init
+  (setq which-key-ellipsis ".."
+        ;; which-key-dont-use-unicode t
+        which-key-allow-imprecise-window-fit t
+        ;; which-key-side-window-location 'top
+        which-key-use-C-h-commands nil
+        which-key-idle-delay .5
+        which-key-idle-secondary-delay .05)
   :config
   (global-unset-key (kbd "C-h C-h"))
   ;; (define-key help-map "\C-h" 'which-key-C-h-dispatch)
@@ -374,9 +416,9 @@
 (use-package company
   :diminish ""
   :init
-  (setq company-minimum-prefix-length 1)
-  (setq company-idle-delay 0)
-  (setq company-tooltip-limit 15)
+  (setq company-minimum-prefix-length 1
+        company-idle-delay 0
+        company-tooltip-limit 15)
   :bind (:map company-active-map
               ("C-j" . #'company-select-next)
               ("C-k" . #'company-select-previous))
@@ -384,6 +426,8 @@
 
 (use-package vertico
   :hook (after-init . vertico-mode)
+  :init
+  (add-hook 'after-init-hook #'vertico-mouse-mode)
   :bind (:map vertico-map
               ("C-j"      . #'vertico-next)
               ("C-k"      . #'vertico-previous)
@@ -391,14 +435,21 @@
               ("C-p"      . #'vertico-previous-group)
               ("M-n"      . #'next-complete-history-element)
               ("M-p"      . #'previous-complete-history-element)
-              ("M-RET"    . #'vertico-exit))
+              ;; Have to rebind this because C-m is translated to RET.
+              ("C-m"      . #'vertico-insert)
+              ("<return>" . #'exit-minibuffer)
+              ("M-RET"    . #'vertico-exit)
+              ;; ("DEL"      . #'vertico-directory-delete-char)
+              ("C-c SPC"  . #'vertico-quick-exit))
   :config
-  (setq vertico-cycle t)
-  (setq vertico-resize nil))
+  (setq vertico-count 12
+        vertico-resize nil
+        vertico-cycle t))
 
 (use-package orderless
   :after vertico
-  :config (setq completion-styles '(orderless)))
+  :config
+  (setq completion-styles '(orderless)))
 
 (use-package marginalia
   :after vertico
@@ -421,16 +472,47 @@
   :init
   (setq prefix-help-command #'embark-prefix-help-command))
 
+(defun xy-yank ()
+  "Call yank, then indent the pasted region, as TextMate does."
+  (interactive)
+  (let ((point-before (point)))
+    (if mark-active (call-interactively 'delete-backward-char))
+    (yank)
+    (indent-region point-before (point))))
+
+(bind-key "C-y" #'xy-yank)
+;; (bind-key "C-Y" #'yank)
+
 (use-package consult
-  :bind (("C-s"   . consult-line)
-         ("C-x b" . consult-buffer)))
+  :init
+  ;; (setq completion-in-region-function #'consult-completion-in-region)
+  ;; (setq xref-show-xrefs-function #'consult-xref)
+  ;; (setq xref-show-definitions-function #'consult-xref)
+  :config
+  (defun xy-yank-pop ()
+    "As xy-yank, but calling consult-yank-pop."
+    (interactive)
+    (let ((point-before (point)))
+      (consult-yank-pop)
+      (indent-region point-before (point))))
+  :bind (("C-c i"   . consult-imenu)
+         ("C-c r"   . consult-recent-file)
+         ("C-c g"   . consult-ripgrep)
+         ("M-y"     . consult-yank-pop)
+         ("M-Y"     . xy-yank-pop)
+         ("C-c R"   . consult-bookmark)
+         ("C-c `"   . consult-flymake)
+         ("C-x b"   . consult-buffer)
+         ("C-h a"   . consult-apropos)
+         ("C-s"     . consult-line)))
 
 (use-package embark-consult
   :after (embark consult)
   :hook (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package monokai-theme
-  :config (load-theme 'monokai t))
+  :config
+  (load-theme 'monokai t))
 
 ;;; init.el ends here
 
