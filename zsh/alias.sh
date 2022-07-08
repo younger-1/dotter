@@ -6,7 +6,9 @@ alias rm='rm -i'
 alias b='bat'
 alias ba='bat -A'
 alias bd='bat -d'
-alias cat="bat --style=plain --pager='less -RF'"
+if [[ -x "$(command -v bat)" ]]; then
+  alias cat="bat --style=plain --pager='less -RF'"
+fi
 
 # ls
 if alias ls &>/dev/null; then unalias ls; fi
@@ -14,7 +16,9 @@ if alias la &>/dev/null; then unalias la; fi
 if alias l &>/dev/null; then unalias l; fi
 if alias ll &>/dev/null; then unalias ll; fi
 
-function ls { exa --icons --classify --group-directories-first $@; }
+if [[ -x "$(command -v exa)" ]]; then
+  function ls { exa --icons --classify --group-directories-first $@; }
+fi
 function la { ls -a $@; }
 function lag { la --git-ignore $@; }
 function l { ls -l --git $@; }

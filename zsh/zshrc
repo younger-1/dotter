@@ -27,7 +27,7 @@ setopt hist_ignore_all_dups # remove older duplicate entries from history
 setopt hist_reduce_blanks # remove superfluous blanks from history items
 setopt inc_append_history # save history entries as soon as they are entered
 setopt share_history # share history between different instances of the shell
-setopt append_history auto_cd complete_aliases extended_glob no_match notify 
+setopt append_history auto_cd complete_aliases extended_glob no_match notify
 setopt correct_all # autocorrect commands
 setopt auto_list # automatically list choices on ambiguous completion
 setopt auto_menu # automatically use menu completion
@@ -48,7 +48,7 @@ zstyle ':completion:::::' completer _expand _complete _ignored _approximate # en
 # setopt promptsubst
 setopt PROMPT_SUBST
 # Enable colors
-autoload -Uz colors && colors 
+autoload -Uz colors && colors
 # autoload -Uz vcs_info && vcs_info
 # Time
 # RPS1='%(?..%{$fg_bold[red]%}[%? $(kill -l $?)]%{${reset_color}%} )%T'
@@ -82,44 +82,47 @@ alias help=run-help
 # Assistant functions have to be enabled separately:
 autoload -Uz run-help-git run-help-ip run-help-openssl run-help-p4 run-help-sudo run-help-svk run-help-svn
 
-# fzf-tab
-# https://github.com/Aloxaf/fzf-tab#usage
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-# preview directory's content with exa when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
-
-###
-### Added by Zinit's installer
-if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
-    print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
-    command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone --depth=10 https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
-        print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
-        print -P "%F{160}▓▒░ The clone has failed.%f%b"
+if [[ -x "$(command -v fzf)" ]]; then
+  # fzf-tab
+  # https://github.com/Aloxaf/fzf-tab#usage
+  # disable sort when completing `git checkout`
+  zstyle ':completion:*:git-checkout:*' sort false
+  # set descriptions format to enable group support
+  zstyle ':completion:*:descriptions' format '[%d]'
+  # set list-colors to enable filename colorizing
+  zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+  # preview directory's content with exa when completing cd
+  zstyle ':fzf-tab:complete:cd:*' fzf-preview 'exa -1 --color=always $realpath'
+  # switch group using `,` and `.`
+  zstyle ':fzf-tab:*' switch-group ',' '.'
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
+###
+###
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
+
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
 # Load a few important annexes, without Turbo
 # (this is currently required for annexes)
 zinit light-mode for \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
 ### End of Zinit's installer chunk
 ###
-
+###
 
 # zsh-autosuggestions
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#7b8c7c'
@@ -135,12 +138,12 @@ ZSH_AUTOSUGGEST_USE_ASYNC=1
 # zinit snippet 'https://raw.fastgit.org/ohmyzsh/ohmyzsh/master/lib/git.zsh'
 # zinit snippet 'https://raw.fastgit.org/ohmyzsh/ohmyzsh/master/plugins/git/git.plugin.zsh'
 # zinit snippet 'https://raw.fastgit.org/sorin-ionescu/prezto/master/modules/helper/init.zsh'
-zinit snippet 'https://gitee.com/kiss-younger/ohmyzsh/raw/master/lib/git.zsh'
-zinit snippet 'https://gitee.com/kiss-younger/ohmyzsh/raw/master/plugins/git/git.plugin.zsh'
-zinit snippet 'https://gitee.com/kiss-younger/prezto/raw/master/modules/helper/init.zsh'
+# zinit snippet 'https://gitee.com/kiss-younger/ohmyzsh/raw/master/lib/git.zsh'
+# zinit snippet 'https://gitee.com/kiss-younger/ohmyzsh/raw/master/plugins/git/git.plugin.zsh'
+# zinit snippet 'https://gitee.com/kiss-younger/prezto/raw/master/modules/helper/init.zsh'
 
 zinit ice wait depth=1 lucid nocd
-zinit load zdharma/history-search-multi-word
+zinit load zdharma-continuum/history-search-multi-word
 
 zinit ice wait depth=1 lucid nocd
 zinit load zsh-users/zsh-history-substring-search
@@ -149,8 +152,14 @@ zinit load zsh-users/zsh-history-substring-search
 
 #####################################[ Prompt ]#####################################
 
-zinit ice depth=1
-zinit light romkatv/powerlevel10k
+if [[ -x "$(command -v fzf)" ]]; then
+  eval "$(starship init zsh)"
+fi
+
+# zinit ice depth=1
+# zinit light romkatv/powerlevel10k
+
+# zinit light spaceship-prompt/spaceship-prompt
 
 # zinit ice depth=1
 # zinit light agkozak/agkozak-zsh-prompt
@@ -198,17 +207,9 @@ zinit load wfxr/forgit
 # ugit
 zinit light Bhupesh-V/ugit
 
-# diff-so-fancy
-zinit ice wait"2" lucid as"program" pick"bin/git-dsf"
-zinit load zdharma/zsh-diff-so-fancy
-
 # zsh-startify, a vim-startify like plugin
 zinit ice wait"0b" lucid atload"zsh-startify"
 zinit load zdharma-continuum/zsh-startify
-
-# declare-zsh
-zinit ice wait"2" lucid
-zinit load zdharma/declare-zsh
 
 # zsh-vi
 # https://github.com/jeffreytse/zsh-vi-mode
@@ -217,12 +218,15 @@ zinit load zdharma/declare-zsh
 # zinit load jeffreytse/zsh-vi-mode
 
 # TODO
-zinit light mollifier/cd-gitroot
-zinit light micha/resty
-zinit light supercrabtree/k
+# zinit light mollifier/cd-gitroot
+# zinit light micha/resty
+# zinit light supercrabtree/k
 
-zinit ice as"program"
-zinit light DanielFGray/fzf-scripts
+# zinit ice wait"2" lucid as"program" pick"bin/git-dsf"
+# zinit load zdharma-continuum/zsh-diff-so-fancy
+
+# zinit ice as"program"
+# zinit light DanielFGray/fzf-scripts
 
 # zinit ice as"program" pick"src/*"
 # zinit light Manas140/sh
@@ -241,7 +245,7 @@ zinit wait depth=1 lucid light-mode for \
 # zinit light zsh-users/zsh-completions
 # autoload compinit
 # compinit
-# zinit light zdharma/fast-syntax-highlighting
+# zinit light zdharma-continuum/fast-syntax-highlighting
 # zinit light zsh-users/zsh-autosuggestions
 
 # Or :paru -Qi zsh-syntax-highlighting zsh-autosuggestions zsh-completions

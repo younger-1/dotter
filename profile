@@ -10,12 +10,12 @@
 source ~/zsh/boot.sh
 
 # Set XDG dirs
-export XDG_CONFIG_HOME=~/.config
-export XDG_CACHE_HOME=~/.cache
-export XDG_DATA_HOME=~/.local/share
-export XDG_RUNTIME_DIR=~/.xdg
-
-if [[ "$OSTYPE" == darwin* ]]; then
+if [[ ! "$OSTYPE" == darwin* ]]; then
+  export XDG_CONFIG_HOME=~/.config
+  export XDG_CACHE_HOME=~/.cache
+  export XDG_DATA_HOME=~/.local/share
+  export XDG_RUNTIME_DIR=~/.xdg
+else
   export XDG_DESKTOP_DIR=~/Desktop
   export XDG_DOCUMENTS_DIR=~/Documents
   export XDG_DOWNLOAD_DIR=~/Downloads
@@ -48,9 +48,6 @@ fi
 
 
 ########################### APP ##########################
-
-export GITHUB_AUTH_TOKEN=$(gpg --quiet -d $HOME/dotter/gpg/github.younger)
-export GITTY_TOKENS=github.com=$GITHUB_AUTH_TOKEN
 
 # https://wiki.archlinux.org/index.php/Environment_variables
 # Preferred editor for local and remote sessions
@@ -94,7 +91,9 @@ if [[ -x "$(command -v vivid)" ]]; then
     function setcolor() {
         export LS_COLORS="$(vivid generate $1)"
     }
-else
+fi
+
+if [[ -x "$(command -v dircolors)" ]]; then
     eval "$(dircolors)"
 fi
 

@@ -1,4 +1,4 @@
-[helpers]
+# [helpers]
 # hex2rgb = ".dotter/helpers/hex2rgb.rhai"
 
 [win]
@@ -55,17 +55,19 @@ pip = "~/.config/pip/pip.conf"
 Alacritty = { target = "~/.config/alacritty/", type = "symbolic" }
 "Alacritty/alacritty.yml" = { target = "~/.config/alacritty/alacritty.yml", type = "template" }
 So = { target = "~/.config/so", type = "symbolic" }
-goenv = "~/.config/go/env"
 "gh.yml" = "~/.config/gh/config.yml"
 vivid = { target = "~/.config/vivid", type = "symbolic" }
 fd = { target = "~/.config/fd", type = "symbolic" }
-"clangd.yaml" = "~/.config/clangd/config.yaml"
 broot = { target = "~/.config/broot", type = "symbolic" }
 helix = { target = "~/.config/helix", type = "symbolic" }
 espanso = { target = "~/.config/espanso", type = "symbolic" }
 "poetry.toml" = "~/.config/pypoetry/config.toml"
 "youtube-dl/conf" = "~/.config/youtube-dl/config"
 "yt-dlp/config" = "~/.config/yt-dlp/config"
+
+# mac diff
+goenv = "~/.config/go/env"
+"clangd.yaml" = "~/.config/clangd/config.yaml"
 
 [vim]
 
@@ -131,3 +133,7 @@ depends = ["linux"]
 depends = ["linux"]
 
 [openSUSE.files]
+
+[mac]
+
+depends = ["linux"]

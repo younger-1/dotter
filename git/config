@@ -9,7 +9,6 @@
   path = ~/.config/git/alias
   path = ~/.config/git/delta
   path = ~/.config/git/color
-  path = .gitconfig.local
 
 [credential]
   helper = gopass
@@ -53,7 +52,7 @@
   diffFilter = delta --color-only
 
 [init]
-  ; templatedir = ~/.config/git/template
+  templatedir = ~/.config/git/template
   defaultBranch = main
 [commit]
   ; verbose = true
@@ -128,3 +127,7 @@
 
 ; [url "ssh://git@github.com/"]
 ;   insteadOf = https://github.com/
+
+[include]
+  path = .gitconfig.local
+  path = ~/dotter/local/git.cfg

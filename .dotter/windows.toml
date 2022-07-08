@@ -1,4 +1,4 @@
-# Windows OS-specific configuration
+# Windows OS specific configuration
 
 [win.files]
 
@@ -31,17 +31,19 @@ pip = "~/AppData/Roaming/pip/pip.ini"
 Alacritty = { target = "~/AppData/Roaming/alacritty", type = "symbolic" }
 "Alacritty/alacritty.yml" = { target = "~/AppData/Roaming/alacritty/alacritty.yml", type = "template" }
 So = { target = "~/AppData/Roaming/Sam Tay/so/config", type = "symbolic" }
-goenv = "~/AppData/Roaming/go/env"
 "gh.yml" = "~/AppData/Roaming/Github CLI/config.yml"
 vivid = { target = "~/AppData/Roaming/vivid", type = "symbolic" }
 fd = { target = "~/AppData/Roaming/fd", type = "symbolic" }
-"clangd.yaml" = "~/AppData/Local/clangd/config.yaml"
 broot = { target = "~/AppData/Roaming/dystroy/broot/config", type = "symbolic" }
 helix = { target = "~/AppData/Roaming/helix", type = "symbolic" }
 espanso = { target = "$scoop/persist/espanso/.espanso", type = "symbolic" }
 "poetry.toml" = "~/AppData/Roaming/pypoetry/config.toml"
 "youtube-dl/conf" = "~/AppData/Roaming/youtube-dl/config.txt"
 "yt-dlp/config" = "~/AppData/Roaming/yt-dlp/config"
+
+## mac diff
+goenv = "~/AppData/Roaming/go/env"
+"clangd.yaml" = "~/AppData/Local/clangd/config.yaml"
 
 [vim.files]
 

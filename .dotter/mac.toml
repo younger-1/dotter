@@ -1,0 +1,12 @@
+# Mac OS specific configuration
+
+[mac.files]
+
+[default.variables]
+
+os = "mac"
+
+[default.files]
+
+# goenv = "~/Library/Application Support/go/env"
+"clangd.yaml" = "~/Library/Preferences/clangd/config.yaml"

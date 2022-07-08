@@ -2,10 +2,13 @@
 local wezterm = require "wezterm";
 return {
   font = wezterm.font_with_fallback {
+    "Hack Nerd Font",
+    "SauceCodePro Nerd Font",
+    "JetBrainsMono Nerd Font",
     "Delugia",
     "Iosevka Nerd Font",
   },
-  font_size = 13.0,
+  font_size = 15.0,
   -- See: <https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/wezterm>
   -- color_scheme = "Gruvbox Dark",
   -- color_scheme = "Solarized Darcula",

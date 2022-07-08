@@ -1,13 +1,26 @@
+[ -s "$HOME/dotter/local/shell.sh" ] && source "$HOME/dotter/local/shell.sh"
+
 # ssh
-if [[ -x "$(command -v keychain)" ]]; then
+if [[ ! $no_ssh ]]; then
+  if [[ -x "$(command -v keychain)" ]]; then
     # eval `keychain --eval --agents ssh id_rsa`
     eval $(keychain --eval --agents ssh --quick --quiet id_rsa --nogui)
-else
+  else
     echo "😅 keychain is missing.\n"
+  fi
+fi
+
+if [[ ! $no_gpg ]] && [[ -x "$(command -v gpg)" ]]; then
+  export GITHUB_AUTH_TOKEN=$(gpg --quiet -d $HOME/dotter/gpg/github.younger)
+  export GITTY_TOKENS=github.com=$GITHUB_AUTH_TOKEN
 fi
 
 # Proxy
-export ClientIP=$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -f 1 -d '/')
+if [[ $no_proxy ]]; then
+  return
+fi
+
+# export ClientIP=$(ip addr show eth0 | grep 'inet ' | awk '{print $2}' | cut -f 1 -d '/')
 export HostIP=$(cat /etc/resolv.conf | grep 'nameserver' | awk '{print $2}')
 export HttpPort=7890
 # export SocksPort=10808
@@ -41,6 +54,7 @@ unsetproxy() {
     # unset ALL_PROXY
 }
 
+# echo "=== Use proxy ==="
 setproxy
 
 setv2ray() {
