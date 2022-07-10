@@ -1,8 +1,8 @@
-includes = [".dotter/mac.toml"]
+includes = []
 
 # An array of the names of all packages that are selected.
 # Only the files and variables that belong to packages in this list are kept.
-packages = ["mac"]
+packages = ["linux"]
 
 # File target locations can be overridden in local.toml
 # I need to define some machine-specific files.

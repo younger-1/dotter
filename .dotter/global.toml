@@ -1,10 +1,6 @@
 # [helpers]
 # hex2rgb = ".dotter/helpers/hex2rgb.rhai"
 
-[win]
-
-depends = ["default"]
-
 [default]
 
 [default.variables]
@@ -119,6 +115,14 @@ Ranger = { target = "~/.config/ranger", type = "symbolic" }
 task = { target = "~/.config/task", type = "symbolic" }
 "locale.conf" = "~/.config/locale.conf"
 
+[win]
+
+depends = ["default"]
+
+[mac]
+
+depends = ["linux"]
+
 [archlinux]
 
 depends = ["linux"]
@@ -134,6 +138,3 @@ depends = ["linux"]
 
 [openSUSE.files]
 
-[mac]
-
-depends = ["linux"]
