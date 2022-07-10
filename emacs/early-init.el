@@ -90,6 +90,13 @@
 
 ;; Loads a nice blue theme, avoids the white screen flash on startup.
 (load-theme 'deeper-blue t)
+;; (progn
+;;   (setq modus-themes-subtle-line-numbers t
+;;         modus-themes-syntax '(alt-syntax faint)
+;;         modus-themes-diffs 'desaturated
+;;         modus-themes-bold-constructs nil)
+;;   (global-set-key (kbd "<f5>") 'modus-themes-toggle)
+;;   (load-theme 'modus-vivendi))
 
 ;; Make the initial buffer load faster by setting its mode to fundamental-mode
 ;; (setq initial-major-mode 'fundamental-mode)

@@ -22,6 +22,7 @@
 (menu-bar-mode 1)
 ;; (tool-bar-mode 1)
 ;; (scroll-bar-mode 1)
+;; (tooltip-mode -1) ; display tooltips in minibuffer
 
 (global-display-line-numbers-mode 1)
 ;; (setq-default cursor-type 'bar)
@@ -126,7 +127,7 @@
 ;;   (kill-buffer nil))
 
 (bind-key "C-x k" #'kill-this-buffer)
-(bind-key "C-x K" #'kill-some-buffers)
+(bind-key "C-c k" #'kill-some-buffers)
 
 ;; (defun xy-kill-all-buffers (&optional reserved)
 ;;   "Kill all buffers."
@@ -146,7 +147,7 @@ It will preserve dired buffers (as well as scratch buffer, term buffers, help bu
         (delq (current-buffer)
               (seq-filter 'buffer-file-name (buffer-list)))))
 
-(bind-key "C-c K" #'xy-kill-other-buffers)
+(bind-key "C-x K" #'xy-kill-other-buffers)
 
 (defun xy-minibuffer-quit ()
   "消解minibuffer"
@@ -315,6 +316,16 @@ It will preserve dired buffers (as well as scratch buffer, term buffers, help bu
   :init
   (setq imenu-space-replacement nil))
 
+(use-package project
+  ;; :pin gnu
+  :ensure nil
+  :init
+  ;; This is one of my favorite things: you can customize the options shown upon switching projects.
+  (setq project-switch-commands
+        '((project-find-file "Find file")
+          (magit-project-status "Magit" ?g)
+          (deadgrep "Grep" ?h))))
+
 ;; (use-package org-bullets
 ;;   :config
 ;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
@@ -322,7 +333,8 @@ It will preserve dired buffers (as well as scratch buffer, term buffers, help bu
 ;; (use-package esup
 ;;   :commands esup)
 
-;; (use-package try)
+(use-package try
+  :commands try)
 
 (use-package diminish
   :defer t)
@@ -435,10 +447,6 @@ It will preserve dired buffers (as well as scratch buffer, term buffers, help bu
               ("C-p"      . #'vertico-previous-group)
               ("M-n"      . #'next-complete-history-element)
               ("M-p"      . #'previous-complete-history-element)
-              ;; Have to rebind this because C-m is translated to RET.
-              ("C-m"      . #'vertico-insert)
-              ("<return>" . #'exit-minibuffer)
-              ("M-RET"    . #'vertico-exit)
               ;; ("DEL"      . #'vertico-directory-delete-char)
               ("C-c SPC"  . #'vertico-quick-exit))
   :config

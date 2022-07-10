@@ -13,3 +13,54 @@
   Show some org-mode
   - review init.el
   - set up Readme.org
+
+#+BEGIN_SRC emacs-lisp -n
+  (defun simplified-beginning-of-buffer ()
+    "Move point to the beginning of the buffer, leave mark at previous position."
+    (interactive)
+    (push-mark)
+    (goto-char (point-min)))
+
+  (defun mark-whole-buffer ()
+    "Put point at beginning and mark at end of buffer."
+    (interactive)
+    (push-mark (point) t)
+    (push-mark (point-max) t t)
+    (goto-char (point-min)))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp -n
+  (defun myMark-elisp-region (rStart rEnd)
+    "Mark region as Elisp source code for org mode export."
+    (interactive "r")
+    (save-excursion
+      (goto-char rEnd) (insert "\n#+END_SRC\n")
+      (goto-char rStart) (insert "#+BEGIN_SRC emacs-lisp -n\n")))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp -n
+  (defun strip-smart-quotes ()
+    "Replace smart quotes with plain quotes in text from region, or whole buffer if region not set"
+    (interactive)
+    (save-excursion
+      (save-restriction
+	(when (use-region-p) (narrow-to-region (region-beginning) (region-end)))
+	(goto-char (point-min))
+	(while (re-search-forward "[¡°¡±]" nil t) (replace-match "\"" nil t))
+	(goto-char (point-min))
+	(while (re-search-forward "[¡®¡¯]" nil t) (replace-match "'" nil t)))))
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp -n
+  (defun yodaizer (s)
+    "Moves adjective to the front of the sentence."
+    (interactive "sInput a phrase:")
+    (setq adjectives '("happy" "sad" "fun" "clever" "instructive"))
+    (let ((result '())
+	  (words (split-string s)))
+      (dolist (element words result)
+	(if (member element adjectives)
+	    (setq result (concat (capitalize element) ", " result))
+	  (setq result (concat result " " element))))
+      (message result)))
+#+END_SRC
