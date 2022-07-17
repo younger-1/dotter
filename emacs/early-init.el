@@ -6,6 +6,10 @@
 ;; Emacs 27.1 introduced early-init.el, which is run before init.el, before
 ;; package and UI initialization happens, and before site files are loaded.
 
+;; Match theme color early on (smoother transition).
+;; Theme loaded in features/ui.el.
+(add-to-list 'default-frame-alist '(background-color . "#212121"))
+
 ;; Increase the GC threshold for faster startup
 ;; The default is 800 kilobytes.  Measured in bytes.
 ;; (setq gc-cons-threshold (* 50 1000 1000))
@@ -89,7 +93,7 @@
 (setq mouse-wheel-progressive-speed nil)
 
 ;; Loads a nice blue theme, avoids the white screen flash on startup.
-(load-theme 'deeper-blue t)
+;; (load-theme 'deeper-blue t)
 ;; (progn
 ;;   (setq modus-themes-subtle-line-numbers t
 ;;         modus-themes-syntax '(alt-syntax faint)

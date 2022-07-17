@@ -1,360 +1,173 @@
-// https://docs.microsoft.com/en-us/windows/terminal/install
 {
-    // "$schema": "https://aka.ms/terminal-profiles-schema",
-    // "$schema": "https://raw.fastgit.org/microsoft/terminal/release-1.11/doc/cascadia/profiles.schema.json",
-    "$schema": "https://raw.githubusercontent.com/microsoft/terminal/release-1.11/doc/cascadia/profiles.schema.json",
-    "defaultProfile": "PowerShellCore",
+    "$help": "https://aka.ms/terminal-documentation",
+    "$schema": "https://aka.ms/terminal-profiles-schema",
+    "startOnUserLogin": false,
     "theme": "system",
-    "startOnUserLogin": true,
-    // To unbind a default keybinding, set the command to "unbound" or null
-    "actions": [
-        {
-            "command": null,
-            "keys": "f11"
-        },
-        {
-            "command": {
-                "action": "newTab",
-                "profile": "Arch"
-            },
-            "keys": [
-                "alt+shift+a"
-            ]
-        },
-        {
-            "command": {
-                "action": "newTab",
-                "profile": "openSUSE"
-            },
-            "keys": [
-                "alt+shift+b"
-            ]
-        },
-        {
-            "command": {
-                "action": "splitPane",
-                "split": "vertical",
-                "profile": "Arch"
-            },
-            "keys": [
-                "alt+shift+v"
-            ]
-        },
-        {
-            "command": {
-                "action": "splitPane",
-                "split": "horizontal",
-                "profile": "Arch"
-            },
-            "keys": [
-                "alt+shift+x"
-            ]
-        },
-        // [Application-level Keys]
-        {
-            "command": "commandPalette",
-            "keys": "ctrl+;"
-        },
-        {
-            "command": "find",
-            "keys": "alt+shift+f"
-        },
-        {
-            "command": {
-                "action": "findMatch",
-                "direction": "next"
-            },
-            "keys": "alt+shift+]"
-        },
-        {
-            "command": {
-                "action": "findMatch",
-                "direction": "prev"
-            },
-            "keys": "alt+shift+["
-        },
-        {
-            "command": "toggleAlwaysOnTop",
-            "keys": "alt+shift+t"
-        },
-        {
-            "command": "openTabColorPicker",
-            "keys": "alt+shift+c"
-        },
-        {
-            "command": "toggleShaderEffects",
-            "keys": "alt+shift+s"
-        },
-        {
-            // "command": "toggleRetroEffect",
-            "command": "openTabRenamer",
-            "keys": "alt+shift+r"
-        },
-        // [Tab Management]
-        {
-            "command": "newTab",
-            "keys": "alt+shift+n"
-        },
-        {
-            "command": {
-                "action": "moveTab",
-                "direction": "forward"
-            },
-            "keys": "alt+shift+>"
-        },
-        {
-            "command": {
-                "action": "moveTab",
-                "direction": "backward"
-            },
-            "keys": "alt+shift+<"
-        },
-        {
-            "command": "nextTab",
-            "keys": "alt+shift+l"
-        },
-        {
-            "command": "prevTab",
-            "keys": "alt+shift+h"
-        },
-        // {
-        //     "command": "nextTab",
-        //     "keys": "alt+shift+right"
-        // },
-        // {
-        //     "command": "prevTab",
-        //     "keys": "alt+shift+left"
-        // },
-        // [Pane Management]
-        {
-            "command": "toggleReadOnlyMode",
-            "keys": "alt+shift+o"
-        },
-        {
-            "command": {
-                "action": "splitPane",
-                "split": "horizontal",
-                "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+-"
-        },
-        {
-            "command": {
-                "action": "splitPane",
-                "split": "vertical",
-                "splitMode": "duplicate"
-            },
-            "keys": "alt+shift+="
-        },
-        // {
-        //     "command": {
-        //         "action": "moveFocus",
-        //         "direction": "left"
-        //     },
-        //     "keys": "alt+shift+h"
-        // },
-        // {
-        //     "command": {
-        //         "action": "moveFocus",
-        //         "direction": "right"
-        //     },
-        //     "keys": "alt+shift+l"
-        // },
-        // {
-        //     "command": {
-        //         "action": "moveFocus",
-        //         "direction": "down"
-        //     },
-        //     "keys": "alt+shift+j"
-        // },
-        // {
-        //     "command": {
-        //         "action": "moveFocus",
-        //         "direction": "up"
-        //     },
-        //     "keys": "alt+shift+k"
-        // },
-        {
-            "command": "togglePaneZoom",
-            "keys": "alt+shift+m"
-        },
-        // [Clipboard Integration]
-        // [Scrollback]
-        {
-            "command": "scrollDownPage",
-            "keys": "alt+shift+j"
-        },
-        {
-            "command": "scrollUpPage",
-            "keys": "alt+shift+k"
-        }
-    ],
+    "alwaysShowNotificationIcon": true,
+    // "defaultProfile": "PowerShellCore",
+    "defaultProfile": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
     "profiles": {
         "defaults": {
+            "backgroundImageOpacity": 0.40000000000000002,
+            "backgroundImageStretchMode": "none",
+            "bellStyle": "all",
             "colorScheme": "ayu",
             "font": {
+                "axes": {
+                    "wght": 300.0
+                },
                 "face": "Delugia",
                 "features": {
-                    // "ss01": 1,
-                    "calt": 0,
-                    // "clig": 0,
-                    // "dlig": 0,
-                },
-                "axes": {
-                    "wght": 300,
-                    // "ital": 1,
-                    // "slnt": 1,
-                    // "opsz": 1,
-                    // "wdth": 1,
+                    "calt": 0
                 }
             },
             "intenseTextStyle": "bold",
-            "bellStyle": "all",
-            // "experimental.pixelShaderPath": "C:/Users/younger/Desktop/oops/Awesome/windows-terminal-shaders/hueshift.hlsl",
-            "backgroundImageOpacity": 0.4,
-            "backgroundImageStretchMode": "none",
-            "acrylicOpacity": 0.8,
+            "opacity": 80,
             "useAcrylic": true
         },
         "list": [
             {
-                "name": "PowerShellCore",
-                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
-                // "commandline": "%SCOOP%/apps/pwsh/current/pwsh.exe", // or use new shim
-                "source": "Windows.Terminal.PowershellCore",
-                "startingDirectory": "%HOME%",
-                "colorScheme": "ayu",
                 "backgroundImage": "%HOME%/Beauty/Icons/v-logo.png",
-                // "fontFace": "Hasklug NF",
-                // "fontFace": "VictorMono NF",
-                // "fontFace": "霞鹜文楷等宽",
-                // "fontFace": "mononoki NF",
-                // "fontFace": "monoid NF",
-                // "fontFace": "TerminessTTF NF",
-                // "fontFace": "CaskaydiaCove NF",
-                // "fontFace": "JetBrainsMono NF",
-                // "fontFace": "DejaVuSansMono NF",
-                // "fontFace": "SauceCodePro NF",
-                // "fontFace": "Hack NF",
-                // "cursorColor": "#8FF7B1",
-                "acrylicOpacity": 0.8
-            },
-            {
-                "name": "Windows PowerShell",
-                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
-                "colorScheme": "Tango Dark",
-                "backgroundImage": "%HOME%/Beauty/Icons/github.png",
-                "fontFace": "JetBrainsMono NF",
-                "acrylicOpacity": 0.8
-            },
-            {
-                "name": "Cmd.exe",
-                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
                 "colorScheme": "ayu",
-                "backgroundImage": "%HOME%/Beauty/Icons/rust.png",
-                "backgroundImageOpacity": 0.3
-            },
-            {
-                "name": "Arch",
-                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
-                "source": "Windows.Terminal.Wsl",
-                // "colorScheme": "nord",
-                // "colorScheme": "Solarized Light",
-                "colorScheme": "Tango Dark",
-                "icon": "%HOME%/Beauty/Icons/linux/arch.png",
-                "backgroundImage": "%HOME%/Beauty/Icons/linux/arch-linux1.png",
-                "font": {
-                    "face": "SauceCodePro NF",
-                    // "face": "Hack NF",
-                    "axes": {
-                        "wght": 400,
-                    }
-                },
-                "cursorColor": "#6f847d",
-                // "startingDirectory": "//wsl$/Arch/home/young",
-                "commandline": "arch",
-                "acrylicOpacity": 0.8
-            },
-            {
-                "name": "openSUSE",
-                "guid": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
-                "source": "Windows.Terminal.Wsl",
-                "icon": "%HOME%/Beauty/Icons/linux/opensuse.ico",
-                // "startingDirectory": "//wsl$/openSUSE-Tumbleweed/home/yanger",
-                "commandline": "openSUSE-Tumbleweed",
-                "acrylicOpacity": 0.8
-            },
-            {
-                "name": "Ubuntu-20.04",
-                "source": "Windows.Terminal.Wsl",
-                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                "guid": "{574e775e-4f2a-5b96-ac1e-a2962a402336}",
                 "hidden": false,
-                "icon": "%HOME%/Beauty/Icons/linux/ubt.ico",
+                "name": "PowerShellCore",
+                "opacity": 80,
+                "source": "Windows.Terminal.PowershellCore",
+                "startingDirectory": "%HOME%"
+            },
+            {
+                "backgroundImage": "%HOME%/Beauty/Icons/github.png",
+                "colorScheme": "Tango Dark",
+                "font": {
+                    "face": "JetBrainsMono NF"
+                },
+                "guid": "{61c54bbd-c2c6-5271-96e7-009a87ff44bf}",
+                "name": "Windows PowerShell",
+                "opacity": 80
+            },
+            {
+                "backgroundImage": "%HOME%/Beauty/Icons/rust.png",
+                "backgroundImageOpacity": 0.29999999999999999,
+                "colorScheme": "ayu",
+                "guid": "{0caa0dad-35be-5f56-a8ff-afceeeaa6101}",
+                "name": "Cmd.exe"
+            },
+            {
+                "backgroundImage": "%HOME%/Beauty/Icons/linux/arch-linux1.png",
+                "colorScheme": "Tango Dark",
+                "commandline": "arch",
+                "cursorColor": "#6F847D",
+                "font": {
+                    "axes": {
+                        "wght": 400.0
+                    },
+                    "face": "SauceCodePro NF"
+                },
+                "guid": "{a5a97cb8-8961-5535-816d-772efe0c6a3f}",
+                "hidden": false,
+                "icon": "%HOME%/Beauty/Icons/linux/arch.png",
+                "name": "Arch",
+                "opacity": 80,
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
+                "commandline": "openSUSE-Tumbleweed",
+                "guid": "{bc2da056-dd06-5879-b969-1dfcefc8d2c7}",
+                "hidden": false,
+                "icon": "%HOME%/Beauty/Icons/linux/opensuse.ico",
+                "name": "openSUSE",
+                "opacity": 80,
+                "source": "Windows.Terminal.Wsl"
+            },
+            {
                 "backgroundImageAlignment": "center",
                 "backgroundImageStretchMode": "uniformToFill",
                 "cursorColor": "#B2A7F0",
                 "cursorHeight": 40,
                 "cursorShape": "vintage",
-                "fontFace": "DejaVuSansMono NF",
-                "fontSize": 13,
+                "font": {
+                    "face": "DejaVuSansMono NF",
+                    "size": 13
+                },
+                "guid": "{07b52e3e-de2c-5db4-bd2d-ba144ed6c273}",
+                "hidden": false,
+                "icon": "%HOME%/Beauty/Icons/linux/ubt.ico",
+                "name": "Ubuntu-20.04",
+                "opacity": 80,
                 "selectionBackground": "#B5F056",
-                "acrylicOpacity": 0.8
+                "source": "Windows.Terminal.Wsl"
             },
             {
-                "name": "Azure Cloud Shell",
+                "colorScheme": "MaterialOcean",
                 "guid": "{b453ae62-4e3d-5e58-b989-0a998ec441b8}",
-                "source": "Windows.Terminal.Azure",
-                "colorScheme": "MaterialOcean"
+                "hidden": false,
+                "name": "Azure Cloud Shell",
+                "source": "Windows.Terminal.Azure"
             },
             {
-                "name": "Conda",
                 "commandline": "cmd.exe /K \"conda activate base\"",
-                // "commandline": "cmd.exe /K %USERPROFILE%/AppData/Local/Continuum/Anaconda3/Scripts/activate.bat %USERPROFILE%/AppData/Local/Continuum/Anaconda3",
+                "guid": "{daf23b6b-78a8-5818-930f-a1ac653527e4}",
                 "icon": "%HOME%/Beauty/Icons/python/anaconda-navigator.ico",
+                "name": "Conda",
+                "opacity": 80,
                 "startingDirectory": "%HOME%",
-                "tabTitle": "Conda",
-                "acrylicOpacity": 0.8
+                "tabTitle": "Conda"
             },
             {
-                "hidden": true,
-                "name": "Conda PowerShell",
-                // "commandline": "powershell.exe -ExecutionPolicy ByPass -NoExit -Command \"& 'C:\\Users\\younger\\AppData\\Local\\Continuum\\anaconda3\\shell\\condabin\\conda-hook.ps1' ; conda activate 'C:\\Users\\younger\\AppData\\Local\\Continuum\\anaconda3' \"",
                 "commandline": "powershell.exe -NoExit -Command \"conda activate base\"",
-                "icon": "%HOME%/Beauty/Icons/python/anaconda-navigator.ico",
-                "startingDirectory": "%HOME%",
-                "acrylicOpacity": 0.8
-            },
-            {
-                "name": "IPython",
-                "commandline": "cmd.exe /K \"conda activate base && ipython.exe\"",
-                // "commandline": "cmd.exe /K %USERPROFILE%/AppData/Local/Continuum/Anaconda3/Scripts/activate.bat %USERPROFILE%/AppData/Local/Continuum/Anaconda3",
-                "icon": "%HOME%/Beauty/Icons/python/jupyter.ico",
-                "startingDirectory": "%HOME%",
-                "tabTitle": "Conda",
-                "acrylicOpacity": 0.8
-            },
-            {
+                "guid": "{a44d9ccd-dcb8-5cb8-8bc1-3cd6903a0d0d}",
                 "hidden": true,
-                "name": "cmder",
+                "icon": "%HOME%/Beauty/Icons/python/anaconda-navigator.ico",
+                "name": "Conda PowerShell",
+                "opacity": 80,
+                "startingDirectory": "%HOME%"
+            },
+            {
+                "commandline": "cmd.exe /K \"conda activate base && ipython.exe\"",
+                "guid": "{0062a1a6-ee3a-546b-ac12-5210c0a0033b}",
+                "icon": "%HOME%/Beauty/Icons/python/jupyter.ico",
+                "name": "IPython",
+                "opacity": 80,
+                "startingDirectory": "%HOME%",
+                "tabTitle": "Conda"
+            },
+            {
                 "commandline": "cmd.exe /k %CMDER_ROOT%\\vendor\\init.bat",
+                "guid": "{c4f82d2f-e5b0-582f-8688-a4d7da4a1b2a}",
+                "hidden": true,
                 "icon": "C:\\Users\\younger\\scoop\\apps\\cmder\\current\\icons\\cmder.ico",
+                "name": "cmder",
                 "startingDirectory": "%USERPROFILE%"
             },
             {
-                "name": "Git Bash",
+                "commandline": "%GIT_INSTALL_ROOT%/bin/bash.exe -l -i",
                 "guid": "{6b639849-a5a6-4940-921d-80e9a0a54f32}",
-                "commandline": "%GIT_INSTALL_ROOT%/bin/bash.exe -l -i", // login shell, interactive shell
                 "icon": "%GIT_INSTALL_ROOT%/usr/share/git/git-for-windows.ico",
-                "startingDirectory": "%HOME%",
-                "acrylicOpacity": 0.8
+                "name": "Git Bash",
+                "opacity": 80,
+                "startingDirectory": "%HOME%"
             },
             {
-                "hidden": true,
-                "name": "Visual Studio",
                 "commandline": "C:\\Windows\\SysWOW64\\WindowsPowerShell\\v1.0\\powershell.exe -noe -c \"&{Import-Module \"\"\"C:\\Program Files (x86)\\Microsoft Visual Studio\\2019\\Community\\Common7\\Tools\\Microsoft.VisualStudio.DevShell.dll\"\"\"; Enter-VsDevShell 59f14abf -SkipAutomaticLocation}\"",
+                "guid": "{74d210f5-97c8-5db8-93c2-999b609ad415}",
+                "hidden": true,
                 "icon": "%CMDER_ROOT%\\icons\\cmder_red.ico",
-                "startingDirectory": "%HOME%",
-                "acrylicOpacity": 0.8
+                "name": "Visual Studio",
+                "opacity": 80,
+                "startingDirectory": "%HOME%"
+            },
+            {
+                "guid": "{bcb8e28c-66d0-5dec-9240-7f49924da435}",
+                "hidden": false,
+                "name": "Developer Command Prompt for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
+            },
+            {
+                "guid": "{c159130d-cb06-591d-8039-3476c737f65f}",
+                "hidden": false,
+                "name": "Developer PowerShell for VS 2019",
+                "source": "Windows.Terminal.VisualStudio"
             }
         ]
     },
@@ -590,6 +403,29 @@
             "yellow": "#FFCB6B"
         },
         {
+            "background": "#151718",
+            "black": "#151718",
+            "blue": "#9D65FF",
+            "brightBlack": "#625E4C",
+            "brightBlue": "#9D65FF",
+            "brightCyan": "#58D1EB",
+            "brightGreen": "#98F424",
+            "brightPurple": "#F4005F",
+            "brightRed": "#F4005F",
+            "brightWhite": "#F6F6EF",
+            "brightYellow": "#FA8419",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#58D1EB",
+            "foreground": "#F8F8F2",
+            "green": "#98F424",
+            "name": "Monokai Seti Dark",
+            "purple": "#F4005F",
+            "red": "#F4005F",
+            "selectionBackground": "#FFFFFF",
+            "white": "#F8F8F2",
+            "yellow": "#FA8419"
+        },
+        {
             "background": "#000000",
             "black": "#4C4C4C",
             "blue": "#276BD8",
@@ -774,6 +610,29 @@
             "yellow": "#C4A000"
         },
         {
+            "background": "#16161E",
+            "black": "#363B54",
+            "blue": "#7AA2F7",
+            "brightBlack": "#363B54",
+            "brightBlue": "#7AA2F7",
+            "brightCyan": "#7DCFFF",
+            "brightGreen": "#41A6B5",
+            "brightPurple": "#BB9AF7",
+            "brightRed": "#F7768E",
+            "brightWhite": "#ACB0D0",
+            "brightYellow": "#E0AF68",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#7DCFFF",
+            "foreground": "#787C99",
+            "green": "#41A6B5",
+            "name": "TokyoNight",
+            "purple": "#BB9AF7",
+            "red": "#F7768E",
+            "selectionBackground": "#FFFFFF",
+            "white": "#787C99",
+            "yellow": "#E0AF68"
+        },
+        {
             "background": "#2C001E",
             "black": "#4E9A06",
             "blue": "#3465A4",
@@ -866,67 +725,27 @@
             "yellow": "#F29718"
         },
         {
+            "background": "#2E3440",
+            "black": "#3B4252",
+            "blue": "#81A1C1",
+            "brightBlack": "#4C566A",
+            "brightBlue": "#81A1C1",
+            "brightCyan": "#8FBCBB",
+            "brightGreen": "#A3BE8C",
+            "brightPurple": "#B48EAD",
+            "brightRed": "#BF616A",
+            "brightWhite": "#ECEFF4",
+            "brightYellow": "#EBCB8B",
+            "cursorColor": "#FFFFFF",
+            "cyan": "#88C0D0",
+            "foreground": "#D8DEE9",
+            "green": "#A3BE8C",
             "name": "nord",
-            "background": "#2e3440",
-            "foreground": "#d8dee9",
-            "black": "#3b4252",
-            "blue": "#81a1c1",
-            "brightBlack": "#4c566a",
-            "brightBlue": "#81a1c1",
-            "brightCyan": "#8fbcbb",
-            "brightGreen": "#a3be8c",
-            "brightPurple": "#b48ead",
-            "brightRed": "#bf616a",
-            "brightWhite": "#eceff4",
-            "brightYellow": "#ebcb8b",
-            "cyan": "#88c0d0",
-            "green": "#a3be8c",
-            "purple": "#b48ead",
-            "red": "#bf616a",
-            "white": "#e5e9f0",
-            "yellow": "#ebcb8b"
-        },
-        {
-            "name": "Monokai Seti Dark",
-            "foreground": "#F8F8F2",
-            "background": "#151718",
-            "black": "#151718",
-            "brightBlack": "#625e4c",
-            "blue": "#9D65FF",
-            "brightBlue": "#9D65FF",
-            "cyan": "#58D1EB",
-            "brightCyan": "#58D1EB",
-            "green": "#98F424",
-            "brightGreen": "#98F424",
-            "purple": "#F4005F",
-            "brightPurple": "#F4005F",
-            "red": "#F4005F",
-            "brightRed": "#F4005F",
-            "white": "#F8F8F2",
-            "brightWhite": "#f6f6ef",
-            "yellow": "#FA8419",
-            "brightYellow": "#FA8419"
-        },
-        {
-            "name": "TokyoNight",
-            "black": "#363b54",
-            "red": "#f7768e",
-            "green": "#41a6b5",
-            "yellow": "#e0af68",
-            "blue": "#7aa2f7",
-            "purple": "#bb9af7",
-            "cyan": "#7dcfff",
-            "white": "#787c99",
-            "brightBlack": "#363b54",
-            "brightRed": "#f7768e",
-            "brightGreen": "#41a6b5",
-            "brightYellow": "#e0af68",
-            "brightBlue": "#7aa2f7",
-            "brightPurple": "#bb9af7",
-            "brightCyan": "#7dcfff",
-            "brightWhite": "#acb0d0",
-            "background": "#16161e",
-            "foreground": "#787c99"
+            "purple": "#B48EAD",
+            "red": "#BF616A",
+            "selectionBackground": "#FFFFFF",
+            "white": "#E5E9F0",
+            "yellow": "#EBCB8B"
         },
         {
             "background": "#3792CF",
@@ -950,6 +769,146 @@
             "selectionBackground": "#599030",
             "white": "#CCCCCC",
             "yellow": "#C19C00"
+        }
+    ],
+    "actions": [
+        {
+            "command": {
+                "action": "splitPane",
+                "profile": "Arch",
+                "split": "right"
+            },
+            "keys": "alt+shift+v"
+        },
+        {
+            "command": {
+                "action": "newTab"
+            },
+            "keys": "alt+shift+n"
+        },
+        {
+            "command": {
+                "action": "newTab",
+                "profile": "openSUSE"
+            },
+            "keys": "alt+shift+b"
+        },
+        {
+            "command": "scrollDownPage",
+            "keys": "alt+shift+j"
+        },
+        {
+            "command": {
+                "action": "commandPalette"
+            },
+            "keys": "ctrl+;"
+        },
+        {
+            "command": "scrollUpPage",
+            "keys": "alt+shift+k"
+        },
+        {
+            "command": "unbound",
+            "keys": "f11"
+        },
+        {
+            "command": "find",
+            "keys": "alt+shift+f"
+        },
+        {
+            "command": {
+                "action": "newTab",
+                "profile": "Arch"
+            },
+            "keys": "alt+shift+a"
+        },
+        {
+            "command": "toggleAlwaysOnTop",
+            "keys": "alt+shift+t"
+        },
+        {
+            "command": {
+                "action": "splitPane",
+                "profile": "Arch",
+                "split": "down"
+            },
+            "keys": "alt+shift+x"
+        },
+        {
+            "command": "toggleReadOnlyMode",
+            "keys": "alt+shift+o"
+        },
+        {
+            "command": {
+                "action": "findMatch",
+                "direction": "next"
+            },
+            "keys": "alt+shift+]"
+        },
+        {
+            "command": {
+                "action": "findMatch",
+                "direction": "prev"
+            },
+            "keys": "alt+shift+["
+        },
+        {
+            "command": "openTabColorPicker",
+            "keys": "alt+shift+c"
+        },
+        {
+            "command": "toggleShaderEffects",
+            "keys": "alt+shift+s"
+        },
+        {
+            "command": {
+                "action": "prevTab"
+            },
+            "keys": "alt+shift+h"
+        },
+        {
+            "command": {
+                "action": "splitPane",
+                "split": "down",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+minus"
+        },
+        {
+            "command": "openTabRenamer",
+            "keys": "alt+shift+r"
+        },
+        {
+            "command": {
+                "action": "moveTab",
+                "direction": "forward"
+            },
+            "keys": "alt+shift+period"
+        },
+        {
+            "command": {
+                "action": "moveTab",
+                "direction": "backward"
+            },
+            "keys": "alt+shift+comma"
+        },
+        {
+            "command": {
+                "action": "nextTab"
+            },
+            "keys": "alt+shift+l"
+        },
+        {
+            "command": {
+                "action": "splitPane",
+                "split": "right",
+                "splitMode": "duplicate"
+            },
+            "keys": "alt+shift+plus"
+        },
+        {
+            "command": "togglePaneZoom",
+            "keys": "alt+shift+m"
         }
     ]
 }

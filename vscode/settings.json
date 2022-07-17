@@ -16,20 +16,24 @@
     ],
     "editor.formatOnSave": true,
     "editor.fontSize": 15,
-    "editor.fontLigatures": true,
-    "editor.fontFamily": "'SauceCodePro NF semibold', 'SauceCodePro NF Medium', 'Cascadia Code', 'Delugia', 'Hack Nerd Font', 'FiraCode NF', 'JetBrainsMono NF', 'DejaVuSansMono NF', 'Sarasa Term SC', Consolas",
+    // "editor.fontLigatures": "'salt'",
+    // "editor.fontLigatures": "'ss01'",
+    // "editor.fontLigatures": true, // ===
+    "editor.fontFamily": "'Delugia', 'Cascadia Code', 'SauceCodePro NF', 'SauceCodePro NF semibold', 'Hack Nerd Font', 'FiraCode NF', 'JetBrainsMono NF', 'DejaVuSansMono NF', '霞鹜文楷等宽', 'Sarasa Term SC', Consolas",
     "editor.cursorBlinking": "expand",
     "editor.minimap.renderCharacters": false,
     "editor.acceptSuggestionOnEnter": "on",
     "editor.suggestSelection": "first",
     "editor.suggest.preview": true,
     "editor.suggest.localityBonus": true,
-    "editor.inlayHints.enabled": true,
+    "editor.inlayHints.enabled": "onUnlessPressed",
     "editor.inlineSuggest.enabled": true,
+    "editor.renderWhitespace": "none",
+    // "editor.renderWhitespace": "selection",
     "editor.quickSuggestions": {
-        "other": true,
-        "comments": true,
-        "strings": true
+        "other": "on",
+        "comments": "inline",
+        "strings": "inline"
     },
     "editor.codeActionsOnSave": {
         "source.fixAll.markdownlint": true
@@ -37,9 +41,26 @@
     "editor.wordSeparators": "/\\()\"':,.;<>~!@#$%^&*|+=[]{}`?-",
     "editor.linkedEditing": true,
     "editor.dragAndDrop": false,
+    "editor.scrollBeyondLastLine": false,
+    "editor.emptySelectionClipboard": false,
+    "editor.guides.indentation": true,
+    "editor.guides.bracketPairs": true,
     "editor.bracketPairColorization.enabled": true,
+    "editor.semanticHighlighting.enabled": true,
+    "editor.smoothScrolling": true,
+    "editor.cursorSmoothCaretAnimation": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "comment",
+                "settings": {
+                    "fontStyle": "italic"
+                }
+            }
+        ]
+    },
     "terminal.integrated.scrollback": 5000,
-    "terminal.integrated.fontFamily": "'Hack Nerd Font', 'JetBrainsMono NF'",
+    // "terminal.integrated.fontFamily": "'Hack Nerd Font', 'JetBrainsMono NF'",
     // "terminal.integrated.defaultProfile.windows": "PWSH",
     "terminal.integrated.profiles.windows": {
         // Add a PowerShell profile that doesn't run the profile
@@ -61,24 +82,30 @@
         "workbench.action.toggleSidebarVisibility"
     ],
     "terminal.external.osxExec": "iTerm.app",
+    "explorer.fileNesting.enabled": true,
+    "explorer.excludeGitIgnore": false,
     "window.menuBarVisibility": "toggle",
     "window.autoDetectColorScheme": true,
+    "window.commandCenter": true,
     "workbench.preferredDarkColorTheme": "One Monokai",
     "workbench.preferredLightColorTheme": "Atom One Light",
+    "workbench.productIconTheme": "material-product-icons",
+    "workbench.list.openMode": "doubleClick",
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.sash.size": 8,
-    "workbench.iconTheme": "material-icon-theme",
-    "workbench.productIconTheme": "material-product-icons",
     "workbench.commandPalette.preserveInput": true,
     "workbench.editor.enablePreviewFromQuickOpen": true,
     "workbench.statusBar.visible": true,
     "workbench.editorAssociations": {
-        "*.ipynb": "jupyter.notebook.ipynb",
+        // "*.ipynb": "jupyter.notebook.ipynb",
+        // "*.ipynb": "jupyter-notebook",
         "*.png": "imagePreview.previewEditor",
         "*.jpg": "imagePreview.previewEditor",
     },
     "workbench.colorCustomizations": {
-        "bookmarks.lineBackground": "#f7970759"
+        "bookmarks.lineBackground": "#f7970759",
+        // "editor.lineHighlightBackground": "#1073cf2d",
+        // "editor.lineHighlightBorder": "#9fced11f"
     },
     "workbench.editor.autoLockGroups": {
         "latex-workshop-pdf-hook": true,
@@ -89,8 +116,7 @@
         // "workbench.editorinputs.searchEditorInput": true,
         // "hexEditor.hexedit": true,
     },
-    "workbench.colorTheme": "One Monokai",
-    "emmet.triggerExpansionOnTab": true,
+    "emmet.triggerExpansionOnTab": false,
     "emmet.syntaxProfiles": {
         "html": {
             "filters": "bem"
@@ -104,17 +130,12 @@
         "**/.idea": true,
         "**/.svn": true
     },
-    "files.exclude": {
-        "**/.classpath": true,
-        "**/.project": true,
-        "**/.settings": true,
-        "**/.factorypath": true
-    },
-    "files.watcherExclude": {
-        "**/.bloop": true,
-        "**/.metals": true,
-        "**/.ammonite": true
-    },
+    // "files.exclude": {
+    //     "**/.classpath": true,
+    //     "**/.project": true,
+    //     "**/.settings": true,
+    //     "**/.factorypath": true
+    // },
     "files.associations": {
         "Bookmarks": "json",
         "vimrc": "viml",
@@ -131,7 +152,11 @@
         "editor.wordWrap": "on",
         "editor.renderWhitespace": "all",
         "editor.acceptSuggestionOnEnter": "off",
-        "editor.quickSuggestions": true
+        "editor.quickSuggestions": {
+            "comments": "on",
+            "strings": "on",
+            "other": "on"
+        }
     },
     "[jsonc]": {
         "editor.defaultFormatter": "vscode.json-language-features"
@@ -151,7 +176,7 @@
         ]
     },
     "[powershell]": {
-        "editor.defaultFormatter": "ms-vscode.powershell",
+        "editor.defaultFormatter": "ms-vscode.powershell-preview",
         "files.encoding": "utf8bom",
         "files.autoGuessEncoding": true
     },
@@ -166,17 +191,15 @@
     },
     "[java]": {
         "editor.suggest.snippetsPreventQuickSuggestions": false,
-        "editor.defaultFormatter": "mwpb.java-prettier-formatter"
+        "editor.defaultFormatter": "mwpb.java-prettier-formatter",
     },
-    "debug.toolBarLocation": "docked",
+    "debug.toolBarLocation": "floating",
     "debug.showBreakpointsInOverviewRuler": true,
     "problems.sortOrder": "position",
     "snippet.verbose": true,
-    "tabnine.experimentalAutoImports": true,
     "js/ts.implicitProjectConfig.checkJs": false,
     "screencastMode.fontSize": 35,
     "scm.inputFontFamily": "editor",
-    "breadcrumbs.enabled": true,
     "sync.removeExtensions": false,
     "update.enableWindowsBackgroundUpdates": false,
     "sync.gist": "129cf9fd889f1d64bfea95e0ebe21a51",
@@ -184,9 +207,11 @@
     "telemetry.telemetryLevel": "off",
     "http.proxySupport": "off",
     "zenMode.hideStatusBar": false,
+    "zenMode.hideActivityBar": false,
     "zenMode.hideLineNumbers": false,
     "diffEditor.codeLens": true,
     "git.enableSmartCommit": true,
+    "security.workspace.trust.untrustedFiles": "open",
     "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
     "leetcode.workspaceFolder": "C:\\Users\\younger\\.leetcode",
     "leetcode.endpoint": "leetcode-cn",
@@ -209,11 +234,11 @@
         "description"
     ],
     "git-graph.showStatusBarItem": false,
+    "gitlens.keymap": "none",
     "gitlens.defaultDateFormat": "YYYY-MM-DD, hh:mma",
     "gitlens.defaultDateShortFormat": "YYYY-MM-DD",
     "gitlens.views.commits.avatars": false,
     "gitlens.views.fileHistory.avatars": false,
-    "gitlens.keymap": "alternate",
     "gitlens.codeLens.scopes": [
         "document",
         "containers",
@@ -259,6 +284,10 @@
     "vim.autoSwitchInputMethod.defaultIM": "1033",
     "vim.autoSwitchInputMethod.obtainIMCmd": "C:/Users/younger/im-select.exe",
     "vim.autoSwitchInputMethod.switchIMCmd": "C:/Users/younger/im-select.exe {im}",
+    // "vim.autoSwitchInputMethod.enable": true,
+    // "vim.autoSwitchInputMethod.defaultIM": "1033",
+    // "vim.autoSwitchInputMethod.obtainIMCmd": "C:/Users/younger/im-select.exe",
+    // "vim.autoSwitchInputMethod.switchIMCmd": "C:/Users/younger/im-select.exe {im}",
     "vim.enableNeovim": false,
     "vim.neovimUseConfigFile": false,
     "vim.neovimConfigPath": "",
@@ -384,7 +413,7 @@
         {
             "before": [
                 "]",
-                "d"
+                "e"
             ],
             "commands": [
                 "editor.action.marker.nextInFiles"
@@ -393,7 +422,7 @@
         {
             "before": [
                 "[",
-                "d"
+                "e"
             ],
             "commands": [
                 "editor.action.marker.prevInFiles"
@@ -420,7 +449,7 @@
         {
             "before": [
                 "]",
-                "s"
+                "w"
             ],
             "commands": [
                 "editor.action.wordHighlight.next"
@@ -429,7 +458,7 @@
         {
             "before": [
                 "[",
-                "s"
+                "w"
             ],
             "commands": [
                 "editor.action.wordHighlight.prev"
@@ -493,46 +522,46 @@
             ]
         },
         // keymappings for remap
-        {
-            "before": [
-                "f"
-            ],
-            "after": [
-                "<leader>",
-                "<leader>",
-                "f"
-            ]
-        },
-        {
-            "before": [
-                "F"
-            ],
-            "after": [
-                "<leader>",
-                "<leader>",
-                "F"
-            ]
-        },
-        {
-            "before": [
-                "t"
-            ],
-            "after": [
-                "<leader>",
-                "<leader>",
-                "t"
-            ]
-        },
-        {
-            "before": [
-                "T"
-            ],
-            "after": [
-                "<leader>",
-                "<leader>",
-                "T"
-            ]
-        },
+        // {
+        //     "before": [
+        //         "f"
+        //     ],
+        //     "after": [
+        //         "<leader>",
+        //         "<leader>",
+        //         "f"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "F"
+        //     ],
+        //     "after": [
+        //         "<leader>",
+        //         "<leader>",
+        //         "F"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "t"
+        //     ],
+        //     "after": [
+        //         "<leader>",
+        //         "<leader>",
+        //         "t"
+        //     ]
+        // },
+        // {
+        //     "before": [
+        //         "T"
+        //     ],
+        //     "after": [
+        //         "<leader>",
+        //         "<leader>",
+        //         "T"
+        //     ]
+        // },
         {
             "before": [
                 "s"
@@ -777,6 +806,11 @@
             "opacity": 0.1,
         }
     ],
+    "C_Cpp.intelliSenseEngine": "Disabled",
+    "clangd.arguments": [
+        "--inlay-hints=true"
+    ],
+    "Lua.telemetry.enable": false,
     "Lua.diagnostics.globals": [
         "vim"
     ],
@@ -785,16 +819,18 @@
     "go.useLanguageServer": true,
     "go.toolsManagement.autoUpdate": true,
     "redhat.telemetry.enabled": false,
+    "calva.evalOnSave": true,
     "java.format.comments.enabled": false,
     "java.server.launchMode": "LightWeight",
     "java.help.firstView": "gettingStarted",
     "java.configuration.maven.userSettings": "C:\\Users\\younger\\scoop\\apps\\maven\\current\\conf\\settings.xml",
-    "java.configuration.checkProjectSettingsExclusions": false,
     "java.codeGeneration.generateComments": true,
     "java.completion.guessMethodArguments": true,
     "java.refactor.renameFromFileExplorer": "preview",
     "java.project.importOnFirstTimeStartup": "automatic",
-    "latex-workshop.view.pdf.viewer": "external",
+    "latex-workshop.latex.autoBuild.run": "never",
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.bind.altKeymap.enabled": true,
     "yaml.format.enable": false,
     "shellformat.path": "C:/Users/younger/scoop/apps/shfmt/current/shfmt.exe",
     "ruby.useLanguageServer": true,
@@ -807,7 +843,8 @@
         "PYTHONHOME": "C:\\Users\\younger\\scoop\\apps\\miniconda3\\current"
     },
     "python.languageServer": "Pylance",
-    "python.analysis.completeFunctionParens": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.completeFunctionParens": false,
     // "python.condaPath": "C:/Users/younger/scoop/apps/miniconda3/current/Scripts",
     "python.linting.flake8Enabled": true,
     "python.linting.flake8Args": [
@@ -909,14 +946,14 @@
     "oneDarkPro.bold": true,
     "oneDarkPro.vivid": true,
     "vva.trustedDomain": true,
-    "hediet.vscode-drawio.local-storage": "eyIuZHJhd2lvLWNvbmZpZyI6IntcImxhbmd1YWdlXCI6XCJcIixcImN1c3RvbUZvbnRzXCI6W10sXCJsaWJyYXJpZXNcIjpcImdlbmVyYWw7dW1sO2VyO2JwbW47Zmxvd2NoYXJ0O2Jhc2ljO2Fycm93czJcIixcImN1c3RvbUxpYnJhcmllc1wiOltcIkwuc2NyYXRjaHBhZFwiXSxcInBsdWdpbnNcIjpbXSxcInJlY2VudENvbG9yc1wiOltcIkZGRkZGRlwiLFwiMDAwMDAwXCIsXCJGRjgwMDBcIixcIkZGNjY2NlwiXSxcImZvcm1hdFdpZHRoXCI6MjQwLFwiY3JlYXRlVGFyZ2V0XCI6ZmFsc2UsXCJwYWdlRm9ybWF0XCI6e1wieFwiOjAsXCJ5XCI6MCxcIndpZHRoXCI6ODI3LFwiaGVpZ2h0XCI6MTE2OX0sXCJzZWFyY2hcIjp0cnVlLFwic2hvd1N0YXJ0U2NyZWVuXCI6dHJ1ZSxcImdyaWRDb2xvclwiOlwiI2UwZTBlMFwiLFwiZGFya0dyaWRDb2xvclwiOlwiI0FCQTRBOVwiLFwiYXV0b3NhdmVcIjp0cnVlLFwicmVzaXplSW1hZ2VzXCI6bnVsbCxcIm9wZW5Db3VudGVyXCI6MCxcInZlcnNpb25cIjoxOCxcInVuaXRcIjoxLFwiaXNSdWxlck9uXCI6ZmFsc2UsXCJ1aVwiOlwiXCJ9In0=",
     "remote-github.keystorePath": "C:\\Users\\younger\\.config\\GithubKeyStore.txt",
     "remote-github.mountPoint": "C:\\Users\\younger\\",
     "open-in-vim.useNeovim": true,
     "open-in-vim.openMethod": "integrated-terminal",
     "open-in-vim.integrated-terminal.pathToShell": "C:\\Users\\younger\\scoop\\apps\\git\\current\\bin\\bash.exe",
-    "glassit.alpha": 250,
+    "glassit.alpha": 255,
     "hediet.vscode-drawio.theme": "automatic",
+    "hediet.vscode-drawio.codeLinkActivated": false,
     "powermode.enabled": false,
     "powermode.presets": "flames",
     "bookmarks.gutterIconPath": "C:\\Users\\younger\\vue.svg",
@@ -943,8 +980,8 @@
         }
     },
     "vsicons.dontShowNewVersionMessage": true,
-    "google-translate.firstLanguage": "zh-cn",
-    "google-translate.secondLanguage": "en",
+    "google-translate.firstLanguage": "en",
+    "google-translate.secondLanguage": "zh-cn",
     "settingsSync.ignoredExtensions": [
         "vscjava.vscode-spring-boot-dashboard",
         "pivotal.vscode-boot-dev-pack",
@@ -979,6 +1016,17 @@
         "castwide.solargraph",
         "luyuhuang.rss",
         "cweijan.vscode-office",
-        "yinfei.luahelper"
+        "yinfei.luahelper",
+        "byted-ide.cloud-workspace",
+        "byted-ide.authenticator"
     ],
+    "extensions.supportUntrustedWorkspaces": {
+        "byted-ide.dev-environment-manager": {
+            "supported": true
+        }
+    },
+    "remote.SSH.defaultExtensions": [
+        "byted-ide.gallery"
+    ],
+    "workbench.colorTheme": "One Monokai",
 }
