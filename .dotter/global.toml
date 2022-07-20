@@ -41,6 +41,7 @@ AppSettings = { target = "~/AppSettings", type = "symbolic" }
 "gh-prs.yml" = "~/.config/prs/config.yml"
 git = { target = "~/.config/git", type = "symbolic" }
 Wezterm = { target = "~/.config/wezterm", type = "symbolic" }
+ideavimrc = "~/.ideavimrc"
 
 # windows diff
 vim = { target = "~/.vim", type = "symbolic" }
@@ -86,6 +87,7 @@ bin = { target = "~/bin", type = "symbolic" }
 [bash.files]
 
 bash_profile = "~/.bash_profile"
+bashrc = "~/.bashrc"
 inputrc = "~/.inputrc"
 
 [zsh]
@@ -93,7 +95,7 @@ inputrc = "~/.inputrc"
 [zsh.files]
 
 zsh = "~/zsh"
-"zsh/zshenv" = "~/zsh/.zshenv"
+"zsh/zshenv" = "~/.zshenv"
 "zsh/zprofile" = "~/zsh/.zprofile"
 "zsh/zshrc" = "~/zsh/.zshrc"
 "zsh/p10k" = "~/.p10k.zsh"

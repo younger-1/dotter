@@ -1,0 +1,125 @@
+""" Common settings -------------------------
+" <https://github.com/JetBrains/ideavim/wiki/%22set%22-commands>
+" source ~/dotter/vim/core/options.vim
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+set scrolloff=2
+set noshowmode
+set nu
+set rnu
+set matchpairs=(:),{:},[:],「:」,『:』,【:】,（:）,《:》,‘:’,“:”
+" set matchpairs=(:),{:},[:],<:>,「:」,『:』,【:】,（:）,《:》,‘:’,“:”
+
+""" Idea specific settings ------------------
+" set idearefactormode=keep
+set ideajoin " <https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-examples.md>
+set ideastatusicon=enabled
+
+""" Plugins  --------------------------------
+set NERDTree
+set surround
+set multiple-cursors
+set commentary
+set argtextobj
+set easymotion
+set textobj-entire
+set ReplaceWithRegister
+
+""" Plugin settings -------------------------
+let g:argtextobj_pairs = "[:],(:),<:>"
+
+""" Mappings --------------------------------
+let mapleader = " "
+
+" map <leader>f <Plug>(easymotion-s)
+" map <leader>e <Plug>(easymotion-f)
+"
+" map <leader>d <Action>(Debug)
+" map <leader>r <Action>(RenameElement)
+" map <leader>c <Action>(Stop)
+" map <leader>z <Action>(ToggleDistractionFreeMode)
+"
+" map <leader>s <Action>(SelectInProjectView)
+" map <leader>a <Action>(Annotate)
+" map <leader>h <Action>(Vcs.ShowTabbedFileHistory)
+"
+" map <leader>b <Action>(ToggleLineBreakpoint)
+" map <leader>o <Action>(FileStructurePopup)
+
+nnoremap Y y$
+vnoremap Y "+y
+map s :action Switcher<cr>
+map <tab> %
+map <leader><leader> :action SearchEverywhere<cr>
+map <leader>vv :action VimFindActionIdAction<cr>
+map <leader>vr :action IdeaVim.ReloadVimRc.reload<cr>
+
+" nnoremap H :action PreviousEditorTab<cr>
+" nnoremap L :action NextEditorTab<cr>
+nnoremap H :action PreviousTab<cr>
+nnoremap L :action NextTab<cr>
+
+nnoremap <esc> :nohlsearch<cr>
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+" nnoremap <C-h> :action VimWindowLeft<cr>
+" nnoremap <C-j> :action VimWindowDown<cr>
+" nnoremap <C-k> :action VimWindowUp<cr>
+" nnoremap <C-l> :action VimWindowRight<cr>
+
+map [w :action GotoPrevElementUnderCaretUsage<cr>
+map ]w :action GotoNextElementUnderCaretUsage<cr>
+map ]e :action GotoNextError<cr>
+map [e :action GotoPreviousError<cr>
+" map ]c :action Diff.NextChange<cr>
+" map [c :action Diff.PrevChange<cr>
+
+map go :action ActivateFindToolWindow<cr>
+" map gh :action Activatedocumentation.v2ToolWindow<cr>
+map gh :action ShowIntentionActions<cr>
+map gD :action GotoTypeDeclaration<cr>
+map gl :action ShowErrorDescription<cr>
+map <leader>lu :action FindUsages<cr>
+map <leader>la :action Refactorings.QuickListPopupAction<cr>
+map <leader>lr :action RenameElement<cr>
+map <leader>lf :action ReformatCode<cr>
+
+map <leader>dd :action ToggleLineBreakpoint<cr>
+map <leader>dl :action ViewBreakpoints<cr>
+map <leader>ds :action Debug<cr>
+map <leader>da :action ChooseDebugConfiguration<cr>
+map <leader>dm :action DebugMainMenu<cr>
+map <leader>dn :action UiDebugger<cr>
+map <leader>dc :action Resume<cr>
+map <leader>dC :action RunToCursor<cr>
+map <leader>dj :action StepInto<cr>
+map <leader>dk :action StepOut<cr>
+map <leader>do :action StepOver<cr>
+map <leader>dq :action Stop<cr>
+
+map <leader>sf :action GotoFile<cr>
+map <leader>ss :action GotoSymbol<cr>
+map <leader>sc :action GotoAction<cr>
+map <leader>sg :action FindInPath<cr>
+map <leader>sa :action EditorActions<cr>
+map <leader>sm :action EditMenu<cr>
+map <leader>sM :action EditMacros<cr>
+map <leader>sr :action RecentFiles<cr>
+
+map <leader>q <C-w>c
+map <leader>c :action CloseEditor<cr>
+map <leader>wo <C-w>o
+map <leader>bo :action CloseAllEditorsButActive<cr>
+map <leader>C :action ReopenClosedTab<cr>
+
+map <leader>e :NERDTreeToggle<cr>
+
+map <leader>mm :action ToggleBookmark<cr>
+map <leader>mj :action GotoNextBookmarkInEditor<cr>
+map <leader>mk :action GotoPreviousBookmarkInEditor<cr>
+map <leader>mJ :action GotoNextBookmark<cr>
+map <leader>mK :action GotoPreviousBookmark<cr>

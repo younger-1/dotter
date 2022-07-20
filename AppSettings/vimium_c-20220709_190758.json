@@ -174,6 +174,8 @@
 		"map F LinkHints.activateOpenInNewForegroundTab ",
 		"map eF LinkHints.activateOpenInNewForegroundTab count=999999",
 		"",
+		"map t Vomnibar.activateTabs",
+		"map T createTab",
 		"",
 		"# g ",
 		"map gh Vomnibar.activateHistoryInNewTab",

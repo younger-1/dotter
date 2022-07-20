@@ -10,12 +10,12 @@
 source ~/zsh/boot.sh
 
 # Set XDG dirs
-if [[ ! "$OSTYPE" == darwin* ]]; then
-  export XDG_CONFIG_HOME=~/.config
-  export XDG_CACHE_HOME=~/.cache
-  export XDG_DATA_HOME=~/.local/share
-  export XDG_RUNTIME_DIR=~/.xdg
-else
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
+export XDG_RUNTIME_DIR=~/.xdg
+
+if [[ "$OSTYPE" == darwin* ]]; then
   export XDG_DESKTOP_DIR=~/Desktop
   export XDG_DOCUMENTS_DIR=~/Documents
   export XDG_DOWNLOAD_DIR=~/Downloads

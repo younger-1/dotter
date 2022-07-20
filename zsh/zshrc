@@ -205,6 +205,7 @@ zinit ice wait lucid
 zinit load wfxr/forgit
 
 # ugit
+zinit ice wait lucid
 zinit light Bhupesh-V/ugit
 
 # zsh-startify, a vim-startify like plugin
