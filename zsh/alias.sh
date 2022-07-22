@@ -62,3 +62,9 @@ alias untar='tar -xzvf'
 alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
+
+# https://askubuntu.com/questions/600018/how-to-display-path-as-one-directory-per-line
+# echo $PATH | tr : '\n'
+# echo -e "${PATH/:/\n}"
+# tr ':' '\n' <<< "$PATH"
+# sed 's/:/\n/g' <<< "$PATH"

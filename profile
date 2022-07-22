@@ -134,6 +134,15 @@ export PATH="$HOME/pnpm-bin:$PATH"
 export JULIA_PKG_SERVER=https://mirrors.tuna.tsinghua.edu.cn/julia
 
 # cargo & rust
+# case ":${PATH}:" in
+#     *:"$HOME/.cargo/bin":*)
+#         ;;
+#     *)
+#         # Prepending path in case a system-installed rustc needs to be overridden
+#         export PATH="$HOME/.cargo/bin:$PATH"
+#         ;;
+# esac
+
 export PATH="$HOME/.cargo/bin:$PATH"
 # export RUSTUP_DIST_SERVER=http://mirrors.rustcc.cn
 # export RUSTUP_UPDATE_ROOT=http://mirrors.rustcc.cn/rustup
@@ -141,7 +150,7 @@ export RUSTUP_DIST_SERVER="https://rsproxy.cn"
 export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 
 # ruby
-export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
+# export PATH="$HOME/.local/share/gem/ruby/3.0.0/bin:$PATH"
 
 # go
 export PATH="$HOME/go/bin:$PATH"
