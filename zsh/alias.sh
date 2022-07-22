@@ -7,7 +7,8 @@ alias b='bat'
 alias ba='bat -A'
 alias bd='bat -d'
 if [[ -x "$(command -v bat)" ]]; then
-  alias cat="bat --style=plain --pager='less -RF'"
+  # alias cat="bat --style=plain --pager='less -RF'"
+  alias cat="bat --style=plain --paging=never"
 fi
 
 # ls

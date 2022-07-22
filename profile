@@ -78,8 +78,6 @@ else
     fi
 fi
 
-export PAGER='less -RF'
-
 # For emacs-28 enable true color in TUI
 export COLORTERM=truecolor
 
@@ -97,10 +95,16 @@ if [[ -x "$(command -v dircolors)" ]]; then
     eval "$(dircolors)"
 fi
 
-export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
-export LESS='-R '
-# export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
+# /home/linuxbrew/.linuxbrew/Cellar/source-highlight/3.1.9_5/bin/source-highlight-esc.sh
+# export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
+export LESS=' -R '
 # export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
+
+export PAGER='less -RF'
+if [[ -x "$(command -v bat)" ]]; then
+  export PAGER='bat --style=plain --paging=auto'
+  export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+fi
 
 # For man to display colors
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -116,7 +120,10 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 export PULSE_SERVER=tcp:localhost
 
 # <https://unix.stackexchange.com/questions/608842/zshrc-export-gpg-tty-tty-says-not-a-tty>
-export GPG_TTY=$(tty)
+# export GPG_TTY=$(tty)
+export GPG_TTY=$TTY
+
+# export INPUTRC="$XDG_CONFIG_HOME/readline/inputrc"
 
 
 ########################### PATH ##########################
