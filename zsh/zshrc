@@ -152,7 +152,7 @@ zinit load zsh-users/zsh-history-substring-search
 
 #####################################[ Prompt ]#####################################
 
-if [[ -x "$(command -v fzf)" ]]; then
+if [[ -x "$(command -v starship)" ]]; then
   eval "$(starship init zsh)"
 fi
 
