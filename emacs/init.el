@@ -44,7 +44,7 @@
 (electric-pair-mode 1)
 ;; (electric-indent-mode 1) ; @default
 ;; (show-paren-mode 1) ; @default
-;; (xterm-mouse-mode 1)
+(xterm-mouse-mode 1)
 ;; (which-function-mode 1)
 ;; (transient-mark-mode 1)
 ;; (random 1) ;; seed
@@ -126,8 +126,8 @@
 ;;   (interactive)
 ;;   (kill-buffer nil))
 
-(bind-key "C-x k" #'kill-this-buffer)
-(bind-key "C-c k" #'kill-some-buffers)
+(global-set-key (kbd "C-x k") #'kill-this-buffer)
+(global-set-key (kbd "C-c k") #'kill-some-buffer)
 
 ;; (defun xy-kill-all-buffers (&optional reserved)
 ;;   "Kill all buffers."
@@ -147,7 +147,7 @@ It will preserve dired buffers (as well as scratch buffer, term buffers, help bu
         (delq (current-buffer)
               (seq-filter 'buffer-file-name (buffer-list)))))
 
-(bind-key "C-x K" #'xy-kill-other-buffers)
+(global-set-key (kbd "C-x K") #'xy-kill-other-buffers)
 
 (defun xy-minibuffer-quit ()
   "消解minibuffer"
@@ -380,6 +380,16 @@ It will preserve dired buffers (as well as scratch buffer, term buffers, help bu
   :config
   (keycast-mode t))
 
+;; https://d12frosted.io/posts/2019-06-26-emacs-helpful.html
+(defun xy-helpful-open-buffer (buffer-or-name)
+  "Switch to helpful BUFFER-OR-NAME.
+
+The logic is simple, if we are currently in the helpful buffer,
+reuse it's window, otherwise create new one."
+  (if (eq major-mode 'helpful-mode)
+      (switch-to-buffer buffer-or-name)
+    (pop-to-buffer buffer-or-name)))
+
 (use-package helpful
   :bind (("C-h f"   . #'helpful-callable) ;; Note that the built-in `describe-function' includes both functions and macros
          ("C-h F"   . #'helpful-function) ;; functions (excludes macros).
@@ -393,7 +403,9 @@ It will preserve dired buffers (as well as scratch buffer, term buffers, help bu
          ("k" . 'previous-line)
          ("b" . 'beginning-of-buffer)
          ("e" . 'end-of-buffer))
-  :init) ;; HACK: - see https://github.com/hlissner/doom-emacs/issues/6063
+  ;; HACK: - see https://github.com/hlissner/doom-emacs/issues/6063
+  :init
+  (setq helpful-switch-buffer-function #'xy-helpful-open-buffer))
 
 ;; Provide examples of Elisp code
 (use-package elisp-demos
@@ -488,8 +500,8 @@ It will preserve dired buffers (as well as scratch buffer, term buffers, help bu
     (yank)
     (indent-region point-before (point))))
 
-(bind-key "C-y" #'xy-yank)
-;; (bind-key "C-Y" #'yank)
+(global-set-key (kbd "C-y") #'xy-yank)
+;; (global-set-key (kbd "C-Y") #'yank)
 
 (use-package consult
   :init
