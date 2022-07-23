@@ -1,3 +1,6 @@
+# 设置配置范例，开启编辑器的自动补全
+"$schema" = 'https://starship.rs/config-schema.json'
+
 # Inserts a blank line between shell prompts
 add_newline = true
 
@@ -74,8 +77,9 @@ add_newline = true
 
 [character]
 # Replace the "❯" symbol in the prompt with "➜"
-success_symbol = "[➜](bold yellow) "
-error_symbol = "[✗](bold red) "
+success_symbol = "[➜](bold green)"
+error_symbol = "[✗](bold red)"
+# success_symbol = "[⌘](bold green)"
 # success_symbol = "[](bold green)"
 # error_symbol = "[ﮊ](bold red)"
 
@@ -110,6 +114,9 @@ powershell_indicator = "_"
 # symbol = " "
 # disabled = true
 
+[nodejs]
+symbol = " "
+
 [conda]
 symbol = " "
 ignore_base = false
@@ -120,19 +127,11 @@ symbol = " "
 [ruby]
 symbol = " "
 
-[rust]
-symbol = " "
-
 [julia]
 symbol = " "
 
 [java]
 symbol = " "
-# symbol = "🍭 "
-# symbol = "🌟 "
-
-[nodejs]
-symbol = " "
 
 [nix_shell]
 symbol = " "
