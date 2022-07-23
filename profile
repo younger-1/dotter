@@ -95,12 +95,13 @@ if [[ -x "$(command -v dircolors)" ]]; then
     eval "$(dircolors)"
 fi
 
+# export LESS=' -R'
 # /home/linuxbrew/.linuxbrew/Cellar/source-highlight/3.1.9_5/bin/source-highlight-esc.sh
 # export LESSOPEN="| /usr/bin/source-highlight-esc.sh %s"
-export LESS=' -R '
 # export LESSHISTFILE="$XDG_CACHE_HOME/less_history"
 
-export PAGER='less -RF'
+# https://github.com/sharkdp/bat#using-a-different-pager
+export PAGER='less -RFX'
 if [[ -x "$(command -v bat)" ]]; then
   export PAGER='bat --style=plain --paging=auto'
   export MANPAGER="sh -c 'col -bx | bat -l man -p'"
