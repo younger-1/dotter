@@ -131,7 +131,7 @@ return {
     -- { key = 'N', mods = 'CTRL', action = act.SpawnTab 'CurrentPaneDomain' },
     { key = 'O', mods = 'CTRL', action = act.EmitEvent 'toggle-opacity' },
     -- { key = 'F', mods = 'CTRL', action = act.ToggleFullScreen },
-    { key = 'G', mods = 'CTRL', action = act.Search { CaseInSensitiveString = "" } },
+    { key = 'G', mods = 'CTRL', action = act.Search { CaseInSensitiveString = '' } },
     { key = 'M', mods = 'CTRL', action = act.TogglePaneZoomState },
     { key = '|', mods = 'CTRL|SHIFT', action = act.SplitHorizontal { domain = 'CurrentPaneDomain' } },
     { key = '_', mods = 'CTRL|SHIFT', action = act.SplitVertical { domain = 'CurrentPaneDomain' } },

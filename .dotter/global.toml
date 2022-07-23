@@ -32,6 +32,7 @@ Doom = { target = "~/.doom.d", type = "symbolic" }
 SpaceVim = { target = "~/.SpaceVim.d", type = "symbolic" }
 "cargo.toml" = "~/.cargo/config.toml"
 "starship.toml" = "~/.config/starship.toml"
+"stylua.toml" = "~/.config/stylua/stylua.toml"
 "fuck.py" = "~/.config/thefuck/settings.py"
 "leetcode.json" = "~/.lc/plugins.json"
 AppSettings = { target = "~/AppSettings", type = "symbolic" }
