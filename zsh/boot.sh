@@ -1,7 +1,7 @@
 [ -s "$HOME/dotter/local/shell.sh" ] && source "$HOME/dotter/local/shell.sh"
 
 # ssh
-if [[ ! $no_ssh ]]; then
+if [[ $use_ssh ]]; then
   if [[ -x "$(command -v keychain)" ]]; then
     # eval `keychain --eval --agents ssh id_rsa`
     eval $(keychain --eval --agents ssh --quick --quiet id_rsa --nogui)
@@ -10,13 +10,13 @@ if [[ ! $no_ssh ]]; then
   fi
 fi
 
-if [[ ! $no_gpg ]] && [[ -x "$(command -v gpg)" ]]; then
+if [[ $use_gpg ]] && [[ -x "$(command -v gpg)" ]]; then
   export GITHUB_AUTH_TOKEN=$(gpg --quiet -d $HOME/dotter/gpg/github.younger)
   export GITTY_TOKENS=github.com=$GITHUB_AUTH_TOKEN
 fi
 
 # Proxy
-if [[ $no_proxy ]]; then
+if [[ ! $use_proxy ]]; then
   return
 fi
 
