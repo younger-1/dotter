@@ -56,20 +56,6 @@ let mapleader = " "
 " map <leader>b <Action>(ToggleLineBreakpoint)
 " map <leader>o <Action>(FileStructurePopup)
 
-nnoremap Y y$
-vnoremap Y "+y
-map s :action Switcher<cr>
-map <tab> %
-map <leader><leader> :action SearchEverywhere<cr>
-map <leader>vv :action VimFindActionIdAction<cr>
-map <leader>vr :action IdeaVim.ReloadVimRc.reload<cr>
-
-" nnoremap H :action PreviousEditorTab<cr>
-" nnoremap L :action NextEditorTab<cr>
-nnoremap H :action PreviousTab<cr>
-nnoremap L :action NextTab<cr>
-
-nnoremap <esc> :nohlsearch<cr>
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -79,14 +65,29 @@ nnoremap <C-l> <C-w>l
 " nnoremap <C-k> :action VimWindowUp<cr>
 " nnoremap <C-l> :action VimWindowRight<cr>
 
-map [w :action GotoPrevElementUnderCaretUsage<cr>
-map ]w :action GotoNextElementUnderCaretUsage<cr>
-map ]e :action GotoNextError<cr>
-map [e :action GotoPreviousError<cr>
+nnoremap Y y$
+vnoremap Y "+y
+map s :action Switcher<cr>
+map <tab> %
+nnoremap <esc> :nohlsearch<cr>
+
+" nnoremap H :action PreviousEditorTab<cr>
+" nnoremap L :action NextEditorTab<cr>
+nnoremap H :action PreviousTab<cr>
+nnoremap L :action NextTab<cr>
+
+map <leader><leader> :action SearchEverywhere<cr>
+map <leader>vv :action VimFindActionIdAction<cr>
+map <leader>vr :action IdeaVim.ReloadVimRc.reload<cr>
+
 map ]c :action VcsShowNextChangeMarker<cr>
 map [c :action VcsShowPrevChangeMarker<cr>
 " map ]c :action Diff.NextChange<cr>
 " map [c :action Diff.PrevChange<cr>
+map ]e :action GotoNextError<cr>
+map [e :action GotoPreviousError<cr>
+map [w :action GotoPrevElementUnderCaretUsage<cr>
+map ]w :action GotoNextElementUnderCaretUsage<cr>
 
 map go :action ActivateFindToolWindow<cr>
 " map gh :action Activatedocumentation.v2ToolWindow<cr>
@@ -97,6 +98,15 @@ map <leader>lu :action FindUsages<cr>
 map <leader>la :action Refactorings.QuickListPopupAction<cr>
 map <leader>lr :action RenameElement<cr>
 map <leader>lf :action ReformatCode<cr>
+
+map <leader>q <C-w>c
+map <leader>c :action CloseEditor<cr>
+map <leader>wo <C-w>o
+map <leader>bo :action CloseAllEditorsButActive<cr>
+map <leader>C :action ReopenClosedTab<cr>
+
+map <leader>e :NERDTreeFind<cr>
+map <leader>E :NERDTreeToggle<cr>
 
 map <leader>dd :action ToggleLineBreakpoint<cr>
 map <leader>dl :action ViewBreakpoints<cr>
@@ -123,20 +133,12 @@ map <leader>sr :action RecentFiles<cr>
 map <leader>gl :action Annotate<cr>
 map <leader>gc :action Vcs.Show.Log<cr>
 
-map <leader>q <C-w>c
-map <leader>c :action CloseEditor<cr>
-map <leader>wo <C-w>o
-map <leader>bo :action CloseAllEditorsButActive<cr>
-map <leader>C :action ReopenClosedTab<cr>
 map <leader>zz :action ToggleZenMode<cr>
 map <leader>zd :action ToggleDistractionFreeMode<cr>
 map <leader>zp :action TogglePresentationMode<cr>
 
-map <leader>e :NERDTreeFind<cr>
-map <leader>E :NERDTreeToggle<cr>
-
-map <leader>mm :action ToggleBookmark<cr>
-map <leader>mj :action GotoNextBookmarkInEditor<cr>
-map <leader>mk :action GotoPreviousBookmarkInEditor<cr>
-map <leader>mJ :action GotoNextBookmark<cr>
-map <leader>mK :action GotoPreviousBookmark<cr>
+map <leader>ab :action ToggleBookmark<cr>
+map ]b :action GotoNextBookmarkInEditor<cr>
+map [b :action GotoPreviousBookmarkInEditor<cr>
+map ]B :action GotoNextBookmark<cr>
+map [B :action GotoPreviousBookmark<cr>
