@@ -43,6 +43,7 @@ AppSettings = { target = "~/AppSettings", type = "symbolic" }
 "gh-prs.yml" = "~/.config/prs/config.yml"
 git = { target = "~/.config/git", type = "symbolic" }
 Wezterm = { target = "~/.config/wezterm", type = "symbolic" }
+kitty = { target = "~/.config/kitty", type = "symbolic" }
 ideavimrc = "~/.ideavimrc"
 
 # windows diff
