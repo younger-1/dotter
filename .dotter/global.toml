@@ -67,6 +67,7 @@ espanso = { target = "~/.config/espanso", type = "symbolic" }
 # mac diff
 goenv = "~/.config/go/env"
 "clangd.yaml" = "~/.config/clangd/config.yaml"
+sioyek = { target = "~/.config/sioyek", type = "symbolic" }
 
 [vim]
 

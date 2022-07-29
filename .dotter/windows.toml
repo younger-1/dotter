@@ -44,6 +44,7 @@ espanso = { target = "$scoop/persist/espanso/.espanso", type = "symbolic" }
 ## mac diff
 goenv = "~/AppData/Roaming/go/env"
 "clangd.yaml" = "~/AppData/Local/clangd/config.yaml"
+sioyek = { target = "~/.config/sioyek", type = "symbolic" }
 
 [vim.files]
 

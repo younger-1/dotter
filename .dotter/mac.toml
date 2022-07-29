@@ -10,3 +10,4 @@ os = "mac"
 
 # goenv = "~/Library/Application Support/go/env"
 "clangd.yaml" = "~/Library/Preferences/clangd/config.yaml"
+sioyek = { target = "~/Library/Application Support/sioyek", type = "symbolic" }

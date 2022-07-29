@@ -114,8 +114,14 @@ powershell_indicator = "_"
 # symbol = " "
 # disabled = true
 
+[golang]
+# format = "via [$symbol](bold blue)[($version )]($style)"
+symbol = " "
+style = "bold blue"
+
 [nodejs]
 symbol = " "
+style = "bold green"
 
 [conda]
 symbol = " "

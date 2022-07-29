@@ -18,19 +18,27 @@ set ideajoin " <https://github.com/JetBrains/ideavim/blob/master/doc/ideajoin-ex
 set ideastatusicon=enabled
 
 """ Plugins  --------------------------------
+" https://github.com/JetBrains/ideavim/wiki/Emulated-plugins
 set NERDTree
-set surround
-set multiple-cursors
-set commentary
-set argtextobj
-set easymotion
-set textobj-entire
 set ReplaceWithRegister
+set argtextobj
+set commentary
+" set easymotion
+set exchange
+set highlightedyank
+set multiple-cursors
+set surround
+set textobj-entire
+set textobj-indent
+set matchit
 
 """ Plugin settings -------------------------
 let g:argtextobj_pairs = "[:],(:),<:>"
 
 """ Mappings --------------------------------
+set which-key
+set timeout
+set timeoutlen=2000
 let mapleader = " "
 
 " map <leader>f <Plug>(easymotion-s)
@@ -75,6 +83,8 @@ map [w :action GotoPrevElementUnderCaretUsage<cr>
 map ]w :action GotoNextElementUnderCaretUsage<cr>
 map ]e :action GotoNextError<cr>
 map [e :action GotoPreviousError<cr>
+map ]c :action VcsShowNextChangeMarker<cr>
+map [c :action VcsShowPrevChangeMarker<cr>
 " map ]c :action Diff.NextChange<cr>
 " map [c :action Diff.PrevChange<cr>
 
@@ -110,13 +120,20 @@ map <leader>sm :action EditMenu<cr>
 map <leader>sM :action EditMacros<cr>
 map <leader>sr :action RecentFiles<cr>
 
+map <leader>gl :action Annotate<cr>
+map <leader>gc :action Vcs.Show.Log<cr>
+
 map <leader>q <C-w>c
 map <leader>c :action CloseEditor<cr>
 map <leader>wo <C-w>o
 map <leader>bo :action CloseAllEditorsButActive<cr>
 map <leader>C :action ReopenClosedTab<cr>
+map <leader>zz :action ToggleZenMode<cr>
+map <leader>zd :action ToggleDistractionFreeMode<cr>
+map <leader>zp :action TogglePresentationMode<cr>
 
-map <leader>e :NERDTreeToggle<cr>
+map <leader>e :NERDTreeFind<cr>
+map <leader>E :NERDTreeToggle<cr>
 
 map <leader>mm :action ToggleBookmark<cr>
 map <leader>mj :action GotoNextBookmarkInEditor<cr>
