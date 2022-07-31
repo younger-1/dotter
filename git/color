@@ -1,5 +1,3 @@
-# vim: ft=gitconfig
-
 [color]
   ui = auto
   pager  = yes

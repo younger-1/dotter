@@ -1,5 +1,3 @@
-# vim: ft=gitconfig
-
 [alias]
   # Shell commands will be executed from the top-level directory of a repository
   exec = "!exec "

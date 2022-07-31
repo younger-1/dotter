@@ -397,7 +397,7 @@ set -g @plugin 'sainnhe/tmux-fzf'
 #
 # then, use #{foo} in e.g. the 'tmux_conf_theme_status_left' or the
 # 'tmux_conf_theme_status_right' variables.
- 
+
 # # /!\ do not remove the following line
 # EOF
 #
