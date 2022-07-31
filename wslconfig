@@ -3,3 +3,8 @@
 [wsl2]
 memory=4GB
 processors=4
+
+# https://docs.microsoft.com/zh-cn/windows/wsl/wsl-config#wslconf
+# ! Only useful in /etc/wsl.conf
+# [interop]
+# appendWindowsPath=false

@@ -1,5 +1,3 @@
-#!/bin/zsh
-
 # echo "home zsh profile"
 
 [[ -e ~/.profile ]] && emulate sh -c 'source ~/.profile'

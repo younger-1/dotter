@@ -52,30 +52,30 @@ fi
 # https://wiki.archlinux.org/index.php/Environment_variables
 # Preferred editor for local and remote sessions
 if [[ -x "$(command -v lvim)" ]]; then
-    export EDITOR='lvim'
-    export VISUAL='lvim'
-    export GIT_EDITOR='lvim'
+  export EDITOR='lvim'
+  export VISUAL='lvim'
+  export GIT_EDITOR='lvim'
 elif [[ -x "$(command -v nvim)" ]]; then
-    export EDITOR='nvim'
-    export VISUAL='nvim'
-    export GIT_EDITOR='nvim'
+  export EDITOR='nvim'
+  export VISUAL='nvim'
+  export GIT_EDITOR='nvim'
 elif [[ -n $SSH_CONNECTION ]]; then
-    export EDITOR='vim'
+  export EDITOR='vim'
 elif [[ -x "$(command -v vim)" ]]; then
-    export EDITOR='vim'
-    export VISUAL='vim'
+  export EDITOR='vim'
+  export VISUAL='vim'
 fi
 # export EDITOR="$(if [[ -n $DISPLAY ]]; then echo 'gedit'; else echo 'nano'; fi)"
 
 # BROWSER contains the path to the web browser
 if [ -n "$DISPLAY" ]; then
-    export BROWSER=firefox
+  export BROWSER=firefox
 else
-    if [[ -x "$(command -v links)" ]]; then
-        export BROWSER=links
-    elif [[ -x "$(command -v w3m)" ]]; then
-        export BROWSER=links
-    fi
+  if [[ -x "$(command -v links)" ]]; then
+    export BROWSER=links
+  elif [[ -x "$(command -v w3m)" ]]; then
+    export BROWSER=links
+  fi
 fi
 
 # For emacs-28 enable true color in TUI
@@ -85,14 +85,14 @@ export COLORTERM=truecolor
 # <https://www.topbug.net/blog/2016/11/28/a-better-ls-command/#better-color>
 # <https://github.com/sharkdp/vivid>
 if [[ -x "$(command -v vivid)" ]]; then
-    export LS_COLORS="$(vivid generate molokai)"
-    function setcolor() {
-        export LS_COLORS="$(vivid generate $1)"
-    }
+  export LS_COLORS="$(vivid generate molokai)"
+  function setcolor() {
+    export LS_COLORS="$(vivid generate $1)"
+  }
 fi
 
 if [[ -x "$(command -v dircolors)" ]]; then
-    eval "$(dircolors)"
+  eval "$(dircolors)"
 fi
 
 # export LESS=' -R'
@@ -128,6 +128,26 @@ export GPG_TTY=$TTY
 
 
 ########################### PATH ##########################
+
+if [[ $WSL_DISTRO_NAME ]]; then
+  # https://github.com/zdharma-continuum/fast-syntax-highlighting/issues/13
+  PATH=$(echo $PATH | sed s/:/\\n/g | grep -v '/mnt/c' | sed ':a;N;$!ba;s/\n/:/g')
+
+  if [[ ! -e ~/.local/bin/cmd.exe ]]; then
+    ln -s /mnt/c/Windows/System32/cmd.exe ~/.local/bin/cmd.exe
+  fi
+
+  function eexx {
+    target=$(wslpath "$(awk -F$'\r' 'NR == 1 {printf "%s", $1}' <<< $(/mnt/c/Windows/System32/cmd.exe /c where $1 2>/dev/null))")
+    if [[ "$target" == "." ]]; then
+      echo "[windows]: Command '$1' not found."
+    else
+      $target ${@:2}
+    fi
+  }
+  alias explorer='eexx explorer'
+  alias code='eexx code'
+fi
 
 export PATH=$HOME/bin:$HOME/.local/bin:$PATH
 
@@ -186,4 +206,3 @@ if [[ $use_brew_mirror ]]; then
   export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
 fi
 
-# vim: shiftwidth=4 ft=sh
