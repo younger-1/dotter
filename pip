@@ -1,4 +1,5 @@
 # ft=dosini
+
 [global]
 editor = nvim
 index-url = https://mirrors.aliyun.com/pypi/simple

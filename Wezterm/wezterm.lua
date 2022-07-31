@@ -72,7 +72,7 @@ return {
   -- enable_scroll_bar = true,
   -- window_decorations = "RESIZE",
   -- window_decorations = "TITLE | RESIZE",
-  window_background_opacity = 0.9,
+  window_background_opacity = 0.85,
   -- tab
   -- enable_tab_bar = false,
   -- use_fancy_tab_bar = false,
@@ -95,6 +95,7 @@ return {
   },
   --
   native_macos_fullscreen_mode = true,
+  enable_kitty_graphics = true,
   -- key
   send_composed_key_when_left_alt_is_pressed = false,
   send_composed_key_when_right_alt_is_pressed = false,

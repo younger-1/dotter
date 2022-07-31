@@ -18,21 +18,21 @@ if alias l &>/dev/null; then unalias l; fi
 if alias ll &>/dev/null; then unalias ll; fi
 
 if [[ -x "$(command -v exa)" ]]; then
-  function ls { exa --icons --classify --group-directories-first $@; }
+  function ls { exa --icons --classify --group-directories-first "$@"; }
 fi
 function la { ls -a $@; }
-function lag { la --git-ignore $@; }
-function l { ls -l --git $@; }
-function l. { l -d .* $@; }
-function lt { ls --tree $@; }
-function llt { l --tree --no-permissions $@; }
+function lag { la --git-ignore "$@"; }
+function l { ls -l --git "$@"; }
+function l. { l -d .* "$@"; }
+function lt { ls --tree "$@"; }
+function llt { l --tree --no-permissions "$@"; }
 
-function ll { l -a --header --time-style=long-iso $@; }
-function lz { ll --sort=size $@; }
-function lm { ll --modified --sort=modified $@; }
-function lM { ll --changed  --sort=changed $@; }
-function li { ll --accessed --sort=accessed $@; }
-function lc { ll --created  --sort=created $@; }
+function ll { l -a --header --time-style=long-iso "$@"; }
+function lz { ll --sort=size "$@"; }
+function lm { ll --modified --sort=modified "$@"; }
+function lM { ll --changed  --sort=changed "$@"; }
+function li { ll --accessed --sort=accessed "$@"; }
+function lc { ll --created  --sort=created "$@"; }
 
 # dirs
 alias dir='dirs -v'
@@ -69,3 +69,8 @@ alias ip='ip -color=auto'
 # echo -e "${PATH/:/\n}"
 # tr ':' '\n' <<< "$PATH"
 # sed 's/:/\n/g' <<< "$PATH"
+
+if [[ $TERM =~ 'kitty' ]]; then
+  alias icat="kitty +kitten icat"
+  alias d="kitty +kitten diff"
+fi
