@@ -79,6 +79,7 @@ function! s:plugging()
   command! -nargs=+ -bar Yo call jetpack#add(<args>)
 
   " <https://github.com/tani/vim-jetpack/blob/main/doc/jetpack.txt>
+  " Jetpack 'tani/vim-jetpack', {'opt': 1}
   Yo 'tani/vim-jetpack', { 'opt': 1 }
 
   " [Theme]
@@ -127,7 +128,7 @@ function! s:plugging()
   " [Vim]
   Yo 'tpope/vim-scriptease'
   " Yo 'tpope/vim-sleuth'
-  Yo 'gelguy/wilder.nvim'
+  " Yo 'gelguy/wilder.nvim'
   " Yo 'Shougo/echodoc.vim'
 
   " [BWT]
@@ -142,7 +143,7 @@ function! s:plugging()
   Yo 'preservim/nerdtree', { 'on' : 'NERDTreeToggle' }
   " Yo 'tpope/vim-vinegar'
   Yo 'roxma/nvim-yarp' | Yo 'roxma/vim-hug-neovim-rpc'
-  Yo 'Shougo/defx.nvim', { 'on' : 'Defx' }
+  " Yo 'Shougo/defx.nvim', { 'on' : 'Defx' }
   " -- Project
   Yo 'airblade/vim-rooter'
   " -- Session
@@ -170,7 +171,7 @@ function! s:plugging()
   Yo 'junegunn/gv.vim'
 
   " [UI]
-  Yo 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!', 'WhichKeyVisual', 'WhichKeyVisual!'] }
+  Yo 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKeyVisual'] }
   Yo 'voldikss/vim-floaterm'
   Yo 'mbbill/undotree', { 'on': 'UndotreeToggle' }
   " -- Dashboard
@@ -221,8 +222,8 @@ function! s:plugging()
   " Yo 'neoclide/coc.nvim', { 'branch': 'release' }
 
   " [Denops]
-  Yo 'vim-denops/denops.vim'
-  Yo 'lambdalisue/guise.vim'
+  " Yo 'vim-denops/denops.vim'
+  " Yo 'lambdalisue/guise.vim'
 endfunction
 
 """"""""""""""""""""""""""""""

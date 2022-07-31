@@ -26,7 +26,7 @@ command! -nargs=1 -complete=custom,s:config_complete ConfigSource exec 'so ' .. 
 
 command! -nargs=1 Config call s:config("<args>")
 
-Config defx
+" Config defx
 Config nerdtree
 Config matchup
 Config startify
