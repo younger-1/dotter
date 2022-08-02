@@ -46,6 +46,7 @@ return {
   -- theme
   -- @see <https://github.com/mbadolato/iTerm2-Color-Schemes/tree/master/wezterm>
   -- color_scheme = "Gruvbox Dark",
+  -- color_scheme = 'Gruvbox Light',
   -- color_scheme = "Solarized Darcula",
   -- color_scheme = "JetBrains Darcula",
   -- color_scheme = "Breeze",

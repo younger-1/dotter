@@ -64,6 +64,9 @@ alias diff='diff --color=auto'
 alias grep='grep --color=auto'
 alias ip='ip -color=auto'
 
+alias sgrep='grep -R -n -H --exclude-dir={.git,.svn,CVS}'
+alias ssgrep='grep -R -n -H -C 5 --exclude-dir={.git,.svn,CVS}'
+
 # https://askubuntu.com/questions/600018/how-to-display-path-as-one-directory-per-line
 # echo $PATH | tr : '\n'
 # echo -e "${PATH/:/\n}"
